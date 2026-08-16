@@ -1,0 +1,164 @@
+Sujet: Formation Technique
+Chapitres:
+- id: 1
+  titre: Appel de la fonction avec des valeurs littérales
+  dossier: chapitre1
+  paragraphes:
+  - Déclaration de variables
+  - Types de données scalaires  int, float, bool, str
+  - Types de données aggrégés  list, tuple, dict, set
+  - Valeurs littérales
+  - Portée de variables  globale, locale
+  - Exemple de synthèse
+  - Exercices
+- id: 2
+  titre: Opérateurs relationnels et logiques
+  dossier: chapitre2
+  paragraphes:
+  - Les opérateurs d'affectation
+  - Opérateurs arithmétiques
+  - Opérateurs relationnels
+  - Opérateurs logiques
+  - Exemple de synthèse
+  - Exercices
+- id: 3
+  titre: Conversion explicite inverse pour concaténation textuelle dans le message
+    final
+  dossier: chapitre3
+  paragraphes:
+  - Casting et conversion
+  - Conversions implicites vs explicites
+  - Exemple de synthèse
+  - Exercices
+- id: 4
+  titre: '4. Formatage : construction du message final avec une fstring'
+  dossier: chapitre4
+  paragraphes:
+  - Gestion des chaines
+  - Formatage
+  - Slicing
+  - Expressions régulières
+  - Exemple de synthèse
+  - Exercices
+- id: 5
+  titre: '3. Gestion des dict : association d''un statut à chaque utilisateur unique'
+  dossier: chapitre5
+  paragraphes:
+  - Gestion des listes
+  - Gestion des dict
+  - Gestion des set
+  - Exemple de synthèse
+  - Exercices
+- id: 6
+  titre: 4. Boucle avec items() pour parcourir un dictionnaire de configuration
+  dossier: chapitre6
+  paragraphes:
+  - Structure conditionnelles if/else/then,match
+  - Structure match
+  - Boucles  for/else
+  - Boucles  while
+  - Boucles  avec range
+  - Boucles  avec zip
+  - Boucles  avec items() pour les dictionnaires
+  - Exemple de synthèse
+  - Exercices
+- id: 7
+  titre: Appel de la fonction principale avec différents types d'arguments
+  dossier: chapitre7
+  paragraphes:
+  - Les fonctions, arguments , passage par valeur, return
+  - Arguments et valeurs par défaut
+  - Arguments en tant que tuple
+  - Arguments avec *args
+  - Arguments *kargs
+  - Fonction en tant qu'argument (delegate)
+  - Exemple de synthèse
+  - Exercices
+- id: 8
+  titre: 3. Calculer le montant total cumulé de ces articles via reduce et lambda
+  dossier: chapitre8
+  paragraphes:
+  - Fonction anonyme Lambda
+  - Traitement avec filter
+  - Traitement avec map
+  - Traitement avec reduce
+  - Exemple de synthèse
+  - Exercices
+- id: 9
+  titre: Utilisation d'un générateur prédéfini (enumerate) associé
+  dossier: chapitre9
+  paragraphes:
+  - Boucle et instruction yield
+  - Générateur prédéfinis
+  - Exemple de synthèse
+  - Exercices
+- id: 10
+  titre: Test de la fonction avec des valeurs littérales
+  dossier: chapitre10
+  paragraphes:
+  - 'Gestion des exceptions : try catch finally et throw'
+  - Instruction finally
+  - Emettre une exception avec throw
+  - Exemple de synthèse
+  - Exercices
+- id: 11
+  titre: Traitement conditionnel basé sur l'argument reçu
+  dossier: chapitre11
+  paragraphes:
+  - Scripts et **main**
+  - Scripts et passage d'arguments
+  - Gestion de package  pip
+  - Exemple de synthèse
+  - Exercices
+- id: 12
+  titre: Appel de la fonction de synthèse
+  dossier: chapitre12
+  paragraphes:
+  - librairie et script pip
+  - importation de package
+  - Contenu d'un package
+  - chemin d'accès
+  - package standards os, os.path, path et zlib
+  - Gestion des répertoires  mkdir, listdir, walk, move, rmdir
+  - Gestion des fichiers  open, read, write, seek, tell, zip
+  - Automatiser une installation avec gel et requirements.txt
+  - Exemple de synthèse
+  - Exercices
+- id: 13
+  titre: 4. Sortie de l'environnement virtuel
+  dossier: chapitre13
+  paragraphes:
+  - Création d'un context python isolé avec venv
+  - Script activate/deactivate
+  - Exemple de synthèse
+  - Exercices
+- id: 14
+  titre: 2. Lecture du fichier texte via un flux sécurisé
+  dossier: chapitre14
+  paragraphes:
+  - Concepts généraux sur les streams et fichiers
+  - Créer un fichier text en unicode  ouvrir, ecrire, lire
+  - Exemple de synthèse
+  - Exercices
+- id: 15
+  titre: Instanciation et test des objets
+  dossier: chapitre15
+  paragraphes:
+  - Approche de l'orienté objets
+  - Composition d'une classe  constructeur, méthodes et données
+  - Objet et instance de class  self, super
+  - Héritage de classes et redéfinition
+  - Packages et imports et classes
+  - Exemple de synthèse
+  - Exercices
+- id: 16
+  titre: Exécution de la fonction de synthèse
+  dossier: chapitre16
+  paragraphes:
+  - Concepts de base
+  - Connexion et paramétrage  connexion, cursor
+  - Gestion de la Structure de données  Table DDL
+  - Gestion des transactions  commit
+  - Manipulation des données  Select/Where DML
+  - Exemple de synthèse
+  - Exercices

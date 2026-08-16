@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de synthèse</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exemple de synthèse</h2>
+<pre><code class="language-python">import re
+
+# Programme complet combinant gestion, formatage, slicing et expressions régulières
+reference_brute = &quot;   REF-9876-FR   &quot;
+
+# 1. Gestion : nettoyage des espaces superflus et mise en majuscules
+reference_nette = reference_brute.strip()
+
+# 2. Slicing : extraction de la portion numérique centrale
+code_numerique = reference_nette[4:8]
+
+# 3. Expressions régulières : validation du format global
+pattern = r&quot;^REF-\d{4}-[A-Z]{2}$&quot;
+est_conforme = bool(re.match(pattern, reference_nette))
+
+# 4. Formatage : construction du message final avec une f-string
+rapport = f&quot;Référence : {reference_nette} | Code extrait : {code_numerique} | Conforme : {est_conforme}&quot;
+print(rapport)
+
+</code></pre>
+</body>
+</html>

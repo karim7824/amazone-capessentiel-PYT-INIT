@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de synthèse</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exemple de synthèse</h2>
+<pre><code class="language-python"># Programme complet combinant conditions, boucles, range, zip et items
+utilisateurs = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;]
+points = [45, 60, 30]
+
+# 1. Boucle avec range pour un affichage numéroté
+for i in range(len(utilisateurs)):
+    print(f&quot;Rang {i + 1}&quot;)
+
+# 2. Boucle avec zip pour associer utilisateurs et scores
+for user, score in zip(utilisateurs, points):
+    # 3. Structure conditionnelle classique
+    if score &gt;= 50:
+        niveau = &quot;Expert&quot;
+    else:
+        niveau = &quot;Débutant&quot;
+    print(f&quot;{user} ({niveau}) avec {score} pts&quot;)
+
+# 4. Boucle avec items() pour parcourir un dictionnaire de configuration
+config = {&quot;mode&quot;: &quot;admin&quot;, &quot;debug&quot;: True}
+for parametre, etat in config.items():
+    match parametre:
+        case &quot;mode&quot;:
+            print(f&quot;Mode actif : {etat}&quot;)
+        case &quot;debug&quot;:
+            print(f&quot;Mode débogage activé : {etat}&quot;)
+
+</code></pre>
+</body>
+</html>

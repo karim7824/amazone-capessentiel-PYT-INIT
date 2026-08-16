@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de synthèse</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exemple de synthèse</h2>
+<pre><code class="language-python"># Programme complet combinant try, except, finally et la levée d'une exception avec raise
+
+def convertir_et_diviser(valeur_str, diviseur_str):
+    &quot;&quot;&quot;Convertit deux chaînes en entiers et réalise une division sécurisée.&quot;&quot;&quot;
+    try:
+        valeur = int(valeur_str)
+        diviseur = int(diviseur_str)
+
+        # Émission d'une exception personnalisée si le diviseur est nul
+        if diviseur == 0:
+            raise ZeroDivisionError(&quot;Le diviseur ne peut pas être égal à zéro.&quot;)
+
+        quotient = valeur / diviseur
+    except ValueError as e:
+        return f&quot;Erreur de format numérique : {e}&quot;
+    except ZeroDivisionError as e:
+        return f&quot;Erreur mathématique : {e}&quot;
+    finally:
+        print(&quot;Fin de l'opération de calcul sécurisée.&quot;)
+
+    return f&quot;Résultat du calcul : {quotient}&quot;
+
+# Test de la fonction avec des valeurs littérales
+print(convertir_et_diviser(&quot;100&quot;, &quot;4&quot;))
+print(convertir_et_diviser(&quot;50&quot;, &quot;0&quot;))
+
+</code></pre>
+</body>
+</html>

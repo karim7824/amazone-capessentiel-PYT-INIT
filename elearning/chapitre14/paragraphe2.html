@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un fichier text en unicode - ouvrir, ecrire, lire</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Créer un fichier text en unicode - ouvrir, ecrire, lire</h2>
+<p>La création d'un fichier texte en encodage Unicode garantit la prise en charge universelle des caractères accentués et des symboles internationaux. Les fonctions natives permettent d'ouvrir, d'écrire et de lire ces contenus en toute sécurité.</p>
+<pre><code class="language-python"># Création, écriture et lecture d'un fichier texte en UTF-8
+with open(&quot;document.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;Texte en Unicode avec des accents : é, à, ê.&quot;)
+
+with open(&quot;document.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    contenu = f.read()
+
+</code></pre>
+<blockquote>
+<p>💡 Spécifiez systématiquement l'argument <code>encoding="utf-8"</code> lors de l'ouverture de fichiers texte pour éviter les erreurs de décodage selon les systèmes d'exploitation.</p>
+</blockquote>
+</body>
+</html>

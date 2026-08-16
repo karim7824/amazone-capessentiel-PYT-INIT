@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversions implicites vs explicites</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Conversions implicites vs explicites</h2>
+<p>Python réalise parfois des conversions implicites automatiques sans intervention du développeur pour éviter les pertes de données, tandis que les conversions explicites exigent l'appel direct à des fonctions dédiées comme <code>int()</code>, <code>float()</code> ou <code>str()</code>.</p>
+<pre><code class="language-python"># Conversion implicite d'un entier en flottant lors d'une opération mixte
+resultat = 3 + 4.5  # L'entier 3 est converti implicitement en 3.0 (résultat : 7.5)
+
+</code></pre>
+<blockquote>
+<p>💡 Privilégiez toujours les conversions explicites pour rendre votre code prévisible et éviter les ambiguïtés de calcul entre types numériques.</p>
+</blockquote>
+</body>
+</html>

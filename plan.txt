@@ -1,0 +1,98 @@
+titre : Introduction à la programmation en Python
+
+Définir et manipuler des données types en mémoire 
+- Déclaration de variables 
+- Types de données scalaires - int, float, bool , str 
+- Types de données aggrégés - list, tuple, dict, set
+- Valeurs littérales 
+- Portée de variables - globale, locale
+
+Les opérateurs 
+- Les opérateurs d'affectation
+- Opérateurs arithmétiques 
+- Opérateurs relationnels 
+- Opérateurs logiques
+
+Convertir les données - casting ou transtypage
+- Casting et conversion
+- Conversions implicites vs explicites
+
+Manipulation des chaines de caractères
+- Gestion des chaines
+- Formatage
+- Slicing
+- Expressions régulières
+ 
+Manipulation des données structurées - list, dict et set 
+- Gestion des listes 
+- Gestion des dict 
+- Gestion des set 
+
+Les instructions controles
+- Structure conditionnelles if/else/then,match
+- Structure match
+- Boucles - for/else  
+- Boucles - while 
+- Boucles - avec range
+- Boucles - avec zip 
+- Boucles - avec items() pour les dictionnaires
+
+Les fonctions et passage d'arguments 
+- Les fonctions, arguments , passage par valeur, return
+- Arguments et valeurs par défaut
+- Arguments en tant que tuple 
+- Arguments avec *args 
+- Arguments *kargs 
+- Fonction en tant qu'argument (delegate) 
+
+Traiter une masse de données
+- Fonction anonyme Lambda
+- Traitement avec filter 
+- Traitement avec map
+- Traitement avec reduce 
+
+Les générateurs
+- Boucle et instruction yield
+- Générateur prédéfinis
+
+Un code plus robuste en prenant en compte les erreurs
+- Gestion des exceptions : try catch finally et throw
+- Instruction finally
+- Emettre une exception avec throw
+
+Script python en ligne de commande et passage d'arguments
+- Scripts et __main__
+- Scripts et passage d'arguments
+- Gestion de package - pip
+
+Gestion des package - import et création 
+- librairie et script pip
+- importation de package 
+- Contenu d'un package 
+- chemin d'accès
+- package standards os, os.path, path et zlib
+- Gestion des répertoires - mkdir, listdir, walk, move, rmdir
+- Gestion des fichiers - open, read, write, seek, tell, zip
+- Automatiser une installation avec gel et requirements.txt
+
+Envrionnement virtuel adapté à chaque application
+- Création d'un context python isolé avec venv 
+- Script activate/deactivate
+
+Gestion des fichiers et des répertoires
+- Concepts généraux sur les streams et fichiers
+- Créer un fichier text en unicode - ouvrir, ecrire, lire 
+
+Programmation orientée objets
+- Approche de l'orienté objets 
+- Composition d'une classe - constructeur, méthodes et données 
+- Objet et instance de class - self, super 
+- Héritage de classes et redéfinition
+- Packages et imports et classes
+
+Accès aux bases de données 
+- Concepts de base 
+- Connexion et paramétrage - connexion, cursor
+- Gestion de la Structure de données - Table DDL 
+- Gestion des transactions - commit
+- Manipulation des données - Select/Where DML 

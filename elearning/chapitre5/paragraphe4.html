@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de synthèse</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exemple de synthèse</h2>
+<pre><code class="language-python"># Programme complet combinant listes, dictionnaires et ensembles
+# 1. Gestion des listes : stockage des identifiants de connexions successives
+historique_connexions = [&quot;user_1&quot;, &quot;user_2&quot;, &quot;user_1&quot;, &quot;user_3&quot;]
+
+# 2. Gestion des set : extraction des utilisateurs uniques sans doublons
+utilisateurs_uniques = set(historique_connexions)
+
+# 3. Gestion des dict : association d'un statut à chaque utilisateur unique
+statuts_utilisateurs = {
+    &quot;user_1&quot;: &quot;actif&quot;,
+    &quot;user_2&quot;: &quot;inactif&quot;,
+    &quot;user_3&quot;: &quot;actif&quot;
+}
+
+print(f&quot;Utilisateurs uniques : {utilisateurs_uniques}&quot;)
+print(f&quot;Statut de user_1 : {statuts_utilisateurs.get('user_1')}&quot;)
+
+</code></pre>
+</body>
+</html>

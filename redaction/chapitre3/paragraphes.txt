@@ -1,0 +1,3 @@
+Convertir les données - casting ou transtypage
+- Casting et conversion
+- Conversions implicites vs explicites

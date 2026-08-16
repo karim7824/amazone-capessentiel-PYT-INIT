@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de synthèse</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exemple de synthèse</h2>
+<pre><code class="language-python"># Programme complet combinant classes, constructeur, méthodes, self, héritage et redéfinition
+
+class Utilisateur:
+    &quot;&quot;&quot;Classe parente représentant un utilisateur générique.&quot;&quot;&quot;
+    def __init__(self, identifiant):
+        self.identifiant = identifiant
+
+    def obtenir_profil(self):
+        return f&quot;Utilisateur ID : {self.identifiant}&quot;
+
+class Administrateur(Utilisateur):
+    &quot;&quot;&quot;Classe fille héritant d'Utilisateur avec redéfinition.&quot;&quot;&quot;
+    def __init__(self, identifiant, niveau_acces):
+        super().__init__(identifiant)  # Appel du constructeur parent
+        self.niveau_acces = niveau_acces
+
+    def obtenir_profil(self):
+        # Redéfinition de la méthode héritée
+        profil_base = super().obtenir_profil()
+        return f&quot;{profil_base} | Rôle : Admin (Niveau {self.niveau_acces})&quot;
+
+# Instanciation et test des objets
+admin = Administrateur(&quot;USR-001&quot;, 3)
+print(admin.obtenir_profil())
+
+</code></pre>
+</body>
+</html>

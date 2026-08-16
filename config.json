@@ -1,0 +1,21 @@
+{
+    "REF": "PYT-INIT",
+    "SUJET": "Python",
+    "NIVEAU": "Initiation",
+    "CATEGORIE": "Langages",
+    "PRIX": "5",
+    "DUREE": "2",
+    "DISCIPLINE": "informatique",
+    "TITRE": "Initiation à la programmation avec Python",
+    "SOUSTITRE": "Pratique de la syntaxe de base de Python",
+    "RESUME": "Comprendre la synxtaxe et la mise en oeuvre de Python",
+    "PUBLIC": "Programmeur et chef de projet",
+    "AUTEURS": "BELHADJ Karim",
+    "SOCIETE": "keyos-editions",
+    "EDITION": "keyos-editions",
+    "PARTENAIRE": "keyos editions",
+    "DEDICACE": "Pour les fans de tiktok",
+    "SCRIPT": "python",
+    "LANGUE": "francais"
+}
+

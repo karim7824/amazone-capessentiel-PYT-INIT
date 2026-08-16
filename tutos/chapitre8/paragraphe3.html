@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Traitement avec map</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Traitement avec map</h2>
+<p>La fonction <code>map()</code> applique une fonction spécifique à l'ensemble des éléments d'une collection itérable, transformant ainsi les données en une seule passe.</p>
+<pre><code class="language-python"># Application d'une transformation pour multiplier par 2 chaque élément
+valeurs = [1, 2, 3, 4]
+doubles = list(map(lambda x: x * 2, valeurs))
+
+</code></pre>
+<blockquote>
+<p>💡 Les compréhensions de listes constituent souvent une alternative plus lisible et idiomatique aux fonctions <code>map()</code> en Python.</p>
+</blockquote>
+</body>
+</html>

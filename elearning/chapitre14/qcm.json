@@ -1,0 +1,59 @@
+{
+  "quiz_title": "Chapitre 14 : Gestion des fichiers et des répertoires",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Quel argument faut-il systématiquement privilégier lors de l'ouverture d'un fichier texte pour la portabilité ?",
+      "answerOptions": [
+        {
+          "text": "encoding='utf-8'",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "mode='binary'",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "unicode=True",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "format='text'",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Garantit la gestion correcte des accents."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Quel gestionnaire de contexte garantit la fermeture automatique d'un fichier ?",
+      "answerOptions": [
+        {
+          "text": "using",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "with",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "open",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "managed",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Mot-clé suivi de l'instruction open()."
+    }
+  ]
+}

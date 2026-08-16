@@ -1,0 +1,3 @@
+Envrionnement virtuel adapté à chaque application
+- Création d'un context python isolé avec venv
+- Script activate/deactivate

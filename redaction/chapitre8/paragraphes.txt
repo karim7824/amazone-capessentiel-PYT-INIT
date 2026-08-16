@@ -1,0 +1,5 @@
+Traiter une masse de données
+- Fonction anonyme Lambda
+- Traitement avec filter
+- Traitement avec map
+- Traitement avec reduce

@@ -1,0 +1,5 @@
+Manipulation des chaines de caractères
+- Gestion des chaines
+- Formatage
+- Slicing
+- Expressions régulières

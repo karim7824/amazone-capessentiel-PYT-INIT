@@ -1,0 +1,8 @@
+
+---
+titre : Contenu du cours
+chapitres:
+    - nom : "Gestion des fichiers et des répertoires"
+      paragraphes :
+      - Concepts généraux sur les streams et fichiers 
+      - Créer un fichier text en unicode - ouvrir, ecrire, lire 

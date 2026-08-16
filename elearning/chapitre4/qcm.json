@@ -1,0 +1,59 @@
+{
+  "quiz_title": "Chapitre 4 : Manipulation des chaines de caractères",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Quelle méthode est recommandée pour insérer des variables dans une chaîne de manière lisible ?",
+      "answerOptions": [
+        {
+          "text": "Les f-strings",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "La concaténation avec + uniquement",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "L'opérateur %",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "join()",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Elles préfixent la chaîne par la lettre f."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Quel module standard permet d'utiliser des expressions régulières ?",
+      "answerOptions": [
+        {
+          "text": "string",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "regex",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "re",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "pattern",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Son nom est très court (deux lettres)."
+    }
+  ]
+}

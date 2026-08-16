@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Arguments en tant que tuple</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Arguments en tant que tuple</h2>
+<p>Il est possible de regrouper plusieurs valeurs d'arguments dans un tuple pour les manipuler de manière globale au sein de la fonction.</p>
+<pre><code class="language-python"># Fonction acceptant un tuple d'éléments regroupés
+def afficher_coordonnees(coord):
+    x, y = coord
+    return f&quot;Position X: {x}, Y: {y}&quot;
+
+</code></pre>
+<blockquote>
+<p>💡 Utilisez l'emballage de tuples lorsque vos données possèdent une structure fixe et ordonnée que vous souhaitez traiter en bloc.</p>
+</blockquote>
+</body>
+</html>

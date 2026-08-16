@@ -1,0 +1,8 @@
+
+---
+titre : Contenu du cours
+chapitres:
+    - nom : "Convertir les données - casting ou transtypage"
+      paragraphes :
+      - Casting et conversion 
+      - Conversions implicites vs explicites 

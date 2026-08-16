@@ -1,0 +1,59 @@
+{
+  "quiz_title": "Chapitre 3 : Convertir les données - casting ou transtypage",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Quelle fonction permet de convertir explicitement une chaîne en entier ?",
+      "answerOptions": [
+        {
+          "text": "str()",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "int()",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "float()",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "char()",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Nommé d'après le type entier."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Que se passe-t-il lors de l'opération 3 + 4.5 ?",
+      "answerOptions": [
+        {
+          "text": "Une erreur de type",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "Une conversion implicite de l'entier en flottant",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "Une conversion explicite obligatoire",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "La conversion du flottant en entier",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Python gère automatiquement les types mixtes numériques."
+    }
+  ]
+}

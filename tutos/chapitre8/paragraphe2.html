@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Traitement avec filter</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Traitement avec filter</h2>
+<p>La fonction <code>filter()</code> permet de filtrer les éléments d'une collection en évaluant chaque élément à l'aide d'une fonction conditionnelle qui retourne un booléen.</p>
+<pre><code class="language-python"># Filtrage des nombres pairs d'une liste
+nombres = [1, 2, 3, 4, 5, 6]
+pairs = list(filter(lambda x: x % 2 == 0, nombres))
+
+</code></pre>
+<blockquote>
+<p>💡 Le résultat retourné par <code>filter()</code> en Python est un itérateur, pensez à le convertir explicitement en <code>list</code> ou <code>tuple</code> pour exploiter les données.</p>
+</blockquote>
+</body>
+</html>

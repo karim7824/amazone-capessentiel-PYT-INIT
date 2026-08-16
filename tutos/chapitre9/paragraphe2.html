@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur prédéfinis</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Générateur prédéfinis</h2>
+<p>Les générateurs prédéfinis englobent les expressions génératrices et les structures intégrées de Python qui produisent des flux d'éléments de manière paresseuse, évitant l'allocation préalable d'une collection complète.</p>
+<pre><code class="language-python"># Utilisation d'une expression génératrice pour un calcul optimisé en mémoire
+carres_gen = (x ** 2 for x in range(5))
+premier_element = next(carres_gen)
+
+</code></pre>
+<blockquote>
+<p>💡 Privilégiez les expressions génératrices entre parenthèses plutôt que les compréhensions de listes dès que vous manipulez des flux volumineux dont vous n'avez pas besoin de stocker l'ensemble des résultats simultanément.</p>
+</blockquote>
+</body>
+</html>

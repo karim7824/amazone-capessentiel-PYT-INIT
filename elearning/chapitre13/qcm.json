@@ -1,0 +1,59 @@
+{
+  "quiz_title": "Chapitre 13 : Environnement virtuel adapté à chaque application",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Quel module natif permet de créer un contexte Python isolé ?",
+      "answerOptions": [
+        {
+          "text": "virtualenv",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "venv",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "isolation",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "env",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Intégré directement dans la bibliothèque standard."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Quelle commande permet d'activer l'environnement virtuel sous Linux/macOS ?",
+      "answerOptions": [
+        {
+          "text": "source .venv/bin/activate",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "activate.bat",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "run venv",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "init .venv",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Utilise la commande de shell standard."
+    }
+  ]
+}

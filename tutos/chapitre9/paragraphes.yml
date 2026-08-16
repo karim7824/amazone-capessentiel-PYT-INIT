@@ -1,0 +1,8 @@
+
+---
+titre : Contenu du cours
+chapitres:
+    - nom : "Les générateurs"
+      paragraphes :
+      - Boucle et instruction yield 
+      - Générateur prédéfinis 

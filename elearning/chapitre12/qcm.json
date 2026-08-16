@@ -1,0 +1,59 @@
+{
+  "quiz_title": "Chapitre 12 : Gestion des package - import et création",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Quel outil officiel permet d'installer des packages tiers depuis PyPI ?",
+      "answerOptions": [
+        {
+          "text": "npm",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "pip",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "cargo",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "gem",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Gestionnaire de paquets par défaut de Python."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Quel module standard permet de manipuler la compression de données ?",
+      "answerOptions": [
+        {
+          "text": "zlib",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "zipfile",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "tar",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "compress",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Basé sur la bibliothèque de compression du même nom."
+    }
+  ]
+}

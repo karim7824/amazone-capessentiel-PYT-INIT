@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Types de données aggrégés - list, tuple, dict, set</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Types de données aggrégés - list, tuple, dict, set</h2>
+<p>Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, de modification ou d'unicité des éléments.</p>
+<pre><code class="language-python">utilisateurs = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;]  # Liste modifiable (list)
+coordonnees = (10.0, 20.0)                  # Tuple immuable (tuple)
+
+</code></pre>
+<blockquote>
+<p>💡 Privilégiez les tuples pour des données fixes qui ne doivent pas être altérées au cours de l'exécution du programme, garantissant ainsi l'intégrité des structures.</p>
+</blockquote>
+</body>
+</html>

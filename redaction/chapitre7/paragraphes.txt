@@ -1,0 +1,7 @@
+Les fonctions et passage d'arguments
+- Les fonctions, arguments , passage par valeur, return
+- Arguments et valeurs par défaut
+- Arguments en tant que tuple
+- Arguments avec *args
+- Arguments *kargs
+- Fonction en tant qu'argument (delegate)

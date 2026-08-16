@@ -1,0 +1,10 @@
+
+---
+titre : Contenu du cours
+chapitres:
+    - nom : "Manipulation des chaines de caractères"
+      paragraphes :
+      - Gestion des chaines 
+      - Formatage 
+      - Slicing 
+      - Expressions régulières 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de synthèse</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exemple de synthèse</h2>
+<pre><code class="language-python"># Programme complet combinant variables, types scalaires, agrégés et portée
+TAUX_REDUCTION = 0.15  # Variable globale
+
+def traiter_commande(client, articles_prix):
+    &quot;&quot;&quot;Calcule le montant total d'une commande avec application d'une réduction.&quot;&quot;&quot;
+    total_brut = sum(articles_prix)           # Utilisation d'un type agrégé (list)
+    est_fidele = True                         # Type scalaire booléen
+
+    if est_fidele:
+        montant_final = total_brut * (1 - TAUX_REDUCTION)  # Variable locale
+    else:
+        montant_final = total_brut
+
+    return f&quot;Client : {client} | Total à payer : {montant_final}€&quot;
+
+# Appel de la fonction avec des valeurs littérales
+print(traiter_commande(&quot;Karim&quot;, [45.0, 15.5, 30.0]))
+
+</code></pre>
+</body>
+</html>

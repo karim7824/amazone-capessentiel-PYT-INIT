@@ -1,0 +1,59 @@
+{
+  "quiz_title": "Chapitre 16 : Accès aux bases de données",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Quel module standard est intégré pour manipuler des bases de données légères en Python ?",
+      "answerOptions": [
+        {
+          "text": "mysql",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "sqlite3",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "pgdb",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "sqlclient",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Basé sur un moteur SQL sans serveur."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Quelle instruction permet de valider définitivement une transaction en base de données ?",
+      "answerOptions": [
+        {
+          "text": "save()",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "commit()",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "flush()",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "apply()",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Sécurise les modifications apportées par le curseur."
+    }
+  ]
+}

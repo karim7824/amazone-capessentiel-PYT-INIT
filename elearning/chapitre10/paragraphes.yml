@@ -1,0 +1,9 @@
+
+---
+titre : Contenu du cours
+chapitres:
+    - nom : "Un code plus robuste en prenant en compte les erreurs"
+      paragraphes :
+      - Gestion des exceptions : try catch finally et throw 
+      - Instruction finally 
+      - Emettre une exception avec throw 

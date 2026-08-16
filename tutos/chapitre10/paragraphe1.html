@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des exceptions : try catch finally et throw</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Gestion des exceptions : try catch finally et throw</h2>
+<p>La gestion des exceptions repose sur le bloc <code>try</code> pour surveiller le code à risque et <code>except</code> pour intercepter les erreurs survenues. En Python, le mot-clé <code>raise</code> équivaut au <code>throw</code> des autres langages pour émettre une exception.</p>
+<pre><code class="language-python"># Interception d'une division par zéro
+try:
+    resultat = 10 / 0
+except ZeroDivisionError:
+    resultat = &quot;Erreur : Division par zéro impossible&quot;
+
+</code></pre>
+<blockquote>
+<p>💡 Spécifiez toujours le type précis d'exception à intercepter dans votre bloc <code>except</code> plutôt que d'utiliser une clause globale muette qui masquerait des bugs inattendus.</p>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "quiz_title": "Chapitre 1 : Définir et manipuler des données types en mémoire",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Comment déclare-t-on une variable en Python ?",
+      "answerOptions": [
+        {
+          "text": "Par simple affectation d'une valeur (ex: x = 5)",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "En utilisant le mot-clé var",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "En précisant son type obligatoirement",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "Avec la commande dim",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Le typage est dynamique en Python."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Parmi ces types, lequel est un type de données scalaire ?",
+      "answerOptions": [
+        {
+          "text": "list",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "float",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "dict",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "set",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Les scalaires représentent des valeurs uniques non décomposables."
+    },
+    {
+      "questionNumber": 3,
+      "question": "Quelle structure de données agrégée est immuable ?",
+      "answerOptions": [
+        {
+          "text": "list",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "dict",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "tuple",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "set",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Il s'utilise avec des parenthèses."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "quiz_title": "Chapitre 9 : Les générateurs",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Quelle instruction permet à une fonction de retourner une valeur tout en suspendant son état ?",
+      "answerOptions": [
+        {
+          "text": "return",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "yield",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "pause",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "wait",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Caractéristique clé des générateurs."
+    },
+    {
+      "questionNumber": 2,
+      "question": "Quel est l'avantage principal d'un générateur par rapport à une liste classique ?",
+      "answerOptions": [
+        {
+          "text": "Il stocke toutes les données en mémoire vive",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "Il produit les valeurs à la demande pour économiser la mémoire",
+          "rationale": "Correct",
+          "isCorrect": true
+        },
+        {
+          "text": "Il est modifiable indéfiniment",
+          "rationale": "Faux",
+          "isCorrect": false
+        },
+        {
+          "text": "Il trie automatiquement les données",
+          "rationale": "Faux",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Évaluation paresseuse (*lazy evaluation*)."
+    }
+  ]
+}

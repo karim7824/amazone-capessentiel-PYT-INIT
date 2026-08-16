@@ -1,0 +1,5 @@
+Les opérateurs
+- Les opérateurs d'affectation
+- Opérateurs arithmétiques
+- Opérateurs relationnels
+- Opérateurs logiques

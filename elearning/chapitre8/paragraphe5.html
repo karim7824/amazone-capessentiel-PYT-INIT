@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de synthèse</title>
+    <style>
+        body { font-family: sans-serif; color: #333; line-height: 1.5; }
+        pre { background-color: #f4f4f4; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; font-family: monospace; }
+        blockquote { background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px; }
+        /* Style pour rendre les tableaux lisibles */
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exemple de synthèse</h2>
+<pre><code class="language-python">from functools import reduce
+
+# Programme complet combinant lambda, filter, map et reduce sur une masse de données
+prix_articles = [12.5, 45.0, 8.0, 100.0, 32.5]
+
+# 1. Filtrer les articles dont le prix est supérieur à 15.0 via filter et lambda
+articles_cibles = list(filter(lambda p: p &gt; 15.0, prix_articles))
+
+# 2. Appliquer une remise de 10% sur ces articles via map et lambda
+prix_remises = list(map(lambda p: p * 0.9, articles_cibles))
+
+# 3. Calculer le montant total cumulé de ces articles via reduce et lambda
+montant_global = reduce(lambda total, p: total + p, prix_remises, 0.0)
+
+print(f&quot;Articles remisés : {prix_remises}&quot;)
+print(f&quot;Montant global de la commande : {montant_global:.2f} €&quot;)
+
+</code></pre>
+</body>
+</html>
