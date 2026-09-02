@@ -39,7 +39,7 @@ print(résultat.stdout)
 
 > 💡 **Bonne pratique :** Privilégiez `subprocess.run()` avec `shell=True` si vous devez récupérer le texte généré par la commande ou gérer d'éventuelles erreurs.
 
-**Chapitre 1 / Exercice 2 **
+**Chapitre 1 / Exercice 2**
 
 ```python
 # La fonction range(1, 11) produit les entiers de 1 à 10
@@ -47,7 +47,7 @@ for i in range(1, 11):
     print("O" * i)
 ```
 
-**Chapitre 2 / Exercice 1 
+**Chapitre 2 / Exercice 1**
 ```python
 from pathlib import Path
 
@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
 ```
 
-**Chapitre 2 / Exercice 2
+**Chapitre 2 / Exercice 2**
 ```python
 import sys
 from pathlib import Path
@@ -101,7 +101,7 @@ if __name__ == "__main__":
     verifier_environnement()
 	
 ```	
-**Chapitre 3 / Exercice 1 
+**Chapitre 3 / Exercice 1**
 ```python
 def afficher_types() -> None:
     """Déclare quatre variables scalaires et affiche leur type."""
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     afficher_types()
 ```	
 
-**Chapitre 3 / Exercice 2
+**Chapitre 3 / Exercice 2**
 ```python
 def calculer_moyenne(notes: list[float]) -> float:
     """Calcule la moyenne d'une liste de notes numériques."""
@@ -175,7 +175,7 @@ if __name__ == "__main__":
 
     calculer_operations(nombre_1, nombre_2)
 ```	
-**Chapitre 4 / Exercice 2
+**Chapitre 4 / Exercice 2**
 ```python
 def verifier_acces(age: int, a_autorisation: bool) -> bool:
     """Vérifie si l'utilisateur remplit les conditions d'accès."""
@@ -201,7 +201,7 @@ if __name__ == "__main__":
         print("Résultat : Accès REFUSÉ")
 ```	
 
-**Chapitre 5 / Exercice 1 
+**Chapitre 5 / Exercice 1** 
 ```python
 def calculer_prix_ttc(prix_ht_str: str) -> int:
     """Convertit un prix HT sous forme de chaîne, applique la TVA de 20% 
@@ -230,7 +230,7 @@ if __name__ == "__main__":
     print(f"Prix TTC converti (int) : {resultat} €")
 ```	
 
-**Chapitre 5 / Exercice 2
+**Chapitre 5 / Exercice 2**
 ```python
 def observer_conversion_implicite() -> None:
     """Effectue l'addition d'un entier et d'un flottant pour observer le type du résultat."""
@@ -251,7 +251,7 @@ if __name__ == "__main__":
     observer_conversion_implicite()
 ```	
 
-**Chapitre 6 / Exercice 1 
+**Chapitre 6 / Exercice 1**
 ```python
 def nettoyer_et_capitaliser(texte_brut: str) -> str:
     """Supprime les espaces superflus en début/fin de chaîne 
@@ -277,7 +277,7 @@ if __name__ == "__main__":
     print(f"Chaîne initiale : '{chaine_initiale}'")
     print(f"Chaîne nettoyée : '{chaine_nettoyee}'")
 ```	
-**Chapitre 6 / Exercice 2
+**Chapitre 6 / Exercice 2**
 ```python
 def extraire_et_formater(phrase: str, nom_utilisateur: str) -> str:
     """Extrait l'indicatif régional d'un numéro présent dans une phrase
@@ -305,7 +305,7 @@ if __name__ == "__main__":
     print(f"Message généré : {resultat}")
 ```	
 
-**Chapitre 7 / Exercice 1 
+**Chapitre 7 / Exercice 1** 
 ```python
 import random
 
@@ -336,7 +336,7 @@ if __name__ == "__main__":
     analyser_parite_liste()
 ```	
 
-**Chapitre 7 / Exercice 2
+**Chapitre 7 / Exercice 2**
 ```python
 def assembler_noms_et_ages(noms: list[str], ages: list[int]) -> dict[str, int]:
     """Assemble deux listes (noms et âges) pour former un dictionnaire nom: âge."""
@@ -365,7 +365,7 @@ if __name__ == "__main__":
     print(f"Dictionnaire  : {resultat}")
 ```	
 
-**Chapitre 7 / Exercice 3
+**Chapitre 7 / Exercice 3**
 ```python
 import random
 
@@ -400,7 +400,7 @@ if __name__ == "__main__":
     separer_parite()
 ```	
 
-**Chapitre 8 / Exercice 1 
+**Chapitre 8 / Exercice 1** 
 ```python
 def traiter_liste_imbriquee(nombre_elements: int = 5) -> list[list[object]]:
     """Génère une liste de sous-listes [nom, entier] 
@@ -429,7 +429,7 @@ def traiter_liste_imbriquee(nombre_elements: int = 5) -> list[list[object]]:
 if __name__ == "__main__":
     traiter_liste_imbriquee()
 ```	
-**Chapitre 8 / Exercice 2
+**Chapitre 8 / Exercice 2**
 ```python
 def traiter_liste_dictionnaires(nombre_elements: int = 5) -> list[dict[str, object]]:
     """Génère une liste de dictionnaires {'nom': str, 'age': int}
@@ -461,7 +461,7 @@ if __name__ == "__main__":
     traiter_liste_dictionnaires()
 ```	
 
-**Chapitre 8 / Exercice 3
+**Chapitre 8 / Exercice 3**
 ```python
 def filtrer_fruits_par_prix(catalogue: dict[str, float], prix_seuil: float) -> None:
     """Parcourt le dictionnaire de fruits et affiche ceux dont le prix dépasse le seuil fixé."""
@@ -488,7 +488,7 @@ if __name__ == "__main__":
     filtrer_fruits_par_prix(prix_fruits, seuil_defaut)
 ```	
 
-**Chapitre 9 / Exercice 1 
+**Chapitre 9 / Exercice 1** 
 ```python
 def calculer_moyenne_args(*nombres: int) -> float:
     """Calcule la moyenne arithmétique d'un nombre indéfini d'entiers."""
@@ -513,7 +513,7 @@ if __name__ == "__main__":
     print(f"Moyenne (aucun argument) : {moyenne_vide:.2f}")
 ```	
 
-**Chapitre 9 / Exercice 2
+**Chapitre 9 / Exercice 2**
 ```python
 from typing import Callable
 
@@ -550,7 +550,7 @@ if __name__ == "__main__":
     print(f"Puissance ({nombre_1} ^ {nombre_2})       : {res_puissance}")
 ```	
 
-**Chapitre 10 / Exercice 1 
+**Chapitre 10 / Exercice 1** 
 ```python
 def filtrer_mots_longs(mots: list[str], longueur_min: int = 5) -> list[str]:
     """Extrait d'une liste les mots ayant une longueur strictement supérieure à longueur_min."""
@@ -571,7 +571,7 @@ if __name__ == "__main__":
     print(f"Liste d'origine : {liste_mots}")
     print(f"Mots de plus de 5 caractères : {mots_filtres}")
 ```	
-**Chapitre 10 / Exercice 2
+**Chapitre 10 / Exercice 2**
 ```python
 from functools import reduce
 
@@ -597,7 +597,7 @@ if __name__ == "__main__":
     print(f"Produit total    : {resultat}")
 ```	
 
-**Chapitre 11 / Exercice 1 
+**Chapitre 11 / Exercice 1** 
 ```python
 from typing import Generator
 
@@ -619,7 +619,7 @@ if __name__ == "__main__":
         print(nombre, end=" ")
     print()  # Saut de ligne final
 ```	
-**Chapitre 11 / Exercice 2
+**Chapitre 11 / Exercice 2**
 ```python
 from typing import Iterator
 
@@ -656,7 +656,7 @@ if __name__ == "__main__":
     consommer_expression_generatrice()
 ```	
 
-**Chapitre 12 / Exercice 1 
+**Chapitre 12 / Exercice 1** 
 ```python
 def demander_nombre_entier() -> int:
     """Demande un nombre entier à l'utilisateur et gère l'exception ValueError
@@ -681,7 +681,7 @@ if __name__ == "__main__":
     demander_nombre_entier()
 ```	
 
-**Chapitre 12 / Exercice 2
+**Chapitre 12 / Exercice 2**
 ```python
 def valider_mot_de_passe(mot_de_passe: str) -> bool:
     """Vérifie la longueur minimale d'un mot de passe.
@@ -713,7 +713,7 @@ if __name__ == "__main__":
             print(f"Exception capturée : {erreur}")
 ```	
 
-**Chapitre 13 / Exercice 1 
+**Chapitre 13 / Exercice 1** 
 ```python
 def afficher_bienvenue(nom_utilisateur: str) -> None:
     """Affiche un message de bienvenue personnalisé."""
@@ -727,7 +727,7 @@ if __name__ == "__main__":
     nom = "Karim"
     afficher_bienvenue(nom)
 ```	
-**Chapitre 13 / Exercice 2
+**Chapitre 13 / Exercice 2**
 ```python
 import sys
 
@@ -752,7 +752,7 @@ if __name__ == "__main__":
     saluer_utilisateur()
 ```	
 
-**Chapitre 14 / Exercice 1 
+**Chapitre 14 / Exercice 1** 
 ```python
 from pathlib import Path
 
@@ -789,7 +789,7 @@ def exporter_notes() -> None:
 if __name__ == "__main__":
     exporter_notes()
 ```	
-**Chapitre 14 / Exercice 2
+**Chapitre 14 / Exercice 2**
 ```python
 import zipfile
 from pathlib import Path
@@ -835,13 +835,13 @@ if __name__ == "__main__":
     archiver_fichiers_python(dossier_source=".")
 ```	
 
-**Chapitre 15 / Exercice 1 
+**Chapitre 15 / Exercice 1** 
 ```bash
 python -m venv env_projet
 source env_projet/bin/activate
 deactivate
 ```	
-**Chapitre 15 / Exercice 2
+**Chapitre 15 / Exercice 2**
 ```bash
 # 1. Activation de l'environnement
 source env_projet/bin/activate
@@ -852,7 +852,7 @@ which python
 # 3. Désactivation de l'environnement
 deactivate
 ```	
-**Chapitre 16 / Exercice 1 
+**Chapitre 16 / Exercice 1** 
 ```python
 from pathlib import Path
 
@@ -971,7 +971,7 @@ if __name__ == "__main__":
     print(ebook.obtenir_description())
     print(f"Taille du fichier : {ebook.taille_mo} Mo")
 ```	
-**Chapitre 18 / Exercice 1 
+**Chapitre 18 / Exercice 1** 
 ```python
 import sqlite3
 from pathlib import Path
@@ -1014,7 +1014,7 @@ if __name__ == "__main__":
     initialiser_base_de_donnees()
 ```	
 
-**Chapitre 18 / Exercice 2
+**Chapitre 18 / Exercice 2**
 ```python
 import sqlite3
 from pathlib import Path
