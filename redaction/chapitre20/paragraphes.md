@@ -39,7 +39,8 @@ print(résultat.stdout)
 
 > 💡 **Bonne pratique :** Privilégiez `subprocess.run()` avec `shell=True` si vous devez récupérer le texte généré par la commande ou gérer d'éventuelles erreurs.
 
-**Chapitre 1 / Exercice 2
+**Chapitre 1 / Exercice 2 **
+
 ```python
 # La fonction range(1, 11) produit les entiers de 1 à 10
 for i in range(1, 11):
