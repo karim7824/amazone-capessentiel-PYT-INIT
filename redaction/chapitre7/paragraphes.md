@@ -308,5 +308,7 @@ print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
 
 ## Exercices
 
-1. **Exercice 1 :** Créez une liste contenant plusieurs prénoms avec des doublons, convertissez-la en ensemble (`set`) pour éliminer les doublons, puis affichez le résultat.
-2. **Exercice 2 :** Déclarez un dictionnaire représentant un produit (avec les clés nom, prix et stock), puis écrivez une instruction pour mettre à jour la valeur du stock.
+1. **Exercice 1 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et compter les nombres paires et les impaires
+2. **Exercice 2 :** Créer deux listes de 10 valeurs aleatoires `random.randrange(100)`, les parcourrir et compter les nombres communs entre les deux tableaux
+3. **Exercice 3 :** Créer deux listes noms = ["Karim", "Jean"...] et ages [40,50 ...], les assembler dans une boucles pour former un dict() nom/age 
+4. **Exercice 4 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et créer deux tableaux contenants les paires et les impaires séparemment
