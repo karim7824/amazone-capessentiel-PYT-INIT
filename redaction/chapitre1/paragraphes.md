@@ -144,7 +144,9 @@ print("Rapport écrit avec succès dans 'rapport_intro.txt'.")
 ### Exercices
 
 **Exercice 1 : Inspection de l'environnement d'exécution**
-Écrivez un script Python qui affiche le nom de votre système d'exploitation ainsi que la version majeure et mineure de votre interpréteur Python. Le script devra également créer un fichier texte nommé `env.txt` et y enregistrer ces deux informations.
+Écrivez une instruction qui permet d'afficher la version de Python
+Écrivez une instruction qui permet d'afficher la variable d'environnement PATH
+Écrivez une instruction qui permet de lancer une commande shell 
 
-**Exercice 2 : Automatisation de journalisation d'événements**
-Créez un programme Python qui définit une liste contenant trois noms de serveurs (par exemple `"Serveur-1"`, `"Serveur-2"`, `"Serveur-3"`). Le programme doit parcourir cette liste, simuler une vérification de statut en affichant `"Vérification de [Nom du serveur]"`, puis inscrire la liste complète des serveurs vérifiés dans un fichier `serveurs.log`.
+**Exercice 2 : une instruction de boucle**
+Écrivez une instruction de boucle qui compte de 1 à 10 et afficher 'O' 'OO' 'OOO' allant de 1 à 10 en utilisant range()
