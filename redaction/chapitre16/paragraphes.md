@@ -1,4 +1,4 @@
-# Chapitre 14 : Gestion des fichiers et des répertoires
+# Chapitre 16 : Gestion des fichiers et des répertoires
 
 La gestion des fichiers et des répertoires permet d'interagir directement avec le système de stockage pour enregistrer et restituer des informations. Maîtriser ces concepts est indispensable pour persister l'état de vos applications.
 Dans ce chapitre :
