@@ -14,12 +14,11 @@ Dans ce chapitre :
 L'installation de Python s'effectue en téléchargeant l'exécutable officiel 64-bit depuis le site [python.org/downloads](https://www.python.org/downloads/). Sous Windows, il est essentiel de cocher l'option "Add python.exe to PATH" lors de l'installation pour pouvoir exécuter Python depuis n'importe quel terminal. Sous Linux et macOS, Python 3 est généralement préinstallé ou accessible via le gestionnaire de paquets du système.
 
 ```python
-# Vérification de l'architecture 64-bit de l'interpréteur Python
-import struct
+import platform
 
-bits = struct.calcsize("P") * 8
-print(f"Architecture de l'interpréteur installé : {bits}-bit")
-
+architecture = platform.architecture()[0]
+print(f"Architecture : {architecture}")
+# Affiche directement : "64bit" ou "32bit"
 ```
 
 > 💡 **Bonne pratique :** Vérifiez toujours après l'installation que la commande `python --version` (ou `python3 --version`) répond correctement dans votre invite de commande.
