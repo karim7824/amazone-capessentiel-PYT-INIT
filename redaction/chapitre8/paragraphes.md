@@ -13,17 +13,59 @@ Dans ce chapitre :
 
 Les structures conditionnelles permettent d'exécuter des blocs de code différents selon la validité d'une ou plusieurs conditions logiques. L'instruction `match`, introduite récemment, facilite les aiguillages complexes par motif.
 
+Voici la forme générale des structures conditionnelles `if / elif / else` en Python :
+
+### Forme générale
+
 ```python
-# Utilisation d'une structure conditionnelle classique
-note = 14
-if note >= 10:
-    statut = "Admis"
+if condition_1:
+    # Bloc exécuté si condition_1 est True
+    instructions
+elif condition_2:
+    # Bloc exécuté si condition_1 est False ET condition_2 est True
+    instructions
+elif condition_3:
+    # Autre condition optionnelle...
+    instructions
 else:
-    statut = "Recalé"
+    # Bloc exécuté si AUCUNE des conditions précédentes n'est True
+    instructions
 
 ```
 
-> 💡 Privilégiez l'utilisation de `elif` pour enchaîner plusieurs conditions mutuellement exclusives proprement sans imbriquer excessivement vos blocs `if`.
+---
+
+### Points clés à retenir
+
+* **`if`** : Obligatoire (un seul par bloc). C'est le point d'entrée de la condition.
+* **`elif`** *(contraction de "else if")* : Optionnel. Il peut y en avoir zéro, un ou plusieurs à la suite.
+* **`else`** : Optionnel (un seul à la fin). Il capture tous les cas restants.
+* **Les deux-points `:**` : Indispensables après chaque clause (`if`, `elif`, `else`).
+* **L'indentation** *(4 espaces)* : Obligatoire. C'est elle qui délimite le bloc de code rattaché à chaque condition.
+
+---
+
+### Exemple concret
+
+```python
+note = 14
+
+if note >= 16:
+    print("Mention Très Bien")
+elif note >= 14:
+    print("Mention Bien")
+elif note >= 12:
+    print("Mention Assez Bien")
+elif note >= 10:
+    print("Admis")
+else:
+    print("Ajourné")
+
+```
+
+> 💡 **Variante (Forme condensée / Opérateur ternaire) :**
+> Pour une affectation simple selon une seule condition, vous pouvez écrire :
+> `statut = "Majeur" if age >= 18 else "Mineur"`
 
 ---
 
