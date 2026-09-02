@@ -1,4 +1,4 @@
-# Chapitre 13 : Environnement virtuel adapté à chaque application
+# Chapitre 15 : Environnement virtuel adapté à chaque application
 
 La création d'environnements virtuels permet d'isoler les dépendances de chaque application Python pour éviter les conflits entre les bibliothèques installées sur le système. Maîtriser ces outils est indispensable pour garantir la stabilité et la reproductibilité de vos projets.
 Dans ce chapitre :
