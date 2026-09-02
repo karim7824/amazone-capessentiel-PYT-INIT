@@ -1,4 +1,4 @@
-# Chapitre 16 : Accès aux bases de données
+# Chapitre 18 : Accès aux bases de données
 
 L'accès aux bases de données permet de persister, d'interroger et de structurer des volumes importants d'informations de manière sécurisée en Python. Maîtriser ces concepts est indispensable pour connecter vos applications à des systèmes de stockage relationnels.
 Dans ce chapitre :
