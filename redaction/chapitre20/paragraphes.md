@@ -2,7 +2,7 @@
 
 ---
 
-**Chapitre 1 / Exercice 1 **
+**Chapitre 1 / Exercice 1**
 
 Voici l'instruction en Python pour afficher la version exacte de l'interpréteur :
 
