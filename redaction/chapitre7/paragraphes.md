@@ -309,6 +309,5 @@ print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
 ## Exercices
 
 1. **Exercice 1 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et compter les nombres paires et les impaires
-2. **Exercice 2 :** Créer deux listes de 10 valeurs aleatoires `random.randrange(100)`, les parcourrir et compter les nombres communs entre les deux tableaux
-3. **Exercice 3 :** Créer deux listes noms = ["Karim", "Jean"...] et ages [40,50 ...], les assembler dans une boucles pour former un dict() nom/age 
-4. **Exercice 4 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et créer deux tableaux contenants les paires et les impaires séparemment
+2. **Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et ages [1,2 ...], les assembler dans une boucles pour former un dict() nom/age 
+3. **Exercice 3 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et créer deux tableaux contenants les paires et les impaires séparemment
