@@ -1,180 +1,142 @@
-# L'essentiel de l'essentiel à retenir sur Python
+# Chapitre 15 : Programmation orientée objets
 
-## Installation & commandes
+La programmation orientée objets permet de structurer un programme autour de concepts et de données modélisés sous forme de classes et d'objets. Maîtriser ces principes est indispensable pour concevoir des architectures logicielles modulaires et maintenables.
+Dans ce chapitre :
 
-```bash
-python --version                     # vérifier la version de Python
-python -m venv .venv                 # créer un environnement virtuel
-source .venv/bin/activate            # activer venv (Linux/macOS)
-.venv\Scripts\activate               # activer venv (Windows)
-deactivate                           # désactiver l'environnement virtuel
-pip install package                  # installer un paquet
-pip freeze > requirements.txt        # geler les dépendances
-pip install -r requirements.txt      # installer les dépendances
-python main.py                       # exécuter un script Python
-python -m pytest                     # exécuter les tests unitaire
-python -m pytest --cov               # couverture de code
+* Approche de l'orienté objets
 
-```
 
-## Variables & types scalaires
+* Composition d'une classe (constructeur, méthodes et données)
 
-```python
-# Affectation dynamique
-x = 1
-PI = 3.14
 
-n = 10                               # int
-prix = 19.99                         # float
-ok = True                            # bool
-s = "texte"                          # str
-v = None                             # NoneType (absence de valeur)
-u = 5                                # union logique (dynamique)
+* Objets et instances de classe (`self`, `super`)
 
-```
 
-## Types agrégés
+* Héritage de classes et redéfinition
+
+
+* Packages, imports et classes
+
+
+
+---
+
+## Approche de l'orienté objets
+
+L'approche orientée objets consiste à regrouper au sein d'une même entité (la classe) les données (attributs) et les traitements (méthodes) qui leur sont associés. Cela favorise l'encapsulation et la réutilisabilité du code.
 
 ```python
-obj = {"nom": "A", "age": 30}         # dict
-arr = [1, 2, 3]                      # list (mutable)
-tup = ("a", 1)                       # tuple (immuable)
-ens = {1, 2, 3}                      # set (éléments uniques)
-from enum import Enum
-class Couleur(Enum): ROUGE = 1       # enum
-opt = None                           # optionnel / nullable
-ID = int | str                       # type alias (Python 3.10+)
+# Modélisation conceptuelle d'un objet en Python
+class Vehicule:
+    pass
 
 ```
 
-## Casting
+> 💡 Pensez vos classes comme des plans de construction permettant de donner naissance à des objets autonomes dotés de comportements spécifiques.
+
+---
+
+## Composition d'une classe - constructeur, méthodes et données
+
+Une classe se compose d'un constructeur (la méthode spéciale `__init__`), de données attributaires et de méthodes pour définir les actions que l'objet peut réaliser.
 
 ```python
-v1 = str(125)                        # int -> str ("125")
-v2 = int("42")                       # str -> int (42)
-v3 = float("19.99")                  # str -> float (19.99)
-v4 = list({1, 2, 3})                 # set -> list
+# Définition d'une classe avec constructeur et méthode
+class CompteBancaire:
+    def __init__(self, titulaire, solde):
+        self.titulaire = titulaire
+        self.solde = solde
 
 ```
 
-## Opérateurs
+> 💡 Le constructeur s'exécute automatiquement lors de l'instanciation de la classe pour initialiser l'état initial des données de l'objet.
+
+---
+
+## Objet et instance de class - self, super
+
+L'instance représente un objet concret issu d'une classe. Le paramètre `self` fait référence à l'instance courante, tandis que `super()` permet d'accéder aux méthodes de la classe parente.
 
 ```python
-+ - * / // % **                      # arithmétiques (// entière, ** puissance)
-== != < > <= >=                      # relationnels
-and or not                           # logiques
-= += -= *=                           # affectation
-x if condition else y                # ternaire
-a | b                                # union d'ensembles ou de types
+# Utilisation de self pour lier les données à l'instance
+class Chien:
+    def __init__(self, nom):
+        self.nom = nom
+        
+    def aboyer(self):
+        return f"{self.nom} aboie !"
 
 ```
 
-## Contrôle de flux
+> 💡 Utilisez systématiquement `self` comme premier paramètre de vos méthodes d'instance pour garantir l'accès correct aux attributs propres de l'objet.
+
+---
+
+## Héritage de classes et redéfinition
+
+L'héritage permet de créer une nouvelle classe (fille) à partir d'une classe existante (parente) pour réutiliser du code et redéfinir certains comportements spécifiques.
 
 ```python
-if x > 0: pass
-elif x == 0: pass
-else: pass
+# Héritage simple et spécialisation
+class Animal:
+    def emettre_son(self):
+        return "Son générique"
 
-match x:                             # Python 3.10+
-    case 1: pass
-    case _: pass
-
-for i in range(10): pass
-for item in arr: pass
-for k, v in obj.items(): pass
-while x < 10: pass
+class Chat(Animal):
+    def emettre_son(self):
+        return "Miaou"
 
 ```
 
-## Fonctions
+> 💡 La redéfinition de méthodes (*method overriding*) permet d'adapter le comportement d'une classe fille tout en conservant la signature de la classe parente.
+
+---
+
+## Packages et imports et classes
+
+L'organisation des classes au sein de modules et de packages permet de structurer les grands projets logiciels et de les importer proprement là où ils sont nécessaires.
 
 ```python
-def add(a: int, b: int) -> int: return a + b
-def sum_all(*nums: int) -> int: return sum(nums)
-mul = lambda a, b: a * b             # anonyme / lambda
-def identity(val: T) -> T: return val # générique
-
-list(map(lambda x: x * 2, arr))
-list(filter(lambda x: x > 0, arr))
-from functools import reduce
-reduce(lambda acc, x: acc + x, arr, 0)
+# Importation ciblée d'une classe depuis un module de package
+# from mon_package.modele import CompteBancaire
 
 ```
 
-## Exceptions
+> 💡 Veillez à regrouper les classes ayant des responsabilités métiers proches au sein d'un même module pour préserver la clarté de votre architecture.
+
+---
+
+## Exemple de synthèse
 
 ```python
-try:
-    raise ValueError("oups")
-except ValueError as e:
-    print(e)
-finally:
-    pass                             # toujours exécuté
+# Programme complet combinant classes, constructeur, méthodes, self, héritage et redéfinition
+
+class Utilisateur:
+    """Classe parente représentant un utilisateur générique."""
+    def __init__(self, identifiant):
+        self.identifiant = identifiant
+
+    def obtenir_profil(self):
+        return f"Utilisateur ID : {self.identifiant}"
+
+class Administrateur(Utilisateur):
+    """Classe fille héritant d'Utilisateur avec redéfinition."""
+    def __init__(self, identifiant, niveau_acces):
+        super().__init__(identifiant)  # Appel du constructeur parent
+        self.niveau_acces = niveau_acces
+
+    def obtenir_profil(self):
+        # Redéfinition de la méthode héritée
+        profil_base = super().obtenir_profil()
+        return f"{profil_base} | Rôle : Admin (Niveau {self.niveau_acces})"
+
+# Instanciation et test des objets
+admin = Administrateur("USR-001", 3)
+print(admin.obtenir_profil())
 
 ```
 
-## Modules & Packages
+## Exercices
 
-```python
-# mon_module.py
-def f(): pass
-class C: pass
-o = {}
-
-# main.py
-from mon_module import f, C, o
-import os
-from pathlib import Path
-
-```
-
-## Programmation orientée objet
-
-```python
-from abc import ABC, abstractmethod
-
-class Animal(ABC):
-    espece = "inconnue"               # attribut de classe / static
-    def __init__(self, nom: str):
-        self._nom = nom              # protégé
-    @abstractmethod
-    def crier(self): pass
-
-class Chien(Animal):
-    def crier(self):
-        print(f"{self._nom} aboie")
-
-class Generique[T]:
-    def __init__(self, v: T):
-        self.valeur = v
-
-```
-
-## Asynchrone
-
-```python
-import asyncio
-
-async def attendre(ms: int):
-    await asyncio.sleep(ms / 1000)
-
-async def main():
-    await attendre(1000)
-    print("fait")
-
-# asyncio.run(main())
-
-```
-
-## Tests (Pytest / Unittest)
-
-```python
-# test_main.py
-def test_cas():
-    assert 1 + 1 == 2
-
-from unittest.mock import Mock
-mock = Mock()
-
-```
+1. **Exercice 1 :** Créez une classe `Livre` possédant un constructeur initialisant un titre et un auteur, ainsi qu'une méthode retournant une description textuelle de l'ouvrage.
+2. **Exercice 2 :** Développez une classe fille `LivreNumerique` qui hérite de la classe `Livre` en y ajoutant un attribut supplémentaire pour la taille du fichier en mégaoctets, puis instanciez un objet de cette classe.

@@ -1,5 +1,21 @@
 titre : Introduction à la programmation en Python
 
+Présentation du langage Python
+- Historique
+- Caractéristiques du langage - compilé ou interprété
+- Lien entre et le langage C 
+- Rôles de Cython, IronPython et Jython
+- Popularité de Python par rapport aux autres langages
+- Types d'applications pour Python 
+
+Installation de l'environnement de programmation Python
+- Installation de base de l'interpréteur x64 https://www.python.org/downloads/
+- installation de TypeScript - npx, npm, tsc
+- Créer un projet python main.py avec condition __main__ - Bonjour à tous
+- Lancement de lab_main.py 
+- Utilisation de python en mode REPL
+- Mettre en place un envrionnement virtuel pour une version de python - venv
+
 Définir et manipuler des données types en mémoire 
 - Déclaration de variables 
 - Types de données scalaires - int, float, bool , str 
@@ -23,12 +39,12 @@ Manipulation des chaines de caractères
 - Slicing
 - Expressions régulières
  
-Manipulation des données structurées - list, dict et set 
+7Manipulation des données structurées - list, dict et set 
 - Gestion des listes 
 - Gestion des dict 
 - Gestion des set 
 
-Les instructions controles
+8Les instructions controles
 - Structure conditionnelles if/else/then,match
 - Structure match
 - Boucles - for/else  
@@ -59,6 +75,8 @@ Un code plus robuste en prenant en compte les erreurs
 - Gestion des exceptions : try catch finally et throw
 - Instruction finally
 - Emettre une exception avec throw
+
+----------------------------
 
 Script python en ligne de commande et passage d'arguments
 - Scripts et __main__
@@ -96,3 +114,19 @@ Accès aux bases de données
 - Gestion de la Structure de données - Table DDL 
 - Gestion des transactions - commit
 - Manipulation des données - Select/Where DML 
+
+L'essentiel de l'essentiel à retenir sur Python
+- Installation, commandes
+- Variables, types scalaires
+- Types agrégés
+- Casting
+- Opérateurs
+- Contrôle de flux
+- Fonctions
+- Exceptions
+- Modules & Packages
+- Programmation orientée objet
+- Asynchrone
+- Tests (Pytest / Unittest)
+
+Solutions des exercices Python

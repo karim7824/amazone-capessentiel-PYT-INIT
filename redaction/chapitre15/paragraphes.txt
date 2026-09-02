@@ -1,6 +1,3 @@
-Programmation orientée objets
-- Approche de l'orienté objets
-- Composition d'une classe - constructeur, méthodes et données
-- Objet et instance de class - self, super
-- Héritage de classes et redéfinition
-- Packages et imports et classes
+Envrionnement virtuel adapté à chaque application
+- Création d'un context python isolé avec venv
+- Script activate/deactivate

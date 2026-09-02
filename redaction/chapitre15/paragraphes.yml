@@ -2,10 +2,7 @@
 ---
 titre : Contenu du cours
 chapitres:
-    - nom : "Programmation orientée objets"
+    - nom : "Envrionnement virtuel adapté à chaque application"
       paragraphes :
-      - Approche de l'orienté objets 
-      - Composition d'une classe - constructeur, méthodes et données 
-      - Objet et instance de class - self, super 
-      - Héritage de classes et redéfinition 
-      - Packages et imports et classes 
+      - Création d'un context python isolé avec venv 
+      - Script activate/deactivate 

@@ -1,142 +1,64 @@
-# Chapitre 15 : Programmation orientée objets
+# Chapitre 13 : Environnement virtuel adapté à chaque application
 
-La programmation orientée objets permet de structurer un programme autour de concepts et de données modélisés sous forme de classes et d'objets. Maîtriser ces principes est indispensable pour concevoir des architectures logicielles modulaires et maintenables.
+La création d'environnements virtuels permet d'isoler les dépendances de chaque application Python pour éviter les conflits entre les bibliothèques installées sur le système. Maîtriser ces outils est indispensable pour garantir la stabilité et la reproductibilité de vos projets.
 Dans ce chapitre :
 
-* Approche de l'orienté objets
+* Création d'un contexte Python isolé avec `venv`
 
-
-* Composition d'une classe (constructeur, méthodes et données)
-
-
-* Objets et instances de classe (`self`, `super`)
-
-
-* Héritage de classes et redéfinition
-
-
-* Packages, imports et classes
+* Utilisation des scripts d'activation et de désactivation (`activate`/`deactivate`)
 
 
 
 ---
 
-## Approche de l'orienté objets
+## Création d'un context python isolé avec venv
 
-L'approche orientée objets consiste à regrouper au sein d'une même entité (la classe) les données (attributs) et les traitements (méthodes) qui leur sont associés. Cela favorise l'encapsulation et la réutilisabilité du code.
+Le module `venv` permet de générer un répertoire de travail contenant une copie autonome de l'interpréteur Python et de sa bibliothèque standard. Cela isole complètement l'environnement des paquets globaux de la machine.
 
-```python
-# Modélisation conceptuelle d'un objet en Python
-class Vehicule:
-    pass
+```bash
+# Création d'un environnement virtuel nommé .venv dans le répertoire du projet
+python -m venv .venv
 
 ```
 
-> 💡 Pensez vos classes comme des plans de construction permettant de donner naissance à des objets autonomes dotés de comportements spécifiques.
+> 💡 Nommez généralement votre environnement virtuel `.venv` pour qu'il soit facilement identifiable et ignoré par les outils de gestion de versions comme Git.
 
 ---
 
-## Composition d'une classe - constructeur, méthodes et données
+## Script activate/deactivate
 
-Une classe se compose d'un constructeur (la méthode spéciale `__init__`), de données attributaires et de méthodes pour définir les actions que l'objet peut réaliser.
+Les scripts `activate` et `deactivate` permettent respectivement d'activer et de quitter l'environnement virtuel pour rediriger dynamiquement l'utilisation de la commande `pip` vers le dossier isolé.
 
-```python
-# Définition d'une classe avec constructeur et méthode
-class CompteBancaire:
-    def __init__(self, titulaire, solde):
-        self.titulaire = titulaire
-        self.solde = solde
+```bash
+# Activation de l'environnement virtuel sous Linux / macOS
+source .venv/bin/activate
 
 ```
 
-> 💡 Le constructeur s'exécute automatiquement lors de l'instanciation de la classe pour initialiser l'état initial des données de l'objet.
-
----
-
-## Objet et instance de class - self, super
-
-L'instance représente un objet concret issu d'une classe. Le paramètre `self` fait référence à l'instance courante, tandis que `super()` permet d'accéder aux méthodes de la classe parente.
-
-```python
-# Utilisation de self pour lier les données à l'instance
-class Chien:
-    def __init__(self, nom):
-        self.nom = nom
-        
-    def aboyer(self):
-        return f"{self.nom} aboie !"
-
-```
-
-> 💡 Utilisez systématiquement `self` comme premier paramètre de vos méthodes d'instance pour garantir l'accès correct aux attributs propres de l'objet.
-
----
-
-## Héritage de classes et redéfinition
-
-L'héritage permet de créer une nouvelle classe (fille) à partir d'une classe existante (parente) pour réutiliser du code et redéfinir certains comportements spécifiques.
-
-```python
-# Héritage simple et spécialisation
-class Animal:
-    def emettre_son(self):
-        return "Son générique"
-
-class Chat(Animal):
-    def emettre_son(self):
-        return "Miaou"
-
-```
-
-> 💡 La redéfinition de méthodes (*method overriding*) permet d'adapter le comportement d'une classe fille tout en conservant la signature de la classe parente.
-
----
-
-## Packages et imports et classes
-
-L'organisation des classes au sein de modules et de packages permet de structurer les grands projets logiciels et de les importer proprement là où ils sont nécessaires.
-
-```python
-# Importation ciblée d'une classe depuis un module de package
-# from mon_package.modele import CompteBancaire
-
-```
-
-> 💡 Veillez à regrouper les classes ayant des responsabilités métiers proches au sein d'un même module pour préserver la clarté de votre architecture.
+> 💡 Vérifiez toujours que votre invite de commande affiche le nom de l'environnement entre parenthèses (par exemple `(.venv)`) pour confirmer son activation correcte avant d'installer vos paquets.
 
 ---
 
 ## Exemple de synthèse
 
-```python
-# Programme complet combinant classes, constructeur, méthodes, self, héritage et redéfinition
+```bash
+# Séquence complète de commandes pour configurer et utiliser un environnement virtuel sous Linux/macOS :
 
-class Utilisateur:
-    """Classe parente représentant un utilisateur générique."""
-    def __init__(self, identifiant):
-        self.identifiant = identifiant
+# 1. Création du contexte Python isolé
+python -m venv mon_env
 
-    def obtenir_profil(self):
-        return f"Utilisateur ID : {self.identifiant}"
+# 2. Activation de l'environnement virtuel
+source mon_env/bin/activate
 
-class Administrateur(Utilisateur):
-    """Classe fille héritant d'Utilisateur avec redéfinition."""
-    def __init__(self, identifiant, niveau_acces):
-        super().__init__(identifiant)  # Appel du constructeur parent
-        self.niveau_acces = niveau_acces
+# 3. Installation d'une bibliothèque tierce dans cet environnement isolé
+pip install requests
 
-    def obtenir_profil(self):
-        # Redéfinition de la méthode héritée
-        profil_base = super().obtenir_profil()
-        return f"{profil_base} | Rôle : Admin (Niveau {self.niveau_acces})"
-
-# Instanciation et test des objets
-admin = Administrateur("USR-001", 3)
-print(admin.obtenir_profil())
+# 4. Sortie de l'environnement virtuel
+deactivate
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Créez une classe `Livre` possédant un constructeur initialisant un titre et un auteur, ainsi qu'une méthode retournant une description textuelle de l'ouvrage.
-2. **Exercice 2 :** Développez une classe fille `LivreNumerique` qui hérite de la classe `Livre` en y ajoutant un attribut supplémentaire pour la taille du fichier en mégaoctets, puis instanciez un objet de cette classe.
+1. **Exercice 1 :** Exécutez la commande dans votre terminal pour créer un environnement virtuel nommé `env_projet` à la racine de votre dossier de travail.
+2. **Exercice 2 :** Activez l'environnement virtuel créé, vérifiez son bon fonctionnement, puis désactivez-le à l'aide de la commande appropriée.

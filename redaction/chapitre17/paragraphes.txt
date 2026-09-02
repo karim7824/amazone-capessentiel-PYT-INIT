@@ -1,0 +1,6 @@
+Programmation orientée objets
+- Approche de l'orienté objets
+- Composition d'une classe - constructeur, méthodes et données
+- Objet et instance de class - self, super
+- Héritage de classes et redéfinition
+- Packages et imports et classes

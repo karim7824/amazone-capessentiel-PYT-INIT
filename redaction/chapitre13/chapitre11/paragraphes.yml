@@ -1,9 +1,0 @@
-
----
-titre : Contenu du cours
-chapitres:
-    - nom : "Script python en ligne de commande et passage d'arguments"
-      paragraphes :
-      - Scripts et __main__ 
-      - Scripts et passage d'arguments 
-      - Gestion de package - pip 

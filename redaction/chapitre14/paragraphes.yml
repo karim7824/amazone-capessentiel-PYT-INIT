@@ -2,7 +2,15 @@
 ---
 titre : Contenu du cours
 chapitres:
-    - nom : "Gestion des fichiers et des répertoires"
+    - nom : "Gestion des package - import et création"
       paragraphes :
-      - Concepts généraux sur les streams et fichiers 
-      - Créer un fichier text en unicode - ouvrir, ecrire, lire 
+      - librairie et script pip
+      - importation de package 
+      - Contenu d'un package 
+      - chemin d'accès
+      - package standards os, os.path, path et zlib
+      - Gestion des répertoires - mkdir, listdir, walk, move, rmdir
+      - Gestion des fichiers - open, read, write, seek, tell, zip
+      - Automatiser une installation avec gel et requirements.txt
+     
+     

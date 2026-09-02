@@ -1,3 +1,4 @@
-Envrionnement virtuel adapté à chaque application
-- Création d'un context python isolé avec venv
-- Script activate/deactivate
+Script python en ligne de commande et passage d'arguments
+- Scripts et __main__
+- Scripts et passage d'arguments
+- Gestion de package - pip

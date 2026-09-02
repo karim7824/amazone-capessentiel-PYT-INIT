@@ -1,6 +1,3 @@
-Accès aux bases de données
-- Concepts de base
-- Connexion et paramétrage - connexion, cursor
-- Gestion de la Structure de données - Table DDL
-- Gestion des transactions - commit
-- Manipulation des données - Select/Where DML
+Gestion des fichiers et des répertoires
+- Concepts généraux sur les streams et fichiers
+- Créer un fichier text en unicode - ouvrir, ecrire, lire
