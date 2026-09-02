@@ -1,104 +1,166 @@
-# Chapitre 8 : Traiter une masse de données
+# Chapitre 6 : Les instructions contrôles
 
-Le traitement de masses de données permet d'appliquer des transformations et des filtres performants sur des collections en Python. Maîtriser ces outils fonctionnels est indispensable pour manipuler efficacement des flux d'informations importants.
+Les instructions de contrôle permettent d'orienter le flux d'exécution d'un programme en fonction de conditions et de répéter des blocs de instructions. Maîtriser ces structures est indispensable pour automatiser des tâches complexes.
 Dans ce chapitre :
 
-* Fonctions anonymes `lambda`
-
-* Filtrage de données avec `filter`
-
-* Transformation de données avec `map`
-
-* Agrégation de données avec `reduce`
-
+* Structures conditionnelles `if`/`else` et `match`
+* Boucles itératives (`for`/`else`, `while`)
+* Itérations avancées (`range`, `zip`, `items()`)
 
 ---
 
-## Fonction anonyme Lambda
+## Structure conditionnelles if/else/then,match
 
-Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels.
+Les structures conditionnelles permettent d'exécuter des blocs de code différents selon la validité d'une ou plusieurs conditions logiques. L'instruction `match`, introduite récemment, facilite les aiguillages complexes par motif.
 
 ```python
-# Déclaration et appel d'une fonction lambda pour calculer le carré
-carre = lambda x: x ** 2
-resultat = carre(5)
+# Utilisation d'une structure conditionnelle classique
+note = 14
+if note >= 10:
+    statut = "Admis"
+else:
+    statut = "Recalé"
 
 ```
 
-> 💡 Utilisez les fonctions `lambda` principalement comme arguments pour des fonctions de traitement de collections comme `map` ou `filter`.
+> 💡 Privilégiez l'utilisation de `elif` pour enchaîner plusieurs conditions mutuellement exclusives proprement sans imbriquer excessivement vos blocs `if`.
 
 ---
 
-## Traitement avec filter
+## Structure match
 
-La fonction `filter()` permet de filtrer les éléments d'une collection en évaluant chaque élément à l'aide d'une fonction conditionnelle qui retourne un booléen.
+L'instruction `match` réalise un filtrage par motif (*pattern matching*), permettant de comparer une valeur à plusieurs structures ou cas possibles de manière très lisible.
 
 ```python
-# Filtrage des nombres pairs d'une liste
-nombres = [1, 2, 3, 4, 5, 6]
-pairs = list(filter(lambda x: x % 2 == 0, nombres))
+# Utilisation de match pour aiguiller selon une commande
+commande = "quit"
+match commande:
+    case "start":
+        print("Démarrage...")
+    case "quit":
+        print("Arrêt...")
+    case _:
+        print("Commande inconnue")
 
 ```
 
-> 💡 Le résultat retourné par `filter()` en Python est un itérateur, pensez à le convertir explicitement en `list` ou `tuple` pour exploiter les données.
+> 💡 Utilisez le motif universel `_` comme dernier cas dans un `match` pour capturer toutes les valeurs non gérées explicitement.
 
 ---
 
-## Traitement avec map
+## Boucles - for/else
 
-La fonction `map()` applique une fonction spécifique à l'ensemble des éléments d'une collection itérable, transformant ainsi les données en une seule passe.
+La boucle `for` permet de parcourir séquentiellement les éléments d'une collection. En Python, elle peut être associée à un bloc `else` optionnel qui s'exécute si la boucle s'est terminée sans interruption par un `break`.
 
 ```python
-# Application d'une transformation pour multiplier par 2 chaque élément
-valeurs = [1, 2, 3, 4]
-doubles = list(map(lambda x: x * 2, valeurs))
+# Parcours d'une liste avec une boucle for
+nombres = [1, 2, 3]
+for n in nombres:
+    print(n)
 
 ```
 
-> 💡 Les compréhensions de listes constituent souvent une alternative plus lisible et idiomatique aux fonctions `map()` en Python.
+> 💡 Utilisez le bloc `else` d'une boucle `for` pour exécuter du code de validation si aucun élément recherché n'a déclenché de rupture anticipée.
 
 ---
 
-## Traitement avec reduce
+## Boucles - while
 
-La fonction `reduce()`, issue du module `functools`, permet de réduire une collection de données à une valeur unique en appliquant cumulativement une fonction binaire de manière séquentielle.
+La boucle `while` répète l'exécution d'un bloc d'instructions tant qu'une condition booléenne associée reste évaluée à `True`. Elle est idéale lorsque le nombre d'itérations n'est pas connu à l'avance.
 
 ```python
-from functools import reduce
-
-# Calcul de la somme des éléments d'une liste par réduction
-nombres = [1, 2, 3, 4]
-somme_totale = reduce(lambda x, y: x + y, nombres)
+# Compteur avec une boucle while
+compteur = 0
+while compteur < 3:
+    print(compteur)
+    compteur += 1
 
 ```
 
-> 💡 Pensez à importer `reduce` depuis le module `functools` avant de l'utiliser, car cette fonction n'est plus intégrée directement dans l'espace de noms global de Python.
+> 💡 Veillez à toujours faire évoluer la variable de condition à l'intérieur d'une boucle `while` pour éviter les boucles infinies.
+
+---
+
+## Boucles - avec range
+
+L'association d'une boucle `for` avec la fonction `range()` permet de répéter un bloc d'instructions un nombre précis de fois en générant une séquence numérique efficace.
+
+```python
+# Répétition d'une action à l'aide de range
+for i in range(3):
+    print(f"Itération numéro {i}")
+
+```
+
+> 💡 La fonction `range(debut, fin, pas)` accepte des arguments optionnels pour démarrer à un autre indice ou parcourir les éléments par pas spécifiques.
+
+---
+
+## Boucles - avec zip
+
+La fonction `zip()` permet de parcourir simultanément plusieurs collections en assemblant leurs éléments sous forme de tuples, ce qui simplifie le traitement croisé de données.
+
+```python
+# Itération conjointe sur deux listes
+noms = ["Alice", "Bob"]
+scores = [85, 92]
+for nom, score in zip(noms, scores):
+    print(f"{nom} a obtenu {score} points")
+
+```
+
+> 💡 Si les collections passées à `zip()` n'ont pas la même longueur, l'itération s'arrête automatiquement dès que la plus courte est épuisée.
+
+---
+
+## Boucles - avec items() pour les dictionnaires
+
+La méthode `.items()` permet de parcourir à la fois les clés et les valeurs d'un dictionnaire lors d'une même boucle `for`, optimisant la lecture des données structurées.
+
+```python
+# Parcours des clés et valeurs d'un dictionnaire
+parametres = {"theme": "sombre", "volume": 80}
+for cle, valeur in parametres.items():
+    print(f"{cle} : {valeur}")
+
+```
+
+> 💡 Utilisez `.items()` dès que vous avez besoin de manipuler simultanément la clé et sa valeur associée pour éviter des appels d'accès superflus.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-from functools import reduce
+# Programme complet combinant conditions, boucles, range, zip et items
+utilisateurs = ["Alice", "Bob", "Charlie"]
+points = [45, 60, 30]
 
-# Programme complet combinant lambda, filter, map et reduce sur une masse de données
-prix_articles = [12.5, 45.0, 8.0, 100.0, 32.5]
+# 1. Boucle avec range pour un affichage numéroté
+for i in range(len(utilisateurs)):
+    print(f"Rang {i + 1}")
 
-# 1. Filtrer les articles dont le prix est supérieur à 15.0 via filter et lambda
-articles_cibles = list(filter(lambda p: p > 15.0, prix_articles))
+# 2. Boucle avec zip pour associer utilisateurs et scores
+for user, score in zip(utilisateurs, points):
+    # 3. Structure conditionnelle classique
+    if score >= 50:
+        niveau = "Expert"
+    else:
+        niveau = "Débutant"
+    print(f"{user} ({niveau}) avec {score} pts")
 
-# 2. Appliquer une remise de 10% sur ces articles via map et lambda
-prix_remises = list(map(lambda p: p * 0.9, articles_cibles))
-
-# 3. Calculer le montant total cumulé de ces articles via reduce et lambda
-montant_global = reduce(lambda total, p: total + p, prix_remises, 0.0)
-
-print(f"Articles remisés : {prix_remises}")
-print(f"Montant global de la commande : {montant_global:.2f} €")
+# 4. Boucle avec items() pour parcourir un dictionnaire de configuration
+config = {"mode": "admin", "debug": True}
+for parametre, etat in config.items():
+    match parametre:
+        case "mode":
+            print(f"Mode actif : {etat}")
+        case "debug":
+            print(f"Mode débogage activé : {etat}")
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Utilisez la fonction `filter()` associée à une expression `lambda` pour extraire uniquement les mots de longueur supérieure à 5 caractères d'une liste de chaînes.
-2. **Exercice 2 :** Importez `reduce` depuis `functools` et écrivez un script qui calcule le produit de tous les éléments d'une liste d'entiers.
+1. **Exercice 1 :** Écrivez un script utilisant une boucle `for` et `range()` pour afficher uniquement les nombres pairs de 0 à 10.
+2. **Exercice 2 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.

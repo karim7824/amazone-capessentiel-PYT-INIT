@@ -1,4 +1,5 @@
-Un code plus robuste en prenant en compte les erreurs
-- Gestion des exceptions : try catch finally et throw
-- Instruction finally
-- Emettre une exception avec throw
+Traiter une masse de données
+- Fonction anonyme Lambda
+- Traitement avec filter
+- Traitement avec map
+- Traitement avec reduce

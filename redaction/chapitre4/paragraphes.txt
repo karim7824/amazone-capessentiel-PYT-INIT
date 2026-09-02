@@ -1,5 +1,5 @@
-Manipulation des chaines de caractères
-- Gestion des chaines
-- Formatage
-- Slicing
-- Expressions régulières
+Les opérateurs
+- Les opérateurs d'affectation
+- Opérateurs arithmétiques
+- Opérateurs relationnels
+- Opérateurs logiques

@@ -1,95 +1,72 @@
-# Chapitre 11 : Script python en ligne de commande et passage d'arguments
+# Chapitre 9 : Les générateurs
 
-La création de scripts en ligne de commande et le passage d'arguments permettent d'automatiser des tâches et d'interagir directement avec vos programmes Python depuis le terminal. Maîtriser ces outils est indispensable pour industrialiser vos développements.
+Les générateurs permettent de produire des séquences de valeurs à la demande sans stocker l'intégralité des données en mémoire. Maîtriser ces concepts est indispensable pour optimiser l'efficacité de vos programmes lors du traitement de grands volumes d'informations.
 Dans ce chapitre :
 
-* Scripts et `__main__`
+* Boucle et instruction `yield`
 
-* Scripts et passage d'arguments
+* Générateurs prédéfinis
 
-
-* Gestion de package avec `pip`
 
 
 ---
 
-## Scripts et **main**
+## Boucle et instruction yield
 
-La structure `if __name__ == "__main__":` permet d'identifier si un fichier Python est exécuté directement comme un script principal ou importé comme un module dans un autre programme.
+L'instruction `yield` permet à une fonction de retourner une valeur tout en suspendant son état d'exécution, transformant ainsi la fonction en un générateur capable de reprendre là où il s'était arrêté.
 
 ```python
-# Vérification du point d'entrée principal du script
-def executer_tache():
-    print("Exécution du traitement principal...")
-
-if __name__ == "__main__":
-    executer_tache()
+# Définition d'une fonction génératrice simple
+def generer_nombres(limite):
+    n = 0
+    while n < limite:
+        yield n
+        n += 1
 
 ```
 
-> 💡 Placez toujours le code d'exécution principale de vos scripts sous cette condition pour permettre la réutilisation propre de vos fonctions par d'autres modules.
+> 💡 Contrairement à `return`, l'instruction `yield` conserve l'état local de la fonction entre chaque itération, ce qui économise considérablement la mémoire vive.
 
 ---
 
-## Scripts et passage d'arguments
+## Générateur prédéfinis
 
-Le passage d'arguments en ligne de commande permet de transmettre des paramètres dynamiques à un script lors de son lancement depuis le terminal, notamment via le module standard `sys` ou `argparse`.
+Les générateurs prédéfinis englobent les expressions génératrices et les structures intégrées de Python qui produisent des flux d'éléments de manière paresseuse, évitant l'allocation préalable d'une collection complète.
 
 ```python
-import sys
-
-# Récupération des arguments passés en ligne de commande
-arguments = sys.argv
-nom_script = sys.argv[0]
+# Utilisation d'une expression génératrice pour un calcul optimisé en mémoire
+carres_gen = (x ** 2 for x in range(5))
+premier_element = next(carres_gen)
 
 ```
 
-> 💡 Privilégiez l'utilisation du module `argparse` pour les scripts complexes afin de gérer automatiquement l'aide, les options obligatoires et les types d'arguments.
-
----
-
-## Gestion de package - pip
-
-L'outil `pip` est le gestionnaire de paquets officiel de Python qui permet d'installer, de mettre à jour et de supprimer des bibliothèques tierces depuis le Python Package Index (PyPI).
-
-```bash
-# Installation d'un package tiers en ligne de commande (exemple)
-pip install requests
-
-```
-
-> 💡 Utilisez systématiquement un environnement virtuel (`venv`) avant d'installer des packages avec `pip` pour isoler les dépendances de vos différents projets.
+> 💡 Privilégiez les expressions génératrices entre parenthèses plutôt que les compréhensions de listes dès que vous manipulez des flux volumineux dont vous n'avez pas besoin de stocker l'ensemble des résultats simultanément.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-import sys
+# Programme complet combinant la création d'un générateur avec yield et un générateur prédéfini
 
-def traiter_commande_cli():
-    """Simule un script en ligne de commande avec gestion des arguments."""
-    # Vérification du point d'entrée principal
-    if len(sys.argv) < 2:
-        print("Erreur : Veuillez fournir un argument (ex: start ou stop).")
-        return
-    
-    action = sys.argv[1].lower()
-    
-    # Traitement conditionnel basé sur l'argument reçu
-    if action == "start":
-        print("Démarrage du service en ligne de commande...")
-    elif action == "stop":
-        print("Arrêt du service demandé.")
-    else:
-        print(f"Action inconnue : {action}")
+def lecteur_lignes_simule(donnees):
+    """Générateur personnalisé pour traiter des lignes de texte à la demande."""
+    for ligne in donnees:
+        # Instruction yield pour suspendre et renvoyer la ligne nettoyée
+        yield ligne.strip().upper()
 
-if __name__ == "__main__":
-    traiter_commande_cli()
+flux_brut = ["  premiere ligne  ", "  seconde ligne  ", "  troisieme ligne  "]
+
+# Utilisation du générateur personnalisé
+gen_personnalise = lecteur_lignes_simule(flux_brut)
+
+# Utilisation d'un générateur prédéfini (enumerate) associé
+for index, texte_traite in enumerate(gen_personnalise, start=1):
+    print(f"Ligne {index} : {texte_traite}")
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Écrivez un script Python comportant une structure `if __name__ == "__main__":` qui affiche un message de bienvenue personnalisé lorsque le fichier est exécuté directement.
-2. **Exercice 2 :** Utilisez le module `sys` pour récupérer un nom passé en argument dans le terminal et affichez une salutation personnalisée intégrant ce paramètre.
+1. **Exercice 1 :** Écrivez une fonction génératrice utilisant `yield` pour produire les nombres pairs jusqu'à une limite passée en paramètre, puis parcourez ce générateur avec une boucle `for`.
+2. **Exercice 2 :** Créez une expression génératrice qui calcule les carrés des nombres de 1 à 10, et récupérez les valeurs un par un à l'aide de la fonction `next()`.

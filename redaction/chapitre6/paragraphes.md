@@ -1,166 +1,103 @@
-# Chapitre 6 : Les instructions contrôles
+# Chapitre 4 : Manipulation des chaines de caractères
 
-Les instructions de contrôle permettent d'orienter le flux d'exécution d'un programme en fonction de conditions et de répéter des blocs de instructions. Maîtriser ces structures est indispensable pour automatiser des tâches complexes.
+La manipulation des chaînes de caractères permet de traiter, formetter et analyser des données textuelles en Python. Maîtriser ces outils est indispensable pour interagir avec les utilisateurs et structurer des messages lisibles.
 Dans ce chapitre :
 
-* Structures conditionnelles `if`/`else` et `match`
-* Boucles itératives (`for`/`else`, `while`)
-* Itérations avancées (`range`, `zip`, `items()`)
+* Gestion des chaines
+* Formatage
+* Slicing
+* Expressions régulières
 
 ---
 
-## Structure conditionnelles if/else/then,match
+## Gestion des chaines
 
-Les structures conditionnelles permettent d'exécuter des blocs de code différents selon la validité d'une ou plusieurs conditions logiques. L'instruction `match`, introduite récemment, facilite les aiguillages complexes par motif.
+La gestion des chaînes de caractères repose sur l'utilisation de guillemets simples ou doubles pour déclarer du texte en mémoire. Python fournit de nombreuses méthodes intégrées pour transformer, nettoyer ou rechercher des motifs textuels.
 
 ```python
-# Utilisation d'une structure conditionnelle classique
-note = 14
-if note >= 10:
-    statut = "Admis"
-else:
-    statut = "Recalé"
+# Manipulation de base d'une chaîne de caractères
+texte = "  formation python  "
+texte_propre = texte.strip().capitalize()
 
 ```
 
-> 💡 Privilégiez l'utilisation de `elif` pour enchaîner plusieurs conditions mutuellement exclusives proprement sans imbriquer excessivement vos blocs `if`.
+> 💡 Les chaînes de caractères en Python sont immuables : toute modification textuelle génère un nouvel objet en mémoire plutôt que de modifier la chaîne originale.
 
 ---
 
-## Structure match
+## Formatage
 
-L'instruction `match` réalise un filtrage par motif (*pattern matching*), permettant de comparer une valeur à plusieurs structures ou cas possibles de manière très lisible.
+Le formatage permet d'insérer dynamiquement des variables ou des expressions au sein d'une chaîne de caractères de manière lisible et performante. Les f-strings constituent la méthode moderne recommandée en Python.
 
 ```python
-# Utilisation de match pour aiguiller selon une commande
-commande = "quit"
-match commande:
-    case "start":
-        print("Démarrage...")
-    case "quit":
-        print("Arrêt...")
-    case _:
-        print("Commande inconnue")
+# Utilisation des f-strings pour l'interpolation de variables
+langage = "Python"
+version = 3.10
+message = f"Apprentissage de {langage} en version {version}"
 
 ```
 
-> 💡 Utilisez le motif universel `_` comme dernier cas dans un `match` pour capturer toutes les valeurs non gérées explicitement.
+> 💡 Préférez toujours l'utilisation des f-strings par rapport aux anciennes méthodes de formatage (`%` ou `.format()`) pour gagner en lisibilité et en performance.
 
 ---
 
-## Boucles - for/else
+## Slicing
 
-La boucle `for` permet de parcourir séquentiellement les éléments d'une collection. En Python, elle peut être associée à un bloc `else` optionnel qui s'exécute si la boucle s'est terminée sans interruption par un `break`.
+Le slicing (ou découpage) permet d'extraire une portion spécifique d'une chaîne de caractères en spécifiant des indices de début, de fin et de pas.
 
 ```python
-# Parcours d'une liste avec une boucle for
-nombres = [1, 2, 3]
-for n in nombres:
-    print(n)
+# Extraction d'une sous-chaîne par découpage
+code_complet = "PYTH-2026"
+prefixe = code_complet[:4]  # Extrait "PYTH"
 
 ```
 
-> 💡 Utilisez le bloc `else` d'une boucle `for` pour exécuter du code de validation si aucun élément recherché n'a déclenché de rupture anticipée.
+> 💡 En Python, les indices de découpage commencent à zéro et l'indice de fin spécifié est toujours exclus du résultat extrait.
 
 ---
 
-## Boucles - while
+## Expressions régulières
 
-La boucle `while` répète l'exécution d'un bloc d'instructions tant qu'une condition booléenne associée reste évaluée à `True`. Elle est idéale lorsque le nombre d'itérations n'est pas connu à l'avance.
+Les expressions régulières permettent de rechercher, valider ou extraire des motifs complexes dans des chaînes de caractères en s'appuyant sur le module standard `re`.
 
 ```python
-# Compteur avec une boucle while
-compteur = 0
-while compteur < 3:
-    print(compteur)
-    compteur += 1
+import re
+
+# Validation d'un format de code postal à 5 chiffres
+code_postal = "75001"
+est_valide = bool(re.match(r"^\d{5}$", code_postal))
 
 ```
 
-> 💡 Veillez à toujours faire évoluer la variable de condition à l'intérieur d'une boucle `while` pour éviter les boucles infinies.
-
----
-
-## Boucles - avec range
-
-L'association d'une boucle `for` avec la fonction `range()` permet de répéter un bloc d'instructions un nombre précis de fois en générant une séquence numérique efficace.
-
-```python
-# Répétition d'une action à l'aide de range
-for i in range(3):
-    print(f"Itération numéro {i}")
-
-```
-
-> 💡 La fonction `range(debut, fin, pas)` accepte des arguments optionnels pour démarrer à un autre indice ou parcourir les éléments par pas spécifiques.
-
----
-
-## Boucles - avec zip
-
-La fonction `zip()` permet de parcourir simultanément plusieurs collections en assemblant leurs éléments sous forme de tuples, ce qui simplifie le traitement croisé de données.
-
-```python
-# Itération conjointe sur deux listes
-noms = ["Alice", "Bob"]
-scores = [85, 92]
-for nom, score in zip(noms, scores):
-    print(f"{nom} a obtenu {score} points")
-
-```
-
-> 💡 Si les collections passées à `zip()` n'ont pas la même longueur, l'itération s'arrête automatiquement dès que la plus courte est épuisée.
-
----
-
-## Boucles - avec items() pour les dictionnaires
-
-La méthode `.items()` permet de parcourir à la fois les clés et les valeurs d'un dictionnaire lors d'une même boucle `for`, optimisant la lecture des données structurées.
-
-```python
-# Parcours des clés et valeurs d'un dictionnaire
-parametres = {"theme": "sombre", "volume": 80}
-for cle, valeur in parametres.items():
-    print(f"{cle} : {valeur}")
-
-```
-
-> 💡 Utilisez `.items()` dès que vous avez besoin de manipuler simultanément la clé et sa valeur associée pour éviter des appels d'accès superflus.
+> 💡 Testez toujours vos expressions régulières sur des cas limites avant de les intégrer en production pour éviter des comportements inattendus sur les données textuelles.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-# Programme complet combinant conditions, boucles, range, zip et items
-utilisateurs = ["Alice", "Bob", "Charlie"]
-points = [45, 60, 30]
+import re
 
-# 1. Boucle avec range pour un affichage numéroté
-for i in range(len(utilisateurs)):
-    print(f"Rang {i + 1}")
+# Programme complet combinant gestion, formatage, slicing et expressions régulières
+reference_brute = "   REF-9876-FR   "
 
-# 2. Boucle avec zip pour associer utilisateurs et scores
-for user, score in zip(utilisateurs, points):
-    # 3. Structure conditionnelle classique
-    if score >= 50:
-        niveau = "Expert"
-    else:
-        niveau = "Débutant"
-    print(f"{user} ({niveau}) avec {score} pts")
+# 1. Gestion : nettoyage des espaces superflus et mise en majuscules
+reference_nette = reference_brute.strip()
 
-# 4. Boucle avec items() pour parcourir un dictionnaire de configuration
-config = {"mode": "admin", "debug": True}
-for parametre, etat in config.items():
-    match parametre:
-        case "mode":
-            print(f"Mode actif : {etat}")
-        case "debug":
-            print(f"Mode débogage activé : {etat}")
+# 2. Slicing : extraction de la portion numérique centrale
+code_numerique = reference_nette[4:8]
+
+# 3. Expressions régulières : validation du format global
+pattern = r"^REF-\d{4}-[A-Z]{2}$"
+est_conforme = bool(re.match(pattern, reference_nette))
+
+# 4. Formatage : construction du message final avec une f-string
+rapport = f"Référence : {reference_nette} | Code extrait : {code_numerique} | Conforme : {est_conforme}"
+print(rapport)
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Écrivez un script utilisant une boucle `for` et `range()` pour afficher uniquement les nombres pairs de 0 à 10.
-2. **Exercice 2 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.
+1. **Exercice 1 :** Écrivez un script qui prend une chaîne de caractères contenant des espaces superflus et du texte en minuscules, puis utilisez les méthodes de gestion pour la nettoyer et la mettre entièrement en majuscules.
+2. **Exercice 2 :** Déclarez une chaîne contenant un numéro de téléphone sous la forme d'une phrase, puis utilisez le slicing pour extraire les deux premiers caractères et formotez un message personnalisé à l'aide d'une f-string.

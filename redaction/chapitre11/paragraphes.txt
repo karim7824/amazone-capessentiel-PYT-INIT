@@ -1,4 +1,3 @@
-Script python en ligne de commande et passage d'arguments
-- Scripts et __main__
-- Scripts et passage d'arguments
-- Gestion de package - pip
+Les générateurs
+- Boucle et instruction yield
+- Générateur prédéfinis

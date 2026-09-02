@@ -1,97 +1,151 @@
-# Chapitre 2 : Les opérateurs
+# Chapitre 2 : Installation de l'environnement de programmation Python
 
-Comprendre et utiliser les opérateurs permet d'effectuer des calculs, de comparer des valeurs et de combiner des conditions logiques en Python. Ces mécanismes fondamentaux constituent les briques de base de toute logique algorithmique.
+Ce chapitre vous guide dans la mise en place d'un environnement de développement Python complet, propre et opérationnel. Vous apprendrez à installer l'interpréteur officiel, à exécuter vos premiers scripts et à utiliser le mode interactif. Enfin, vous découvrirez comment isoler vos projets grâce aux environnements virtuels, une bonne pratique incontournable en entreprise.
+
 Dans ce chapitre :
 
-* Opérateurs d'affectation
-* Opérateurs arithmétiques
-* Opérateurs relationnels
-* Opérateurs logiques
+* Installation de base de l'interpréteur x64
+* Création d'un projet Python main.py avec la condition `__name__ == '__main__'`
+* Lancement de scripts et utilisation de Python en mode REPL
+* Mise en place d'un environnement virtuel avec `venv`
 
----
+## Installation de base de l'interpréteur x64
 
-## Les opérateurs d'affectation
-
-Les opérateurs d'affectation permettent d'attribuer une valeur à une variable en mémoire, parfois en combinant cette affectation avec une opération mathématique. Ils simplifient l'écriture des mises à jour de variables.
+L'installation de Python s'effectue en téléchargeant l'exécutable officiel 64-bit depuis le site [python.org/downloads](https://www.python.org/downloads/). Sous Windows, il est essentiel de cocher l'option "Add python.exe to PATH" lors de l'installation pour pouvoir exécuter Python depuis n'importe quel terminal. Sous Linux et macOS, Python 3 est généralement préinstallé ou accessible via le gestionnaire de paquets du système.
 
 ```python
-# Affectation simple et affectation augmentée
-score = 10     # Affectation simple de la valeur 10
-score += 5     # Équivalent à score = score + 5
+# Vérification de l'architecture 64-bit de l'interpréteur Python
+import struct
+
+bits = struct.calcsize("P") * 8
+print(f"Architecture de l'interpréteur installé : {bits}-bit")
 
 ```
 
-> 💡 L'opérateur d'affectation s'évalue de droite à gauche : la valeur ou le résultat de l'expression à droite est stocké dans la variable située à gauche.
+> 💡 **Bonne pratique :** Vérifiez toujours après l'installation que la commande `python --version` (ou `python3 --version`) répond correctement dans votre invite de commande.
 
----
+## Créer un projet Python main.py avec la condition `__name__ == '__main__'`
 
-## Opérateurs arithmétiques
-
-Les opérateurs arithmétiques réalisent les calculs mathématiques usuels sur des types numériques (entiers et flottants). Ils permettent de manipuler des données quantitatives au sein des programmes.
+En Python, la condition `if __name__ == '__main__':` permet de définir le point d'entrée principal d'un script. Elle garantit que le bloc de code sous-jacent ne s'exécute que lorsque le fichier est lancé directement, et non lorsqu'il est importé comme module dans un autre fichier. C'est une structure standard pour organiser proprement vos projets.
 
 ```python
-# Opérations arithmétiques de base
-somme = 15 + 5      # Addition (vaut 20)
-division = 10 / 4   # Division flottante (vaut 2.5)
+# Fichier : main.py
+
+def afficher_message(nom: str) -> None:
+    print(f"Bonjour à tous, bienvenue dans le projet {nom} !")
+
+if __name__ == "__main__":
+    # Ce bloc s'exécute uniquement si main.py est le fichier principal
+    afficher_message("Python 3")
 
 ```
 
-> 💡 Utilisez l'opérateur modulo (`%`) pour obtenir le reste d'une division entière, ce qui est particulièrement utile pour tester la parité d'un nombre.
+> 💡 **À retenir :** Intégrez systématiquement cette condition dans vos scripts principaux pour rendre votre code réutilisable et modulaire.
 
----
+## Lancement de lab_main.py
 
-## Opérateurs relationnels
-
-Les opérateurs relationnels comparent deux valeurs ou expressions et retournent systématiquement un résultat booléen (`True` ou `False`). Ils sont indispensables pour orienter l'exécution du code selon les conditions.
+L'exécution d'un script Python s'effectue depuis le terminal à l'aide de l'interpréteur `python` suivi du nom du fichier. Vous pouvez rediriger ou manipuler les arguments de la ligne de commande directement au sein du script grâce au module standard `sys`. Cela permet de créer des outils d'automatisation et de traitement par lots flexibles.
 
 ```python
-# Comparaisons de valeurs
-age = 18
-majeur = age >= 18    # Retourne True car 18 est supérieur ou égal à 18
+# Fichier : lab_main.py
+import sys
+
+print("Lancement du laboratoire Python...")
+print("Arguments passés au script :", sys.argv)
 
 ```
 
-> 💡 Veillez à ne pas confondre l'opérateur d'égalité (`==`) avec l'opérateur d'affectation (`=`) pour éviter des erreurs de logique.
+> 💡 **Bonne pratique :** Lancez vos scripts depuis le dossier racine de votre projet pour éviter les erreurs de chemins relatifs lors de l'ouverture de fichiers.
 
----
+## Utilisation de Python en mode REPL
 
-## Opérateurs logiques
-
-Les opérateurs logiques permettent de combiner plusieurs expressions booléennes pour former des conditions complexes. Ils évaluent les relations à l'aide des opérateurs fondamentaux `and`, `or` et `not`.
+Le mode REPL (*Read-Eval-Print Loop*) est la console interactive de Python, accessible en tapant simplement `python` dans votre terminal. Il permet de tester immédiatement des expressions, des syntaxes ou de courtes fonctions sans avoir à créer un fichier de code sur le disque. C'est un outil formidable pour l'expérimentation et le débogage rapide.
 
 ```python
-# Combinaison de conditions logiques
-a l_ecole = True
-a_ses_affaires = True
-peut_partir = a_ecole and a_ses_affaires  # Vaut True si les deux conditions sont réunies
+# Simulation d'une session REPL interactive
+# >>> a = 10
+# >>> b = 20
+# >>> a + b
+30
+# >>> type(a + b)
+<class 'int'>
 
 ```
 
-> 💡 Python utilise l'évaluation paresseuse (*short-circuit*) pour les opérateurs logiques : l'évaluation s'arrête dès que le résultat final est déterminé.
+> 💡 **Note :** Pour quitter le mode REPL dans votre terminal, tapez la fonction `exit()` ou utilisez le raccourci `Ctrl + Z` (Windows) ou `Ctrl + D` (Linux/macOS).
 
----
+## Mettre en place un environnement virtuel pour une version de Python - venv
 
-## Exemple de synthèse
+Un environnement virtuel permet d'isoler les dépendances et bibliothèques de chaque projet dans un dossier dédié, évitant ainsi les conflits de versions entre vos différents projets. Le module officiel `venv` est inclus de base avec Python et permet de créer ces espaces isolés en une seule commande.
 
-```python
-# Programme complet combinant affectation, arithmétique, relations et logique
-stock_initial = 50  # Opérateur d'affectation
-ventes = 12         # Valeur littérale
+```bash
+# Commandes terminal pour créer et activer un environnement virtuel
+python -m venv .venv
 
-# Opérateur arithmétique de soustraction combiné à l'affectation
-stock_initial -= ventes  # stock_initial vaut maintenant 38
+# Sous Windows (PowerShell) :
+# .venv\Scripts\Activate.ps1
 
-seuil_critique = 10
-rupture_imminente = False
-
-# Opérateurs relationnels et logiques
-alerte_stock = (stock_initial <= seuil_critique) or rupture_imminente
-
-print(fstock restant : {stock_initial} | Alerte active : {alerte_stock})
+# Sous Linux/macOS :
+# source .venv/bin/activate
 
 ```
 
-## Exercices
+```python
+# Code Python permettant de vérifier si le script s'exécute dans un environnement virtuel
+import sys
 
-1. **Exercice 1 :** Écrivez un script qui initialise deux variables numériques, puis utilisez les opérateurs arithmétiques pour calculer leur somme, leur produit et le reste de leur division entière.
-2. **Exercice 2 :** Déclarez une variable représentant l'âge d'un utilisateur et une autre indiquant s'il possède une autorisation. Utilisez des opérateurs relationnels et logiques pour vérifier s'il remplit les conditions d'accès (âge supérieur ou égal à 18 et autorisation vraie).
+dans_venv = sys.prefix != sys.base_prefix
+print("Exécution dans un environnement virtuel :", dans_venv)
+
+```
+
+> 💡 **Bonne pratique :** N'ajoutez jamais le dossier `.venv` à votre gestionnaire de version (Git) ; ajoutez-le toujours dans votre fichier `.gitignore`.
+
+---
+
+### Exemple de synthèse
+
+Cet exemple combine la vérification du point d'entrée principal, la détection de l'environnement virtuel et la création automatique d'un script de laboratoire prêts à l'emploi :
+
+```python
+import sys
+import os
+
+def verifier_environnement() -> dict:
+    return {
+        "executable": sys.executable,
+        "est_virtuel": sys.prefix != sys.base_prefix,
+        "dossier_travail": os.getcwd()
+    }
+
+def creer_script_laboratoire(nom_fichier: str) -> None:
+    contenu = (
+        "# Script de laboratoire généré automatiquement\n"
+        "import sys\n\n"
+        "if __name__ == '__main__':\n"
+        "    print('Laboratoire opérationnel !')\n"
+    )
+    with open(nom_fichier, "w", encoding="utf-8") as f:
+        f.write(contenu)
+
+if __name__ == "__main__":
+    print("--- Diagnostic du projet ---")
+    info = verifier_environnement()
+    print(f"Interpréteur : {info['executable']}")
+    print(f"Environnement virtuel actif : {info['est_virtuel']}")
+    
+    script_lab = "lab_main.py"
+    creer_script_laboratoire(script_lab)
+    print(f"Fichier '{script_lab}' généré avec succès.")
+
+```
+
+---
+
+### Exercices
+
+**Exercice 1 : Création et exécution d'un script structuré**
+Créez un fichier nommé `main.py` qui définit une fonction `saluer(nom)`. Dans le bloc principal `if __name__ == '__main__':`, appelez cette fonction avec votre prénom, puis faites en sorte que le programme écrive le message de salutation dans un fichier texte nommé `bienvenue.txt`.
+
+**Exercice 2 : Générateur d'environnement et vérification venv**
+Écrivez un script Python nommé `check_env.py` qui teste si le programme est exécuté au sein d'un environnement virtuel `venv`. Si ce n'est pas le cas, le script doit afficher un avertissement recommandant d'activer un environnement virtuel. Si l'environnement virtuel est actif, le script doit inscrire le chemin de l'interpréteur dans un fichier `env_status.log`.

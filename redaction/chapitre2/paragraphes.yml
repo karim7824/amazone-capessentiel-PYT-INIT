@@ -2,9 +2,11 @@
 ---
 titre : Contenu du cours
 chapitres:
-    - nom : "Les opérateurs"
+    - nom : "Installation de l'environnement de programmation Python"
       paragraphes :
-      - Les opérateurs d'affectation 
-      - Opérateurs arithmétiques 
-      - Opérateurs relationnels 
-      - Opérateurs logiques 
+      - Installation de base de l'interpréteur x64 https://www.python.org/downloads/
+      - installation de TypeScript - npx, npm, tsc
+      - Créer un projet python main.py avec condition __main__ - Bonjour à tous
+      - Lancement de lab_main.py 
+      - Utilisation de python en mode REPL
+      - Mettre en place un envrionnement virtuel pour une version de python - venv      

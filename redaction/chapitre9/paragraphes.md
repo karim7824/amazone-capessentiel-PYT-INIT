@@ -1,72 +1,142 @@
-# Chapitre 9 : Les générateurs
+# Chapitre 7 : Les fonctions et passage d'arguments
 
-Les générateurs permettent de produire des séquences de valeurs à la demande sans stocker l'intégralité des données en mémoire. Maîtriser ces concepts est indispensable pour optimiser l'efficacité de vos programmes lors du traitement de grands volumes d'informations.
+Les fonctions permettent de modulariser le code en regroupant des instructions réutilisables sous un même nom. Maîtriser le passage d'arguments et les structures de retour est indispensable pour concevoir des programmes propres et maintenables.
 Dans ce chapitre :
 
-* Boucle et instruction `yield`
-
-* Générateurs prédéfinis
+* Définition des fonctions, arguments, passage et valeur de retour (`return`)
 
 
+* Arguments et valeurs par défaut
 
----
 
-## Boucle et instruction yield
+* Arguments variables via les tuples, `*args` et `**kwargs`
 
-L'instruction `yield` permet à une fonction de retourner une valeur tout en suspendant son état d'exécution, transformant ainsi la fonction en un générateur capable de reprendre là où il s'était arrêté.
+* Fonctions en tant qu'arguments (délégués)
 
-```python
-# Définition d'une fonction génératrice simple
-def generer_nombres(limite):
-    n = 0
-    while n < limite:
-        yield n
-        n += 1
 
-```
-
-> 💡 Contrairement à `return`, l'instruction `yield` conserve l'état local de la fonction entre chaque itération, ce qui économise considérablement la mémoire vive.
 
 ---
 
-## Générateur prédéfinis
+## Les fonctions, arguments , passage par valeur, return
 
-Les générateurs prédéfinis englobent les expressions génératrices et les structures intégrées de Python qui produisent des flux d'éléments de manière paresseuse, évitant l'allocation préalable d'une collection complète.
+Une fonction se déclare avec le mot-clé `def` suivi d'un nom et de parenthèses. Elle accepte des arguments en entrée et peut renvoyer un résultat grâce à l'instruction `return`.
 
 ```python
-# Utilisation d'une expression génératrice pour un calcul optimisé en mémoire
-carres_gen = (x ** 2 for x in range(5))
-premier_element = next(carres_gen)
+# Déclaration d'une fonction simple avec retour
+def additionner(a, b):
+    resultat = a + b
+    return resultat
 
 ```
 
-> 💡 Privilégiez les expressions génératrices entre parenthèses plutôt que les compréhensions de listes dès que vous manipulez des flux volumineux dont vous n'avez pas besoin de stocker l'ensemble des résultats simultanément.
+> 💡 En Python, les objets sont passés par affectation : modifier un objet mutable à l'intérieur d'une fonction se répercute en dehors, contrairement aux objets immuables.
+
+---
+
+## Arguments et valeurs par défaut
+
+Les arguments par défaut permettent de définir une valeur de repli lorsqu'un paramètre n'est pas explicitement fourni lors de l'appel de la fonction.
+
+```python
+# Fonction avec un argument doté d'une valeur par défaut
+def saluer(nom, message="Bonjour"):
+    return f"{message}, {nom} !"
+
+```
+
+> 💡 Ne jamais utiliser d'objets mutables (comme des listes ou des dictionnaires) comme valeurs par défaut d'une fonction, car leur état serait conservé entre les appels successifs.
+
+---
+
+## Arguments en tant que tuple
+
+Il est possible de regrouper plusieurs valeurs d'arguments dans un tuple pour les manipuler de manière globale au sein de la fonction.
+
+```python
+# Fonction acceptant un tuple d'éléments regroupés
+def afficher_coordonnees(coord):
+    x, y = coord
+    return f"Position X: {x}, Y: {y}"
+
+```
+
+> 💡 Utilisez l'emballage de tuples lorsque vos données possèdent une structure fixe et ordonnée que vous souhaitez traiter en bloc.
+
+---
+
+## Arguments avec *args
+
+La syntaxe `*args` permet de transmettre un nombre variable d'arguments positionnels non nommés à une fonction, qui les récupère automatiquement sous forme de tuple.
+
+```python
+# Fonction acceptant un nombre indéfini d'arguments positionnels
+def sommer_tout(*args):
+    return sum(args)
+
+```
+
+> 💡 Le nom `args` est une convention en Python, mais c'est l'astérisque `*` qui indique au langage de capturer tous les arguments positionnels excédentaires.
+
+---
+
+## Arguments *kargs
+
+La syntaxe `**kwargs` (souvent appelée `kargs`) permet de récupérer un nombre variable d'arguments nommés sous la forme d'un dictionnaire au sein de la fonction.
+
+```python
+# Fonction acceptant des arguments nommés dynamiques
+def configurer(**kwargs):
+    for cle, valeur in kwargs.items():
+        print(f"{cle} = {valeur}")
+
+```
+
+> 💡 L'utilisation conjointe de `*args` et `**kwargs` offre une flexibilité maximale pour créer des fonctions enveloppes (*wrappers*) ou des décorateurs.
+
+---
+
+## Fonction en tant qu'argument (delegate)
+
+En Python, les fonctions sont des objets de première classe, ce qui signifie qu'elles peuvent être passées en tant qu'arguments à d'autres fonctions, agissant ainsi comme des délégués.
+
+```python
+# Utilisation d'une fonction en tant qu'argument
+def appliquer_operation(operation, x, y):
+    return operation(x, y)
+
+resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
+
+```
+
+> 💡 Passer des fonctions en argument est la base de la programmation fonctionnelle et permet de concevoir des algorithmes hautement génériques et réutilisables.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-# Programme complet combinant la création d'un générateur avec yield et un générateur prédéfini
+# Programme complet combinant fonctions, valeurs par défaut, *args, **kwargs et délégués
 
-def lecteur_lignes_simule(donnees):
-    """Générateur personnalisé pour traiter des lignes de texte à la demande."""
-    for ligne in donnees:
-        # Instruction yield pour suspendre et renvoyer la ligne nettoyée
-        yield ligne.strip().upper()
+def calculer_total_remise(taux=0.1, *montants, **details):
+    """Calcule un total avec *args et affiche les options via **kwargs."""
+    sous_total = sum(montants)
+    total_net = sous_total * (1 - taux)
+    
+    print(f"Facture pour {details.get('client', 'Client inconnu')}")
+    print(f"Sous-total : {sous_total}€ | Net : {total_net}€")
+    return total_net
 
-flux_brut = ["  premiere ligne  ", "  seconde ligne  ", "  troisieme ligne  "]
+# Fonction déléguée à passer en paramètre
+def formater_monnaie(montant):
+    return f"{montant:.2f} EUR"
 
-# Utilisation du générateur personnalisé
-gen_personnalise = lecteur_lignes_simule(flux_brut)
-
-# Utilisation d'un générateur prédéfini (enumerate) associé
-for index, texte_traite in enumerate(gen_personnalise, start=1):
-    print(f"Ligne {index} : {texte_traite}")
+# Appel de la fonction principale avec différents types d'arguments
+montant_final = calculer_total_remise(0.2, 100.0, 50.0, 25.0, client="Alice", mode="express")
+print("Format final :", formater_monnaie(montant_final))
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Écrivez une fonction génératrice utilisant `yield` pour produire les nombres pairs jusqu'à une limite passée en paramètre, puis parcourez ce générateur avec une boucle `for`.
-2. **Exercice 2 :** Créez une expression génératrice qui calcule les carrés des nombres de 1 à 10, et récupérez les valeurs un par un à l'aide de la fonction `next()`.
+1. **Exercice 1 :** Écrivez une fonction qui accepte un nombre indéfini d'entiers via `*args` et retourne leur moyenne arithmétique.
+2. **Exercice 2 :** Créez une fonction qui prend en paramètre une fonction mathématique et deux nombres, puis applique cette fonction sur les deux nombres pour retourner le résultat.

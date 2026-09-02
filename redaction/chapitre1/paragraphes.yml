@@ -2,10 +2,11 @@
 ---
 titre : Contenu du cours
 chapitres:
-    - nom : "Définir et manipuler des données types en mémoire"
+    - nom : "Présentation du langage Python"
       paragraphes :
-      - Déclaration de variables 
-      - Types de données scalaires - int, float, bool , str 
-      - Types de données aggrégés - list, tuple, dict, set 
-      - Valeurs littérales 
-      - Portée de variables - globale, locale 
+      - Historique
+      - Caractéristiques du langage - compilé ou interprété
+      - Lien entre et le langage C 
+      - Rôles de Cython, IronPython et Jython
+      - Popularité de Python par rapport aux autres langages
+     - Types d'applications pour Python 

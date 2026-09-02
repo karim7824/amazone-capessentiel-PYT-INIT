@@ -1,177 +1,103 @@
-# Chapitre 12 : Gestion des package - import et création
+# Chapitre 10 : Un code plus robuste en prenant en compte les erreurs
 
-La gestion des packages et des modules permet d'organiser et de structurer le code en composants réutilisables tout en exploitant la bibliothèque standard de Python. Maîtriser ces outils est indispensable pour industrialiser vos projets.
+La gestion des erreurs permet d'anticiper et de traiter les incidents d'exécution pour empêcher l'arrêt brutal d'un programme en Python. Maîtriser ces mécanismes est indispensable pour concevoir des applications fiables et résilientes.
 Dans ce chapitre :
 
-* Librairie, scripts `pip` et importation de packages
+* Gestion des exceptions (`try`, `except`, `finally`) et levée d'exceptions (`raise`)
 
 
-* Contenu d'un package et gestion des chemins d'accès
+* Utilisation de l'instruction `finally`
 
+* Émission personnalisée d'une exception
 
-* Packages standards (`os`, `os.path`, `path` et `zlib`)
-
-
-* Gestion des répertoires et des fichiers
-
-
-* Automatisation d'installation avec `gel` et `requirements.txt`
 
 
 ---
 
-## librairie et script pip
+## Gestion des exceptions : try catch finally et throw
 
-Les scripts et librairies gérés via `pip` permettent d'installer, de maintenir et de partager des dépendances logicielles tierces au sein de vos environnements de développement.
+La gestion des exceptions repose sur le bloc `try` pour surveiller le code à risque et `except` pour intercepter les erreurs survenues. En Python, le mot-clé `raise` équivaut au `throw` des autres langages pour émettre une exception.
 
 ```python
-# Exemple de commande d'installation via pip (à exécuter dans le terminal)
-# pip install package_name
+# Interception d'une division par zéro
+try:
+    resultat = 10 / 0
+except ZeroDivisionError:
+    resultat = "Erreur : Division par zéro impossible"
 
 ```
 
-> 💡 Utilisez toujours des environnements virtuels isolés pour vos projets afin d'éviter les conflits de versions entre les différentes bibliothèques tierces installées.
+> 💡 Spécifiez toujours le type précis d'exception à intercepter dans votre bloc `except` plutôt que d'utiliser une clause globale muette qui masquerait des bugs inattendus.
 
 ---
 
-## importation de package
+## Instruction finally
 
-L'importation de modules ou de packages s'effectue à l'aide des instructions `import` ou `from ... import` pour intégrer des fonctionnalités externes dans vos scripts.
+L'instruction `finally` permet de définir un bloc de code qui s'exécute systématiquement à la fin, qu'une exception ait été levée ou non. Elle est idéale pour libérer des ressources (fichiers, connexions réseau).
 
 ```python
-# Importation d'un module standard ou tiers
-import math
-racine = math.sqrt(16)
+# Utilisation de finally pour la clôture des ressources
+try:
+    fichier = ouvrir_fichier("donnees.txt")
+except FileNotFoundError:
+    print("Fichier introuvable")
+finally:
+    fermer_fichier()  # Exécuté dans tous les cas
 
 ```
 
-> 💡 Évitez les importations globales du type `from module import *` pour préserver la lisibilité de votre espace de noms et éviter les conflits de noms de variables.
+> 💡 Privilégiez l'utilisation du gestionnaire de contexte `with` lorsque c'est possible pour automatiser le nettoyage des ressources sans recourir explicitement à un bloc `finally`.
 
 ---
 
-## Contenu d'un package
+## Emettre une exception avec throw
 
-Un package en Python est un répertoire contenant un fichier d'initialisation (`__init__.py`) et plusieurs modules sous forme de fichiers source, permettant de structurer une application modulaire.
+Il est possible d'émettre volontairement une exception à l'aide de l'instruction `raise` (similaire à `throw`) pour signaler qu'une règle métier ou une condition critique n'est pas respectée.
 
 ```python
-# Structure logique d'un appel à un sous-module de package
-# from mon_package import mon_module
+# Émission d'une exception si l'âge est invalide
+age = -5
+if age < 0:
+    raise ValueError("L'âge ne peut pas être négatif")
 
 ```
 
-> 💡 Le fichier `__init__.py` (qui peut être vide dans les versions récentes de Python) indique explicitement à l'interpréteur que le dossier doit être traité comme un package.
-
----
-
-## chemin d'accès
-
-La gestion des chemins d'accès permet de localiser avec précision les fichiers et répertoires sur le disque dur, garantissant la portabilité de vos scripts d'un système à un autre.
-
-```python
-import os
-
-# Récupération du chemin absolu du répertoire courant
-chemin_courant = os.getcwd()
-
-```
-
-> 💡 Privilégiez l'utilisation du module moderne `pathlib` pour manipuler les chemins d'accès de manière orientée objet et indépendante du système d'exploitation.
-
----
-
-## package standards os, os.path, path et zlib
-
-La bibliothèque standard de Python intègre de nombreux modules puissants comme `os`, `os.path` et `zlib` pour interagir avec le système d'exploitation et compresser des données.
-
-```python
-import os.path
-
-# Vérification de l'existence d'un fichier
-existe = os.path.exists("config.json")
-
-```
-
-> 💡 Explorez d'abord la bibliothèque standard avant d'installer des packages tiers, car elle couvre déjà la majorité des besoins basiques en manipulation système.
-
----
-
-## Gestion des répertoires - mkdir, listdir, walk, move, rmdir
-
-La manipulation des répertoires permet de créer, parcourir, déplacer ou supprimer des dossiers de manière automatisée au sein de vos scripts.
-
-```python
-import os
-
-# Création d'un nouveau répertoire de travail
-os.makedirs("nouveau_dossier", exist_ok=True)
-
-```
-
-> 💡 Utilisez l'argument `exist_ok=True` lors de la création de dossiers pour éviter de déclencher une exception si le répertoire existe déjà.
-
----
-
-## Gestion des fichiers - open, read, write, seek, tell, zip
-
-La gestion des fichiers bas niveau permet d'ouvrir, de lire, d'écrire, de positionner le curseur (`seek`, `tell`) et de manipuler des archives compressées (`zip`).
-
-```python
-# Ouverture et écriture sécurisée dans un fichier texte
-with open("journal.txt", "w", encoding="utf-8") as f:
-    f.write("Premier message de journalisation.")
-
-```
-
-> 💡 Utilisez toujours le gestionnaire de contexte `with` pour l'ouverture des fichiers afin de garantir leur fermeture automatique, même en cas d'erreur.
-
----
-
-## Automatiser une installation avec gel et requirements.txt
-
-L'automatisation du déploiement s'appuie sur un fichier `requirements.txt` listant les dépendances exactes du projet, facilitant leur réinstallation en une seule commande.
-
-```bash
-# Commande pour installer toutes les dépendances d'un projet
-pip install -r requirements.txt
-
-```
-
-> 💡 Mettez régulièrement à jour votre fichier `requirements.txt` pour refléter fidèlement l'état de vos dépendances de développement.
+> 💡 Créez vos propres classes d'exceptions personnalisées en héritant de la classe `Exception` de base pour affiner la gestion des erreurs spécifiques à votre domaine métier.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-import os
-import os.path
-import zlib
+# Programme complet combinant try, except, finally et la levée d'une exception avec raise
 
-def preparer_environnement_projet(nom_dossier):
-    """Crée un répertoire de travail, écrit un fichier de log et vérifie sa présence."""
-    # 1. Gestion des répertoires : création sécurisée
-    os.makedirs(nom_dossier, exist_ok=True)
-    
-    chemin_fichier = os.path.join(nom_dossier, "donnees.txt")
-    
-    # 2. Gestion des fichiers : écriture de données
-    with open(chemin_fichier, "w", encoding="utf-8") as fichier:
-        fichier.write("Contenu critique à compresser et archiver.")
+def convertir_et_diviser(valeur_str, diviseur_str):
+    """Convertit deux chaînes en entiers et réalise une division sécurisée."""
+    try:
+        valeur = int(valeur_str)
+        diviseur = int(diviseur_str)
         
-    # 3. Utilisation de packages standards (vérification et compression zlib)
-    if os.path.exists(chemin_fichier):
-        with open(chemin_fichier, "rb") as fichier_1:
-            donnees_brutes = fichier_1.read()
-            donnees_compressees = zlib.compress(donnees_brutes)
-            print(f"Taille originale : {len(donnees_brutes)} octets")
-            print(f"Taille compressée : {len(donnees_compressees)} octets")
+        # Émission d'une exception personnalisée si le diviseur est nul
+        if diviseur == 0:
+            raise ZeroDivisionError("Le diviseur ne peut pas être égal à zéro.")
+            
+        quotient = valeur / diviseur
+    except ValueError as e:
+        return f"Erreur de format numérique : {e}"
+    except ZeroDivisionError as e:
+        return f"Erreur mathématique : {e}"
+    finally:
+        print("Fin de l'opération de calcul sécurisée.")
+        
+    return f"Résultat du calcul : {quotient}"
 
-# Appel de la fonction de synthèse
-preparer_environnement_projet("stock_donnees")
+# Test de la fonction avec des valeurs littérales
+print(convertir_et_diviser("100", "4"))
+print(convertir_et_diviser("50", "0"))
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Écrivez un script qui utilise le module `os` pour lister tous les fichiers présents dans le répertoire courant.
-2. **Exercice 2 :** Créez un fichier texte, écrivez-y une phrase, puis utilisez le module `zlib` pour compresser son contenu textuel lu en mode binaire.
+1. **Exercice 1 :** Écrivez un script qui demande à l'utilisateur de saisir un nombre, utilise un bloc `try...except` pour intercepter une éventuelle erreur de saisie (`ValueError`), et affiche un message adapté.
+2. **Exercice 2 :** Créez une fonction qui vérifie si un mot de passe possède au moins 8 caractères. Si ce n'est pas le cas, utilisez `raise` pour émettre une exception personnalisée de type `ValueError`.

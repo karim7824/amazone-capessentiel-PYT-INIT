@@ -1,8 +1,0 @@
-
----
-titre : Contenu du cours
-chapitres:
-    - nom : "Envrionnement virtuel adapté à chaque application"
-      paragraphes :
-      - Création d'un context python isolé avec venv 
-      - Script activate/deactivate 

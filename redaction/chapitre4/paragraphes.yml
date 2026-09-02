@@ -2,9 +2,9 @@
 ---
 titre : Contenu du cours
 chapitres:
-    - nom : "Manipulation des chaines de caractères"
+    - nom : "Les opérateurs"
       paragraphes :
-      - Gestion des chaines 
-      - Formatage 
-      - Slicing 
-      - Expressions régulières 
+      - Les opérateurs d'affectation 
+      - Opérateurs arithmétiques 
+      - Opérateurs relationnels 
+      - Opérateurs logiques 

@@ -12,10 +12,10 @@
     "PUBLIC": "Programmeur et chef de projet",
     "AUTEURS": "BELHADJ Karim",
     "SOCIETE": "keyos-editions",
-    "EDITION": "keyos-editions",
+    "EDITION": "amazone", 
+    "TYPECONTENU" : "lesgaleriens",
     "PARTENAIRE": "keyos editions",
-    "DEDICACE": "Pour les fans de tiktok",
-    "SCRIPT": "python",
+    "DEDICACE": "Pour les amateurs et pro de la programation",
+    "SCRIPT": "typescript",
     "LANGUE": "francais"
 }
-

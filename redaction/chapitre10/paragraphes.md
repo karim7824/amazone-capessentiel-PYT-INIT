@@ -1,103 +1,104 @@
-# Chapitre 10 : Un code plus robuste en prenant en compte les erreurs
+# Chapitre 8 : Traiter une masse de données
 
-La gestion des erreurs permet d'anticiper et de traiter les incidents d'exécution pour empêcher l'arrêt brutal d'un programme en Python. Maîtriser ces mécanismes est indispensable pour concevoir des applications fiables et résilientes.
+Le traitement de masses de données permet d'appliquer des transformations et des filtres performants sur des collections en Python. Maîtriser ces outils fonctionnels est indispensable pour manipuler efficacement des flux d'informations importants.
 Dans ce chapitre :
 
-* Gestion des exceptions (`try`, `except`, `finally`) et levée d'exceptions (`raise`)
+* Fonctions anonymes `lambda`
 
+* Filtrage de données avec `filter`
 
-* Utilisation de l'instruction `finally`
+* Transformation de données avec `map`
 
-* Émission personnalisée d'une exception
-
+* Agrégation de données avec `reduce`
 
 
 ---
 
-## Gestion des exceptions : try catch finally et throw
+## Fonction anonyme Lambda
 
-La gestion des exceptions repose sur le bloc `try` pour surveiller le code à risque et `except` pour intercepter les erreurs survenues. En Python, le mot-clé `raise` équivaut au `throw` des autres langages pour émettre une exception.
+Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels.
 
 ```python
-# Interception d'une division par zéro
-try:
-    resultat = 10 / 0
-except ZeroDivisionError:
-    resultat = "Erreur : Division par zéro impossible"
+# Déclaration et appel d'une fonction lambda pour calculer le carré
+carre = lambda x: x ** 2
+resultat = carre(5)
 
 ```
 
-> 💡 Spécifiez toujours le type précis d'exception à intercepter dans votre bloc `except` plutôt que d'utiliser une clause globale muette qui masquerait des bugs inattendus.
+> 💡 Utilisez les fonctions `lambda` principalement comme arguments pour des fonctions de traitement de collections comme `map` ou `filter`.
 
 ---
 
-## Instruction finally
+## Traitement avec filter
 
-L'instruction `finally` permet de définir un bloc de code qui s'exécute systématiquement à la fin, qu'une exception ait été levée ou non. Elle est idéale pour libérer des ressources (fichiers, connexions réseau).
+La fonction `filter()` permet de filtrer les éléments d'une collection en évaluant chaque élément à l'aide d'une fonction conditionnelle qui retourne un booléen.
 
 ```python
-# Utilisation de finally pour la clôture des ressources
-try:
-    fichier = ouvrir_fichier("donnees.txt")
-except FileNotFoundError:
-    print("Fichier introuvable")
-finally:
-    fermer_fichier()  # Exécuté dans tous les cas
+# Filtrage des nombres pairs d'une liste
+nombres = [1, 2, 3, 4, 5, 6]
+pairs = list(filter(lambda x: x % 2 == 0, nombres))
 
 ```
 
-> 💡 Privilégiez l'utilisation du gestionnaire de contexte `with` lorsque c'est possible pour automatiser le nettoyage des ressources sans recourir explicitement à un bloc `finally`.
+> 💡 Le résultat retourné par `filter()` en Python est un itérateur, pensez à le convertir explicitement en `list` ou `tuple` pour exploiter les données.
 
 ---
 
-## Emettre une exception avec throw
+## Traitement avec map
 
-Il est possible d'émettre volontairement une exception à l'aide de l'instruction `raise` (similaire à `throw`) pour signaler qu'une règle métier ou une condition critique n'est pas respectée.
+La fonction `map()` applique une fonction spécifique à l'ensemble des éléments d'une collection itérable, transformant ainsi les données en une seule passe.
 
 ```python
-# Émission d'une exception si l'âge est invalide
-age = -5
-if age < 0:
-    raise ValueError("L'âge ne peut pas être négatif")
+# Application d'une transformation pour multiplier par 2 chaque élément
+valeurs = [1, 2, 3, 4]
+doubles = list(map(lambda x: x * 2, valeurs))
 
 ```
 
-> 💡 Créez vos propres classes d'exceptions personnalisées en héritant de la classe `Exception` de base pour affiner la gestion des erreurs spécifiques à votre domaine métier.
+> 💡 Les compréhensions de listes constituent souvent une alternative plus lisible et idiomatique aux fonctions `map()` en Python.
+
+---
+
+## Traitement avec reduce
+
+La fonction `reduce()`, issue du module `functools`, permet de réduire une collection de données à une valeur unique en appliquant cumulativement une fonction binaire de manière séquentielle.
+
+```python
+from functools import reduce
+
+# Calcul de la somme des éléments d'une liste par réduction
+nombres = [1, 2, 3, 4]
+somme_totale = reduce(lambda x, y: x + y, nombres)
+
+```
+
+> 💡 Pensez à importer `reduce` depuis le module `functools` avant de l'utiliser, car cette fonction n'est plus intégrée directement dans l'espace de noms global de Python.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-# Programme complet combinant try, except, finally et la levée d'une exception avec raise
+from functools import reduce
 
-def convertir_et_diviser(valeur_str, diviseur_str):
-    """Convertit deux chaînes en entiers et réalise une division sécurisée."""
-    try:
-        valeur = int(valeur_str)
-        diviseur = int(diviseur_str)
-        
-        # Émission d'une exception personnalisée si le diviseur est nul
-        if diviseur == 0:
-            raise ZeroDivisionError("Le diviseur ne peut pas être égal à zéro.")
-            
-        quotient = valeur / diviseur
-    except ValueError as e:
-        return f"Erreur de format numérique : {e}"
-    except ZeroDivisionError as e:
-        return f"Erreur mathématique : {e}"
-    finally:
-        print("Fin de l'opération de calcul sécurisée.")
-        
-    return f"Résultat du calcul : {quotient}"
+# Programme complet combinant lambda, filter, map et reduce sur une masse de données
+prix_articles = [12.5, 45.0, 8.0, 100.0, 32.5]
 
-# Test de la fonction avec des valeurs littérales
-print(convertir_et_diviser("100", "4"))
-print(convertir_et_diviser("50", "0"))
+# 1. Filtrer les articles dont le prix est supérieur à 15.0 via filter et lambda
+articles_cibles = list(filter(lambda p: p > 15.0, prix_articles))
+
+# 2. Appliquer une remise de 10% sur ces articles via map et lambda
+prix_remises = list(map(lambda p: p * 0.9, articles_cibles))
+
+# 3. Calculer le montant total cumulé de ces articles via reduce et lambda
+montant_global = reduce(lambda total, p: total + p, prix_remises, 0.0)
+
+print(f"Articles remisés : {prix_remises}")
+print(f"Montant global de la commande : {montant_global:.2f} €")
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Écrivez un script qui demande à l'utilisateur de saisir un nombre, utilise un bloc `try...except` pour intercepter une éventuelle erreur de saisie (`ValueError`), et affiche un message adapté.
-2. **Exercice 2 :** Créez une fonction qui vérifie si un mot de passe possède au moins 8 caractères. Si ce n'est pas le cas, utilisez `raise` pour émettre une exception personnalisée de type `ValueError`.
+1. **Exercice 1 :** Utilisez la fonction `filter()` associée à une expression `lambda` pour extraire uniquement les mots de longueur supérieure à 5 caractères d'une liste de chaînes.
+2. **Exercice 2 :** Importez `reduce` depuis `functools` et écrivez un script qui calcule le produit de tous les éléments d'une liste d'entiers.

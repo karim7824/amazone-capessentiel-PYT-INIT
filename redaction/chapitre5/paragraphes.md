@@ -1,82 +1,63 @@
-# Chapitre 5 : Manipulation des données structurées - list, dict et set
+# Chapitre 3 : Convertir les données - casting ou transtypage
 
-La manipulation des données structurées permet d'organiser, de stocker et de parcourir efficacement des collections d'éléments en Python. Maîtriser ces structures est indispensable pour traiter des volumes d'informations complexes.
+La conversion de données, ou casting, permet de transformer un type de données en un autre pour assurer la compatibilité entre variables. Maîtriser ces conversions est indispensable pour traiter des entrées utilisateur ou fusionner des informations de natures différentes.
 Dans ce chapitre :
 
-* Gestion des listes
-* Gestion des dictionnaires (dict)
-* Gestion des ensembles (set)
+* Casting et conversion de types
+* Conversions implicites versus explicites
 
 ---
 
-## Gestion des listes
+## Casting et conversion
 
-Les listes permettent de stocker une collection ordonnée d'éléments modifiables. Elles autorisent les doublons et offrent de nombreuses méthodes pour ajouter, supprimer ou trier des données en mémoire.
+Le casting consiste à transformer explicitement une valeur d'un type donné vers un autre type (par exemple d'une chaîne de caractères vers un entier). Cette opération est indispensable pour manipuler des données textuelles provenant d'interfaces ou de fichiers.
 
 ```python
-# Création et modification d'une liste
-fruits = ["pomme", "banane"]
-fruits.append("orange")  # Ajout d'un élément à la fin
+# Conversion explicite d'une chaîne en entier
+saisie_utilisateur = "25"
+age = int(saisie_utilisateur)
 
 ```
 
-> 💡 Utilisez la compréhension de liste pour filtrer ou transformer rapidement les éléments d'une liste de manière élégante et performante.
+> 💡 Assurez-vous que le contenu de la chaîne est syntaxiquement convertible avant d'appliquer une fonction de casting, sous peine de déclencher une exception de type `ValueError`.
 
 ---
 
-## Gestion des dict
+## Conversions implicites vs explicites
 
-Les dictionnaires stockent des données sous forme de paires clé-valeur, permettant un accès ultra-rapide aux valeurs grâce à leurs clés uniques. Ils sont parfaits pour représenter des objets ou des configurations.
+Python réalise parfois des conversions implicites automatiques sans intervention du développeur pour éviter les pertes de données, tandis que les conversions explicites exigent l'appel direct à des fonctions dédiées comme `int()`, `float()` ou `str()`.
 
 ```python
-# Déclaration et accès dans un dictionnaire
-utilisateur = {"nom": "Alice", "age": 30}
-ville = utilisateur.get("ville", "Inconnue")  # Évite une erreur si la clé n'existe pas
+# Conversion implicite d'un entier en flottant lors d'une opération mixte
+resultat = 3 + 4.5  # L'entier 3 est converti implicitement en 3.0 (résultat : 7.5)
 
 ```
 
-> 💡 Privilégiez l'utilisation de la méthode `.get()` pour interroger un dictionnaire lorsque la clé recherchée est susceptible de ne pas y figurer.
-
----
-
-## Gestion des set
-
-Les ensembles (`set`) stockent des collections non ordonnées d'éléments uniques. Ils suppriment automatiquement les doublons et s'avèrent extrêmement utiles pour effectuer des opérations mathématiques ensemblistes (union, intersection).
-
-```python
-# Création d'un ensemble et suppression des doublons
-nombres = {1, 2, 2, 3, 4}  # Le doublon '2' est automatiquement éliminé
-nombres.add(5)
-
-```
-
-> 💡 Utilisez les opérateurs ensemblistes comme `&` pour l'intersection ou `|` pour l'union afin de comparer rapidement des collections de données.
+> 💡 Privilégiez toujours les conversions explicites pour rendre votre code prévisible et éviter les ambiguïtés de calcul entre types numériques.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-# Programme complet combinant listes, dictionnaires et ensembles
-# 1. Gestion des listes : stockage des identifiants de connexions successives
-historique_connexions = ["user_1", "user_2", "user_1", "user_3"]
+# Programme complet illustrant le casting et la conversion de données
+prix_article_str = "49.99"  # Donnée brute sous forme de texte
+quantite_str = "3"          # Donnée brute sous forme de texte
 
-# 2. Gestion des set : extraction des utilisateurs uniques sans doublons
-utilisateurs_uniques = set(historique_connexions)
+# Conversions explicites pour permettre les calculs arithmétiques
+prix_unit = float(prix_article_str)
+quantite = int(quantite_str)
 
-# 3. Gestion des dict : association d'un statut à chaque utilisateur unique
-statuts_utilisateurs = {
-    "user_1": "actif",
-    "user_2": "inactif",
-    "user_3": "actif"
-}
+# Conversion implicite lors du calcul du sous-total
+sous_total = prix_unit * quantite  # float * int donne un float
 
-print(f"Utilisateurs uniques : {utilisateurs_uniques}")
-print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
+# Conversion explicite inverse pour concaténation textuelle dans le message final
+message = "Montant total à régler : " + str(sous_total) + " €"
+print(message)
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Créez une liste contenant plusieurs prénoms avec des doublons, convertissez-la en ensemble (`set`) pour éliminer les doublons, puis affichez le résultat.
-2. **Exercice 2 :** Déclarez un dictionnaire représentant un produit (avec les clés nom, prix et stock), puis écrivez une instruction pour mettre à jour la valeur du stock.
+1. **Exercice 1 :** Écrivez un script qui prend une chaîne de caractères représentant un prix avec des décimales, la convertit en type `float`, lui applique une taxe de 20%, puis convertit le résultat final en `str` pour l'afficher avec un message explicite.
+2. **Exercice 2 :** Déclarez une variable entière et une variable flottante, effectuez une addition entre les deux, puis vérifiez et affichez le type de la variable résultante pour observer la conversion implicite de Python.

@@ -1,113 +1,150 @@
-# Chapitre 1 : Définir et manipuler des données types en mémoire
+# Chapitre 1 : Présentation du langage Python
 
-Maîtriser les types de données et leur manipulation en mémoire est essentiel pour stocker et traiter efficacement l'information. Ces concepts fondamentaux garantissent la rigueur et la logique de vos programmes en Python.
+Ce chapitre vous présente l'origine, les caractéristiques fondamentales et le fonctionnement du langage Python. Vous comprendrez son architecture, son écosystème d'implémentations ainsi que ses domaines d'application privilégiés. Cette vue d'ensemble vous permettra d'appréhender sereinement les choix techniques liés à l'adoption de Python dans vos projets.
+
 Dans ce chapitre :
 
-* Déclaration et affectation de variables
-* Types scalaires (int, float, bool, str)
-* Types agrégés (list, tuple, dict, set)
-* Valeurs littérales et portée des variables (locale, globale)
+* Historique
+* Caractéristiques du langage - compilé ou interprété
+* Lien entre Python et le langage C
+* Rôles de Cython, IronPython et Jython
+* Popularité de Python par rapport aux autres langages
+* Types d'applications pour Python
 
----
+## Historique
 
-## Déclaration de variables
-
-En Python, la déclaration d'une variable se fait simplement par affectation d'une valeur à un nom, sans nécessiter de typage explicite préalable. Le type est déduit dynamiquement par l'interpréteur lors de l'exécution.
+Créé par Guido van Rossum et publié en 1991, Python a été conçu avec pour objectif prioritaire la lisibilité du code. Son nom provient de la troupe comique britannique *Monty Python*. Le langage a évolué à travers deux versions majeures incontournables : Python 2 (désormais obsolète) et Python 3, la norme standard actuelle.
 
 ```python
-# Déclaration et initialisation de variables de types différents
-age = 42          # Un entier (int)
-nom = "Alice"     # Une chaîne de caractères (str)
+# Vérifier la version exacte de Python exécutée par le système
+import sys
+
+print("Version de Python utilisée :")
+print(sys.version)
 
 ```
 
-> 💡 Le nom d'une variable doit commencer par une lettre ou un tiret bas (`_`) et ne peut pas utiliser un mot-clé réservé du langage (comme `if`, `def`, `class`).
+> 💡 **Bonne pratique :** Utilisez exclusivement Python 3.x pour tout nouveau projet, car Python 2 n'est plus maintenu depuis le 1er janvier 2020.
 
----
+## Caractéristiques du langage - compilé ou interprété
 
-## Types de données scalaires - int, float, bool, str
-
-Les types scalaires représentent des valeurs uniques et atomiques, non décomposables en sous-éléments. Ils constituent la base de toute manipulation numérique, textuelle ou logique.
+Python est un langage interprété et à typage dynamique. Le code source `.py` est d'abord transformé en bytecode `.pyc`, puis exécuté par la machine virtuelle Python (PVM). Cette architecture permet d'exécuter un même script sur tout système d'exploitation sans modification du code.
 
 ```python
-temperature = 23.5    # Flottant (float) pour les décimaux
-est_valide = True     # Booléen (bool) valant True ou False
+# Exemple de script Python interprété à typage dynamique
+message = "Bonjour tout le monde"  # Type string attribué automatiquement
+print(type(message))
+
+message = 42                       # Le type devient un entier sans erreur
+print(type(message))
 
 ```
 
-> 💡 Utilisez toujours des noms explicites pour vos variables scalaires afin d'améliorer la lisibilité immédiate du code par l'équipe projet.
+> 💡 **À retenir :** Le typage dynamique apporte une grande flexibilité de développement, mais exige des tests rigoureux pour éviter les erreurs de type à l'exécution.
 
----
+## Lien entre Python et le langage C
 
-## Types de données aggrégés - list, tuple, dict, set
-
-Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, de modification ou d'unicité des éléments.
+L'implémentation de référence de Python est CPython, écrite entièrement en langage C. CPython transforme le code source Python en instructions bas niveau exécutables directement par le processeur via le langage C. Ce lien étroit permet à Python d'interagir facilement avec des bibliothèques C système très rapides.
 
 ```python
-utilisateurs = ["Alice", "Bob", "Charlie"]  # Liste modifiable (list)
-coordonnees = (10.0, 20.0)                  # Tuple immuable (tuple)
+# Démonstration de l'utilisation d'une fonction C sous-jacente via la bibliothèque standard
+import math
+
+# La fonction math.sqrt fait appel aux instructions C optimisées
+resultat = math.sqrt(144)
+print("Racine carrée calculée via CPython :", resultat)
 
 ```
 
-> 💡 Privilégiez les tuples pour des données fixes qui ne doivent pas être altérées au cours de l'exécution du programme, garantissant ainsi l'intégrité des structures.
+> 💡 **Piège classique :** La présence du verrou global du fermenteur (GIL) dans CPython limite le véritable multithreading parallèle sur les processeurs multi-cœurs.
 
----
+## Rôles de Cython, IronPython et Jython
 
-## Valeurs littérales
-
-Une valeur littérale correspond à la représentation directe d'une donnée constante inscrite textuellement dans le code source du programme. Elle permet d'assigner des valeurs figées sans calcul préalable.
+Cython permet de compiler du code Python en extensions C pour obtenir des performances proches du langage C. IronPython permet d'exécuter du code Python sur l'écosystème Microsoft .NET, tandis que Jython compile le code Python en bytecode Java pour la JVM. Ces déclinaisons facilitent l'intégration de Python dans des environnements d'entreprise spécifiques.
 
 ```python
-seuil_maximal = 100        # 100 est une valeur littérale entière
-message_erreur = "Erreur 404"  # La chaîne est une valeur littérale textuelle
+# Exemple de logique métier en Python standard, convertible via Cython pour optimisation
+def calculer_somme(limite: int) -> int:
+    total = 0
+    for i in range(limite):
+        total += i
+    return total
+
+print("Résultat du calcul :", calculer_somme(100000))
 
 ```
 
-> 💡 Évitez les "nombres magiques" en remplaçant les valeurs littérales numériques répétées par des constantes explicites en début de script.
+> 💡 **Note :** Privilégiez toujours CPython standard sauf si vous avez une contrainte stricte d'intégration avec .NET (IronPython) ou Java (Jython).
 
----
+## Popularité de Python par rapport aux autres langages
 
-## Portée de variables - globale, locale
-
-La portée d'une variable détermine la zone du code où cette variable est accessible en lecture et en écriture. Une variable locale n'existe que dans la fonction où elle est définie, tandis qu'une variable globale est accessible dans tout le module.
+Python se classe régulièrement parmi les langages les plus populaires aux index TIOBE et GitHub. Cette popularité s'explique par sa syntaxe claire et intuitive qui accélère la vitesse de développement. Sa vaste communauté garantit un écosystème de bibliothèques très riche pour résoudre presque tout problème informatique.
 
 ```python
-TAXE_GLOBALE = 0.20  # Variable globale
+# Exemple illustrant la concision de la syntaxe Python face à d'autres langages
+langages = ["Python", "Java", "C++", "C#"]
 
-def calculer_total(prix_ht):
-    tva = prix_ht * TAXE_GLOBALE  # 'tva' est locale à la fonction
-    return prix_ht + tva
+# Filtrage et mise en majuscules en une seule ligne (list comprehension)
+populaires = [lang.upper() for lang in langages if lang == "Python"]
+print("Langage sélectionné :", populaires)
 
 ```
 
-> 💡 Limitez au maximum l'utilisation de variables globales pour éviter les effets de bord imprévisibles et faciliter la maintenance du code.
+> 💡 **Bonne pratique :** Profitez du grand nombre de paquets officiels hébergés sur PyPI (Python Package Index) pour éviter de réinventer la roue.
 
----
+## Types d'applications pour Python
 
-## Exemple de synthèse
+Python s'impose comme le langage leader en intelligence artificielle, science des données et apprentissage automatique. Il est également très utilisé dans le développement web backend avec des frameworks comme Django et FastAPI. Enfin, il excelle dans l'automatisation de tâches système, le scripting d'infrastructure et l'ingénierie de données.
 
 ```python
-# Programme complet combinant variables, types scalaires, agrégés et portée
-TAUX_REDUCTION = 0.15  # Variable globale
+# Exemple d'automatisation système : création et écriture rapide dans un fichier journal
+with open("systeme.log", "w", encoding="utf-8") as fichier:
+    fichier.write("INFO: Démarrage de l'application réussi.\n")
 
-def traiter_commande(client, articles_prix):
-    """Calcule le montant total d'une commande avec application d'une réduction."""
-    total_brut = sum(articles_prix)           # Utilisation d'un type agrégé (list)
-    est_fidele = True                         # Type scalaire booléen
-    
-    if est_fidele:
-        montant_final = total_brut * (1 - TAUX_REDUCTION)  # Variable locale
-    else:
-        montant_final = total_brut
-        
-    return f"Client : {client} | Total à payer : {montant_final}€"
-
-# Appel de la fonction avec des valeurs littérales
-print(traiter_commande("Karim", [45.0, 15.5, 30.0]))
+# Lecture du fichier journal généré
+with open("systeme.log", "r", encoding="utf-8") as fichier:
+    print("Contenu du journal :", fichier.read().strip())
 
 ```
 
-## Exercices
+> 💡 **Bonne pratique :** Utilisez toujours le mot-clé `with` pour la manipulation de fichiers afin de garantir leur fermeture automatique même en cas d'erreur.
 
-1. **Exercice 1 :** Écrivez un script qui déclare quatre variables de types scalaires différents (`int`, `float`, `bool`, `str`), puis affichez le type de chacune d'elles à l'aide de la fonction `type()`.
-2. **Exercice 2 :** Créez une liste contenant les notes d'un étudiant, écrivez une fonction qui calcule la moyenne de ces notes, et stockez le résultat dans une variable locale avant de le retourner.
+---
+
+### Exemple de synthèse
+
+Cet exemple regroupe la vérification de l'environnement, le typage dynamique et le traitement de données simple dans un script unique :
+
+```python
+import sys
+import platform
+
+# 1. Collecte d'informations environnementales
+infos_systeme = {
+    "version_python": sys.version.split()[0],
+    "os": platform.system(),
+    "statut": "Opérationnel"
+}
+
+# 2. Traitement et affichage
+print("--- Bilan de l'environnement Python ---")
+for cle, valeur in infos_systeme.items():
+    print(f"{cle.capitalize()} : {valeur}")
+
+# 3. Écriture d'un rapport de synthèse
+with open("rapport_intro.txt", "w", encoding="utf-8") as f:
+    f.write(f"Rapport généré sous {infos_systeme['os']} avec Python {infos_systeme['version_python']}\n")
+
+print("Rapport écrit avec succès dans 'rapport_intro.txt'.")
+
+```
+
+---
+
+### Exercices
+
+**Exercice 1 : Inspection de l'environnement d'exécution**
+Écrivez un script Python qui affiche le nom de votre système d'exploitation ainsi que la version majeure et mineure de votre interpréteur Python. Le script devra également créer un fichier texte nommé `env.txt` et y enregistrer ces deux informations.
+
+**Exercice 2 : Automatisation de journalisation d'événements**
+Créez un programme Python qui définit une liste contenant trois noms de serveurs (par exemple `"Serveur-1"`, `"Serveur-2"`, `"Serveur-3"`). Le programme doit parcourir cette liste, simuler une vérification de statut en affichant `"Vérification de [Nom du serveur]"`, puis inscrire la liste complète des serveurs vérifiés dans un fichier `serveurs.log`.

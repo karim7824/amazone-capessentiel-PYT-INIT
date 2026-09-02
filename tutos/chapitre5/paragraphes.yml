@@ -1,9 +1,0 @@
-
----
-titre : Contenu du cours
-chapitres:
-    - nom : "Manipulation des données structurées - list, dict et set"
-      paragraphes :
-      - Gestion des listes 
-      - Gestion des dict 
-      - Gestion des set 

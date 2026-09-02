@@ -1,5 +1,8 @@
-Traiter une masse de données
-- Fonction anonyme Lambda
-- Traitement avec filter
-- Traitement avec map
-- Traitement avec reduce
+Les instructions controles
+- Structure conditionnelles if/else/then,match
+- Structure match
+- Boucles - for/else
+- Boucles - while
+- Boucles - avec range
+- Boucles - avec zip
+- Boucles - avec items() pour les dictionnaires

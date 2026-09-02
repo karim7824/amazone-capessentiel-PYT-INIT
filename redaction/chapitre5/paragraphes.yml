@@ -2,8 +2,7 @@
 ---
 titre : Contenu du cours
 chapitres:
-    - nom : "Manipulation des données structurées - list, dict et set"
+    - nom : "Convertir les données - casting ou transtypage"
       paragraphes :
-      - Gestion des listes 
-      - Gestion des dict 
-      - Gestion des set 
+      - Casting et conversion 
+      - Conversions implicites vs explicites 

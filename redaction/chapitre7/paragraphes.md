@@ -1,142 +1,82 @@
-# Chapitre 7 : Les fonctions et passage d'arguments
+# Chapitre 5 : Manipulation des données structurées - list, dict et set
 
-Les fonctions permettent de modulariser le code en regroupant des instructions réutilisables sous un même nom. Maîtriser le passage d'arguments et les structures de retour est indispensable pour concevoir des programmes propres et maintenables.
+La manipulation des données structurées permet d'organiser, de stocker et de parcourir efficacement des collections d'éléments en Python. Maîtriser ces structures est indispensable pour traiter des volumes d'informations complexes.
 Dans ce chapitre :
 
-* Définition des fonctions, arguments, passage et valeur de retour (`return`)
-
-
-* Arguments et valeurs par défaut
-
-
-* Arguments variables via les tuples, `*args` et `**kwargs`
-
-* Fonctions en tant qu'arguments (délégués)
-
-
+* Gestion des listes
+* Gestion des dictionnaires (dict)
+* Gestion des ensembles (set)
 
 ---
 
-## Les fonctions, arguments , passage par valeur, return
+## Gestion des listes
 
-Une fonction se déclare avec le mot-clé `def` suivi d'un nom et de parenthèses. Elle accepte des arguments en entrée et peut renvoyer un résultat grâce à l'instruction `return`.
+Les listes permettent de stocker une collection ordonnée d'éléments modifiables. Elles autorisent les doublons et offrent de nombreuses méthodes pour ajouter, supprimer ou trier des données en mémoire.
 
 ```python
-# Déclaration d'une fonction simple avec retour
-def additionner(a, b):
-    resultat = a + b
-    return resultat
+# Création et modification d'une liste
+fruits = ["pomme", "banane"]
+fruits.append("orange")  # Ajout d'un élément à la fin
 
 ```
 
-> 💡 En Python, les objets sont passés par affectation : modifier un objet mutable à l'intérieur d'une fonction se répercute en dehors, contrairement aux objets immuables.
+> 💡 Utilisez la compréhension de liste pour filtrer ou transformer rapidement les éléments d'une liste de manière élégante et performante.
 
 ---
 
-## Arguments et valeurs par défaut
+## Gestion des dict
 
-Les arguments par défaut permettent de définir une valeur de repli lorsqu'un paramètre n'est pas explicitement fourni lors de l'appel de la fonction.
+Les dictionnaires stockent des données sous forme de paires clé-valeur, permettant un accès ultra-rapide aux valeurs grâce à leurs clés uniques. Ils sont parfaits pour représenter des objets ou des configurations.
 
 ```python
-# Fonction avec un argument doté d'une valeur par défaut
-def saluer(nom, message="Bonjour"):
-    return f"{message}, {nom} !"
+# Déclaration et accès dans un dictionnaire
+utilisateur = {"nom": "Alice", "age": 30}
+ville = utilisateur.get("ville", "Inconnue")  # Évite une erreur si la clé n'existe pas
 
 ```
 
-> 💡 Ne jamais utiliser d'objets mutables (comme des listes ou des dictionnaires) comme valeurs par défaut d'une fonction, car leur état serait conservé entre les appels successifs.
+> 💡 Privilégiez l'utilisation de la méthode `.get()` pour interroger un dictionnaire lorsque la clé recherchée est susceptible de ne pas y figurer.
 
 ---
 
-## Arguments en tant que tuple
+## Gestion des set
 
-Il est possible de regrouper plusieurs valeurs d'arguments dans un tuple pour les manipuler de manière globale au sein de la fonction.
+Les ensembles (`set`) stockent des collections non ordonnées d'éléments uniques. Ils suppriment automatiquement les doublons et s'avèrent extrêmement utiles pour effectuer des opérations mathématiques ensemblistes (union, intersection).
 
 ```python
-# Fonction acceptant un tuple d'éléments regroupés
-def afficher_coordonnees(coord):
-    x, y = coord
-    return f"Position X: {x}, Y: {y}"
+# Création d'un ensemble et suppression des doublons
+nombres = {1, 2, 2, 3, 4}  # Le doublon '2' est automatiquement éliminé
+nombres.add(5)
 
 ```
 
-> 💡 Utilisez l'emballage de tuples lorsque vos données possèdent une structure fixe et ordonnée que vous souhaitez traiter en bloc.
-
----
-
-## Arguments avec *args
-
-La syntaxe `*args` permet de transmettre un nombre variable d'arguments positionnels non nommés à une fonction, qui les récupère automatiquement sous forme de tuple.
-
-```python
-# Fonction acceptant un nombre indéfini d'arguments positionnels
-def sommer_tout(*args):
-    return sum(args)
-
-```
-
-> 💡 Le nom `args` est une convention en Python, mais c'est l'astérisque `*` qui indique au langage de capturer tous les arguments positionnels excédentaires.
-
----
-
-## Arguments *kargs
-
-La syntaxe `**kwargs` (souvent appelée `kargs`) permet de récupérer un nombre variable d'arguments nommés sous la forme d'un dictionnaire au sein de la fonction.
-
-```python
-# Fonction acceptant des arguments nommés dynamiques
-def configurer(**kwargs):
-    for cle, valeur in kwargs.items():
-        print(f"{cle} = {valeur}")
-
-```
-
-> 💡 L'utilisation conjointe de `*args` et `**kwargs` offre une flexibilité maximale pour créer des fonctions enveloppes (*wrappers*) ou des décorateurs.
-
----
-
-## Fonction en tant qu'argument (delegate)
-
-En Python, les fonctions sont des objets de première classe, ce qui signifie qu'elles peuvent être passées en tant qu'arguments à d'autres fonctions, agissant ainsi comme des délégués.
-
-```python
-# Utilisation d'une fonction en tant qu'argument
-def appliquer_operation(operation, x, y):
-    return operation(x, y)
-
-resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
-
-```
-
-> 💡 Passer des fonctions en argument est la base de la programmation fonctionnelle et permet de concevoir des algorithmes hautement génériques et réutilisables.
+> 💡 Utilisez les opérateurs ensemblistes comme `&` pour l'intersection ou `|` pour l'union afin de comparer rapidement des collections de données.
 
 ---
 
 ## Exemple de synthèse
 
 ```python
-# Programme complet combinant fonctions, valeurs par défaut, *args, **kwargs et délégués
+# Programme complet combinant listes, dictionnaires et ensembles
+# 1. Gestion des listes : stockage des identifiants de connexions successives
+historique_connexions = ["user_1", "user_2", "user_1", "user_3"]
 
-def calculer_total_remise(taux=0.1, *montants, **details):
-    """Calcule un total avec *args et affiche les options via **kwargs."""
-    sous_total = sum(montants)
-    total_net = sous_total * (1 - taux)
-    
-    print(f"Facture pour {details.get('client', 'Client inconnu')}")
-    print(f"Sous-total : {sous_total}€ | Net : {total_net}€")
-    return total_net
+# 2. Gestion des set : extraction des utilisateurs uniques sans doublons
+utilisateurs_uniques = set(historique_connexions)
 
-# Fonction déléguée à passer en paramètre
-def formater_monnaie(montant):
-    return f"{montant:.2f} EUR"
+# 3. Gestion des dict : association d'un statut à chaque utilisateur unique
+statuts_utilisateurs = {
+    "user_1": "actif",
+    "user_2": "inactif",
+    "user_3": "actif"
+}
 
-# Appel de la fonction principale avec différents types d'arguments
-montant_final = calculer_total_remise(0.2, 100.0, 50.0, 25.0, client="Alice", mode="express")
-print("Format final :", formater_monnaie(montant_final))
+print(f"Utilisateurs uniques : {utilisateurs_uniques}")
+print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
 
 ```
 
 ## Exercices
 
-1. **Exercice 1 :** Écrivez une fonction qui accepte un nombre indéfini d'entiers via `*args` et retourne leur moyenne arithmétique.
-2. **Exercice 2 :** Créez une fonction qui prend en paramètre une fonction mathématique et deux nombres, puis applique cette fonction sur les deux nombres pour retourner le résultat.
+1. **Exercice 1 :** Créez une liste contenant plusieurs prénoms avec des doublons, convertissez-la en ensemble (`set`) pour éliminer les doublons, puis affichez le résultat.
+2. **Exercice 2 :** Déclarez un dictionnaire représentant un produit (avec les clés nom, prix et stock), puis écrivez une instruction pour mettre à jour la valeur du stock.
