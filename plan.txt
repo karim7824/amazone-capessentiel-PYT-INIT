@@ -76,8 +76,6 @@ Un code plus robuste en prenant en compte les erreurs
 - Instruction finally
 - Emettre une exception avec throw
 
-----------------------------
-
 Script python en ligne de commande et passage d'arguments
 - Scripts et __main__
 - Scripts et passage d'arguments
@@ -93,7 +91,7 @@ Gestion des package - import et création
 - Gestion des fichiers - open, read, write, seek, tell, zip
 - Automatiser une installation avec gel et requirements.txt
 
-Envrionnement virtuel adapté à chaque application
+Environnement virtuel adapté à chaque application
 - Création d'un context python isolé avec venv 
 - Script activate/deactivate
 
