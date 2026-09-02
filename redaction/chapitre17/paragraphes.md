@@ -1,4 +1,4 @@
-# Chapitre 15 : Programmation orientée objets
+# Chapitre 17 : Programmation orientée objets
 
 La programmation orientée objets permet de structurer un programme autour de concepts et de données modélisés sous forme de classes et d'objets. Maîtriser ces principes est indispensable pour concevoir des architectures logicielles modulaires et maintenables.
 Dans ce chapitre :
