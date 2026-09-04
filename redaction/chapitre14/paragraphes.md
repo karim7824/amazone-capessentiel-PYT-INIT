@@ -207,9 +207,7 @@ archiver_projet(".", "sauvegarde.zip")
 
 ---
 
-## Exercices d'application
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez un script Python qui crée un dossier nommé `export`, y génère un fichier texte `notes.txt` contenant trois lignes de votre choix, puis affiche la taille du fichier à l'écran.
-
-
 2. **Exercice 2 :** Créez une fonction qui accepte le chemin d'un répertoire en paramètre, liste tous les fichiers `.py` présents dans ce dossier, puis génère une archive `modules.zip` les regroupant tous.
