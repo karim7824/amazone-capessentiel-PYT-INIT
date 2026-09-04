@@ -1,4 +1,4 @@
-# Chapitre 10 : Un code plus robuste en prenant en compte les erreurs
+# Chapitre 12 : Un code plus robuste en prenant en compte les erreurs
 
 La gestion des erreurs permet d'anticiper et de traiter les incidents d'exécution pour empêcher l'arrêt brutal d'un programme en Python. Maîtriser ces mécanismes est indispensable pour concevoir des applications fiables et résilientes.
 Dans ce chapitre :
@@ -97,7 +97,7 @@ print(convertir_et_diviser("50", "0"))
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez un script qui demande à l'utilisateur de saisir un nombre, utilise un bloc `try...except` pour intercepter une éventuelle erreur de saisie (`ValueError`), et affiche un message adapté.
 2. **Exercice 2 :** Créez une fonction qui vérifie si un mot de passe possède au moins 8 caractères. Si ce n'est pas le cas, utilisez `raise` pour émettre une exception personnalisée de type `ValueError`.
