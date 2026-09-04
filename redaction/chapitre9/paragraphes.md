@@ -1,4 +1,4 @@
-# Chapitre 7 : Les fonctions et passage d'arguments
+# Chapitre 9 : Les fonctions et passage d'arguments
 
 Les fonctions permettent de modulariser le code en regroupant des instructions réutilisables sous un même nom. Maîtriser le passage d'arguments et les structures de retour est indispensable pour concevoir des programmes propres et maintenables.
 Dans ce chapitre :
@@ -136,7 +136,7 @@ print("Format final :", formater_monnaie(montant_final))
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez une fonction qui accepte un nombre indéfini d'entiers via `*args` et retourne leur moyenne arithmétique.
 2. **Exercice 2 :** Créez une fonction qui prend en paramètre une fonction mathématique et deux nombres, puis applique cette fonction sur les deux nombres pour retourner le résultat.
