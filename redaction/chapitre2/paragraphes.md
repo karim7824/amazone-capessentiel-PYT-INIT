@@ -141,10 +141,9 @@ if __name__ == "__main__":
 
 ---
 
-### Exercices
+### Exercices de fin de chapitre
 
-**Exercice 1 : Création et exécution d'un script structuré**
+1.  **Exercice 1 : Création et exécution d'un script structuré**
 Créez un fichier nommé `main.py` qui définit une fonction `saluer(nom)`. Dans le bloc principal `if __name__ == '__main__':`, appelez cette fonction avec votre prénom, puis faites en sorte que le programme écrive le message de salutation dans un fichier texte nommé `bienvenue.txt`.
-
-**Exercice 2 : Générateur d'environnement et vérification venv**
+2.  **Exercice 2 : Générateur d'environnement et vérification venv**
 Écrivez un script Python nommé `check_env.py` qui teste si le programme est exécuté au sein d'un environnement virtuel `venv`. Si ce n'est pas le cas, le script doit afficher un avertissement recommandant d'activer un environnement virtuel. Si l'environnement virtuel est actif, le script doit inscrire le chemin de l'interpréteur dans un fichier `env_status.log`.
