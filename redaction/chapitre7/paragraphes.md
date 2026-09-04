@@ -1,4 +1,4 @@
-# Chapitre 5 : Manipulation des données structurées - list, dict et set
+# Chapitre 7 : Manipulation des données structurées - list, dict et set
 
 La manipulation des données structurées permet d'organiser, de stocker et de parcourir efficacement des collections d'éléments en Python. Maîtriser ces structures est indispensable pour traiter des volumes d'informations complexes.
 Dans ce chapitre :
@@ -306,7 +306,7 @@ print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et compter les nombres paires et les impaires
 2. **Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et ages [1,2 ...], les assembler dans une boucles pour former un dict() nom/age 
