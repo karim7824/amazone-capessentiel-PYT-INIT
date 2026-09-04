@@ -1,4 +1,4 @@
-# Chapitre 2 : Les opérateurs
+# Chapitre 4 : Les opérateurs
 
 Comprendre et utiliser les opérateurs permet d'effectuer des calculs, de comparer des valeurs et de combiner des conditions logiques en Python. Ces mécanismes fondamentaux constituent les briques de base de toute logique algorithmique.
 Dans ce chapitre :
