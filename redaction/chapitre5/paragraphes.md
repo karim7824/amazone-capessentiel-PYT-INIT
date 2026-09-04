@@ -1,4 +1,4 @@
-# Chapitre 3 : Convertir les données - casting ou transtypage
+# Chapitre 5 : Convertir les données - casting ou transtypage
 
 La conversion de données, ou casting, permet de transformer un type de données en un autre pour assurer la compatibilité entre variables. Maîtriser ces conversions est indispensable pour traiter des entrées utilisateur ou fusionner des informations de natures différentes.
 Dans ce chapitre :
