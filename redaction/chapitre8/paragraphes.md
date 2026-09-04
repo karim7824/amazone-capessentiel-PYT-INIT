@@ -1,4 +1,4 @@
-# Chapitre 6 : Les instructions contrôles
+# Chapitre 8 : Les instructions contrôles
 
 Les instructions de contrôle permettent d'orienter le flux d'exécution d'un programme en fonction de conditions et de répéter des blocs de instructions. Maîtriser ces structures est indispensable pour automatiser des tâches complexes.
 Dans ce chapitre :
@@ -202,7 +202,7 @@ for parametre, etat in config.items():
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 listes  = [['TOTO1',1],['TOTO2',2],...['TOTO5',5]]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
 2. **Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
