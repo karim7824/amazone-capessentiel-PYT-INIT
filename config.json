@@ -1,7 +1,7 @@
 {
     "REF": "PYT-INIT",
     "SUJET": "Python",
-    "NIVEAU": "Initiation",
+    "NIVEAU": "initiation",
     "CATEGORIE": "Langages",
     "PRIX": "5",
     "DUREE": "2",
@@ -15,7 +15,7 @@
     "EDITION": "amazone", 
     "TYPECONTENU" : "lesgaleriens",
     "PARTENAIRE": "keyos editions",
-    "DEDICACE": "Pour les amateurs et pro de la programation",
+    "DEDICACE": "Pour les amateurs et pro de la programmation",
     "SCRIPT": "typescript",
     "LANGUE": "francais"
 }
