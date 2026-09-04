@@ -1,4 +1,4 @@
-# Chapitre 1 : Définir et manipuler des données types en mémoire
+# Chapitre 3 : Définir et manipuler des données types en mémoire
 
 Maîtriser les types de données et leur manipulation en mémoire est essentiel pour stocker et traiter efficacement l'information. Ces concepts fondamentaux garantissent la rigueur et la logique de vos programmes en Python.
 Dans ce chapitre :
