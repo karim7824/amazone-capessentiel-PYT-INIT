@@ -107,7 +107,7 @@ print(traiter_commande("Karim", [45.0, 15.5, 30.0]))
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script qui déclare quatre variables de types scalaires différents (`int`, `float`, `bool`, `str`), puis affichez le type de chacune d'elles à l'aide de la fonction `type()`.
-2. **Exercice 2 :** Créez une liste contenant les notes d'un étudiant, écrivez une fonction qui calcule la moyenne de ces notes, et stockez le résultat dans une variable locale avant de le retourner.
+1. **Exercice 1 : variables scalaires** Écrivez un script qui déclare quatre variables de types scalaires différents (`int`, `float`, `bool`, `str`), puis affichez le type de chacune d'elles à l'aide de la fonction `type()`.
+2. **Exercice 2 : liste** Créez une liste contenant les notes d'un étudiant, écrivez une fonction qui calcule la moyenne de ces notes, et stockez le résultat dans une variable locale avant de le retourner.
