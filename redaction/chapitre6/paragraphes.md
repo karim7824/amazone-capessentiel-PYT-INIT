@@ -1,4 +1,4 @@
-# Chapitre 4 : Manipulation des chaines de caractères
+# Chapitre 6 : Manipulation des chaines de caractères
 
 La manipulation des chaînes de caractères permet de traiter, formetter et analyser des données textuelles en Python. Maîtriser ces outils est indispensable pour interagir avec les utilisateurs et structurer des messages lisibles.
 Dans ce chapitre :
@@ -311,7 +311,7 @@ print(rapport)
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez un script qui prend une chaîne de caractères contenant des espaces superflus et du texte en minuscules, puis utilisez les méthodes de gestion pour la nettoyer et la mettre entièrement en majuscules.
 2. **Exercice 2 :** Déclarez une chaîne contenant un numéro de téléphone sous la forme d'une phrase, puis utilisez le slicing pour extraire les deux premiers caractères et formotez un message personnalisé à l'aide d'une f-string.
