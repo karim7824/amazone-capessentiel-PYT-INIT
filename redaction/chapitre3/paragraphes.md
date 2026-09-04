@@ -84,7 +84,7 @@ def calculer_total(prix_ht):
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant variables, types scalaires, agrégés et portée

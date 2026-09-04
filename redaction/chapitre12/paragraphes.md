@@ -66,7 +66,7 @@ if age < 0:
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant try, except, finally et la levée d'une exception avec raise

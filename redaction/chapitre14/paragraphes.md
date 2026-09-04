@@ -176,7 +176,7 @@ python -m pip install -r requirements.txt
 
 ---
 
-## Synthèse du chapitre
+### Exemple de synthèse
 
 ```python
 import sys

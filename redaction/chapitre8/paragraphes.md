@@ -171,7 +171,7 @@ for cle, valeur in parametres.items():
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant conditions, boucles, range, zip et items

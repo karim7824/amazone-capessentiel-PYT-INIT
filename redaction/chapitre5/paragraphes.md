@@ -37,7 +37,7 @@ resultat = 3 + 4.5  # L'entier 3 est converti implicitement en 3.0 (résultat : 
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet illustrant le casting et la conversion de données

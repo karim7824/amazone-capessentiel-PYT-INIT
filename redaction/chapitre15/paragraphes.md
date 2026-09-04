@@ -39,7 +39,7 @@ source .venv/bin/activate
 
 ---
 
-## Exemple de synthèse
+## Synthèse du chapitre
 
 ```bash
 # Séquence complète de commandes pour configurer et utiliser un environnement virtuel sous Linux/macOS :

@@ -44,7 +44,7 @@ with open("document.txt", "r", encoding="utf-8") as f:
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant les concepts de streams et la gestion de fichiers Unicode

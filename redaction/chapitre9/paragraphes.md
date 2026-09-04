@@ -112,7 +112,7 @@ resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant fonctions, valeurs par défaut, *args, **kwargs et délégués

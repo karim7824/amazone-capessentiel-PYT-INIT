@@ -106,7 +106,7 @@ L'organisation des classes au sein de modules et de packages permet de structure
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant classes, constructeur, méthodes, self, héritage et redéfinition

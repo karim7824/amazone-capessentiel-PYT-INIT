@@ -284,7 +284,7 @@ print(pairs_grands)  # Résultat : {40, 8, 22} (l'ordre d'affichage peut varier)
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant listes, dictionnaires et ensembles

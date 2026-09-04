@@ -44,7 +44,8 @@ premier_element = next(carres_gen)
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
+
 
 ```python
 # Programme complet combinant la création d'un générateur avec yield et un générateur prédéfini

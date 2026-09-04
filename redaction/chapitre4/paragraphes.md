@@ -71,7 +71,7 @@ peut_partir = a_ecole and a_ses_affaires  # Vaut True si les deux conditions son
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 # Programme complet combinant affectation, arithmétique, relations et logique

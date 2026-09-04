@@ -287,7 +287,7 @@ if valide:
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 import re

@@ -100,7 +100,7 @@ resultats = curseur.fetchall()
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 import sqlite3

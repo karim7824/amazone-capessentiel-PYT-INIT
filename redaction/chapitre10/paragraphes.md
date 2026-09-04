@@ -76,7 +76,7 @@ somme_totale = reduce(lambda x, y: x + y, nombres)
 
 ---
 
-## Exemple de synthèse
+### Exemple de synthèse
 
 ```python
 from functools import reduce
