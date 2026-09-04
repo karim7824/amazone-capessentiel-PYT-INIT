@@ -141,12 +141,12 @@ print("Rapport écrit avec succès dans 'rapport_intro.txt'.")
 
 ---
 
-### Exercices
+### Exercices de fin de chapitre
 
-**Exercice 1 : Inspection de l'environnement d'exécution**
+1.  **Exercice 1 : Inspection de l'environnement d'exécution**
 Écrivez une instruction qui permet d'afficher la version de Python
 Écrivez une instruction qui permet d'afficher la variable d'environnement PATH
 Écrivez une instruction qui permet de lancer une commande shell 
 
-**Exercice 2 : une instruction de boucle**
+2. **Exercice 2 : une instruction de boucle**
 Écrivez une instruction de boucle qui compte de 1 à 10 et afficher 'O' 'OO' 'OOO' allant de 1 à 10 en utilisant range()
