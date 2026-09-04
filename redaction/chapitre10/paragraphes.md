@@ -1,4 +1,4 @@
-# Chapitre 8 : Traiter une masse de données
+# Chapitre 10 : Traiter une masse de données
 
 Le traitement de masses de données permet d'appliquer des transformations et des filtres performants sur des collections en Python. Maîtriser ces outils fonctionnels est indispensable pour manipuler efficacement des flux d'informations importants.
 Dans ce chapitre :
@@ -98,7 +98,7 @@ print(f"Montant global de la commande : {montant_global:.2f} €")
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Utilisez la fonction `filter()` associée à une expression `lambda` pour extraire uniquement les mots de longueur supérieure à 5 caractères d'une liste de chaînes.
 2. **Exercice 2 :** Importez `reduce` depuis `functools` et écrivez un script qui calcule le produit de tous les éléments d'une liste d'entiers.
