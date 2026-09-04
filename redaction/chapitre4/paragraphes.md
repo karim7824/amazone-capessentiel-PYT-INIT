@@ -91,7 +91,7 @@ print(fstock restant : {stock_initial} | Alerte active : {alerte_stock})
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez un script qui initialise deux variables numériques, puis utilisez les opérateurs arithmétiques pour calculer leur somme, leur produit et le reste de leur division entière.
 2. **Exercice 2 :** Déclarez une variable représentant l'âge d'un utilisateur et une autre indiquant s'il possède une autorisation. Utilisez des opérateurs relationnels et logiques pour vérifier s'il remplit les conditions d'accès (âge supérieur ou égal à 18 et autorisation vraie).
