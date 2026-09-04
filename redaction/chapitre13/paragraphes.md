@@ -1,4 +1,4 @@
-# Chapitre 11 : Script python en ligne de commande et passage d'arguments
+# Chapitre 13 : Script python en ligne de commande et passage d'arguments
 
 La création de scripts en ligne de commande et le passage d'arguments permettent d'automatiser des tâches et d'interagir directement avec vos programmes Python depuis le terminal. Maîtriser ces outils est indispensable pour industrialiser vos développements.
 Dans ce chapitre :
@@ -89,7 +89,7 @@ if __name__ == "__main__":
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez un script Python comportant une structure `if __name__ == "__main__":` qui affiche un message de bienvenue personnalisé lorsque le fichier est exécuté directement.
 2. **Exercice 2 :** Utilisez le module `sys` pour récupérer un nom passé en argument dans le terminal et affichez une salutation personnalisée intégrant ce paramètre.
