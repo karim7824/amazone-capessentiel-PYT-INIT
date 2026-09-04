@@ -1,4 +1,4 @@
-# Chapitre 9 : Les générateurs
+# Chapitre 11 : Les générateurs
 
 Les générateurs permettent de produire des séquences de valeurs à la demande sans stocker l'intégralité des données en mémoire. Maîtriser ces concepts est indispensable pour optimiser l'efficacité de vos programmes lors du traitement de grands volumes d'informations.
 Dans ce chapitre :
@@ -66,7 +66,7 @@ for index, texte_traite in enumerate(gen_personnalise, start=1):
 
 ```
 
-## Exercices
+### Exercices de fin de chapitre
 
 1. **Exercice 1 :** Écrivez une fonction génératrice utilisant `yield` pour produire les nombres pairs jusqu'à une limite passée en paramètre, puis parcourez ce générateur avec une boucle `for`.
 2. **Exercice 2 :** Créez une expression génératrice qui calcule les carrés des nombres de 1 à 10, et récupérez les valeurs un par un à l'aide de la fonction `next()`.
