@@ -10,7 +10,6 @@ Présentation du langage Python
 
 Installation de l'environnement de programmation Python
 - Installation de base de l'interpréteur x64 https://www.python.org/downloads/
-- installation de TypeScript - npx, npm, tsc
 - Créer un projet python main.py avec condition __main__ - Bonjour à tous
 - Lancement de lab_main.py 
 - Utilisation de python en mode REPL
@@ -39,12 +38,12 @@ Manipulation des chaines de caractères
 - Slicing
 - Expressions régulières
  
-7Manipulation des données structurées - list, dict et set 
+Manipulation des données structurées - list, dict et set 
 - Gestion des listes 
 - Gestion des dict 
 - Gestion des set 
 
-8Les instructions controles
+Les instructions controles
 - Structure conditionnelles if/else/then,match
 - Structure match
 - Boucles - for/else  
@@ -128,3 +127,4 @@ L'essentiel de l'essentiel à retenir sur Python
 - Tests (Pytest / Unittest)
 
 Solutions des exercices Python
+-detail
