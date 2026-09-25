@@ -10,7 +10,6 @@ Dans ce chapitre :
 * Packages, imports et classes
 
 ---
-
 ## Approche de l'orienté objets
 
 L'approche orientée objets consiste à regrouper au sein d'une même entité (la classe) les données (attributs) et les traitements (méthodes) qui leur sont associés. Cela favorise l'encapsulation et la réutilisabilité du code. L'orienté objet permet de modéliser les entités métiers observées.
@@ -25,11 +24,8 @@ Les piliers de la Programmation Orientée Objet (suite)**
 * Un préfixe simple `_attribut` indique un attribut **protégé** (déconseillé à l'accès direct hors de la classe).
 * Un préfixe double `__attribut` active le *Name Mangling* (masquage de nom) pour rendre l'attribut **privé**.
 
-
 * **L'Héritage :** C'est le mécanisme permettant à une classe dite "fille" d'**hériter des propriétés et des méthodes** d'une classe dite "mère". Cela favorise la réutilisation du code et permet d'exprimer des relations hiérarchiques (ex. *Un Chien "est un" Animal*).
 * **Le Polymorphisme :** Il permet à des objets issus de classes différentes de proposer une méthode portant le même nom, mais adaptant son comportement selon la classe concernée. Cela permet de traiter différents types d'objets de manière uniforme via une interface commune.
-
-Pour la méthode de la classe, self désigne l'objet évoqué ma_voiture ou mon_camion
 
 ```python
 class Vehicule:  # Classe
@@ -46,41 +42,21 @@ class Voiture(Vehicule):  # Héritage
 
 
 # Instanciation de plusieurs objets à partir des classes
-ma_voiture = Voiture("Peugeot") # est vu syntaxiquement comme  Voiture(ma_voiture, "Peugeot")   ma_voiture est le self
-mon_camion = Vehicule("Volvo") # est vu syntaxiquement comme Vehicule(mon_camion, "Volvo")   mon_camion est le self
+ma_voiture = Voiture("Peugeot") 
+mon_camion = Vehicule("Volvo")
 
 ma_voiture.accelerer() 
 mon_camion.accelerer()
 
 ```
 
-
-
-
 > 💡 Pensez vos classes comme des plans de construction permettant de donner naissance à des objets autonomes dotés de comportements spécifiques.
-
----
-
-## Composition d'une classe - constructeur, méthodes et données
-
-Une classe se compose d'un constructeur (la méthode spéciale `__init__`), de données attributaires et de méthodes pour définir les actions que l'objet peut réaliser.
-
-```python
-# Définition d'une classe avec constructeur et méthode
-class CompteBancaire:
-    def __init__(self, titulaire, solde):
-        self.titulaire = titulaire
-        self.solde = solde
-
-```
-
-> 💡 Le constructeur s'exécute automatiquement lors de l'instanciation de la classe pour initialiser l'état initial des données de l'objet.
 
 ---
 
 ## Objet et instance de class - self, super
 
-L'instance représente un objet concret issu d'une classe. Le paramètre `self` fait référence à l'instance courante, tandis que `super()` permet d'accéder aux méthodes de la classe parente.
+L'instance représente un objet concret issu d'une classe. Le paramètre `self` fait référence à l'instance courante, tandis que `super()` permet d'accéder aux méthodes de la classe parente en cas d'héritage
 
 ```python
 # Utilisation de self pour lier les données à l'instance
@@ -94,6 +70,59 @@ class Chien:
 ```
 
 > 💡 Utilisez systématiquement `self` comme premier paramètre de vos méthodes d'instance pour garantir l'accès correct aux attributs propres de l'objet.
+
+---
+
+## Composition d'une classe - constructeur, méthodes et données
+
+Une classe se compose d'un constructeur (la méthode spéciale `__init__`), de données attributaires et de méthodes pour définir les actions que l'objet peut réaliser.
+
+```python
+# Définition d'une classe avec constructeur, attributs et méthodes
+class CompteBancaire:
+    def __init__(self, titulaire: str, solde_initial: float = 0.0):
+        # Attributs (données propres à chaque objet)
+        self.titulaire = titulaire
+        self.solde = solde_initial
+
+    # Méthode pour afficher les informations du compte
+    def afficher_solde(self):
+        print(f"Compte de {self.titulaire} : {self.solde:.2f} €")
+
+    # Méthode pour créditer le compte (action)
+    def deposer(self, montant: float):
+        if montant > 0:
+            self.solde += montant
+            print(f"Dépôt de {montant:.2f} € effectué.")
+        else:
+            print("Le montant du dépôt doit être positif.")
+
+    # Méthode pour débiter le compte (action)
+    def retirer(self, montant: float):
+        if 0 < montant <= self.solde:
+            self.solde -= montant
+            print(f"Retrait de {montant:.2f} € effectué.")
+        else:
+            print("Fonds insuffisants ou montant invalide.")
+
+
+# --- Utilisation de la classe (Instanciation et appel des méthodes) ---
+
+# Instanciation de deux comptes distincts
+compte_alice = CompteBancaire("Alice", 1500.0)
+compte_bob = CompteBancaire("Bob", 200.0)
+
+# Manipulation des objets
+compte_alice.afficher_solde()  # Compte de Alice : 1500.00 €
+compte_alice.retirer(500.0)    # Retrait de 500.00 € effectué.
+compte_alice.afficher_solde()  # Compte de Alice : 1000.00 €
+
+compte_bob.deposer(150.0)      # Dépôt de 150.00 € effectué.
+compte_bob.afficher_solde()    # Compte de Bob : 350.00 €
+
+```
+
+> 💡 Le constructeur s'exécute automatiquement lors de l'instanciation de la classe pour initialiser l'état initial des données de l'objet.
 
 ---
 
