@@ -5,9 +5,10 @@ Dans ce chapitre :
 
 * Concepts de base des bases de données relationnelles
 * Connexion et paramétrage via la connexion et le curseur
-* Gestion de la structure des données avec le DDL (tables)
-* Gestion des transactions et validation avec le `commit`
-* Manipulation des données avec le DML (`SELECT`, `WHERE`)
+* Gestion de la Structure de données - requêtes DDL
+* Manipulation des données - requêtes DML
+* Gestion des transactions — commit et rollback
+* Bonne pratique : Gestion sécurisée des connexions
 
 ---
 
