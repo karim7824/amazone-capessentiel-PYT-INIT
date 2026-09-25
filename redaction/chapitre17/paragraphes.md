@@ -127,6 +127,56 @@ compte_bob.afficher_solde()    # Compte de Bob : 350.00 €
 
 ---
 
+## Composition d'une classe - setter, getter
+L'**encapsulation** consiste à protéger les données d'un objet en empêchant leur modification directe depuis l'extérieur de la classe. Pour consulter ou modifier ces données de façon sécurisée, on utilise des accesseurs (*getters*) et des mutateurs (*setters*).
+
+En Python, la manière la plus élégante et "pythonique" de gérer les *getters* et *setters* repose sur le décorateur **`@property`**. Il permet d'accéder aux attributs comme s'il s'agissait de simples variables, tout en exécutant du code de validation en arrière-plan.
+
+```python
+class CompteBancaire:
+    def __init__(self, titulaire: str, solde_initial: float = 0.0):
+        self.titulaire = titulaire
+        self._solde = solde_initial  # Attribut protégé (convention avec '_')
+
+    # GETTER : Permet de lire le solde
+    @property
+    def solde(self) -> float:
+        return self._solde
+
+    # SETTER : Permet de modifier le solde avec un contrôle d'erreur
+    @solde.setter
+    def solde(self, nouveau_solde: float):
+        if nouveau_solde >= 0:
+            self._solde = nouveau_solde
+        else:
+            raise ValueError("Le solde ne peut pas être négatif !")
+
+
+# --- Utilisation ---
+
+compte = CompteBancaire("Alice", 1000.0)
+
+# Utilisation du GETTER (pas de parenthèses)
+print(f"Solde actuel : {compte.solde} €")  # Affiche: 1000.0 €
+
+# Utilisation du SETTER (affectation classique)
+compte.solde = 1500.0  # Le contrôle passe par la méthode @solde.setter
+print(f"Nouveau solde : {compte.solde} €")  # Affiche: 1500.0 €
+
+# Tentative de modification invalide
+try:
+    compte.solde = -500.0  # Déclenche l'exception ValueError
+except ValueError as e:
+    print(f"Erreur : {e}")
+
+```
+
+---
+
+* **Contrôle et sécurité :** Le *setter* permet de valider les données (ex. refuser des valeurs négatives ou de mauvais types) avant de modifier l'état de l'objet.
+* **Accès transparent :** Grâce à `@property`, l'utilisateur de la classe lit et modifie l'attribut avec une syntaxe naturelle (`compte.solde = 500`) sans savoir qu'une méthode de contrôle est exécutée.
+* **Convention d'encapsulation :** L'attribut réel est préfixé d'un tiret bas (`_solde`) pour signaler qu'il s'agit d'une donnée interne ne devant pas être manipulée directement.
+* 
 ## Héritage de classes et chaînage des constructeurs
 
 L'**héritage** permet à une classe fille (ou dérivée) d'accéder aux attributs et méthodes d'une classe mère (ou parente). Le **chaînage des constructeurs** consiste à appeler le constructeur de la classe mère depuis le constructeur de la classe fille à l'aide de la fonction intégrée `super()`. Cela garantit que la partie "parente" de l'objet est correctement initialisée avant d'y ajouter les spécificités de la classe fille.
@@ -218,7 +268,7 @@ L'organisation des classes au sein de modules et de packages permet de structure
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant classes, constructeur, méthodes, self, héritage et redéfinition
