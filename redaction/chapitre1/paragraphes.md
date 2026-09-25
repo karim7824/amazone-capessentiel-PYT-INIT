@@ -56,6 +56,25 @@ print("Racine carrée calculée via CPython :", resultat)
 
 ```
 
+** Workflow : Cycle de conversion Python $\rightarrow$ `.so` / `.dll` via Cython **
+
+```
+ [1. Code Python (.py)] 
+         │
+         ▼
+ [2. Optimisation (.pyx)] ── (Optionnel : ajout de types C)
+         │
+         ▼
+ [3. Cythonisation] ───────► Génère le fichier C intermediary (.c)
+         │
+         ▼
+ [4. Compilation C] ────────► Compilateur natif (GCC / Clang / MSVC)
+         │
+         ▼
+ [5. Binaire final] ────────► Extension native (.so / .pyd / .dll)
+
+```
+
 > 💡 **Piège classique :** La présence du verrou global du fermenteur (GIL) dans CPython limite le véritable multithreading parallèle sur les processeurs multi-cœurs.
 
 ## Rôles de Cython, IronPython et Jython
