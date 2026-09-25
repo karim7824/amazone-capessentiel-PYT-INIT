@@ -4,25 +4,44 @@ Le traitement de masses de données permet d'appliquer des transformations et de
 Dans ce chapitre :
 
 * Fonctions anonymes `lambda`
-
 * Filtrage de données avec `filter`
-
 * Transformation de données avec `map`
-
 * Agrégation de données avec `reduce`
-
 
 ---
 
 ## Fonction anonyme Lambda
 
-Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels.
+Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels. Au lieu de créer une fonction au moyen de def et la documenter, on préfère utiliser une lambda qui est une fonction sans nom et utilisée à la volée et peut être une fois.
 
 ```python
 # Déclaration et appel d'une fonction lambda pour calculer le carré
 carre = lambda x: x ** 2
 resultat = carre(5)
+print(resultat) #25
 
+# fonction lambda
+print(lambda x :  x* x)
+<function <lambda> at 0x000001700E078D60>
+
+# créer une lambda et l'appeler dans la foulée
+print((lambda x :  x* x) (10))
+100
+
+# Vérifier si un nombre est pair ou impair
+>pair_ou_impair = lambda x: "Pair" if x % 2 == 0 else "Impair"
+>print(pair_ou_impair(4))  # Pair
+>print(pair_ou_impair(7))  # Impair
+
+# Tri d'une liste de tuples (nom, âge) selon l'âge (2ᵉ élément)
+personnes = [("Alice", 30), ("Bob", 25), ("Charlie", 35)]
+personnes.sort(key=lambda p: p[1])
+print(personnes)  # [('Bob', 25), ('Alice', 30), ('Charlie', 35)]
+
+# Tri d'une liste de dictionnaires selon la longueur de la valeur
+produits = [{"nom": "Clavier"}, {"nom": "Écran"}, {"nom": "Souris"}]
+produits_tries = sorted(produits, key=lambda d: len(d["nom"]))
+print(produits_tries)  # [{'nom': 'Écran'}, {'nom': 'Souris'}, {'nom': 'Clavier'}]
 ```
 
 > 💡 Utilisez les fonctions `lambda` principalement comme arguments pour des fonctions de traitement de collections comme `map` ou `filter`.
@@ -34,9 +53,26 @@ resultat = carre(5)
 La fonction `filter()` permet de filtrer les éléments d'une collection en évaluant chaque élément à l'aide d'une fonction conditionnelle qui retourne un booléen.
 
 ```python
+
 # Filtrage des nombres pairs d'une liste
 nombres = [1, 2, 3, 4, 5, 6]
-pairs = list(filter(lambda x: x % 2 == 0, nombres))
+pairs = list(filter(lambda x: x % 2 == 0, nombres)) #[2, 4, 6]
+
+# trier la liste de chaînes sur leur longueur
+mots = ["Python", "C++", "JavaScript", "Go"]
+# Trouve le mot le plus long
+mot_long = max(mots, key=lambda s : len(s))
+print(mot_long)  # "JavaScript"
+
+# avec une dictionnaire
+operations = {
+    "+": lambda a, b: a + b,
+    "-": lambda a, b: a - b,
+    "*": lambda a, b: a * b,
+    "/": lambda a, b: a / b if b != 0 else "Erreur : division par zéro"
+}
+print(operations["+"](10, 5))  # 15
+print(operations["/"](10, 0))  # Erreur : division par zéro
 
 ```
 
@@ -51,7 +87,11 @@ La fonction `map()` applique une fonction spécifique à l'ensemble des élémen
 ```python
 # Application d'une transformation pour multiplier par 2 chaque élément
 valeurs = [1, 2, 3, 4]
-doubles = list(map(lambda x: x * 2, valeurs))
+doubles = list(map(lambda x: x * 2, valeurs))  #[2, 4, 6, 8]
+
+# --- map() : Appliquer une opération sur chaque élément (ex: doubler) ---
+doubles = list(map(lambda x: x * 2, nombres))
+print(doubles)  # [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 ```
 
@@ -68,7 +108,7 @@ from functools import reduce
 
 # Calcul de la somme des éléments d'une liste par réduction
 nombres = [1, 2, 3, 4]
-somme_totale = reduce(lambda x, y: x + y, nombres)
+somme_totale = reduce(lambda x, y: x + y, nombres) #10
 
 ```
 
@@ -76,7 +116,7 @@ somme_totale = reduce(lambda x, y: x + y, nombres)
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 from functools import reduce
@@ -98,7 +138,8 @@ print(f"Montant global de la commande : {montant_global:.2f} €")
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Utilisez la fonction `filter()` associée à une expression `lambda` pour extraire uniquement les mots de longueur supérieure à 5 caractères d'une liste de chaînes.
-2. **Exercice 2 :** Importez `reduce` depuis `functools` et écrivez un script qui calcule le produit de tous les éléments d'une liste d'entiers.
+**Exercice 1 :** Utilisez la fonction `filter()` associée à une expression `lambda` pour extraire uniquement les mots de longueur supérieure à 5 caractères d'une liste de chaînes.
+
+**Exercice 2 :** Importez `reduce` depuis `functools` et écrivez un script qui calcule le produit de tous les éléments d'une liste d'entiers.
