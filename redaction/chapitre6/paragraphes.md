@@ -59,7 +59,7 @@ s.strip()               # "Python"
 
 ---
 
-**SÉPARATION ET JONCTION**
+**Séparation et jonction**
 
 ```python
 # 5. split() : Découpe une chaîne en liste selon un séparateur (espace par défaut)
@@ -72,7 +72,7 @@ s.strip()               # "Python"
 
 ---
 
-**RECHERCHE ET REMPLACEMENT**
+**Recherche et remplacement**
 
 ```python
 s = "Bonjour tout le monde"
@@ -90,7 +90,7 @@ s.count("o")                   # 4
 
 ---
 
-**VÉRIFICATION DE CONTENU (RETOURNENT UN BOULÉEN)**
+**Vérification de contenu (retournent un booléen)**
 
 ```python
 # 10. startswith() : Vérifie si la chaîne commence par un motif
