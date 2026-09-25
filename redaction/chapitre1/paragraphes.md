@@ -155,7 +155,17 @@ if __name__ == "__main__":
 
 ```
 
-> 💡 **Bonne pratique :** Utilisez toujours le mot-clé `with` pour la manipulation de fichiers afin de garantir leur fermeture automatique même en cas d'erreur.
+| Domaine / Type d'application | Cas d'usage principaux | Frameworks & Bibliothèques clés |
+| --- | --- | --- |
+| **Développement Web (Backend)** | API REST/GraphQL, plateformes web, CMS, microservices | Django, FastAPI, Flask |
+| **Data Science & Big Data** | Analyse de données, statistiques, manipulation de jeux de données complexes | Pandas, NumPy, Polars |
+| **Intelligence Artificielle & ML** | Apprentissage automatique, Deep Learning, vision par ordinateur, LLM | PyTorch, TensorFlow, Scikit-Learn, OpenCV, LangChain |
+| **Automation & Scripting** | Automatisation de tâches système, web scraping, scripts d'administration / DevOps | Ansible, BeautifulSoup, Scrapy, Selenium |
+| **Supervision & Systèmes** | Outillage réseau, collecte de métriques système, agents de monitoring | `psutil`, Glances, Fabric |
+| **Interfaces Graphiques (GUI Desktop)** | Applications de bureau multi-plateformes | PyQt / PySide, Tkinter, CustomTkinter, Flet (Flutter) |
+| **Tests & Qualité Logicielle** | Tests unitaires, tests d'intégration, automatisation QA | Pytest, Robot Framework, Unittest |
+| **Calcul Scientifique & Financier** | Simulation physique, modélisation mathématique, quant trading | SciPy, SymPy, QuantLib |
+| **Jeux Vidéo & Multimédia** | Prototypage de jeux 2D, scripts logiques pour moteurs 3D | Pygame, Arcade, Godot (via GDNative/Python) |
 
 ---
 
