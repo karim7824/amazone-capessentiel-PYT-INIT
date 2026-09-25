@@ -14,6 +14,25 @@ Dans ce chapitre :
 
 Les opérateurs d'affectation permettent d'attribuer une valeur à une variable en mémoire, parfois en combinant cette affectation avec une opération mathématique. Ils simplifient l'écriture des mises à jour de variables.
 
+Les **opérateurs d'affectation** en Python, combinant l'affectation simple et les affectations augmentées 
+
+| Opérateur | Nom | Exemple | Équivalent à | Description |
+| --- | --- | --- | --- | --- |
+| **`=`** | Affectation simple | `x = 5` | `x = 5` | Assigne la valeur à la variable. |
+| **`+=`** | Addition et affectation | `x += 3` | `x = x + 3` | Ajoute la valeur et réaffecte. |
+| **`-=`** | Soustraction et affectation | `x -= 2` | `x = x - 2` | Soustrait la valeur et réaffecte. |
+| **`*=`** | Multiplication et affectation | `x *= 4` | `x = x * 4` | Multiplie et réaffecte. |
+| **`/=`** | Division et affectation | `x /= 2` | `x = x / 2` | Divise (résultat `float`) et réaffecte. |
+| **`//=`** | Division entière et affectation | `x //= 2` | `x = x // 2` | Divise en tronquant le décimal et réaffecte. |
+| **`%=`** | Modulo et affectation | `x %= 3` | `x = x % 3` | Calcule le reste de la division et réaffecte. |
+| **`**=`** | Puissance et affectation | `x **= 2` | `x = x ** 2` | Élève à la puissance et réaffecte. |
+| **`&=`** | ET binaire et affectation | `x &= 3` | `x = x & 3` | Opération bitwise AND et réaffecte. |
+| **`|=`** | OU binaire et affectation | `x |= 3` | `x = x | 3` | Opération bitwise OR et réaffecte. |
+| **`^=`** | OU exclusif binaire | `x ^= 3` | `x = x ^ 3` | Opération bitwise XOR et réaffecte. |
+| **`>>=`** | Décalage à droite | `x >>= 1` | `x = x >> 1` | Décale les bits vers la droite et réaffecte. |
+| **`<<=`** | Décalage à gauche | `x <<= 1` | `x = x << 1` | Décale les bits vers la gauche et réaffecte. |
+| **`:=`** | Walrus (expression d'affectation) | `if (n := len(l)) > 0:` | *N/A* | Assigne une valeur **au sein d'une expression** (Python 3.8+). |
+
 ```python
 # Affectation simple et affectation augmentée
 score = 10     # Affectation simple de la valeur 10
