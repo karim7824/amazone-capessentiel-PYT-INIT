@@ -4,8 +4,10 @@ La programmation orientée objets permet de structurer un programme autour de co
 Dans ce chapitre :
 
 * Approche de l'orienté objets
-* Composition d'une classe (constructeur, méthodes et données)
 * Objets et instances de classe (`self`, `super`)
+* Composition d'une classe (constructeur, méthodes et données)
+* Composition d'une classe - setter, getter
+* Héritage de classes et chaînage des constructeurs
 * Héritage de classes et redéfinition
 * Packages, imports et classes
 
