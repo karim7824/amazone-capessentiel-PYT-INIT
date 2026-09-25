@@ -15,7 +15,7 @@ Les structures conditionnelles permettent d'exécuter des blocs de code différe
 
 Voici la forme générale des structures conditionnelles `if / elif / else` en Python :
 
-### Forme générale
+**Forme générale**
 
 ```python
 if condition_1:
@@ -35,7 +35,7 @@ else:
 
 ---
 
-### Points clés à retenir
+**Points clés à retenir**
 
 * **`if`** : Obligatoire (un seul par bloc). C'est le point d'entrée de la condition.
 * **`elif`** *(contraction de "else if")* : Optionnel. Il peut y en avoir zéro, un ou plusieurs à la suite.
@@ -44,8 +44,6 @@ else:
 * **L'indentation** *(4 espaces)* : Obligatoire. C'est elle qui délimite le bloc de code rattaché à chaque condition.
 
 ---
-
-### Exemple concret
 
 ```python
 note = 14
@@ -171,18 +169,18 @@ for cle, valeur in parametres.items():
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant conditions, boucles, range, zip et items
 utilisateurs = ["Alice", "Bob", "Charlie"]
 points = [45, 60, 30]
 
-# 1. Boucle avec range pour un affichage numéroté
+# Boucle avec range pour un affichage numéroté
 for i in range(len(utilisateurs)):
     print(f"Rang {i + 1}")
 
-# 2. Boucle avec zip pour associer utilisateurs et scores
+# Boucle avec zip pour associer utilisateurs et scores
 for user, score in zip(utilisateurs, points):
     # 3. Structure conditionnelle classique
     if score >= 50:
@@ -191,7 +189,7 @@ for user, score in zip(utilisateurs, points):
         niveau = "Débutant"
     print(f"{user} ({niveau}) avec {score} pts")
 
-# 4. Boucle avec items() pour parcourir un dictionnaire de configuration
+# Boucle avec items() pour parcourir un dictionnaire de configuration
 config = {"mode": "admin", "debug": True}
 for parametre, etat in config.items():
     match parametre:
@@ -202,8 +200,10 @@ for parametre, etat in config.items():
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 listes  = [['TOTO1',1],['TOTO2',2],...['TOTO5',5]]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
-2. **Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
-3. **Exercice 2 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.
+**Exercice 1 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 listes  = [['TOTO1',1],['TOTO2',2],...['TOTO5',5]]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
+
+**Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
+
+**Exercice 2 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.
