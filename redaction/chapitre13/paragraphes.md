@@ -70,22 +70,22 @@ def sauvegarde(folder):
 
 
 if __name__ == "__main__":
-    # 1. Création du parseur avec une description pour l'aide
+    # Création du parseur avec une description pour l'aide
     parser = argparse.ArgumentParser(
         description="Script de sauvegarde de dossier."
     )
 
-    # 2. Définition de l'argument obligatoire (positionnel)
+    # Définition de l'argument obligatoire (positionnel)
     parser.add_argument(
         "folder",
         type=str,
         help="Chemin du dossier à sauvegarder",
     )
 
-    # 3. Analyse des arguments de la ligne de commande
+    # Analyse des arguments de la ligne de commande
     args = parser.parse_args()
 
-    # 4. Appel de la fonction avec l'argument récupéré
+    # Appel de la fonction avec l'argument récupéré
     sauvegarde(args.folder)
 
 ```
