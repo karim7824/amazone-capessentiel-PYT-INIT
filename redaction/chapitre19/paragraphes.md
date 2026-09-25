@@ -87,20 +87,30 @@ while x < 10: pass
 
 ```
 
-## Fonctions
+## Fonctions & Générateurs
 
-```python
 def add(a: int, b: int) -> int: return a + b
-def sum_all(*nums: int) -> int: return sum(nums)
-mul = lambda a, b: a * b             # anonyme / lambda
-def identity(val: T) -> T: return val # générique
+def sum_all(*args: int) -> int: return sum(args)           # *args : arguments positionnels variables (tuple)
+def config(**kwargs): print(kwargs.get("theme"))          # **kwargs : arguments nommés variables (dict)
+def combo(x, *args, **kwargs): pass                        # combinaison classique
 
+mul = lambda a, b: a * b                                   # anonyme / lambda
+def identity(val: T) -> T: return val                       # générique
+
+# Générateurs (évaluation paresseuse / memory friendly)
+def compte_jusqua(n: int):
+    for i in range(n):
+        yield i                                           # produit une valeur et suspend l'exécution
+
+gen = compte_jusqua(5)
+next(gen)                                                 # 0 (récupère l'élément suivant)
+gen_exp = (x**2 for x in range(10))                        # expression génératrice (analogue aux list comprehension)
+
+# Fonctions d'ordre supérieur
 list(map(lambda x: x * 2, arr))
 list(filter(lambda x: x > 0, arr))
 from functools import reduce
 reduce(lambda acc, x: acc + x, arr, 0)
-
-```
 
 ## Exceptions
 
@@ -243,3 +253,18 @@ from unittest.mock import Mock
 mock = Mock()
 
 ```
+## Tests & Couverture de code (CLI & Code)
+
+# Commandes Pytest en ligne de commande (CLI)
+pytest                             # exécute tous les tests du projet
+pytest test_script.py              # exécute un fichier de test spécifique
+pytest -k "login or signup"        # filtre les tests par nom de fonction/classe
+pytest -v                          # mode verbeux (détaille chaque test)
+pytest -x                          # s'arrête au premier échec rencontrée
+pytest --lf                        # réexécute uniquement les derniers tests échoués (--last-failed)
+
+# Couverture de code avec pytest-cov
+pytest --cov                       # lance les tests avec rapport de couverture global
+pytest --cov=mon_module            # calcule la couverture uniquement pour 'mon_module'
+pytest --cov --cov-report=term-missing  # affiche les numéros des lignes non couvertes dans la console
+pytest --cov --cov-report=html     # génère un rapport HTML interactif (dossier htmlcov/index.html)
