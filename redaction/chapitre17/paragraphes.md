@@ -105,7 +105,6 @@ class CompteBancaire:
         else:
             print("Fonds insuffisants ou montant invalide.")
 
-
 # --- Utilisation de la classe (Instanciation et appel des méthodes) ---
 
 # Instanciation de deux comptes distincts
@@ -121,10 +120,69 @@ compte_bob.deposer(150.0)      # Dépôt de 150.00 € effectué.
 compte_bob.afficher_solde()    # Compte de Bob : 350.00 €
 
 ```
-
+* **Le constructeur (`__init__`) :** initialise les deux attributs (`titulaire` et `solde`) dès la création de l'objet.
+* **Les attributs (`self.titulaire`, `self.solde`) :** stockent l'état interne de chaque compte de façon indépendante.
+* **Les méthodes (`deposer`, `retirer`, `afficher_solde`) :** contiennent la logique métier pour modifier ou consulter l'état du compte.
 > 💡 Le constructeur s'exécute automatiquement lors de l'instanciation de la classe pour initialiser l'état initial des données de l'objet.
 
 ---
+
+## Héritage de classes et chaînage des constructeurs
+
+L'**héritage** permet à une classe fille (ou dérivée) d'accéder aux attributs et méthodes d'une classe mère (ou parente). Le **chaînage des constructeurs** consiste à appeler le constructeur de la classe mère depuis le constructeur de la classe fille à l'aide de la fonction intégrée `super()`. Cela garantit que la partie "parente" de l'objet est correctement initialisée avant d'y ajouter les spécificités de la classe fille.
+
+```python
+# Classe mère (Parente)
+class CompteBancaire:
+    def __init__(self, titulaire: str, solde_initial: float = 0.0):
+        self.titulaire = titulaire
+        self.solde = solde_initial
+
+    def afficher_solde(self):
+        print(f"Compte de {self.titulaire} : {self.solde:.2f} €")
+
+    def deposer(self, montant: float):
+        if montant > 0:
+            self.solde += montant
+
+
+# Classe fille (Hérite de CompteBancaire)
+class CompteEpargne(CompteBancaire):
+    def __init__(self, titulaire: str, solde_initial: float = 0.0, taux_interet: float = 0.02):
+        # Chaînage du constructeur : appel du __init__ de CompteBancaire
+        super().__init__(titulaire, solde_initial)
+        
+        # Attribut spécifique à la classe fille
+        self.taux_interet = taux_interet
+
+    # Méthode propre à la classe fille
+    def ajouter_interets(self):
+        interets = self.solde * self.taux_interet
+        self.solde += interets
+        print(f"Intérêts ajoutés ({self.taux_interet * 100}%) : +{interets:.2f} €")
+
+
+# --- Utilisation ---
+
+# Création d'une instance de la classe fille
+mon_epargne = CompteEpargne("Charlie", 1000.0, taux_interet=0.03)
+
+# Utilisation des méthodes héritées
+mon_epargne.afficher_solde()  # Compte de Charlie : 1000.00 €
+mon_epargne.deposer(500.0)
+
+# Utilisation des fonctionnalités propres à CompteEpargne
+mon_epargne.ajouter_interets() # Intérêts ajoutés (3.0%) : +45.00 €
+mon_epargne.afficher_solde()  # Compte de Charlie : 1545.00 €
+
+```
+
+---
+
+* **Syntaxe de l'héritage :** `class ClasseFille(ClasseMere):` déclare la relation de parenté.
+* **Fonction `super()` :** renvoie une référence temporaire à la classe mère pour invoquer sa méthode `__init__()` ou d'autres méthodes surchargées.
+* **Réutilisation de code :** la classe fille hérite automatiquement de toutes les méthodes publiques (`deposer`, `afficher_solde`) sans avoir à les réécrire.
+
 
 ## Héritage de classes et redéfinition
 
@@ -190,7 +248,8 @@ print(admin.obtenir_profil())
 
 ```
 
-## Exercices
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Créez une classe `Livre` possédant un constructeur initialisant un titre et un auteur, ainsi qu'une méthode retournant une description textuelle de l'ouvrage.
-2. **Exercice 2 :** Développez une classe fille `LivreNumerique` qui hérite de la classe `Livre` en y ajoutant un attribut supplémentaire pour la taille du fichier en mégaoctets, puis instanciez un objet de cette classe.
+**Exercice 1 :** Créez une classe `Livre` possédant un constructeur initialisant un titre et un auteur, ainsi qu'une méthode retournant une description textuelle de l'ouvrage.
+
+**Exercice 2 :** Développez une classe fille `LivreNumerique` qui hérite de la classe `Livre` en y ajoutant un attribut supplémentaire pour la taille du fichier en mégaoctets, puis instanciez un objet de cette classe.
