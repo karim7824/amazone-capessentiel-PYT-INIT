@@ -31,18 +31,14 @@ Les types scalaires représentent des valeurs uniques et atomiques, non décompo
 
 Voici le tableau corrigé, sans les balises `<br>` superflues ni les sauts de ligne intempestifs qui cassaient le rendu Markdown :
 
+Voici le tableau propre, une ligne par type pour éviter le bazar des balises HTML :
+
 | Catégorie | Type (`type()`) | Mutabilité | Exemples de syntaxe |
 | --- | --- | --- | --- |
-| **Numérique** | `int` (entier)<br>
-
-<br>`float` (décimal)<br>
-
-<br>`complex` (complexe) | Immuable | `10`, `-5`<br>
-
-<br>`3.14`, `2.0`<br>
-
-<br>`1 + 2j` |
-| **Texte** | `str` (chaîne de caractères) | Immuable | `"Bonjour"`, `'Python'` |
+| **Numérique** | `int` (entier) | Immuable | `10`, `-5` |
+| **Numérique** | `float` (décimal) | Immuable | `3.14`, `2.0` |
+| **Numérique** | `complex` (complexe) | Immuable | `1 + 2j` |
+| **Texte** | `str` (chaîne) | Immuable | `"Bonjour"`, `'Python'` |
 
 ```python
 temperature = 23.5    # Flottant (float) pour les décimaux
