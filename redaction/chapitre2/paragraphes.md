@@ -21,6 +21,15 @@ print(f"Architecture : {architecture}")
 # Affiche directement : "64bit" ou "32bit"
 ```
 
+Différence entre `python`, `python3` et `py`
+
+| Commande | Environnement | Description |
+| --- | --- | --- |
+| **`python`** | Multiplateforme | Lance l'interpréteur par défaut configuré dans le `PATH`. |
+| **`python3`** | Linux / macOS | Commande standard pour garantir l'exécution de **Python 3**. |
+| **`py`** | Windows uniquement | Launcher qui détecte et exécute la bonne version (x64/x86) sans paramétrer le `PATH`. |
+---
+
 > 💡 **Bonne pratique :** Vérifiez toujours après l'installation que la commande `python --version` (ou `python3 --version`) répond correctement dans votre invite de commande.
 
 ## Créer un projet Python main.py avec la condition `__name__ == '__main__'`
