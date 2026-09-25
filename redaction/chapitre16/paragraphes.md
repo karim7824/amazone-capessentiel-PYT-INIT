@@ -76,25 +76,86 @@ with open("texte_unicode.txt", "r", encoding="utf-8") as f:
 
 ```
 
+## Gestion des répertoires - mkdir, listdir, walk, move, rmdir
 
-## Créer un fichier text en unicode - ecrire
-
-La création d'un fichier texte en encodage Unicode garantit la prise en charge universelle des caractères accentués et des symboles internationaux. Les fonctions natives permettent d'ouvrir, d'écrire et de lire ces contenus en toute sécurité.
+Le module `os` et l'utilitaire `shutil` permettent de manipuler l'arborescence des dossiers. Vous pouvez créer, lister, parcourir récursivement ou supprimer des répertoires. Ces fonctions sont essentielles pour l'automatisation des tâches d'administration système.
 
 ```python
+import os
+import shutil
 
-# Création, écriture et lecture d'un fichier texte en UTF-8
-with open("document.txt", "w", encoding="utf-8") as f:
-    f.write("Texte en Unicode avec des accents : é, à, ê.")
+# Création et listing d'un répertoire
+os.mkdir("mon_dossier")
+print("Contenu :", os.listdir("."))
 
-with open("document.txt", "r", encoding="utf-8") as f:
-    contenu = f.read()
+# Déplacement/renommage et suppression
+shutil.move("mon_dossier", "dossier_archive")
+os.rmdir("dossier_archive")
 
 ```
 
-> 💡 Spécifiez systématiquement l'argument `encoding="utf-8"` lors de l'ouverture de fichiers texte pour éviter les erreurs de décodage selon les systèmes d'exploitation.
+## Recherche dans un répertoire
+
+| Méthode | Usage | Récursif ? | Support de motifs (`*.py`) |
+| --- | --- | --- | --- |
+| **`Path.glob("*.py")`** | Fichiers `.py` dans le dossier courant uniquement | Non | Oui |
+| **`Path.rglob("*.py")`** | Fichiers `.py` dans le dossier et **tous ses sous-dossiers** | Oui | Oui |
+| **`Path.walk()`** *(3.12+)* | Générateur arborescent complet (style `os.walk`) | Oui | Non (filtrage manuel) |
+
+Recherche des fichiers *.py dans un répertoire de manière récursive
+```python
+from pathlib import Path
+
+# Parcours récursif de tous les fichiers .py à partir du dossier courant
+for fichier in Path(".").rglob("*.py"):
+    print(fichier)
+
+Recherche des fichiers *.py dans un répertoire 
+```python
+from pathlib import Path
+
+# Parcours récursif de tous les fichiers .py à partir du dossier courant
+for fichier in Path(".").rglob("*.py"):
+    print(fichier)
+
+```
+Si vous utilisez `Path.walk()`, le filtrage doit se faire manuellement dans la boucle à l'aide de `.match()` ou `.endswith()` :
+```python
+from pathlib import Path
+
+# Path.walk() génère des tuples (racine, dossiers, fichiers)
+for root, dirs, files in Path(".").walk():
+    for file in files:
+        if file.endswith(".py"):  # ou Path(file).match("*.py")
+            chemin_complet = root / file
+            print(chemin_complet)
+
+```
+
+> 💡 **Attention :** La fonction `os.rmdir()` échoue si le dossier n'est pas vide ; utilisez `shutil.rmtree()` pour tout supprimer de manière récursive.
 
 ---
+
+## Gestion des fichiers - open, read, write, seek, tell, zip
+
+L'instruction `open()` permet de manipuler les fichiers en lecture ou écriture avec gestion du curseur via `seek()` et `tell()`. Le gestionnaire de contexte `with` garantit la fermeture automatique du fichier. Le module `zipfile` permet de créer et d'extraire des archives compressées.
+
+```python
+import zipfile
+
+# Écriture, positionnement du curseur et lecture
+with open("test.txt", "w+") as f:
+    f.write("Ligne de test")
+    f.seek(0)  # Replacer le curseur au début
+    print("Contenu :", f.read())
+
+# Création d'une archive zip
+with zipfile.ZipFile("archive.zip", "w") as zf:
+    zf.write("test.txt")
+
+```
+
+> 💡 **Bonne pratique :** Utilisez toujours le bloc `with open(...)` pour vous assurer que les descripteurs de fichiers sont libérés même en cas d'erreur.
 
 ## Exemple de synthèse
 
