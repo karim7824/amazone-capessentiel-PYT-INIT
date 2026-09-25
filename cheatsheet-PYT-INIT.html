@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Initiation à la programmation avec Python - Cheat-sheet</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-size: 8.3pt;
+        line-height: 1.28;
+        color: #101418;
+        background: #ffffff;
+        padding: 10mm 9mm;
+        width: 210mm;
+    }
+
+    /* Bandeau d'en-tête éditorial */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 2.5px solid #0E4B4B;
+        padding-bottom: 5px;
+        margin-bottom: 8px;
+    }
+
+    header .titres h1 {
+        font-size: 13.5pt;
+        color: #0E4B4B;
+        line-height: 1.1;
+    }
+
+    header .titres .sous-titre {
+        font-size: 8.5pt;
+        color: #C96A4D;
+        font-weight: 600;
+        margin-top: 2px;
+    }
+
+    header .meta {
+        text-align: right;
+        font-size: 7.3pt;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    header .meta .collection {
+        font-weight: 700;
+        color: #0E4B4B;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+    }
+
+    /* Corps en 2 colonnes façon cheat-sheet */
+    .contenu {
+        column-count: 2;
+        column-gap: 7mm;
+        column-rule: 1px solid #ddd;
+    }
+
+    h2 {
+        font-size: 9.3pt;
+        color: #0E4B4B;
+        background: #EAF3F2;
+        padding: 2px 5px;
+        margin: 7px 0 3px 0;
+        border-left: 3px solid #C96A4D;
+        break-inside: avoid;
+        break-after: avoid;
+    }
+
+    p { margin: 2px 0; break-inside: avoid; }
+
+    pre {
+        background: #F4F6F6;
+        border: 1px solid #E0E4E4;
+        border-radius: 3px;
+        padding: 4px 6px;
+        margin: 2px 0 6px 0;
+        overflow-x: hidden;
+        break-inside: avoid;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    code {
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 7.4pt;
+        line-height: 1.25;
+    }
+
+    p code {
+        background: #EFEFEF;
+        padding: 0 3px;
+        border-radius: 2px;
+    }
+
+    ul, ol { margin: 2px 0 4px 14px; break-inside: avoid; }
+    li { margin: 1px 0; }
+
+    footer {
+        margin-top: 8px;
+        padding-top: 4px;
+        border-top: 1px solid #ddd;
+        font-size: 6.7pt;
+        color: #999;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="titres">
+        <h1>Initiation à la programmation avec Python</h1>
+        <div class="sous-titre">Pratique de la syntaxe de base de Python</div>
+    </div>
+    <div class="meta">
+        <div class="collection">lesgaleriens</div>
+        <div>amazone</div>
+        <div>BELHADJ Karim</div>
+    </div>
+</header>
+
+<div class="contenu">
+<h1>L'essentiel de l'essentiel à retenir sur Python</h1>
+<h2>Installation &amp; commandes</h2>
+<pre><code class="language-bash">python --version                     # vérifier la version de Python
+python -m venv .venv                 # créer un environnement virtuel
+source .venv/bin/activate            # activer venv (Linux/macOS)
+.venv\Scripts\activate               # activer venv (Windows)
+deactivate                           # désactiver l'environnement virtuel
+pip install package                  # installer un paquet
+pip freeze &gt; requirements.txt        # geler les dépendances
+pip install -r requirements.txt      # installer les dépendances
+python main.py                       # exécuter un script Python
+python -m pytest                     # exécuter les tests unitaire
+python -m pytest --cov               # couverture de code
+
+</code></pre>
+<h2>Variables &amp; types scalaires</h2>
+<pre><code class="language-python"># Affectation dynamique
+x = 1
+PI = 3.14
+
+n = 10                               # int
+prix = 19.99                         # float
+ok = True                            # bool
+s = &quot;texte&quot;                          # str
+v = None                             # NoneType (absence de valeur)
+u = 5                                # union logique (dynamique)
+
+</code></pre>
+<h2>Types agrégés</h2>
+<pre><code class="language-python">obj = {&quot;nom&quot;: &quot;A&quot;, &quot;age&quot;: 30}         # dict
+arr = [1, 2, 3]                      # list (mutable)
+tup = (&quot;a&quot;, 1)                       # tuple (immuable)
+ens = {1, 2, 3}                      # set (éléments uniques)
+from enum import Enum
+class Couleur(Enum): ROUGE = 1       # enum
+opt = None                           # optionnel / nullable
+ID = int | str                       # type alias (Python 3.10+)
+
+</code></pre>
+<h2>Casting</h2>
+<pre><code class="language-python">v1 = str(125)                        # int -&gt; str (&quot;125&quot;)
+v2 = int(&quot;42&quot;)                       # str -&gt; int (42)
+v3 = float(&quot;19.99&quot;)                  # str -&gt; float (19.99)
+v4 = list({1, 2, 3})                 # set -&gt; list
+
+</code></pre>
+<h2>Opérateurs</h2>
+<pre><code class="language-python">+ - * / // % **                      # arithmétiques (// entière, ** puissance)
+== != &lt; &gt; &lt;= &gt;=                      # relationnels
+and or not                           # logiques
+= += -= *=                           # affectation
+x if condition else y                # ternaire
+a | b                                # union d'ensembles ou de types
+
+</code></pre>
+<h2>Contrôle de flux</h2>
+<pre><code class="language-python">if x &gt; 0: pass
+elif x == 0: pass
+else: pass
+
+match x:                             # Python 3.10+
+    case 1: pass
+    case _: pass
+
+for i in range(10): pass
+for item in arr: pass
+for k, v in obj.items(): pass
+while x &lt; 10: pass
+
+</code></pre>
+<h2>Fonctions</h2>
+<pre><code class="language-python">def add(a: int, b: int) -&gt; int: return a + b
+def sum_all(*nums: int) -&gt; int: return sum(nums)
+mul = lambda a, b: a * b             # anonyme / lambda
+def identity(val: T) -&gt; T: return val # générique
+
+list(map(lambda x: x * 2, arr))
+list(filter(lambda x: x &gt; 0, arr))
+from functools import reduce
+reduce(lambda acc, x: acc + x, arr, 0)
+
+</code></pre>
+<h2>Exceptions</h2>
+<pre><code class="language-python">try:
+    raise ValueError(&quot;oups&quot;)
+except ValueError as e:
+    print(e)
+finally:
+    pass                             # toujours exécuté
+
+</code></pre>
+<h2>Modules &amp; Packages</h2>
+<pre><code class="language-python"># mon_module.py
+def f(): pass
+class C: pass
+o = {}
+
+# main.py
+from mon_module import f, C, o
+import os
+from pathlib import Path
+
+</code></pre>
+<h2>Programmation orientée objet</h2>
+<pre><code class="language-python">from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    espece = &quot;inconnue&quot;               # attribut de classe / static
+    def __init__(self, nom: str):
+        self._nom = nom              # protégé
+    @abstractmethod
+    def crier(self): pass
+
+class Chien(Animal):
+    def crier(self):
+        print(f&quot;{self._nom} aboie&quot;)
+
+class Generique[T]:
+    def __init__(self, v: T):
+        self.valeur = v
+
+</code></pre>
+<h2>Asynchrone</h2>
+<pre><code class="language-python">import asyncio
+
+async def attendre(ms: int):
+    await asyncio.sleep(ms / 1000)
+
+async def main():
+    await attendre(1000)
+    print(&quot;fait&quot;)
+
+# asyncio.run(main())
+
+</code></pre>
+<h2>Tests (Pytest / Unittest)</h2>
+<pre><code class="language-python"># test_main.py
+def test_cas():
+    assert 1 + 1 == 2
+
+from unittest.mock import Mock
+mock = Mock()
+
+</code></pre>
+</div>
+
+<footer>amazone — Collection lesgaleriens — BELHADJ Karim</footer>
+
+</body>
+</html>
