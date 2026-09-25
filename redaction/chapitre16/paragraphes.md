@@ -77,7 +77,7 @@ with open("texte_unicode.txt", "r", encoding="utf-8") as f:
 ```
 
 
-## Créer un fichier text en unicode - ouvrir, ecrire, lire
+## Créer un fichier text en unicode - ecrire
 
 La création d'un fichier texte en encodage Unicode garantit la prise en charge universelle des caractères accentués et des symboles internationaux. Les fonctions natives permettent d'ouvrir, d'écrire et de lire ces contenus en toute sécurité.
 
@@ -96,26 +96,27 @@ with open("document.txt", "r", encoding="utf-8") as f:
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant les concepts de streams et la gestion de fichiers Unicode
 
 nom_fichier = "message_unicode.txt"
 
-# 1. Écriture dans un fichier texte en Unicode
+# Écriture dans un fichier texte en Unicode
 with open(nom_fichier, "w", encoding="utf-8") as fichier_sortie:
     fichier_sortie.write("Bonjour Karim !\n")
     fichier_sortie.write("Apprentissage de la gestion des flux et fichiers en Python.\n")
 
-# 2. Lecture du fichier texte via un flux sécurisé
+# Lecture du fichier texte via un flux sécurisé
 with open(nom_fichier, "r", encoding="utf-8") as fichier_entree:
     for numero_ligne, ligne in enumerate(fichier_entree, start=1):
         print(f"Ligne {numero_ligne} : {ligne.strip()}")
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script qui crée un fichier texte nommé `notes.txt` en encodage Unicode, puis y inscrit une phrase comportant des caractères accentués.
-2. **Exercice 2 :** Ouvrez le fichier `notes.txt` en mode lecture avec l'encodage approprié, lisez son contenu global et affichez-le dans la console.
+**Exercice 1 :** Écrivez un script qui crée un fichier texte nommé `notes.txt` en encodage Unicode, puis y inscrit une phrase comportant des caractères accentués.
+
+**Exercice 2 :** Ouvrez le fichier `notes.txt` en mode lecture avec l'encodage approprié, lisez son contenu global et affichez-le dans la console.
