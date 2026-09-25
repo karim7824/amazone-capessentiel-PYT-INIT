@@ -60,6 +60,59 @@ Je sauvegarde c:/
 
 ---
 
+## Utilisation de argparse
+
+```python
+import argparse
+
+def sauvegarde(folder):
+    print(f"Je sauvegarde {folder}")
+
+
+if __name__ == "__main__":
+    # 1. Création du parseur avec une description pour l'aide
+    parser = argparse.ArgumentParser(
+        description="Script de sauvegarde de dossier."
+    )
+
+    # 2. Définition de l'argument obligatoire (positionnel)
+    parser.add_argument(
+        "folder",
+        type=str,
+        help="Chemin du dossier à sauvegarder",
+    )
+
+    # 3. Analyse des arguments de la ligne de commande
+    args = parser.parse_args()
+
+    # 4. Appel de la fonction avec l'argument récupéré
+    sauvegarde(args.folder)
+
+```
+
+Lancement avec un argument en trop BB, le contôle est fait
+
+```bash
+python sauvergarde.py  AA BB
+usage: sauvergarde.py [-h] folder
+sauvergarde.py: error: unrecognized arguments: BB
+```
+
+Obtenir une aide 
+```bash
+python sauvergarde.py  -h
+usage: sauvergarde.py [-h] folder
+
+Script de sauvegarde de dossier.
+
+positional arguments:
+  folder      Chemin du dossier à sauvegarder
+
+options:
+  -h, --help  show this help message and exit
+```
+  
+
 ## Gestion de package - pip
 
 L'outil `pip` est le gestionnaire de paquets officiel de Python qui permet d'installer, de mettre à jour et de supprimer des bibliothèques tierces depuis le Python Package Index (PyPI).
@@ -74,7 +127,7 @@ pip install requests
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 import sys
@@ -101,7 +154,8 @@ if __name__ == "__main__":
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script Python comportant une structure `if __name__ == "__main__":` qui affiche un message de bienvenue personnalisé lorsque le fichier est exécuté directement.
-2. **Exercice 2 :** Utilisez le module `sys` pour récupérer un nom passé en argument dans le terminal et affichez une salutation personnalisée intégrant ce paramètre.
+**Exercice 1 :** Écrivez un script Python comportant une structure `if __name__ == "__main__":` qui affiche un message de bienvenue personnalisé lorsque le fichier est exécuté directement.
+
+**Exercice 2 :** Utilisez le module `sys` pour récupérer un nom passé en argument dans le terminal et affichez une salutation personnalisée intégrant ce paramètre.
