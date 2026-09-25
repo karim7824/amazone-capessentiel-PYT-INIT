@@ -173,19 +173,91 @@ for cle, valeur in personne.items():
 
 Une valeur littérale correspond à la représentation directe d'une donnée constante inscrite textuellement dans le code source du programme. Elle permet d'assigner des valeurs figées sans calcul préalable.
 
-**--- Entiers (int) ---**
+
+**Littéraux Numériques**
+
+```python
+# --- Entiers (int) ---
 seuil_maximal = 100         # Décimal standard
 octets = 0b1010             # Binaire (commence par 0b -> vaut 10)
 hexadecimal = 0xFF          # Hexadécimal (commence par 0x -> vaut 255)
 octal = 0o77                # Octal (commence par 0o -> vaut 63)
 grand_nombre = 1_000_000    # Les underscores améliorent la lisibilité (vaut 1000000)
 
-**--- Décimaux (float) ---**
+# --- Décimaux (float) ---
 taux_tva = 20.0             # Notation décimale classique
 pi_approx = 3.14159         # Flottant standard
 charge_electron = 1.6e-19   # Notation scientifique (1.6 x 10^-19)
 
-**--- Complexes (complex) ---**
+# --- Complexes (complex) ---
+impedance = 3 + 4j         # Littéral complexe (partie imaginaire avec 'j' ou 'J')
+
+```
+
+---
+
+**Littéraux Textuels (Chaînes de caractères - `str`)**
+
+```python
+# --- Apostrophes et Guillemets ---
+message_erreur = "Erreur 404"  # Guillemets doubles
+nom_utilisateur = 'Alice'       # Apostrophes simples
+
+# --- Caractères d'échappement ---
+chemin_windows = "C:\\Python\\scripts"  # Échappement de l'antislash avec \\
+citation = "Il a dit : \"Bonjour !\""   # Échappement des guillemets avec \"
+saut_de_ligne = "Ligne 1\nLigne 2"      # \n pour le saut de ligne
+
+# --- Raw Strings (Chaînes brutes) ---
+# Le préfixe 'r' désactive l'interprétation des caractères d'échappement
+regex_pattern = r"C:\nouvelle_dossier\test"  # Le \n n'est pas interprété comme un saut de ligne
+
+# --- F-Strings (Formatage dynamique) ---
+code = 404
+f_string = f"Erreur système : {code}"   # Évalue la variable entre accolades
+
+# --- Multi-lignes (Docstrings / Textes longs) ---
+sql_query = """
+SELECT id, nom 
+FROM utilisateurs 
+WHERE actif = True
+"""
+
+```
+
+---
+
+**Littéraux Booléens et Spécial**
+
+```python
+# --- Booléens (bool) ---
+est_valide = True           # Première lettre obligatoirement en majuscule
+est_connecte = False
+
+# --- Littéral Spécial (NoneType) ---
+valeur_inconnue = None      # Représente l'absence explicite de valeur
+
+```
+
+---
+
+### 4. Littéraux de Collections (Structures de données)
+
+```python
+# --- Liste (list) - Modifiable ---
+coordonnees = [48.8566, 2.3522]
+
+# --- Tuple (tuple) - Immuable ---
+dimensions = (1920, 1080)
+
+# --- Dictionnaire (dict) - Clé/Valeur ---
+config = {"port": 8080, "debug": True}
+
+# --- Ensemble (set) - Valeurs uniques ---
+ports_autorises = {80, 443, 8080}
+
+```
+
 impedance = 3 + 4j         # Littéral complexe (partie imaginaire avec 'j' ou 'J')
 > 💡 Évitez les "nombres magiques" en remplaçant les valeurs littérales numériques répétées par des constantes explicites en début de script.
 
