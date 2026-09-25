@@ -146,15 +146,15 @@ Fonctions et méthodes essentielles sur les dictionnaires
 # Initialisation
 user = {"id": 101, "nom": "Alice", "role": "Dev"}
 
-# 1. Accès sécurisé et modification
+# Accès sécurisé et modification
 role = user.get("role", "Invité")     # Renvoie "Dev" (sans erreur si la clé n'existe pas)
 user["email"] = "alice@test.fr"       # Ajoute une nouvelle clé-valeur
 user["role"] = "Admin"                # Modifie la valeur d'une clé existante
 
-# 2. Fusion et mise à jour
+# Fusion et mise à jour
 user.update({"statut": "Actif", "age": 30})  # Ajoute/modifie plusieurs clés à la fois
 
-# 3. Suppression
+# Suppression
 email = user.pop("email", None)       # Supprime "email" et renvoie sa valeur
 del user["age"]                       # Supprime directement la clé "age"
 
@@ -167,21 +167,21 @@ existe = "nom" in user                # True (vérifie la présence d'une CLÉ)
 
 ---
 
-### 2. Parcours et extraction (items, keys, values)
+### Parcours et extraction (items, keys, values)
 
 ```python
 config = {"host": "localhost", "port": 8080, "debug": True}
 
-# 1. Extraction des clés, valeurs et couples
+# Extraction des clés, valeurs et couples
 cles = config.keys()                  # dict_keys(['host', 'port', 'debug'])
 valeurs = config.values()              # dict_values(['localhost', 8080, True])
 couples = config.items()              # dict_items([('host', 'localhost'), ...])
 
-# 2. Parcours par clé-valeur (le plus utilisé)
+# Parcours par clé-valeur (le plus utilisé)
 for cle, valeur in config.items():
     print(f"{cle} -> {valeur}")
 
-# 3. Dictionnaire par compréhension (filtrage/transformation)
+# Dictionnaire par compréhension (filtrage/transformation)
 config_str = {k: str(v) for k, v in config.items() if k != "debug"}
 # Résultat : {'host': 'localhost', 'port': '8080'}
 
@@ -189,7 +189,7 @@ config_str = {k: str(v) for k, v in config.items() if k != "debug"}
 
 Voici deux exemples pratiques pour parcourir un dictionnaire en Python :
 
-### 1. Parcourir les clés et les valeurs simultanément (`items()`)
+### Parcourir les clés et les valeurs simultanément (`items()`)
 
 C'est la méthode la plus utilisée pour traiter chaque couple clé-valeur :
 
@@ -204,7 +204,7 @@ for cle, valeur in serveur.items():
 
 ---
 
-### 2. Parcourir et transformer avec une dictionnaire compréhension
+### Parcourir et transformer avec une dictionnaire compréhension
 
 Permet de filtrer ou modifier les entrées d'un dictionnaire de façon concise :
 
@@ -218,7 +218,6 @@ print("Prix TTC :", prix_ttc)  # {'article_1': 12.0, 'article_2': 30.0, 'article
 ```
 
 > 💡 **Bonne pratique :** Depuis Python 3.7, l'ordre d'insertion des clés dans un dictionnaire est garanti garanti lors des parcours.
-
 > 💡 Privilégiez l'utilisation de la méthode `.get()` pour interroger un dictionnaire lorsque la clé recherchée est susceptible de ne pas y figurer.
 
 ---
@@ -235,15 +234,15 @@ Voici les exemples sur les **ensembles (`set`)** (opérations d'ensemble et mét
 # Initialisation (collection d'éléments uniques, non ordonnés)
 langages = {"Python", "Java", "C++"}
 
-# 1. Ajout d'éléments
+# Ajout d'éléments
 langages.add("TypeScript")           # Ajoute un élément
 langages.add("Python")               # Ignoré (aucun doublon autorisé)
 
-# 2. Suppression d'éléments
+# Suppression d'éléments
 langages.remove("Java")              # Supprime 'Java' (lève KeyError si absent)
 langages.discard("Rust")             # Supprime 'Rust' (ne fait rien si absent, pas d'erreur)
 
-# 3. Conversion pour dédoublonner une liste
+# Conversion pour dédoublonner une liste
 doublons = [1, 2, 2, 3, 4, 4, 4]
 uniques = set(doublons)              # {1, 2, 3, 4}
 liste_propre = list(uniques)         # [1, 2, 3, 4]
@@ -260,19 +259,19 @@ liste_propre = list(uniques)         # [1, 2, 3, 4]
 dev_backend = {"Python", "Java", "SQL", "Docker"}
 dev_frontend = {"JavaScript", "TypeScript", "HTML", "Docker"}
 
-# 1. Union (|) : Tous les éléments des deux ensembles sans doublons
+# Union (|) : Tous les éléments des deux ensembles sans doublons
 tous = dev_backend | dev_frontend     
 # {'Python', 'Java', 'SQL', 'Docker', 'JavaScript', 'TypeScript', 'HTML'}
 
-# 2. Intersection (&) : Éléments communs aux deux ensembles
+# Intersection (&) : Éléments communs aux deux ensembles
 communs = dev_backend & dev_frontend  
 # {'Docker'}
 
-# 3. Différence (-) : Éléments présents uniquement dans le premier
+# Différence (-) : Éléments présents uniquement dans le premier
 seule_backend = dev_backend - dev_frontend 
 # {'Python', 'Java', 'SQL'}
 
-# 4. Différence symétrique (^) : Éléments non communs
+# Différence symétrique (^) : Éléments non communs
 exclusifs = dev_backend ^ dev_frontend 
 # {'Python', 'Java', 'SQL', 'JavaScript', 'TypeScript', 'HTML'}
 
@@ -291,10 +290,9 @@ for langage in langages:
     print(f"Langage disponible : {langage}")
 
 ```
-
 ---
 
-### 2. Parcourir et filtrer avec une compréhension d'ensemble (*Set Comprehension*)
+### Parcourir et filtrer avec une compréhension d'ensemble (*Set Comprehension*)
 
 Permet de créer un nouvel ensemble en appliquant une condition ou une transformation lors du parcours :
 
@@ -316,17 +314,17 @@ print(pairs_grands)  # Résultat : {40, 8, 22} (l'ordre d'affichage peut varier)
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant listes, dictionnaires et ensembles
-# 1. Gestion des listes : stockage des identifiants de connexions successives
+# Gestion des listes : stockage des identifiants de connexions successives
 historique_connexions = ["user_1", "user_2", "user_1", "user_3"]
 
-# 2. Gestion des set : extraction des utilisateurs uniques sans doublons
+# Gestion des set : extraction des utilisateurs uniques sans doublons
 utilisateurs_uniques = set(historique_connexions)
 
-# 3. Gestion des dict : association d'un statut à chaque utilisateur unique
+# Gestion des dict : association d'un statut à chaque utilisateur unique
 statuts_utilisateurs = {
     "user_1": "actif",
     "user_2": "inactif",
@@ -338,8 +336,10 @@ print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et compter les nombres paires et les impaires
-2. **Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et ages [1,2 ...], les assembler dans une boucles pour former un dict() nom/age 
-3. **Exercice 3 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et créer deux tableaux contenants les paires et les impaires séparemment
+**Exercice 1 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et compter les nombres paires et les impaires
+
+**Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et ages [1,2 ...], les assembler dans une boucles pour former un dict() nom/age 
+
+**Exercice 3 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et créer deux tableaux contenants les paires et les impaires séparemment
