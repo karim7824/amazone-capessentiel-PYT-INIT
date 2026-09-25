@@ -82,6 +82,40 @@ division = 10 / 4   # Division flottante (vaut 2.5)
 
 Les opérateurs relationnels comparent deux valeurs ou expressions et retournent systématiquement un résultat booléen (`True` ou `False`). Ils sont indispensables pour orienter l'exécution du code selon les conditions.
 
+Les **opérateurs relationnels** (ou opérateurs de comparaison) en Python. Ils permettent de comparer deux valeurs et renvoient toujours un **booléen** (`True` ou `False`).
+
+| Opérateur | Signification | Exemple | Résultat (`x = 10`, `y = 5`) |
+| --- | --- | --- | --- |
+| **`==`** | Égal à | `x == y` | `False` |
+| **`!=`** | Différent de | `x != y` | `True` |
+| **`>`** | Strictement supérieur à | `x > y` | `True` |
+| **`<`** | Strictement inférieur à | `x < y` | `False` |
+| **`>=`** | Supérieur ou égal à | `x >= 10` | `True` |
+| **`<=`** | Inférieur ou égal à | `y <= 5` | `True` |
+
+---
+
+**Particularités importantes en Python**
+
+* **Comparaisons chaînées :** Python permet d'enchaîner directement les comparaisons, ce qui rend le code très lisible.
+```python
+age = 25
+# Équivalent à : (18 <= age) and (age <= 65)
+if 18 <= age <= 65:
+    print("Âge valide")
+
+```
+* **Comparaison d'identité (`is`) vs Égalité (`==`) :**
+* `==` compare les **valeurs** des objets.
+* `is` compare les **adresses mémoire** (si deux variables pointent vers le même objet exact).
+
+```python
+a = [1, 2]
+b = [1, 2]
+print(a == b)  # True (mêmes valeurs)
+print(a is b)  # False (deux objets distincts en mémoire)
+```
+
 ```python
 # Comparaisons de valeurs
 age = 18
