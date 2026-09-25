@@ -4,16 +4,9 @@ Les fonctions permettent de modulariser le code en regroupant des instructions r
 Dans ce chapitre :
 
 * Définition des fonctions, arguments, passage et valeur de retour (`return`)
-
-
 * Arguments et valeurs par défaut
-
-
 * Arguments variables via les tuples, `*args` et `**kwargs`
-
 * Fonctions en tant qu'arguments (délégués)
-
-
 
 ---
 
@@ -26,6 +19,10 @@ Une fonction se déclare avec le mot-clé `def` suivi d'un nom et de parenthèse
 def additionner(a, b):
     resultat = a + b
     return resultat
+
+# Appel
+r = additionner (10,20)
+print(r)
 
 ```
 
@@ -42,6 +39,11 @@ Les arguments par défaut permettent de définir une valeur de repli lorsqu'un p
 def saluer(nom, message="Bonjour"):
     return f"{message}, {nom} !"
 
+# Appel 
+r = saluer("Karim", "Hello")
+print(r) # Hello Karim
+r = saluer("Karim")
+print(r) Bonjour Karim
 ```
 
 > 💡 Ne jamais utiliser d'objets mutables (comme des listes ou des dictionnaires) comme valeurs par défaut d'une fonction, car leur état serait conservé entre les appels successifs.
@@ -58,6 +60,9 @@ def afficher_coordonnees(coord):
     x, y = coord
     return f"Position X: {x}, Y: {y}"
 
+# Appel
+r = afficher_coordonnees((123, 456))
+print(r)
 ```
 
 > 💡 Utilisez l'emballage de tuples lorsque vos données possèdent une structure fixe et ordonnée que vous souhaitez traiter en bloc.
@@ -72,6 +77,12 @@ La syntaxe `*args` permet de transmettre un nombre variable d'arguments position
 # Fonction acceptant un nombre indéfini d'arguments positionnels
 def sommer_tout(*args):
     return sum(args)
+
+# Appels
+r = sommer_tout(11,22)
+print(r)
+r = sommer_tout(11,22,33,44)
+print(r)
 
 ```
 
