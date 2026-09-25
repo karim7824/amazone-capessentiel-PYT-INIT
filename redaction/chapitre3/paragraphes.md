@@ -29,6 +29,8 @@ nom = "Alice"     # Une chaîne de caractères (str)
 
 Les types scalaires représentent des valeurs uniques et atomiques, non décomposables en sous-éléments. Ils constituent la base de toute manipulation numérique, textuelle ou logique.
 
+Voici le tableau corrigé, sans les balises `<br>` superflues ni les sauts de ligne intempestifs qui cassaient le rendu Markdown :
+
 | Catégorie | Type (`type()`) | Mutabilité | Exemples de syntaxe |
 | --- | --- | --- | --- |
 | **Numérique** | `int` (entier)<br>
@@ -41,7 +43,6 @@ Les types scalaires représentent des valeurs uniques et atomiques, non décompo
 
 <br>`1 + 2j` |
 | **Texte** | `str` (chaîne de caractères) | Immuable | `"Bonjour"`, `'Python'` |
-
 
 ```python
 temperature = 23.5    # Flottant (float) pour les décimaux
