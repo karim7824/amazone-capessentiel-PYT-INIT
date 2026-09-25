@@ -83,7 +83,7 @@ Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seul
 | **Spécial** | `NoneType` | Immuable | `None` |
 
 
-### La Liste (`list`) — `utilisateurs = ["Alice", "Bob", "Charlie"]`
+**La Liste (`list`) — `utilisateurs = ["Alice", "Bob", "Charlie"]`**
 
 La liste est **ordered** (ordonnée) et **mutable** (modifiable sur place).
 
@@ -111,7 +111,7 @@ utilisateurs.sort()                    # Trie la liste par ordre alphabétique e
 
 ---
 
-### Le Tuple (`tuple`) — `coordonnees = (10.0, 20.0)`
+**Le Tuple (`tuple`) — `coordonnees = (10.0, 20.0)`**
 
 Le tuple est **ordered** (ordonné) mais **immuable** (impossible à modifier directement après création).
 
@@ -136,7 +136,7 @@ coordonnees.index(20.0)                # Position de la valeur 20.0 (renvoie 1)
 ```
 ---
 
-### Le Dictionnaire (`dict`) — `personne = {"nom": "Karim", "age": "20"}`
+**Le Dictionnaire (`dict`) — `personne = {"nom": "Karim", "age": "20"}`**
 
 Le dictionnaire est une structure **clé/valeur**, **mutable** et **indexée par clés unique**.
 
