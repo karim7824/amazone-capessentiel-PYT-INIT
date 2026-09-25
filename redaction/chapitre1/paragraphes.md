@@ -92,6 +92,19 @@ print("Langage sélectionné :", populaires)
 
 > 💡 **Bonne pratique :** Profitez du grand nombre de paquets officiels hébergés sur PyPI (Python Package Index) pour éviter de réinventer la roue.
 
+
+Panorama résumant la popularité comparative de ces 5 langages (selon les indices **TIOBE** et **PYPL**) :
+
+| Langage | Rang TIOBE | Part PYPL (Tutoriels) | Tendances & Usages principaux |
+| --- | --- | --- | --- |
+| **Python** | **#1** (~21 %) | **#1** (~36 %) | **Dominant** (IA, Data, Web, Automatisation) |
+| **C++** | **#3** (~8 %) | **#2** (~13 %)* | **Très stable** (Jeux vidéo, Système, Embarqué) |
+| **Java** | **#4** (~8 %) | **#3** (~10 %) | **Solide** (Backend Entreprise, Android historique) |
+| **C#** | **#5** (~7 %) | **#7** (~3 %) | **En hausse** (Écosystème .NET, Jeux/Unity, Cloud) |
+| **PHP** | **#18** (~1,2 %) | **#9** (~3 %) | **En déclin léger** (Web CMS/Symfony, marché très axé sur la maintenance) |
+
+**Note : L'indice PYPL regroupe les recherches C et C++ dans la même catégorie.*
+
 ## Types d'applications pour Python
 
 Python s'impose comme le langage leader en intelligence artificielle, science des données et apprentissage automatique. Il est également très utilisé dans le développement web backend avec des frameworks comme Django et FastAPI. Enfin, il excelle dans l'automatisation de tâches système, le scripting d'infrastructure et l'ingénierie de données.
