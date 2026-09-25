@@ -65,7 +65,7 @@ print(sum(nombres))                  # Calcule la somme (37)
 
 ---
 
-### Slicing appliqué aux listes
+**Slicing appliqué aux listes**
 
 La syntaxe `liste[début:fin:pas]` fonctionne exactement comme sur les chaînes de caractères :
 
@@ -92,7 +92,7 @@ liste_inversee = frameworks[::-1]   # Inverse toute la liste
 
 ```
 
-### Parcourir avec l'index et la valeur (`enumerate`)
+**Parcourir avec l'index et la valeur (`enumerate`)**
 
 ```python
 utilisateurs = ["Alice", "Bob", "Charlie"]
@@ -103,7 +103,7 @@ for index, nom in enumerate(utilisateurs, start=1):
 
 ```
 
-### Parcourir et filtrer avec une compréhension de liste
+**Parcourir et filtrer avec une compréhension de liste**
 
 ```python
 nombres = [12, 5, 8, 19, 3, 14]
@@ -167,7 +167,7 @@ existe = "nom" in user                # True (vérifie la présence d'une CLÉ)
 
 ---
 
-### Parcours et extraction (items, keys, values)
+**Parcours et extraction (items, keys, values)**
 
 ```python
 config = {"host": "localhost", "port": 8080, "debug": True}
@@ -189,7 +189,7 @@ config_str = {k: str(v) for k, v in config.items() if k != "debug"}
 
 Voici deux exemples pratiques pour parcourir un dictionnaire en Python :
 
-### Parcourir les clés et les valeurs simultanément (`items()`)
+**Parcourir les clés et les valeurs simultanément (`items()`)**
 
 C'est la méthode la plus utilisée pour traiter chaque couple clé-valeur :
 
@@ -228,7 +228,7 @@ Les ensembles (`set`) stockent des collections non ordonnées d'éléments uniqu
 
 Voici les exemples sur les **ensembles (`set`)** (opérations d'ensemble et méthodes clés), prêts pour votre support :
 
-### 1. Fonctions et méthodes essentielles sur les ensembles
+**Fonctions et méthodes essentielles sur les ensembles**
 
 ```python
 # Initialisation (collection d'éléments uniques, non ordonnés)
@@ -253,7 +253,7 @@ liste_propre = list(uniques)         # [1, 2, 3, 4]
 
 ---
 
-### 2. Opérations mathématiques sur les ensembles
+**Opérations mathématiques sur les ensembles**
 
 ```python
 dev_backend = {"Python", "Java", "SQL", "Docker"}
@@ -279,7 +279,7 @@ exclusifs = dev_backend ^ dev_frontend
 
 Voici deux exemples pratiques pour parcourir un **ensemble (`set`)** en Python :
 
-### 1. Parcourir directement les éléments (`for ... in`)
+**Parcourir directement les éléments (`for ... in`)**
 
 Comme un `set` est une collection non ordonnée, le parcours se fait élément par élément :
 
@@ -292,7 +292,7 @@ for langage in langages:
 ```
 ---
 
-### Parcourir et filtrer avec une compréhension d'ensemble (*Set Comprehension*)
+**Parcourir et filtrer avec une compréhension d'ensemble (*Set Comprehension*)**
 
 Permet de créer un nouvel ensemble en appliquant une condition ou une transformation lors du parcours :
 
