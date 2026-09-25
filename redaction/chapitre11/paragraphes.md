@@ -4,10 +4,7 @@ Les générateurs permettent de produire des séquences de valeurs à la demande
 Dans ce chapitre :
 
 * Boucle et instruction `yield`
-
 * Générateurs prédéfinis
-
-
 
 ---
 
@@ -22,6 +19,22 @@ def generer_nombres(limite):
     while n < limite:
         yield n
         n += 1
+
+print ( generer_nombres) # <function generer_nombres at 0x000001700E078E00>
+list( generer_nombres(5)) # [0, 1, 2, 3, 4]
+
+# itération sur le générateur
+for i in generer_nombres(5): print (i)  # 0 1 2 3 4
+
+# opérateur next() et détection de StopIteration
+g = generer_nombres(3)
+print(next(g)) # 0
+print(next(g)) # 1
+print(next(g)) # 2
+print(next(g))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
 
 ```
 
@@ -44,8 +57,7 @@ premier_element = next(carres_gen)
 
 ---
 
-### Exemple de synthèse
-
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant la création d'un générateur avec yield et un générateur prédéfini
@@ -67,7 +79,8 @@ for index, texte_traite in enumerate(gen_personnalise, start=1):
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez une fonction génératrice utilisant `yield` pour produire les nombres pairs jusqu'à une limite passée en paramètre, puis parcourez ce générateur avec une boucle `for`.
-2. **Exercice 2 :** Créez une expression génératrice qui calcule les carrés des nombres de 1 à 10, et récupérez les valeurs un par un à l'aide de la fonction `next()`.
+**Exercice 1 :** Écrivez une fonction génératrice utilisant `yield` pour produire les nombres pairs jusqu'à une limite passée en paramètre, puis parcourez ce générateur avec une boucle `for`.
+
+**Exercice 2 :** Créez une expression génératrice qui calcule les carrés des nombres de 1 à 10, et récupérez les valeurs un par un à l'aide de la fonction `next()`.
