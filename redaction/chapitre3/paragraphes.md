@@ -12,9 +12,7 @@ Dans ce chapitre :
 
 ## Déclaration de variables
 
-### Une variable en Python : une étiquette mémoire
-
-Une **variable** est un nom qui pointe vers un emplacement mémoire contenant une donnée.
+Une variable en Python : une étiquette mémoire. Une **variable** est un nom qui pointe vers un emplacement mémoire contenant une donnée.
 
 En Python, la création se fait par simple **affectation** avec le signe `=` :
 
