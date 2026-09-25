@@ -48,21 +48,22 @@ source .venv/bin/activate
 ```bash
 # Séquence complète de commandes pour configurer et utiliser un environnement virtuel sous Linux/macOS :
 
-# 1. Création du contexte Python isolé
+# Création du contexte Python isolé
 python -m venv mon_env
 
-# 2. Activation de l'environnement virtuel
+# Activation de l'environnement virtuel
 source mon_env/bin/activate
 
-# 3. Installation d'une bibliothèque tierce dans cet environnement isolé
+# Installation d'une bibliothèque tierce dans cet environnement isolé
 pip install requests
 
-# 4. Sortie de l'environnement virtuel
+# Sortie de l'environnement virtuel
 deactivate
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Exécutez la commande dans votre terminal pour créer un environnement virtuel nommé `env_projet` à la racine de votre dossier de travail.
-2. **Exercice 2 :** Activez l'environnement virtuel créé, vérifiez son bon fonctionnement, puis désactivez-le à l'aide de la commande appropriée.
+**Exercice 1 :** Exécutez la commande dans votre terminal pour créer un environnement virtuel nommé `env_projet` à la racine de votre dossier de travail.
+
+**Exercice 2 :** Activez l'environnement virtuel créé, vérifiez son bon fonctionnement, puis désactivez-le à l'aide de la commande appropriée.
