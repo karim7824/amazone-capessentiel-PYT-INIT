@@ -76,13 +76,20 @@ with open("texte_unicode.txt", "r", encoding="utf-8") as f:
 
 ```
 
-## Gestion des répertoires - mkdir, listdir, walk, move, rmdir
+## Gestion des répertoires - mkdir, listdir, move, rmdir
 
 Le module `os` et l'utilitaire `shutil` permettent de manipuler l'arborescence des dossiers. Vous pouvez créer, lister, parcourir récursivement ou supprimer des répertoires. Ces fonctions sont essentielles pour l'automatisation des tâches d'administration système.
 
 ```python
 import os
 import shutil
+from pathlib import Path
+
+# Créer des répertoires imbriqués - définition d'un chemin imbriqué
+dossier = Path("projets/2026/fichiers_texte")
+# Création de l'arborescence complète
+dossier.mkdir(parents=True, exist_ok=True)
+print(f"Dossier créé : {dossier.resolve()}")
 
 # Création et listing d'un répertoire
 os.mkdir("mon_dossier")
