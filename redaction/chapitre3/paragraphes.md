@@ -173,19 +173,19 @@ for cle, valeur in personne.items():
 
 Une valeur littérale correspond à la représentation directe d'une donnée constante inscrite textuellement dans le code source du programme. Elle permet d'assigner des valeurs figées sans calcul préalable.
 
-# --- Entiers (int) ---
+**--- Entiers (int) ---**
 seuil_maximal = 100         # Décimal standard
 octets = 0b1010             # Binaire (commence par 0b -> vaut 10)
 hexadecimal = 0xFF          # Hexadécimal (commence par 0x -> vaut 255)
 octal = 0o77                # Octal (commence par 0o -> vaut 63)
 grand_nombre = 1_000_000    # Les underscores améliorent la lisibilité (vaut 1000000)
 
-# --- Décimaux (float) ---
+**--- Décimaux (float) ---**
 taux_tva = 20.0             # Notation décimale classique
 pi_approx = 3.14159         # Flottant standard
 charge_electron = 1.6e-19   # Notation scientifique (1.6 x 10^-19)
 
-# --- Complexes (complex) ---
+**--- Complexes (complex) ---**
 impedance = 3 + 4j         # Littéral complexe (partie imaginaire avec 'j' ou 'J')
 > 💡 Évitez les "nombres magiques" en remplaçant les valeurs littérales numériques répétées par des constantes explicites en début de script.
 
