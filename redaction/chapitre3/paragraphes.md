@@ -71,51 +71,97 @@ Voici le tableau propre, une ligne par type pour éviter le bazar des balises HT
 
 ## Types de données aggrégés - list, tuple, dict, set
 
-Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, de modification ou d'unicité des éléments.
+Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, d'unicité des éléments, ainsi que de leur mutabilité — c'est-à-dire la possibilité de modifier ou non le contenu de la structure directement en mémoire après sa création.
 
 | Catégorie | Type (`type()`) | Mutabilité | Exemples de syntaxe |
 | --- | --- | --- | --- |
-| **Séquence** | `list` (liste)<br>
+| **Séquence** | `list` (liste) | **Mutable** | `[1, "dev", 3.14]` |
+| **Séquence** | `tuple` (uplet) | Immuable | `(10, 20, 30)` |
+| **Séquence** | `range` (séquence d'entiers) | Immuable | `range(0, 10)` |
+| **Ensemble** | `set` (ensemble unique) | **Mutable** | `{1, 2, 3}` |
+| **Mapping** | `dict` (dictionnaire) | **Mutable** | `{"nom": "Karim", "age": 40}` |
+| **Spécial** | `NoneType` | Immuable | `None` |
 
-<br>`tuple` (uplet)<br>
 
-<br>`range` (séquence d'entiers) | **Mutable**<br>
+### La Liste (`list`) — `utilisateurs = ["Alice", "Bob", "Charlie"]`
 
-<br>Immuable<br>
-
-<br>Immuable | `[1, "dev", 3.14]`<br>
-
-<br>`(10, 20, 30)`<br>
-
-<br>`range(0, 10)` |
-| **Ensemble** | `set` (ensemble unique)<br>
-
-<br>`frozenset` | **Mutable**<br>
-
-<br>Immuable | `{1, 2, 3}`<br>
-
-<br>`frozenset({1, 2})` |
-| **Mapping** | `dict` (dictionnaire clé/valeur) | **Mutable** | `{"nom": "Karim", "age": 40}` |
-| **Booléen** | `bool` | Immuable | `True`, `False` |
-| **Binaire** | `bytes`<br>
-
-<br>`bytearray`<br>
-
-<br>`memoryview` | Immuable<br>
-
-<br>**Mutable**<br>
-
-<br>**Mutable** | `b"Hello"`<br>
-
-<br>`bytearray(5)`<br>
-
-<br>`memoryview(b"abc")` |
-| **Spécial** | `NoneType` | Immuable | `None` (absence de valeur) |
-
+La liste est **ordered** (ordonnée) et **mutable** (modifiable sur place).
 
 ```python
-utilisateurs = ["Alice", "Bob", "Charlie"]  # Liste modifiable (list)
-coordonnees = (10.0, 20.0)                  # Tuple immuable (tuple)
+utilisateurs = ["Alice", "Bob", "Charlie"]
+
+# --- Ajout d'éléments ---
+utilisateurs.append("David")          # Ajoute à la fin -> ["Alice", "Bob", "Charlie", "David"]
+utilisateurs.insert(1, "Eve")          # Insère à l'index 1 -> ["Alice", "Eve", "Bob", "Charlie", "David"]
+
+# --- Suppression d'éléments ---
+utilisateurs.remove("Bob")             # Supprime la première occurrence de "Bob"
+dernier = utilisateurs.pop()          # Retire et renvoie le dernier élément ("David")
+del utilisateurs[0]                    # Supprime l'élément à l'index 0 ("Alice")
+
+# --- Modification et accès ---
+utilisateurs[0] = "Éléonore"           # Modifie l'élément en position 0
+premier = utilisateurs[0]              # Accès par index
+
+# --- Recherche et tri ---
+existe = "Charlie" in utilisateurs     # Renvoie True ou False
+utilisateurs.sort()                    # Trie la liste par ordre alphabétique en place
+
+```
+
+---
+
+### Le Tuple (`tuple`) — `coordonnees = (10.0, 20.0)`
+
+Le tuple est **ordered** (ordonné) mais **immuable** (impossible à modifier directement après création).
+
+```python
+coordonnees = (10.0, 20.0)
+
+# --- Accès et découpage (Slicing) ---
+x = coordonnees[0]                     # Extrait la latitude (10.0)
+y = coordonnees[1]                     # Extrait la longitude (20.0)
+
+# --- Unpacking (Désassemblage direct) ---
+latitude, longitude = coordonnees       # Assigne 10.0 à latitude et 20.0 à longitude
+
+# --- "Modification" par recréation ---
+# On ne peut pas modifier un tuple, mais on peut en récréer un nouveau :
+coordonnees_3d = coordonnees + (30.0,)  # Fusionne deux tuples -> (10.0, 20.0, 30.0)
+
+# --- Méthodes de comptage ---
+coordonnees.count(10.0)                # Nombre d'occurrences de 10.0 (renvoie 1)
+coordonnees.index(20.0)                # Position de la valeur 20.0 (renvoie 1)
+
+```
+---
+
+### Le Dictionnaire (`dict`) — `personne = {"nom": "Karim", "age": "20"}`
+
+Le dictionnaire est une structure **clé/valeur**, **mutable** et **indexée par clés unique**.
+
+```python
+personne = {"nom": "Karim", "age": "20"}
+
+# --- Ajout et modification ---
+personne["age"] = "21"                 # Modifie la valeur associée à la clé "age"
+personne["ville"] = "Paris"             # Ajoute la clé "ville" si elle n'existe pas encore
+
+# --- Accès sécurisé ---
+nom = personne.get("nom")               # Renvoie "Karim"
+statut = personne.get("statut", "N/A")  # Renvoie "N/A" au lieu de lever une KeyError
+
+# --- Suppression ---
+del personne["ville"]                   # Supprime la clé "ville"
+age = personne.pop("age")              # Supprime "age" et renvoie sa valeur ("21")
+
+# --- Inspection et itération ---
+cles = personne.keys()                 # Renvoie dict_keys(["nom"])
+valeurs = personne.values()             # Renvoie dict_values(["Karim"])
+
+# Parcourir les paires clé/valeur :
+for cle, valeur in personne.items():
+    print(f"{cle} : {valeur}")
 
 ```
 
