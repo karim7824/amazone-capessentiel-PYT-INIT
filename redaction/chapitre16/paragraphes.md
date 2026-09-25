@@ -4,33 +4,85 @@ La gestion des fichiers et des répertoires permet d'interagir directement avec 
 Dans ce chapitre :
 
 * Concepts généraux sur les streams et fichiers
-
-
 * Créer un fichier texte en unicode : ouverture, écriture et lecture
-
-
 
 ---
 
-## Concepts généraux sur les streams et fichiers
+## Concepts généraux sur fichiers
 
-Les streams (flux) représentent des canaux de communication séquentiels permettant de transférer des données entre la mémoire vive et des périphériques de stockage ou des fichiers. Ils garantissent un traitement fluide et ordonné des flux d'informations.
+La manipulation de fichiers en Python repose principalement sur l'ouverture de flux via la fonction intégrée open(), qui prend en charge deux types fondamentaux de formats :
+
+Les fichiers texte : contenant des caractères encodés (généralement en UTF-8) lisibles par un humain. Chaque ligne s'y termine par un caractère de saut de ligne (\n).
+
+Les fichiers binaires : stockant des données brutes sous forme d'octets (images, exécutables, fichiers audio). Leur ouverture nécessite d'ajouter le suffixe b aux modes de lecture ou d'écriture (par exemple 'rb' ou 'wb').
+
+**Accès séquentiel (fichier texte)**
+with open("notes.txt", "r", encoding="utf-8") as f:
+    for ligne in f:
+        print(ligne.strip())
+
+**Accès aléatoire (fichier binaire) avec seek()**
+with open("data.bin", "rb") as f:
+    f.seek(10)          # Se déplace au 10ème octet
+    octet = f.read(1)    # Lit 1 octet à cet endroit précis
+    print(f.tell())     # Affiche la position actuelle (11)
+
+
+---
+## Lecture d'un fichier text en unicode 
+
+Les méthodes de lecture
+
+| Méthode | Ce qu'elle lit | Type retourné | Utilisation idéale |
+| --- | --- | --- | --- |
+| **`read()`** | L'intégralité du fichier d'un seul coup. | `str` | Fichiers de petite taille dont on veut tout le contenu. |
+| **`read(1)`** | Exactement **1 caractère** Unicode (et non 1 octet). | `str` | Analyse caractère par caractère (parsing précis, machines à états). |
+| **`readline()`** | Une seule ligne à la fois (jusqu'au `\n` inclus). | `str` | Traitement ligne par ligne sans charger tout le fichier en mémoire. |
+| **`readlines()`** | Toutes les lignes du fichier sous forme de liste. | `list[str]` | Petit fichier dont on veut manipuler les lignes individuellement via des index. |
+
+**`read()` et `read(1)` — Lecture par caractères**
+
+* **`f.read()`** lit tout le contenu d'un coup.
+* **`f.read(n)`** lit $n$ **caractères** Unicode. Si l'on écrit `read(1)`, Python extrait 1 caractère complet, peu importe le nombre d'octets codants en UTF-8.
 
 ```python
-# Illustration conceptuelle du traitement par flux
-flux_donnees = "Lecture ou écriture séquentielle"
+with open("texte_unicode.txt", "r", encoding="utf-8") as f:
+    premier_caractere = f.read(1)  # Lit 'É' ou '🐍' (1 caractère Unicode)
+    reste_du_texte = f.read()       # Lit tout le reste
 
 ```
 
-> 💡 Considérez toujours un fichier ouvert comme un flux unidirectionnel ou bidirectionnel nécessitant une clôture rigoureuse après utilisation.
+**`readline()` — Lecture ligne par ligne**
 
----
+Lit la ligne suivante jusqu'au caractère de fin de ligne `\n`. Renvoie une chaîne vide `""` lorsque la fin du fichier (EOF) est atteinte.
+
+```python
+with open("texte_unicode.txt", "r", encoding="utf-8") as f:
+    ligne = f.readline()
+    while ligne != "":
+        print(ligne.strip())  # strip() retire le \n final
+        ligne = f.readline()
+
+```
+
+**`readlines()` — Liste de toutes les lignes**
+
+Charge tout le fichier en mémoire et découpe le contenu en une liste de chaînes de caractères.
+
+```python
+with open("texte_unicode.txt", "r", encoding="utf-8") as f:
+    lignes = f.readlines()  # ["Première ligne\n", "Deuxième ligne\n", ...]
+    print(f"Nombre de lignes : {len(lignes)}")
+
+```
+
 
 ## Créer un fichier text en unicode - ouvrir, ecrire, lire
 
 La création d'un fichier texte en encodage Unicode garantit la prise en charge universelle des caractères accentués et des symboles internationaux. Les fonctions natives permettent d'ouvrir, d'écrire et de lire ces contenus en toute sécurité.
 
 ```python
+
 # Création, écriture et lecture d'un fichier texte en UTF-8
 with open("document.txt", "w", encoding="utf-8") as f:
     f.write("Texte en Unicode avec des accents : é, à, ê.")
