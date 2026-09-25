@@ -86,15 +86,30 @@ Les **opérateurs relationnels** (ou opérateurs de comparaison) en Python. Ils 
 
 | Opérateur | Signification | Exemple | Résultat (`x = 10`, `y = 5`) |
 | --- | --- | --- | --- |
-| **`==`** | Égal à | `x == y` | `False` |
-| **`!=`** | Différent de | `x != y` | `True` |
 | **`>`** | Strictement supérieur à | `x > y` | `True` |
 | **`<`** | Strictement inférieur à | `x < y` | `False` |
 | **`>=`** | Supérieur ou égal à | `x >= 10` | `True` |
 | **`<=`** | Inférieur ou égal à | `y <= 5` | `True` |
 
 ---
+```python
+x = 10
+y = 5
 
+# --- 2. Comparaisons d'ordre (<, >, <=, >=) ---
+print(x > y)        # True  (10 est strictement supérieur à 5)
+print(x < y)        # False (10 n'est pas inférieur à 5)
+print(x >= 10)      # True  (10 est supérieur ou égal à 10)
+print(y <= 5)       # True  (5 est inférieur ou égal à 5)
+
+# --- 3. Comparaisons chaînées (spécificité Python) ---
+age = 25
+# Vérifie si l'âge est compris entre 18 et 65 inclus :
+print(18 <= age <= 65)  # True
+
+# --- 4. Comparaison de chaînes de caractères (ordre alphabétique / ASCII) ---
+print("apple" < "banana")  # True ('a' vient avant 'b')
+```
 **Particularités importantes en Python**
 
 * **Comparaisons chaînées :** Python permet d'enchaîner directement les comparaisons, ce qui rend le code très lisible.
@@ -103,18 +118,6 @@ age = 25
 # Équivalent à : (18 <= age) and (age <= 65)
 if 18 <= age <= 65:
     print("Âge valide")
-
-```
-* **Comparaison d'identité (`is`) vs Égalité (`==`) :**
-* `==` compare les **valeurs** des objets.
-* `is` compare les **adresses mémoire** (si deux variables pointent vers le même objet exact).
-
-```python
-a = [1, 2]
-b = [1, 2]
-print(a == b)  # True (mêmes valeurs)
-print(a is b)  # False (deux objets distincts en mémoire)
-```
 
 ```python
 # Comparaisons de valeurs
@@ -131,16 +134,53 @@ majeur = age >= 18    # Retourne True car 18 est supérieur ou égal à 18
 
 Les opérateurs logiques permettent de combiner plusieurs expressions booléennes pour former des conditions complexes. Ils évaluent les relations à l'aide des opérateurs fondamentaux `and`, `or` et `not`.
 
-```python
-# Combinaison de conditions logiques
-a l_ecole = True
-a_ses_affaires = True
-peut_partir = a_ecole and a_ses_affaires  # Vaut True si les deux conditions sont réunies
+Les **opérateurs de comparaison**, **logiques** (`and`, `or`, `not`) et **binationaux / bitwise** (`&`, `|`, `^`, `~`, `<<`, `>>`).
 
+### Tableau complet des opérateurs logiques, relationnels et binaire (Bitwise)
+
+*(Pour les exemples : `x = 10` [binaire: `1010`] et `y = 5` [binaire: `0101`])*
+
+| Catégorie | Opérateur | Description | Exemple | Résultat |
+| --- | --- | --- | --- | --- |
+| **Comparaison** | **`==`** | Égal à | `x == y` | `False` |
+| **Comparaison** | **`!=`** | Différent de | `x != y` | `True` |
+| **Comparaison** | **`>`** | Strictement supérieur à | `x > y` | `True` |
+| **Comparaison** | **`<`** | Strictement inférieur à | `x < y` | `False` |
+| **Comparaison** | **`>=`** | Supérieur ou égal à | `x >= 10` | `True` |
+| **Comparaison** | **`<=`** | Inférieur ou égal à | `y <= 5` | `True` |
+| **Logique** | **`and`** | ET logique (True si les deux conditions sont vraies) | `(x > 5) and (y < 10)` | `True` |
+| **Logique** | **`or`** | OU logique (True si au moins une condition est vraie) | `(x == 5) or (y == 5)` | `True` |
+| **Logique** | **`not`** | NON logique (Inverse l'état booléen) | `not(x == y)` | `True` |
+| **Bitwise** | **`&`** | ET binaire (*AND*) | `x & y` *(1010 & 0101)* | `0` *(0000)* |
+| **Bitwise** | **`|`** | OU binaire (*OR*) | `x | y` *(1010 | 0101)* | `15` *(1111)* |
+| **Bitwise** | **`^`** | OU exclusif binaire (*XOR*) | `x ^ y` *(1010 ^ 0101)* | `15` *(1111)* |
+| **Bitwise** | **`~`** | Complément à un binaire (*NOT*) | `~x` *(-(x+1))* | `-11` |
+| **Bitwise** | **`<<`** | Décalage de bits à gauche | `x << 1` *(1010 -> 10100)* | `20` |
+| **Bitwise** | **`>>`** | Décalage de bits à droite | `x >> 1` *(1010 -> 0101)* | `5` |
+
+
+```python
+x = 10
+y = 5
+
+# --- Égalité (==) et Inégalité (!=) ---
+print(x == y)       # False (10 n'est pas égal à 5)
+print(x != y)       # True  (10 est bien différent de 5)
+
+# --- Comparaison de chaînes de caractères (ordre alphabétique / ASCII) ---
+print("Code" == "code")    # False (sensible à la casse)
 ```
 
-> 💡 Python utilise l'évaluation paresseuse (*short-circuit*) pour les opérateurs logiques : l'évaluation s'arrête dès que le résultat final est déterminé.
+* **Comparaison d'identité (`is`) vs Égalité (`==`) :**
+* `==` compare les **valeurs** des objets.
+* `is` compare les **adresses mémoire** (si deux variables pointent vers le même objet exact).
 
+```python
+a = [1, 2]
+b = [1, 2]
+print(a == b)  # True (mêmes valeurs)
+print(a is b)  # False (deux objets distincts en mémoire)
+```
 ---
 
 ### Exemple de synthèse
