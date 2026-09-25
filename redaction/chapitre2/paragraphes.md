@@ -46,7 +46,7 @@ py mon_script.py
 
 > 💡 **Bonne pratique :** Vérifiez toujours après l'installation que la commande `python --version` (ou `python3 --version`) répond correctement dans votre invite de commande.
 
-## Créer un projet Python main.py avec la condition `__name__ == '__main__'`
+## Créer module Python main.py avec la condition `__name__ == '__main__'`
 
 En Python, la condition `if __name__ == '__main__':` permet de définir le point d'entrée principal d'un script. Elle garantit que le bloc de code sous-jacent ne s'exécute que lorsque le fichier est lancé directement, et non lorsqu'il est importé comme module dans un autre fichier. C'est une structure standard pour organiser proprement vos projets.
 
@@ -125,7 +125,23 @@ print("Exécution dans un environnement virtuel :", dans_venv)
 
 ---
 
-### Exemple de synthèse
+## Envrionnements de développement (IDE=Integrated Development Environment ou Environnement de Développement Intégré)
+
+Logiciels uniques qui regroupe tous les outils nécessaires au développement de code : un éditeur de texte, un compilateur/interpréteur, des outils d'automatisation et un débogueur. Les fonctionnalités des IDEs sont extensibles (plugins)
+
+**Les principaux IDE et Éditeurs pour Python**
+
+| Outil | Éditeur / Type | Points forts | Cas d'usage idéal |
+| --- | --- | --- | --- |
+| **VS Code** | Éditeur extensible | Ultra-léger, écosystème d'extensions gigantesque, support multi-langages | Polyvalent (Web, Scripting, Data) |
+| **PyCharm** | IDE complet (JetBrains) | Autocomplétion intelligente, refactoring puissant, gestion venv/Git intégrée | Projets Python complexes / Django |
+| **Jupyter Notebook / Lab** | Environnement interactif | Exécution cellule par cellule, visualisation de données en direct | Data Science, Machine Learning, R&D |
+| **Spyder** | IDE scientifique | Proche de MATLAB, explorateur de variables et de graphiques intégré | Calcul scientifique / Analyse de données |
+| **IDLE** | IDE minimaliste | Fourni par défaut avec l'installation officielle de Python | Apprentissage / Débutants |
+
+
+
+## Exemple de synthèse
 
 Cet exemple combine la vérification du point d'entrée principal, la détection de l'environnement virtuel et la création automatique d'un script de laboratoire prêts à l'emploi :
 
@@ -164,9 +180,9 @@ if __name__ == "__main__":
 
 ---
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1.  **Exercice 1 : Création et exécution d'un script structuré**
+**Exercice 1 : Création et exécution d'un script structuré**
 Créez un fichier nommé `main.py` qui définit une fonction `saluer(nom)`. Dans le bloc principal `if __name__ == '__main__':`, appelez cette fonction avec votre prénom, puis faites en sorte que le programme écrive le message de salutation dans un fichier texte nommé `bienvenue.txt`.
-2.  **Exercice 2 : Générateur d'environnement et vérification venv**
+**Exercice 2 : Générateur d'environnement et vérification venv**
 Écrivez un script Python nommé `check_env.py` qui teste si le programme est exécuté au sein d'un environnement virtuel `venv`. Si ce n'est pas le cas, le script doit afficher un avertissement recommandant d'activer un environnement virtuel. Si l'environnement virtuel est actif, le script doit inscrire le chemin de l'interpréteur dans un fichier `env_status.log`.
