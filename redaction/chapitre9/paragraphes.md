@@ -100,6 +100,22 @@ def configurer(**kwargs):
     for cle, valeur in kwargs.items():
         print(f"{cle} = {valeur}")
 
+# --- Appels directs avec arguments nommés ---
+print("--- Configuration 1 ---")
+configurer(hôte="localhost", port=8080, debug=True)
+
+# --- Appel avec un dictionnaire déballé (unpacking avec **) ---
+print("\n--- Configuration 2 ---")
+options = {
+    "base_de_donnees": "postgres",
+    "utilisateur": "admin",
+    "timeout": 30
+}
+configurer(**options)
+
+# --- Appel sans argument (kwargs sera un dictionnaire vide {}) ---
+print("\n--- Configuration 3 ---")
+configurer()
 ```
 
 > 💡 L'utilisation conjointe de `*args` et `**kwargs` offre une flexibilité maximale pour créer des fonctions enveloppes (*wrappers*) ou des décorateurs.
@@ -119,6 +135,20 @@ def appliquer_operation(operation, x, y):
 resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
 print(resultat)
 
+```
+Les arguments en tant que tuple 
+
+```python
+# La fonction accepte désormais un tuple en paramètre
+def appliquer_operation(operation, donnees):
+    # DÉSTRUCTURATION DU TUPLE : unpack des valeurs dans a et b
+    a, b = donnees
+    return operation(a, b)
+
+# Appel avec un tuple (4, 5) transmis comme argument unique
+resultat = appliquer_operation(lambda a, b: a * b, (4, 5))
+
+print(resultat)  # Affiche : 20
 ```
 
 > 💡 Passer des fonctions en argument est la base de la programmation fonctionnelle et permet de concevoir des algorithmes hautement génériques et réutilisables.
