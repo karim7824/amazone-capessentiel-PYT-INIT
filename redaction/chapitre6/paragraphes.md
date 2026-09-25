@@ -298,7 +298,7 @@ if valide:
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 import re
@@ -306,23 +306,24 @@ import re
 # Programme complet combinant gestion, formatage, slicing et expressions régulières
 reference_brute = "   REF-9876-FR   "
 
-# 1. Gestion : nettoyage des espaces superflus et mise en majuscules
+# Gestion : nettoyage des espaces superflus et mise en majuscules
 reference_nette = reference_brute.strip()
 
-# 2. Slicing : extraction de la portion numérique centrale
+# Slicing : extraction de la portion numérique centrale
 code_numerique = reference_nette[4:8]
 
-# 3. Expressions régulières : validation du format global
+# Expressions régulières : validation du format global
 pattern = r"^REF-\d{4}-[A-Z]{2}$"
 est_conforme = bool(re.match(pattern, reference_nette))
 
-# 4. Formatage : construction du message final avec une f-string
+# Formatage : construction du message final avec une f-string
 rapport = f"Référence : {reference_nette} | Code extrait : {code_numerique} | Conforme : {est_conforme}"
 print(rapport)
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script qui prend une chaîne de caractères contenant des espaces superflus et du texte en minuscules, puis utilisez les méthodes de gestion pour la nettoyer et la mettre entièrement en majuscules.
-2. **Exercice 2 :** Déclarez une chaîne contenant un numéro de téléphone sous la forme d'une phrase, puis utilisez le slicing pour extraire les deux premiers caractères et formotez un message personnalisé à l'aide d'une f-string.
+**Exercice 1 :** Écrivez un script qui prend une chaîne de caractères contenant des espaces superflus et du texte en minuscules, puis utilisez les méthodes de gestion pour la nettoyer et la mettre entièrement en majuscules.
+
+**Exercice 2 :** Déclarez une chaîne contenant un numéro de téléphone sous la forme d'une phrase, puis utilisez le slicing pour extraire les deux premiers caractères et formotez un message personnalisé à l'aide d'une f-string.
