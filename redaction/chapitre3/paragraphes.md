@@ -241,7 +241,7 @@ valeur_inconnue = None      # Représente l'absence explicite de valeur
 
 ---
 
-### 4. Littéraux de Collections (Structures de données)
+**Littéraux de Collections (Structures de données)**
 
 ```python
 # --- Liste (list) - Modifiable ---
@@ -257,10 +257,6 @@ config = {"port": 8080, "debug": True}
 ports_autorises = {80, 443, 8080}
 
 ```
-
-impedance = 3 + 4j         # Littéral complexe (partie imaginaire avec 'j' ou 'J')
-> 💡 Évitez les "nombres magiques" en remplaçant les valeurs littérales numériques répétées par des constantes explicites en début de script.
-
 ---
 
 ## Portée de variables - globale, locale
