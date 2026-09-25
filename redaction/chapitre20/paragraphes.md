@@ -879,7 +879,7 @@ def creer_fichier_unicode(nom_fichier: str = "notes.txt") -> None:
 if __name__ == "__main__":
     creer_fichier_unicode()
 ```	
-**Chapitre 16 / Exercice 2
+**Chapitre 16 / Exercice 2**
 ```python
 from pathlib import Path
 
@@ -907,7 +907,7 @@ if __name__ == "__main__":
     lire_fichier_unicode()
 ```	
 
-**Chapitre 17 / Exercice 1 
+**Chapitre 17 / Exercice 1** 
 ```python
 class Livre:
     """Représente un livre avec un titre et un auteur."""
@@ -931,7 +931,7 @@ if __name__ == "__main__":
     print(livre_1.obtenir_description())
     print(livre_2.obtenir_description())
 ```	
-**Chapitre 17 / Exercice 2
+**Chapitre 17 / Exercice 2**
 ```python
 class Livre:
     """Représente un livre avec un titre et un auteur."""
