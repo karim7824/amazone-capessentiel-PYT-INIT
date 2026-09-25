@@ -30,6 +30,20 @@ Différence entre `python`, `python3` et `py`
 | **`py`** | Windows uniquement | Launcher qui détecte et exécute la bonne version (x64/x86) sans paramétrer le `PATH`. |
 ---
 
+**Vérifier l'installation et l'architecture (64-bit)**
+```bash
+python --version
+# Ou sous Windows via le launcher :
+py -V
+```
+
+**Exécuter un fichier script (.py)**
+```bash
+python mon_script.py
+python3 mon_script.py
+py mon_script.py
+```
+
 > 💡 **Bonne pratique :** Vérifiez toujours après l'installation que la commande `python --version` (ou `python3 --version`) répond correctement dans votre invite de commande.
 
 ## Créer un projet Python main.py avec la condition `__name__ == '__main__'`
