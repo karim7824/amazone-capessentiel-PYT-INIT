@@ -242,29 +242,54 @@ async def main():
 
 ```
 
-## Tests (Pytest / Unittest)
-
-```python
-# test_main.py
-def test_cas():
-    assert 1 + 1 == 2
-
-from unittest.mock import Mock
-mock = Mock()
-
-```
-## Tests & Couverture de code (CLI & Code)
+## Tests avec Unittest & Couverture de code (CLI & Code)
 
 ```bash
-pytest                             # exécute tous les tests du projet
-pytest test_script.py              # exécute un fichier de test spécifique
-pytest -k "login or signup"        # filtre les tests par nom de fonction/classe
-pytest -v                          # mode verbeux (détaille chaque test)
-pytest -x                          # s'arrête au premier échec rencontrée
-pytest --lf                        # réexécute uniquement les derniers tests échoués (--last-failed)
+# Commandes Unittest en ligne de commande (CLI)
+python -m unittest                          # exécute tous les tests du projet (découverte automatique)
+python -m unittest test_script.py           # exécute un fichier de test spécifique
+python -m unittest test_script.TestCas.test_add # exécute un test précis (fichier.Classe.methode)
+python -m unittest discover -s tests -p "test_*.py" # exécute les tests dans le dossier 'tests'
+python -m unittest -v                       # mode verbeux (détaille chaque test)
+python -m unittest -f                       # s'arrête au premier échec rencontrée (-f / --failfast)
 
-pytest --cov                       # lance les tests avec rapport de couverture global
-pytest --cov=mon_module            # calcule la couverture uniquement pour 'mon_module'
-pytest --cov --cov-report=term-missing  # affiche les numéros des lignes non couvertes dans la console
-pytest --cov --cov-report=html     # génère un rapport HTML interactif (dossier htmlcov/index.html)
+# Couverture de code avec l'outil natif 'coverage'
+coverage run -m unittest                    # exécute les tests unittest et mesure la couverture
+coverage run --source=mon_module -m unittest # mesure uniquement pour 'mon_module'
+coverage report                             # affiche le rapport de couverture dans le terminal
+coverage report -m                          # affiche les numéros des lignes non couvertes (missing)
+coverage html                               # génère un rapport HTML interactif (dossier htmlcov/index.html)
+
+```
+
+```python
+# Code de test avec Unittest (test_main.py)
+import unittest
+from unittest.mock import Mock, patch
+
+class TestMonCode(unittest.TestCase):
+    def setUp(self):
+        # Exécuté AVANT chaque méthode de test
+        self.valeur = 10
+
+    def tearDown(self):
+        # Exécuté APRÈS chaque méthode de test
+        pass
+
+    def test_cas_simple(self):
+        self.assertEqual(1 + 1, 2)
+        self.assertTrue(self.valeur > 0)
+
+    def test_exception(self):
+        with self.assertRaises(ValueError):
+            int("invalide")
+
+    def test_avec_mock(self):
+        mock = Mock()
+        mock.calculer.return_value = 42
+        self.assertEqual(mock.calculer(), 42)
+
+if __name__ == "__main__":
+    unittest.main()
+
 ```
