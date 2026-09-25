@@ -255,7 +255,7 @@ mock = Mock()
 ```
 ## Tests & Couverture de code (CLI & Code)
 
-**Commandes Pytest en ligne de commande (CLI)**
+```bash
 pytest                             # exécute tous les tests du projet
 pytest test_script.py              # exécute un fichier de test spécifique
 pytest -k "login or signup"        # filtre les tests par nom de fonction/classe
@@ -263,8 +263,8 @@ pytest -v                          # mode verbeux (détaille chaque test)
 pytest -x                          # s'arrête au premier échec rencontrée
 pytest --lf                        # réexécute uniquement les derniers tests échoués (--last-failed)
 
-**Couverture de code avec pytest-cov**
 pytest --cov                       # lance les tests avec rapport de couverture global
 pytest --cov=mon_module            # calcule la couverture uniquement pour 'mon_module'
 pytest --cov --cov-report=term-missing  # affiche les numéros des lignes non couvertes dans la console
 pytest --cov --cov-report=html     # génère un rapport HTML interactif (dossier htmlcov/index.html)
+```
