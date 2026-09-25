@@ -15,29 +15,45 @@ Les listes permettent de stocker une collection ordonnée d'éléments modifiabl
 
 Voici une sélection concise des opérations indispensables sur les listes (méthodes standards et slicing), prêtes à être intégrées dans votre support de cours :
 
-### 1. Fonctions et méthodes essentielles sur les listes
+Les **méthodes de manipulation de listes (`list`)** en Python, classées par usage :
+
+| Catégorie | Méthode | Description | Exemple (`l = [1, 2]`) | Résultat / État de `l` |
+| --- | --- | --- | --- | --- |
+| **Ajout** | `l.append(x)` | Ajoute l'élément `x` à la fin de la liste | `l.append(3)` | `[1, 2, 3]` |
+| **Ajout** | `l.extend(iterable)` | Étend la liste en y ajoutant tous les éléments d'un itérable | `l.extend([3, 4])` | `[1, 2, 3, 4]` |
+| **Ajout** | `l.insert(i, x)` | Insère l'élément `x` à l'index `i` spécifié | `l.insert(1, 9)` | `[1, 9, 2]` |
+| **Suppression** | `l.pop([i])` | Retire et renvoie l'élément à l'index `i` (par défaut le dernier) | `val = l.pop()` | `val = 2`, `l = [1]` |
+| **Suppression** | `l.remove(x)` | Supprime la première occurrence de la valeur `x` | `l.remove(1)` | `[2]` *(erreur si absent)* |
+| **Suppression** | `l.clear()` | Supprime tous les éléments de la liste | `l.clear()` | `[]` |
+| **Recherche** | `l.index(x)` | Renvoie l'index de la première occurrence de `x` | `[10, 20].index(20)` | `1` *(erreur si absent)* |
+| **Recherche** | `l.count(x)` | Renvoie le nombre d'occurrences de la valeur `x` | `[1, 2, 1].count(1)` | `2` |
+| **Organisation** | `l.sort()` | Trie la liste **en place** (modifie l'originale, renvoie `None`) | `[3, 1].sort()` | `[1, 3]` |
+| **Organisation** | `l.reverse()` | Inverse l'ordre des éléments **en place** | `[1, 2].reverse()` | `[2, 1]` |
+| **Copie** | `l.copy()` | Renvoie une copie superficielle (*shallow copy*) de la liste | `c = l.copy()` | `c = [1, 2]` |
+
+Fonctions et méthodes essentielles sur les listes
 
 ```python
 # Initialisation
 outils = ["git", "docker", "vscode"]
 
-# 1. Ajout d'éléments
+# Ajout d'éléments
 outils.append("python")              # Ajoute à la fin -> ['git', 'docker', 'vscode', 'python']
 outils.insert(1, "bash")             # Insère à l'index 1 -> ['git', 'bash', 'docker', 'vscode', 'python']
 
-# 2. Suppression d'éléments
+# Suppression d'éléments
 outils.remove("vscode")             # Supprime par valeur
 element = outils.pop(0)              # Supprime et renvoie l'élément à l'index 0 ('git')
 
-# 3. Recherche et comptage
+# Recherche et comptage
 index = outils.index("docker")       # Renvoie l'index de la valeur (1)
 total = outils.count("python")       # Compte le nombre d'occurrences (1)
 
-# 4. Tri et inversion
+# Tri et inversion
 outils.sort()                        # Trie la liste sur place (ordre alphabétique)
 outils.reverse()                     # Inverse l'ordre des éléments sur place
 
-# 5. Fonctions globales utiles
+# Fonctions globales utiles
 longueur = len(outils)               # Nombre d'éléments dans la liste
 nombres = [10, 5, 20, 2]
 print(min(nombres), max(nombres))    # Renvoie 2 et 20
@@ -49,7 +65,7 @@ print(sum(nombres))                  # Calcule la somme (37)
 
 ---
 
-### 2. Slicing appliqué aux listes
+### Slicing appliqué aux listes
 
 La syntaxe `liste[début:fin:pas]` fonctionne exactement comme sur les chaînes de caractères :
 
@@ -57,26 +73,26 @@ La syntaxe `liste[début:fin:pas]` fonctionne exactement comme sur les chaînes 
 frameworks = ["Django", "Flask", "FastAPI", "Express", "Spring", "Angular"]
 # Index :        0        1        2          3          4         5
 
-# 1. Extraction d'une sous-liste [début:fin]
+# Extraction d'une sous-liste [début:fin]
 backend = frameworks[0:3]           # ['Django', 'Flask', 'FastAPI'] (index 3 exclu)
 
-# 2. Raccourcis depuis le début ou jusqu'à la fin
+# Raccourcis depuis le début ou jusqu'à la fin
 premiers = frameworks[:2]           # ['Django', 'Flask']
 derniers = frameworks[3:]           # ['Express', 'Spring', 'Angular']
 
-# 3. Utilisation d'index négatifs
+# Utilisation d'index négatifs
 trois_derniers = frameworks[-3:]    # ['Express', 'Spring', 'Angular']
 
-# 4. Extraire avec un pas
+# Extraire avec un pas
 un_sur_deux = frameworks[::2]       # ['Django', 'FastAPI', 'Spring']
 
-# 5. Copie intégrale et inversion
+# Copie intégrale et inversion
 copie_liste = frameworks[:]         # Crée une copie indépendante de la liste
 liste_inversee = frameworks[::-1]   # Inverse toute la liste
 
 ```
 
-### 1. Parcourir avec l'index et la valeur (`enumerate`)
+### Parcourir avec l'index et la valeur (`enumerate`)
 
 ```python
 utilisateurs = ["Alice", "Bob", "Charlie"]
@@ -87,7 +103,7 @@ for index, nom in enumerate(utilisateurs, start=1):
 
 ```
 
-### 2. Parcourir et filtrer avec une compréhension de liste
+### Parcourir et filtrer avec une compréhension de liste
 
 ```python
 nombres = [12, 5, 8, 19, 3, 14]
@@ -106,9 +122,25 @@ print("Nombres > 10 :", nombres_grands)  # Résultat : [12, 19, 14]
 
 Les dictionnaires stockent des données sous forme de paires clé-valeur, permettant un accès ultra-rapide aux valeurs grâce à leurs clés uniques. Ils sont parfaits pour représenter des objets ou des configurations.
 
-Voici les exemples sur les **dictionnaires** (méthodes essentielles et parcours), prêts pour votre support :
+Les **méthodes de manipulation de dictionnaires (`dict`)** en Python, classées par usage :
 
-### 1. Fonctions et méthodes essentielles sur les dictionnaires
+| Catégorie | Méthode | Description | Exemple (`d = {'a': 1, 'b': 2}`) | Résultat / État de `d` |
+| --- | --- | --- | --- | --- |
+| **Accès** | `d.get(k, def)` | Renvoie la valeur associée à la clé `k`, ou `def` si absente | `d.get('c', 0)` | `0` *(évite une `KeyError`)* |
+| **Accès / Modification** | `d.setdefault(k, def)` | Renvoie la valeur de `k`. Si `k` n'existe pas, l'insère avec la valeur `def` | `d.setdefault('c', 3)` | Renvoie `3`, `d` devient `{'a': 1, 'b': 2, 'c': 3}` |
+| **Mise à jour** | `d.update(autre)` | Fusionne un autre dictionnaire ou des couples clé-valeur dans `d` | `d.update({'b': 9, 'c': 3})` | `{'a': 1, 'b': 9, 'c': 3}` |
+| **Suppression** | `d.pop(k, def)` | Supprime la clé `k` et renvoie sa valeur (ou `def` si absente) | `val = d.pop('a')` | `val = 1`, `d` devient `{'b': 2}` |
+| **Suppression** | `d.popitem()` | Supprime et renvoie le dernier couple `(clé, valeur)` inséré | `k, v = d.popitem()` | `k, v = ('b', 2)`, `d` devient `{'a': 1}` |
+| **Suppression** | `d.clear()` | Supprime tous les éléments du dictionnaire | `d.clear()` | `{}` |
+| **Vue** | `d.keys()` | Renvoie une vue des clés du dictionnaire | `d.keys()` | `dict_keys(['a', 'b'])` |
+| **Vue** | `d.values()` | Renvoie une vue des valeurs du dictionnaire | `d.values()` | `dict_values([1, 2])` |
+| **Vue** | `d.items()` | Renvoie une vue des couples `(clé, valeur)` sous forme de tuples | `d.items()` | `dict_items([('a', 1), ('b', 2)])` |
+| **Copie** | `d.copy()` | Renvoie une copie superficielle (*shallow copy*) du dictionnaire | `c = d.copy()` | `c = {'a': 1, 'b': 2}` |
+
+* **Opérateur de fusion (Python 3.9+) :** En alternative à `.update()`, l'opérateur `|` permet de fusionner deux dictionnaires pour en créer un nouveau (`d3 = d1 | d2`).
+Fonctions et méthodes essentielles sur les **dictionnaires** (méthodes essentielles et parcours), prêts pour votre support :
+
+Fonctions et méthodes essentielles sur les dictionnaires
 
 ```python
 # Initialisation
