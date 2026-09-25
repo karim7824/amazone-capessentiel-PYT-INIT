@@ -137,6 +137,22 @@ with open("systeme.log", "w", encoding="utf-8") as fichier:
 with open("systeme.log", "r", encoding="utf-8") as fichier:
     print("Contenu du journal :", fichier.read().strip())
 
+# Surveillance de l'activité système
+Python
+import time
+import psutil
+
+def surveiller_systeme():
+    cpu = psutil.cpu_percent(interval=1)
+    ram = psutil.virtual_memory().percent
+    disque = psutil.disk_usage('/').percent
+    print(f"[MONITORING] CPU: {cpu}% | RAM: {ram}% | Disque: {disque}%")
+
+if __name__ == "__main__":
+    while True:
+        surveiller_systeme()
+        time.sleep(2)
+
 ```
 
 > 💡 **Bonne pratique :** Utilisez toujours le mot-clé `with` pour la manipulation de fichiers afin de garantir leur fermeture automatique même en cas d'erreur.
