@@ -115,7 +115,9 @@ En Python, les fonctions sont des objets de première classe, ce qui signifie qu
 def appliquer_operation(operation, x, y):
     return operation(x, y)
 
+# lambda a, b: a * b  equivalent de def <anonyme> (a, b) : return a * b
 resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
+print(resultat)
 
 ```
 
@@ -123,7 +125,7 @@ resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant fonctions, valeurs par défaut, *args, **kwargs et délégués
@@ -147,7 +149,8 @@ print("Format final :", formater_monnaie(montant_final))
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez une fonction qui accepte un nombre indéfini d'entiers via `*args` et retourne leur moyenne arithmétique.
-2. **Exercice 2 :** Créez une fonction qui prend en paramètre une fonction mathématique et deux nombres, puis applique cette fonction sur les deux nombres pour retourner le résultat.
+**Exercice 1 :** Écrivez une fonction qui accepte un nombre indéfini d'entiers via `*args` et retourne leur moyenne arithmétique.
+
+**Exercice 2 :** Créez une fonction qui prend en paramètre une fonction mathématique et deux nombres, puis applique cette fonction sur les deux nombres pour retourner le résultat.
