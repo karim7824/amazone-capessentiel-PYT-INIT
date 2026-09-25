@@ -14,32 +14,52 @@ Dans ce chapitre :
 
 La gestion des chaînes de caractères repose sur l'utilisation de guillemets simples ou doubles pour déclarer du texte en mémoire. Python fournit de nombreuses méthodes intégrées pour transformer, nettoyer ou rechercher des motifs textuels.
 
-Voici les **12 méthodes de chaînes de caractères (string) indispensables** en Python, regroupées par usage avec un exemple minimaliste :
+Les **méthodes de gestion et de manipulation de chaînes de caractères (`str`)** en Python, classées par usage :
+
+| Catégorie | Méthode | Description | Exemple | Résultat |
+| --- | --- | --- | --- | --- |
+| **Casse** | `s.lower()` | Convertit en minuscules | `"PY".lower()` | `"py"` |
+| **Casse** | `s.upper()` | Convertit en majuscules | `"py".upper()` | `"PY"` |
+| **Casse** | `s.capitalize()` | Première lettre en majuscule | `"python".capitalize()` | `"Python"` |
+| **Casse** | `s.title()` | Majuscule au début de chaque mot | `"hello world".title()` | `"Hello World"` |
+| **Nettoyage** | `s.strip()` | Supprime les espaces au début et à la fin | `"  dev  ".strip()` | `"dev"` |
+| **Nettoyage** | `s.replace(a, b)` | Remplace la sous-chaîne `a` par `b` | `"1-2-3".replace("-", "/")` | `"1/2/3"` |
+| **Découpage** | `s.split(sep)` | Découpe la chaîne en liste selon un séparateur | `"a,b,c".split(",")` | `['a', 'b', 'c']` |
+| **Jonction** | `sep.join(seq)` | Sépare et concatène une liste de chaînes | `"-".join(['a', 'b'])` | `"a-b"` |
+| **Recherche** | `s.find(sub)` | Renvoie l'index de la 1ʳᵉ occurrence (`-1` si absent) | `"python".find("th")` | `2` |
+| **Recherche** | `s.count(sub)` | Compte le nombre d'occurrences d'une sous-chaîne | `"banana".count("a")` | `3` |
+| **Inspection** | `s.startswith(x)` | Vérifie si la chaîne commence par `x` | `"image.png".startswith("img")` | `False` |
+| **Inspection** | `s.endswith(x)` | Vérifie si la chaîne se termine par `x` | `"image.png".endswith(".png")` | `True` |
+| **Validation** | `s.isdigit()` | `True` si tous les caractères sont des chiffres (`0-9`, indices) | `"123".isdigit()` | `True` |
+| **Validation** | `s.isnumeric()` | `True` si caractères numériques (inclut fractions, chiffres romains) | `"½".isnumeric()` | `True` |
+| **Validation** | `s.isalpha()` | `True` si uniquement des lettres alphabétiques | `"Code".isalpha()` | `True` |
+| **Validation** | `s.isalnum()` | `True` si uniquement des caractères alphanumériques | `"Py3".isalnum()` | `True` |
+| **Formatage** | `s.zfill(width)` | Complète avec des zéros à gauche | `"42".zfill(5)` | `"00042"` |
 
 ---
 
-### 1. Nettoyage et casse
+**Nettoyage et casse**
 
 ```python
 s = "  Python  "
 
-# 1. strip() : Supprime les espaces (ou caractères) au début et à la fin
+# strip() : Supprime les espaces (ou caractères) au début et à la fin
 s.strip()               # "Python"
 
-# 2. lower() : Passe tout le texte en minuscules
+# lower() : Passe tout le texte en minuscules
 "PyThOn".lower()        # "python"
 
-# 3. upper() : Passe tout le texte en majuscules
+# upper() : Passe tout le texte en majuscules
 "python".upper()        # "PYTHON"
 
-# 4. capitalize() : Met la première lettre en majuscule
+# capitalize() : Met la première lettre en majuscule
 "python".capitalize()   # "Python"
 
 ```
 
 ---
 
-### 2. SÉPARATION ET JONCTION
+**SÉPARATION ET JONCTION**
 
 ```python
 # 5. split() : Découpe une chaîne en liste selon un séparateur (espace par défaut)
@@ -52,7 +72,7 @@ s.strip()               # "Python"
 
 ---
 
-### 3. RECHERCHE ET REMPLACEMENT
+**RECHERCHE ET REMPLACEMENT**
 
 ```python
 s = "Bonjour tout le monde"
@@ -70,7 +90,7 @@ s.count("o")                   # 4
 
 ---
 
-### 4. VÉRIFICATION DE CONTENU (RETOURNENT UN BOULÉEN)
+**VÉRIFICATION DE CONTENU (RETOURNENT UN BOULÉEN)**
 
 ```python
 # 10. startswith() : Vérifie si la chaîne commence par un motif
@@ -94,19 +114,17 @@ s.count("o")                   # 4
 
 Voici un exemple comparatif simple montrant comment insérer un texte (chaîne) et un nombre (entier ou flottant) avec l'ancien opérateur `%` et la méthode `.format()` :
 
-### Exemple de code
-
 ```python
 nom = "Alice"
 age = 30
 prix = 19.99
 
-# 1. Formatage avec l'opérateur % (ancien style - style C)
+# Formatage avec l'opérateur % (ancien style - style C)
 # %s = string, %d = integer, %.2f = float avec 2 décimales
 message_percent = "Bonjour %s, vous avez %d ans. Total : %.2f €" % (nom, age, prix)
 print(message_percent)
 
-# 2. Formatage avec la méthode .format() (style Python 2.6+)
+# Formatage avec la méthode .format() (style Python 2.6+)
 # Les accolades {} servent de réceptacles
 message_format = "Bonjour {}, vous avez {} ans. Total : {:.2f} €".format(nom, age, prix)
 print(message_format)
@@ -119,7 +137,7 @@ print(message_nomme)
 
 ---
 
-### Résumé des spécificateurs courants
+**Résumé des spécificateurs courants**
 
 * **`%s`** ou **`{}`** : Chaîne de caractères (*string*)
 * **`%d`** ou **`{:d}`** : Entier (*integer*)
@@ -147,7 +165,7 @@ Le **slicing** (ou découpage) en Python est une technique qui permet d'extraire
 
 ---
 
-### Formule générale
+**Formule générale**
 
 La syntaxe utilise des crochets séparés par deux-points (`:`), et non des virgules :
 
@@ -155,7 +173,7 @@ $$\mathbf{[début : fin : pas]}$$
 
 ---
 
-### Signification des paramètres
+**Signification des paramètres**
 
 * **`début`** *(n)* : L'index du premier élément inclus. S'il est omis, la sélection commence au début (`0`).
 * **`fin`** *(m)* : L'index du premier élément **exclu** (la sélection s'arrête juste avant cet index). S'il est omis, la sélection va jusqu'à la fin de la séquence.
@@ -163,23 +181,21 @@ $$\mathbf{[début : fin : pas]}$$
 
 ---
 
-### Exemples d'application
-
 ```python
 texte = "Python"
 # Index :  0   1   2   3   4   5
 #         'P' 'y' 't' 'h' 'o' 'n'
 
-# 1. Extraction standard : du caractère index 0 à l'index 4 exclu
+# Extraction standard : du caractère index 0 à l'index 4 exclu
 print(texte[0:4])       # "Pyth"
 
-# 2. Utilisation du pas : un caractère sur deux
+# Utilisation du pas : un caractère sur deux
 print(texte[0:6:2])     # "Pto"
 
-# 3. Omision des bornes (équivalent à tout prendre) avec un pas de 2
+# Omision des bornes (équivalent à tout prendre) avec un pas de 2
 print(texte[::2])       # "Pto"
 
-# 4. Inverser une chaîne (pas négatif)
+# Inverser une chaîne (pas négatif)
 print(texte[::-1])      # "nohtyP"
 
 ```
@@ -196,9 +212,7 @@ Les expressions régulières permettent de rechercher, valider ou extraire des m
 
 Le module standard **`re`** permet de manipuler les expressions régulières (Regex) en Python pour rechercher, valider ou remplacer des motifs de texte.
 
----
-
-### 1. Codification des expressions régulières (les motifs clés)
+Codification des expressions régulières (les motifs clés)
 
 Une expression régulière utilise des caractères spéciaux pour définir des modèles de texte :
 
@@ -221,13 +235,9 @@ Une expression régulière utilise des caractères spéciaux pour définir des m
 * `$` : fin de la chaîne.
 * `(...)` : groupe de capture.
 
-
-
 ---
 
-### 2. Les 4 fonctions essentielles du module `re`
-
-#### 1. `re.search()` : Trouver la première occurrence
+**`re.search()` : Trouver la première occurrence**
 
 Cherche le motif n'importe où dans la chaîne et renvoie un objet `Match` (ou `None`).
 
@@ -235,7 +245,8 @@ Cherche le motif n'importe où dans la chaîne et renvoie un objet `Match` (ou `
 import re
 
 texte = "Le prix est de 49 euros."
-# Cherche un ou plusieurs chiffres (\d+)
+
+#Cherche un ou plusieurs chiffres (\d+)
 match = re.search(r"\d+", texte)
 
 if match:
@@ -243,7 +254,7 @@ if match:
 
 ```
 
-#### 2. `re.findall()` : Extraire toutes les occurrences
+**`re.findall()` : Extraire toutes les occurrences**
 
 Renvoie une liste contenant toutes les correspondances trouvées dans la chaîne.
 
@@ -256,7 +267,7 @@ print(emails)  # ['info@test.fr', 'support@societe.com']
 
 ```
 
-#### 3. `re.sub()` : Rechercher et remplacer
+**`re.sub()` : Rechercher et remplacer**
 
 Remplacer un motif par un autre texte.
 
@@ -269,7 +280,7 @@ print(masque)  # "Mon numéro est **********"
 
 ```
 
-#### 4. `re.match()` : Valider le début de la chaîne
+**`re.match()` : Valider le début de la chaîne**
 
 Vérifie si la chaîne **commence** par le motif spécifié (idéal pour la validation de format).
 
