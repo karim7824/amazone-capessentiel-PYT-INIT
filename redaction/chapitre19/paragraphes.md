@@ -12,7 +12,7 @@ pip install package                  # installer un paquet
 pip freeze > requirements.txt        # geler les dépendances
 pip install -r requirements.txt      # installer les dépendances
 python main.py                       # exécuter un script Python
-python -m pytest                     # exécuter les tests unitaire
+python -m pytest                     # exécuter les tests unitaires
 python -m pytest --cov               # couverture de code
 
 ```
@@ -129,7 +129,67 @@ from pathlib import Path
 
 ```
 
-## Programmation orientée objet
+## Fichiers & Répertoires
+
+```python
+# Modes open(): 'r' (lecture), 'w' (écriture/écrasement), 'a' (ajout), 'b' (binaire)
+
+# Lecture / Écriture de texte
+with open("fichier.txt", "r", encoding="utf-8") as f:
+    texte = f.read()                 # lit tout
+    for line in f: pass              # itération ligne par ligne
+
+with open("fichier.txt", "w", encoding="utf-8") as f:
+    f.write("Hello\n")
+
+# Accès aléatoire (binaire / texte)
+with open("data.bin", "rb") as f:
+    f.seek(10)                        # déplace le pointeur au 10ème octet
+    pos = f.tell()                   # position actuelle du pointeur
+
+# Répertoires & Chemins (pathlib)
+from pathlib import Path
+
+p = Path("dossier/sous_dossier/fichier.txt")
+p.parent.mkdir(parents=True, exist_ok=True)  # mkdirs (crée parents)
+p.exists()                           # vérifie si existe
+p.is_file()                          # est un fichier
+p.is_dir()                           # est un dossier
+content = p.read_text(encoding="utf-8")      # lecture directe
+p.write_text("ok", encoding="utf-8")         # écriture directe
+
+```
+
+## POO simple (Bases & Encapsulation)
+
+```python
+class CompteBancaire:
+    def __init__(self, titulaire: str, solde: float = 0.0):
+        self.titulaire = titulaire   # attribut public
+        self._solde = solde          # attribut protégé (convention)
+        self.__secret = "1234"       # attribut privé (name mangling)
+
+    def deposer(self, montant: float):
+        if montant > 0: self._solde += montant
+
+    @property                        # getter
+    def solde(self) -> float:
+        return self._solde
+
+    @solde.setter                    # setter avec contrôle
+    def solde(self, valeur: float):
+        if valeur >= 0: self._solde = valeur
+
+    def __str__(self) -> str:        # méthode spéciale (dunder)
+        return f"Compte({self.titulaire}, {self._solde}€)"
+
+compte = CompteBancaire("Alice", 100)
+compte.deposer(50)
+print(compte.solde)                  # appel du getter (150)
+
+```
+
+## POO avancée (Héritage & Abstraction)
 
 ```python
 from abc import ABC, abstractmethod
@@ -137,12 +197,17 @@ from abc import ABC, abstractmethod
 class Animal(ABC):
     espece = "inconnue"               # attribut de classe / static
     def __init__(self, nom: str):
-        self._nom = nom              # protégé
+        self._nom = nom
+
     @abstractmethod
     def crier(self): pass
 
 class Chien(Animal):
-    def crier(self):
+    def __init__(self, nom: str, race: str):
+        super().__init__(nom)        # chaînage des constructeurs
+        self.race = race
+
+    def crier(self):                 # polymorphisme
         print(f"{self._nom} aboie")
 
 class Generique[T]:
