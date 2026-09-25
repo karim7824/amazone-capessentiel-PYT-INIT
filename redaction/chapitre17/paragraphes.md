@@ -4,33 +4,58 @@ La programmation orientée objets permet de structurer un programme autour de co
 Dans ce chapitre :
 
 * Approche de l'orienté objets
-
-
 * Composition d'une classe (constructeur, méthodes et données)
-
-
 * Objets et instances de classe (`self`, `super`)
-
-
 * Héritage de classes et redéfinition
-
-
 * Packages, imports et classes
-
-
 
 ---
 
 ## Approche de l'orienté objets
 
-L'approche orientée objets consiste à regrouper au sein d'une même entité (la classe) les données (attributs) et les traitements (méthodes) qui leur sont associés. Cela favorise l'encapsulation et la réutilisabilité du code.
+L'approche orientée objets consiste à regrouper au sein d'une même entité (la classe) les données (attributs) et les traitements (méthodes) qui leur sont associés. Cela favorise l'encapsulation et la réutilisabilité du code. L'orienté objet permet de modéliser les entités métiers observées.
+
+Les piliers de la Programmation Orientée Objet (suite)**
+
+* **Classe :** C'est la structure fondamentale utilisée pour **encapsuler les données** (les attributs) et **les traitements** (les méthodes) associés à une même entité observée. Elle agit comme un modèle ou un plan de fabrication abstract pour tous les éléments de même nature.
+* **Objet :** C'est une **instance concrète** d'une classe. À partir d'un seul plan (la classe), on peut instancier un nombre illimité d'objets distincts, chacun possédant son propre état (ses propres valeurs pour chaque attribut) tout en partageant les mêmes comportements (les méthodes).
+* **Le Constructeur (`__init__`) :** Il s'agit d'une méthode spéciale exécutée **automatiquement** lors de la création de chaque objet. Son rôle principal est d'initialiser l'état initial de l'instance en lui attribuant ses valeurs de départ.
+* **Le paramètre `self` :** En Python, `self` représente une **référence explicite à l'instance courante** de l'objet en cours de manipulation. Il doit être passé comme premier paramètre de toute méthode d'instance afin de pouvoir lire ou modifier les attributs propres à cet objet.
+* **L'Encapsulation :** Ce principe consiste à **masquer les détails internes** d'un objet et à protéger ses données contre des modifications directes et involontaires. En Python, la protection se fait par convention d'écriture :
+* Un préfixe simple `_attribut` indique un attribut **protégé** (déconseillé à l'accès direct hors de la classe).
+* Un préfixe double `__attribut` active le *Name Mangling* (masquage de nom) pour rendre l'attribut **privé**.
+
+
+* **L'Héritage :** C'est le mécanisme permettant à une classe dite "fille" d'**hériter des propriétés et des méthodes** d'une classe dite "mère". Cela favorise la réutilisation du code et permet d'exprimer des relations hiérarchiques (ex. *Un Chien "est un" Animal*).
+* **Le Polymorphisme :** Il permet à des objets issus de classes différentes de proposer une méthode portant le même nom, mais adaptant son comportement selon la classe concernée. Cela permet de traiter différents types d'objets de manière uniforme via une interface commune.
+
+Pour la méthode de la classe, self désigne l'objet évoqué ma_voiture ou mon_camion
 
 ```python
-# Modélisation conceptuelle d'un objet en Python
-class Vehicule:
-    pass
+class Vehicule:  # Classe
+    def __init__(self, marque: str):  # Constructeur + self
+        self.marque = marque  # Attribut public
+        self._vitesse = 0  # Attribut protégé (encapsulation)
+
+    def accelerer(self):  # Méthode
+        self._vitesse += 10
+
+class Voiture(Vehicule):  # Héritage
+    def accelerer(self):  # Polymorphisme (comportement spécifique)
+        self._vitesse += 20
+
+
+# Instanciation de plusieurs objets à partir des classes
+ma_voiture = Voiture("Peugeot") # est vu syntaxiquement comme  Voiture(ma_voiture, "Peugeot")   ma_voiture est le self
+mon_camion = Vehicule("Volvo") # est vu syntaxiquement comme Vehicule(mon_camion, "Volvo")   mon_camion est le self
+
+ma_voiture.accelerer() 
+mon_camion.accelerer()
 
 ```
+
+
+
 
 > 💡 Pensez vos classes comme des plans de construction permettant de donner naissance à des objets autonomes dotés de comportements spécifiques.
 
