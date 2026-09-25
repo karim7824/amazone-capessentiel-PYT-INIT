@@ -128,7 +128,7 @@ liste_nettoyee = list(ensemble_uniques)  # {1, 2, 3, 4} -> [1, 2, 3, 4]
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet illustrant le casting et la conversion de données
@@ -148,7 +148,7 @@ print(message)
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
 **Exercice 1 :** Écrivez un script qui prend une chaîne de caractères représentant un prix avec des décimales, la convertit en type `float`, lui applique une taxe de 20%, puis convertit le résultat final en `str` pour l'afficher avec un message explicite.
 
