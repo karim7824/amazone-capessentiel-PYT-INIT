@@ -43,7 +43,16 @@ Voici le tableau propre, une ligne par type pour éviter le bazar des balises HT
 ```python
 temperature = 23.5    # Flottant (float) pour les décimaux
 est_valide = True     # Booléen (bool) valant True ou False
+```
 
+```python 
+>>> a=10
+>>> type(a)
+<class 'int'>
+>>> id(a)
+140721843747544
+>>> hex(id(a))
+'0x7ffc5b823ad8'
 ```
 
 > 💡 Utilisez toujours des noms explicites pour vos variables scalaires afin d'améliorer la lisibilité immédiate du code par l'équipe projet.
