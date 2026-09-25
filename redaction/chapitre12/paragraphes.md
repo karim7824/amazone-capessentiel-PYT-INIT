@@ -79,7 +79,7 @@ traitement (eleve) # exception prooduite qu'il faut intercepter dans un bloc try
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant try, except, finally et la levée d'une exception avec raise
@@ -110,7 +110,8 @@ print(convertir_et_diviser("50", "0"))
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script qui demande à l'utilisateur de saisir un nombre, utilise un bloc `try...except` pour intercepter une éventuelle erreur de saisie (`ValueError`), et affiche un message adapté.
-2. **Exercice 2 :** Créez une fonction qui vérifie si un mot de passe possède au moins 8 caractères. Si ce n'est pas le cas, utilisez `raise` pour émettre une exception personnalisée de type `ValueError`.
+**Exercice 1 :** Écrivez un script qui demande à l'utilisateur de saisir un nombre, utilise un bloc `try...except` pour intercepter une éventuelle erreur de saisie (`ValueError`), et affiche un message adapté.
+
+**Exercice 2 :** Créez une fonction qui vérifie si un mot de passe possède au moins 8 caractères. Si ce n'est pas le cas, utilisez `raise` pour émettre une exception personnalisée de type `ValueError`.
