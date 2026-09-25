@@ -4,13 +4,8 @@ La création de scripts en ligne de commande et le passage d'arguments permetten
 Dans ce chapitre :
 
 * Scripts et `__main__`
-
 * Scripts et passage d'arguments
-
-
 * Gestion de package avec `pip`
-
-
 ---
 
 ## Scripts et **main**
@@ -33,15 +28,32 @@ if __name__ == "__main__":
 
 ## Scripts et passage d'arguments
 
-Le passage d'arguments en ligne de commande permet de transmettre des paramètres dynamiques à un script lors de son lancement depuis le terminal, notamment via le module standard `sys` ou `argparse`.
+Un script est un traitement spécifique en exploitation. Peut être qu'il faut lui passer des arguments de l'extérieur pour se réaliser (ex. sauvegarde.py <folder>). Dans ce cas il faut passer les nom du folder en argument au moment d'exécuter le script. Python permet de passer des arguments au moyen de sys.argv. On a deux modules possible sys et argparse.
 
+script :  sauvegarde.py 
 ```python
-import sys
+def sauvegarde (folder):
+    print(f"Je sauvegarde {folder}")
 
-# Récupération des arguments passés en ligne de commande
-arguments = sys.argv
-nom_script = sys.argv[0]
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) < 2 :
+        print("Il manque un argument ", sys.argv)
+        sys.exit(1)
+    # sys.argv[0] => sauvegarde.py 
+    folder = sys.argv[1]
+    sauvegarde (folder)
+```
+Erreur de lancement 
+```bash
+python sauvergarde.py
+Il manque un argument  ['sauvergarde.py']
+```
 
+Lancement avec le repertoire "c:/"
+```bash
+python sauvergarde.py "c:/"
+Je sauvegarde c:/
 ```
 
 > 💡 Privilégiez l'utilisation du module `argparse` pour les scripts complexes afin de gérer automatiquement l'aide, les options obligatoires et les types d'arguments.
