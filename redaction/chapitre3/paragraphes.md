@@ -12,14 +12,31 @@ Dans ce chapitre :
 
 ## Déclaration de variables
 
-En Python, la déclaration d'une variable se fait simplement par affectation d'une valeur à un nom, sans nécessiter de typage explicite préalable. Le type est déduit dynamiquement par l'interpréteur lors de l'exécution.
+### Une variable en Python : une étiquette mémoire
+
+Une **variable** est un nom qui pointe vers un emplacement mémoire contenant une donnée.
+
+En Python, la création se fait par simple **affectation** avec le signe `=` :
 
 ```python
-# Déclaration et initialisation de variables de types différents
-age = 42          # Un entier (int)
-nom = "Alice"     # Une chaîne de caractères (str)
+age = 25  # L'objet 25 est stocké en mémoire, 'age' pointe dessus.
 
 ```
+
+* **Typage dynamique :** Inutile de déclarer le type à l'avance (`int`, `str`, etc.). L'interpréteur le déduit automatiquement lors de l'exécution.
+* **Mécanisme :** Contrairement à d'autres langages où la variable est une « boîte » qui contient la valeur, Python fonctionne par étiquettes : le nom pointe vers l'objet créé en mémoire.
+
+---
+
+### Normes de nommage (PEP 8)
+
+| Règle | Convention | Exemples |
+| --- | --- | --- |
+| **Style principal** | **`snake_case`** (minuscules + tirets bas) | `nom_utilisateur`, `prix_ttc` |
+| **Lisibilité** | Des noms explicites et descriptifs | `total_commandes` (éviter `x` ou `t`) |
+| **Composition** | Lettres, chiffres et `_` uniquement | `user_1` (interdit de commencer par un chiffre : `1user`) |
+| **Sensibilité** | Respect de la casse (majuscules/minuscules) | `age` et `Age` sont deux variables distinctes |
+| **Mots réservés** | Interdiction d'utiliser les mots-clés Python | Éviter `class`, `def`, `if`, `import`, etc. |
 
 > 💡 Le nom d'une variable doit commencer par une lettre ou un tiret bas (`_`) et ne peut pas utiliser un mot-clé réservé du langage (comme `if`, `def`, `class`).
 
