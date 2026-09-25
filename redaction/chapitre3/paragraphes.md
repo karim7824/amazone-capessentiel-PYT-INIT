@@ -73,6 +73,46 @@ Voici le tableau propre, une ligne par type pour éviter le bazar des balises HT
 
 Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, de modification ou d'unicité des éléments.
 
+| Catégorie | Type (`type()`) | Mutabilité | Exemples de syntaxe |
+| --- | --- | --- | --- |
+| **Séquence** | `list` (liste)<br>
+
+<br>`tuple` (uplet)<br>
+
+<br>`range` (séquence d'entiers) | **Mutable**<br>
+
+<br>Immuable<br>
+
+<br>Immuable | `[1, "dev", 3.14]`<br>
+
+<br>`(10, 20, 30)`<br>
+
+<br>`range(0, 10)` |
+| **Ensemble** | `set` (ensemble unique)<br>
+
+<br>`frozenset` | **Mutable**<br>
+
+<br>Immuable | `{1, 2, 3}`<br>
+
+<br>`frozenset({1, 2})` |
+| **Mapping** | `dict` (dictionnaire clé/valeur) | **Mutable** | `{"nom": "Karim", "age": 40}` |
+| **Booléen** | `bool` | Immuable | `True`, `False` |
+| **Binaire** | `bytes`<br>
+
+<br>`bytearray`<br>
+
+<br>`memoryview` | Immuable<br>
+
+<br>**Mutable**<br>
+
+<br>**Mutable** | `b"Hello"`<br>
+
+<br>`bytearray(5)`<br>
+
+<br>`memoryview(b"abc")` |
+| **Spécial** | `NoneType` | Immuable | `None` (absence de valeur) |
+
+
 ```python
 utilisateurs = ["Alice", "Bob", "Charlie"]  # Liste modifiable (list)
 coordonnees = (10.0, 20.0)                  # Tuple immuable (tuple)
