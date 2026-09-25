@@ -207,23 +207,7 @@ print(f"Utilisateurs supprimés : {curseur.rowcount}")
 
 > 💡 Utilisez toujours des requêtes paramétrées (avec des points d'interrogation `?`) pour injecter des variables afin de vous prémunir totalement contre les failles d'injection SQL.
 
---- 
-## Bonne pratique : Gestion sécurisée des connexions
-
-Pour éviter les fuites de mémoire et garantir la fermeture automatique des ressources même en cas d'erreur, utilisez un gestionnaire de contexte (`with`) :
-
-```python
-import sqlite3
-
-# Le gestionnaire de contexte gère le commit/rollback automatiquement
-with sqlite3.connect("ma_banque.db") as connexion:
-    curseur = connexion.cursor()
-    curseur.execute("SELECT COUNT(*) FROM clients")
-    total = curseur.fetchone()[0]
-    print(f"Nombre total de clients : {total}")
-# La connexion se ferme proprement en sortant du bloc with
-
-```
+---
 ## Gestion des transactions — commit et rollback
 
 La gestion des transactions permet de valider définitivement un ensemble d'opérations en base de données grâce à l'instruction `commit`, garantissant la cohérence globale des données.
@@ -268,6 +252,24 @@ finally:
 
 > 💡 En cas d'erreur lors d'une transaction, utilisez l'instruction `rollback` pour annuler les modifications en cours et rétablir l'état stable précédent de la base.
 
+---
+--- 
+## Bonne pratique : Gestion sécurisée des connexions
+
+Pour éviter les fuites de mémoire et garantir la fermeture automatique des ressources même en cas d'erreur, utilisez un gestionnaire de contexte (`with`) :
+
+```python
+import sqlite3
+
+# Le gestionnaire de contexte gère le commit/rollback automatiquement
+with sqlite3.connect("ma_banque.db") as connexion:
+    curseur = connexion.cursor()
+    curseur.execute("SELECT COUNT(*) FROM clients")
+    total = curseur.fetchone()[0]
+    print(f"Nombre total de clients : {total}")
+# La connexion se ferme proprement en sortant du bloc with
+
+```
 ---
 
 **Alternative moderne : Le gestionnaire de contexte (`with`)**
