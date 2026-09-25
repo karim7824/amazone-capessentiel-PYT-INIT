@@ -111,22 +111,6 @@ positional arguments:
 options:
   -h, --help  show this help message and exit
 ```
-  
-
-## Gestion de package - pip
-
-L'outil `pip` est le gestionnaire de paquets officiel de Python qui permet d'installer, de mettre à jour et de supprimer des bibliothèques tierces depuis le Python Package Index (PyPI).
-
-```bash
-# Installation d'un package tiers en ligne de commande (exemple)
-pip install requests
-
-```
-
-> 💡 Utilisez systématiquement un environnement virtuel (`venv`) avant d'installer des packages avec `pip` pour isoler les dépendances de vos différents projets.
-
----
-
 ## Exemple de synthèse
 
 ```python
