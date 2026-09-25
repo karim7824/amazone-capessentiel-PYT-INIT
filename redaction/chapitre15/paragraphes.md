@@ -14,13 +14,8 @@ Le module `venv` permet de générer un répertoire de travail contenant une cop
 
 | Option | Description | Utilisation typique |
 | --- | --- | --- |
-| **`--system-site-packages`** | Donne accès aux paquets installés au niveau du système global dans l'environnement virtuel. | Pour éviter de réinstaller de gros packages déjà présents sur la machine (ex. SciPy, OpenCV). |
-| **`--without-pip`** | Désactive l'installation automatique de `pip` dans le nouvel environnement. | Pour installer un gestionnaire alternatif ou dans des environnements très restreints. |
-| **`--copies`** | Force la copie physique des fichiers/exécutables Python au lieu d'utiliser des liens symboliques. | Pour garantir la portabilité ou quand l'OS/système de fichiers ne supporte pas les liens symboliques. |
-| **`--symlinks`** | Force l'utilisation de liens symboliques vers les fichiers Python (comportement par défaut sur Unix/Linux). | Utile si l'on souhaite expliciter ce comportement sur certains OS. |
 | **`--clear`** | Supprime le contenu du dossier cible avant de créer le nouvel environnement. | Pour réinitialiser proprement un environnement virtuel existant. |
 | **`--upgrade`** | Met à jour le dossier cible pour utiliser la version actuelle de Python tout en conservant les paquets installés. | Après une mise à niveau de la version globale de Python sur la machine. |
-| **`--prompt PROMPT`** | Définit un préfixe personnalisé pour l'invite de commande (*prompt*) lorsque l'environnement est activé. | Pour identifier facilement quel environnement est actif (ex. `--prompt "mon-projet"`). |
 | **`--upgrade-deps`** | Met à jour automatiquement `pip` et `setuptools` vers la dernière version disponible lors de la création. | Pour avoir les outils d'installation à jour d'entrée de jeu. |
 
 
