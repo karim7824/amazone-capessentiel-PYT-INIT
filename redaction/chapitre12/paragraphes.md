@@ -4,26 +4,33 @@ La gestion des erreurs permet d'anticiper et de traiter les incidents d'exécuti
 Dans ce chapitre :
 
 * Gestion des exceptions (`try`, `except`, `finally`) et levée d'exceptions (`raise`)
-
-
 * Utilisation de l'instruction `finally`
-
 * Émission personnalisée d'une exception
-
-
 
 ---
 
 ## Gestion des exceptions : try catch finally et throw
 
-La gestion des exceptions repose sur le bloc `try` pour surveiller le code à risque et `except` pour intercepter les erreurs survenues. En Python, le mot-clé `raise` équivaut au `throw` des autres langages pour émettre une exception.
+La gestion des exceptions repose sur le bloc `try` pour surveiller le code à risque et `except` pour intercepter les erreurs survenues. En Python, le mot-clé `raise` équivaut au `throw` des autres langages pour émettre une exception. On peut intercepter une exception précise ZeroDivisionError pour la traiter ou intercepter toutes les exceptions dans un même traitement
 
 ```python
 # Interception d'une division par zéro
 try:
     resultat = 10 / 0
+    i+=1  # incrémenter une variable i qui n'existe pas 
 except ZeroDivisionError:
-    resultat = "Erreur : Division par zéro impossible"
+    print("Erreur : Division par zéro impossible")
+except Exception as e:
+    print("Problème ", e)
+
+# Plus de division par zéro mais "Problème  name 'i' is not defined"
+try:
+    resultat = 10 / 0
+    i+=1  # incrémenter une variable i qui n'existe pas 
+except ZeroDivisionError:
+    print("Erreur : Division par zéro impossible")
+except Exception as e:
+    print("Problème ", e)
 
 ```
 
@@ -55,10 +62,16 @@ finally:
 Il est possible d'émettre volontairement une exception à l'aide de l'instruction `raise` (similaire à `throw`) pour signaler qu'une règle métier ou une condition critique n'est pas respectée.
 
 ```python
-# Émission d'une exception si l'âge est invalide
-age = -5
-if age < 0:
-    raise ValueError("L'âge ne peut pas être négatif")
+def traitement (eleve):
+    if eleve['age'] < 0:
+        #raise ValueError("L'âge ne peut pas être négatif") # ValueError: L'âge ne peut pas être négatif
+        raise Exception ("L'âge ne peut pas être négatif")  # Exception: L'âge ne peut pas être négatif
+    print(f"{eleve['nom']} -- {eleve['age']} ")
+
+eleve = { 'nom' : 'karim', 'age' : 20}
+traitement (eleve) # OK
+eleve = { 'nom' : 'karim', 'age' : -20}
+traitement (eleve) # exception prooduite qu'il faut intercepter dans un bloc try/except
 
 ```
 
