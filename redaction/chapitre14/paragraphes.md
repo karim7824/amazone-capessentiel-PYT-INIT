@@ -20,15 +20,41 @@ Dans ce chapitre :
 L'outil `pip` permet d'installer, mettre à jour et supprimer des bibliothèques tierces issues du dépôt PyPI. Il s'exécute depuis le terminal ou via l'interpréteur Python pour gérer les dépendances du projet. Son utilisation garantit l'accès à un écosystème enrichi au-delà de la bibliothèque standard.
 
 ```bash
-# Installation d'un package depuis le terminal
-pip install requests
+# Installation d'un package depuis le terminal au moyen de pip
+pip install requests  # si pip est un executable
+python -m pip install requests # en passant par pip en tant que module
 
-# Verification de la liste des packages installés
+# Verification de la liste des packages installés et les versions
 python -m pip list
 
-```
+# Détail sur un package
+pip show jsonpickle
+Name: jsonpickle
+Version: 4.1.2
+Summary: jsonpickle encodes/decodes any Python object to/from JSON
+Home-page: https://jsonpickle.readthedocs.io/
+Author: Theelx
+Author-email: David Aguilar <davvid+jsonpickle@gmail.com>
+License: BSD-3-Clause
+Location: C:\Program Files\Python312\Lib\site-packages
+Requires:
+Required-by:
 
-> 💡 **Bonne pratique :** Exécutez toujours `pip` au travers de `python -m pip` pour vous assurer d'installer les paquets dans l'environnement Python actif.
+```
+**Commandes principales de `pip`**
+
+| Commande | Description | Exemple |
+| --- | --- | --- |
+| **`pip install <pkg>`** | Installe un paquet depuis PyPI | `pip install requests` |
+| **`pip uninstall <pkg>`** | Désinstalle un paquet | `pip uninstall requests` |
+| **`pip list`** | Liste tous les paquets installés dans l'environnement | `pip list` |
+| **`pip show <pkg>`** | Affiche les détails d'un paquet (version, emplacement, dépendances) | `pip show requests` |
+| **`pip freeze`** | Affiche les paquets installés au format `nom==version` (idéal pour les fichiers d'exigences) | `pip freeze > requirements.txt` |
+| **`pip search <term>`** | *Désactivé sur PyPI*. Préférer la recherche directe sur [pypi.org](https://pypi.org?utm_source=gemini) | N/A |
+| **`pip check`** | Vérifie si les dépendances installées sont compatibles entre elles | `pip check` |
+| **`pip cache purge`** | Vide le cache local des roues (*wheels*) et archives téléchargées | `pip cache purge` |
+
+> 💡 **Bonne pratique :** Exécutez toujours `pip` au travers de `python -m pip` pour vous assurer d'installer les paquets dans l'environnement Python actif (venv).
 
 ---
 
@@ -108,6 +134,8 @@ texte = b"Donnees a compresser plusieurs fois..."
 compresse = zlib.compress(texte)
 print("Taille réduite :", len(compresse))
 
+#exécuter une commande shell - lancer mspaint
+os.system("mspaint")
 ```
 
 > 💡 **Bonne pratique :** Privilégiez l'utilisation de `pathlib.Path` plutôt que `os.path` pour une gestion interplateforme plus claire et élégante des chemins.
@@ -129,6 +157,44 @@ print("Contenu :", os.listdir("."))
 # Déplacement/renommage et suppression
 shutil.move("mon_dossier", "dossier_archive")
 os.rmdir("dossier_archive")
+
+```
+
+## Recherche dans un répertoire
+
+| Méthode | Usage | Récursif ? | Support de motifs (`*.py`) |
+| --- | --- | --- | --- |
+| **`Path.glob("*.py")`** | Fichiers `.py` dans le dossier courant uniquement | Non | Oui |
+| **`Path.rglob("*.py")`** | Fichiers `.py` dans le dossier et **tous ses sous-dossiers** | Oui | Oui |
+| **`Path.walk()`** *(3.12+)* | Générateur arborescent complet (style `os.walk`) | Oui | Non (filtrage manuel) |
+
+Recherche des fichiers *.py dans un répertoire de manière récursive
+```python
+from pathlib import Path
+
+# Parcours récursif de tous les fichiers .py à partir du dossier courant
+for fichier in Path(".").rglob("*.py"):
+    print(fichier)
+
+Recherche des fichiers *.py dans un répertoire 
+```python
+from pathlib import Path
+
+# Parcours récursif de tous les fichiers .py à partir du dossier courant
+for fichier in Path(".").rglob("*.py"):
+    print(fichier)
+
+```
+Si vous utilisez `Path.walk()`, le filtrage doit se faire manuellement dans la boucle à l'aide de `.match()` ou `.endswith()` :
+```python
+from pathlib import Path
+
+# Path.walk() génère des tuples (racine, dossiers, fichiers)
+for root, dirs, files in Path(".").walk():
+    for file in files:
+        if file.endswith(".py"):  # ou Path(file).match("*.py")
+            chemin_complet = root / file
+            print(chemin_complet)
 
 ```
 
@@ -158,7 +224,6 @@ with zipfile.ZipFile("archive.zip", "w") as zf:
 > 💡 **Bonne pratique :** Utilisez toujours le bloc `with open(...)` pour vous assurer que les descripteurs de fichiers sont libérés même en cas d'erreur.
 
 ---
-
 ## Automatiser une installation avec gel et requirements.txt
 
 Le mécanisme de "freeze" extrait la liste exacte des dépendances installées avec leurs versions. L'enregistrement dans un fichier `requirements.txt` permet de reproduire l'environnement à l'identique. Cela assure la portabilité de votre projet sur un autre serveur ou poste développeur.
@@ -176,7 +241,7 @@ python -m pip install -r requirements.txt
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 import sys
@@ -207,7 +272,8 @@ archiver_projet(".", "sauvegarde.zip")
 
 ---
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script Python qui crée un dossier nommé `export`, y génère un fichier texte `notes.txt` contenant trois lignes de votre choix, puis affiche la taille du fichier à l'écran.
-2. **Exercice 2 :** Créez une fonction qui accepte le chemin d'un répertoire en paramètre, liste tous les fichiers `.py` présents dans ce dossier, puis génère une archive `modules.zip` les regroupant tous.
+**Exercice 1 :** Écrivez un script Python qui crée un dossier nommé `export`, y génère un fichier texte `notes.txt` contenant trois lignes de votre choix, puis affiche la taille du fichier à l'écran.
+
+**Exercice 2 :** Créez une fonction qui accepte le chemin d'un répertoire en paramètre, liste tous les fichiers `.py` présents dans ce dossier, puis génère une archive `modules.zip` les regroupant tous.
