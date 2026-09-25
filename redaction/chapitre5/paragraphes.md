@@ -150,5 +150,6 @@ print(message)
 
 ### Exercices de fin de chapitre
 
-1. **Exercice 1 :** Écrivez un script qui prend une chaîne de caractères représentant un prix avec des décimales, la convertit en type `float`, lui applique une taxe de 20%, puis convertit le résultat final en `str` pour l'afficher avec un message explicite.
-2. **Exercice 2 :** Déclarez une variable entière et une variable flottante, effectuez une addition entre les deux, puis vérifiez et affichez le type de la variable résultante pour observer la conversion implicite de Python.
+**Exercice 1 :** Écrivez un script qui prend une chaîne de caractères représentant un prix avec des décimales, la convertit en type `float`, lui applique une taxe de 20%, puis convertit le résultat final en `str` pour l'afficher avec un message explicite.
+
+**Exercice 2 :** Déclarez une variable entière et une variable flottante, effectuez une addition entre les deux, puis vérifiez et affichez le type de la variable résultante pour observer la conversion implicite de Python.
