@@ -183,7 +183,7 @@ print(a is b)  # False (deux objets distincts en mémoire)
 ```
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 ```python
 # Programme complet combinant affectation, arithmétique, relations et logique
@@ -203,7 +203,7 @@ print(fstock restant : {stock_initial} | Alerte active : {alerte_stock})
 
 ```
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
 **Exercice 1 :** Écrivez un script qui initialise deux variables numériques, puis utilisez les opérateurs arithmétiques pour calculer leur somme, leur produit et le reste de leur division entière.
 
