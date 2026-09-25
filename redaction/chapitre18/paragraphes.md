@@ -4,33 +4,28 @@ L'accès aux bases de données permet de persister, d'interroger et de structure
 Dans ce chapitre :
 
 * Concepts de base des bases de données relationnelles
-
-
 * Connexion et paramétrage via la connexion et le curseur
-
-
 * Gestion de la structure des données avec le DDL (tables)
-
-
 * Gestion des transactions et validation avec le `commit`
-
 * Manipulation des données avec le DML (`SELECT`, `WHERE`)
-
-
 
 ---
 
 ## Concepts de base
 
-Les bases de données relationnelles permettent de stocker des données tabulaires structurées composées de lignes et de colonnes. Elles garantissent l'intégrité, la rapidité de recherche et la concurrence d'accès aux informations.
+Les bases de données relationnelles (SGBDR) permettent de stocker et d'organiser des données tabulaires structurées sous forme de **tables** composées de **lignes** (enregistrements ou n-uplets) et de **colonnes** (attributs ou champs).
 
-```python
-# Approche conceptuelle de l'interaction avec une base de données
-# Utilisation généralement du module intégré sqlite3 en Python
+Grâce aux contraintes d'intégrité et au respect des propriétés ACID (Atomicité, Cohérence, Isolation, Durabilité), elles garantissent la **cohérence des données**, la **rapidité de recherche** via des indexations optimisées et la **gestion de la concurrence d'accès** simultanée par plusieurs utilisateurs.
 
-```
+---
 
-> 💡 Privilégiez l'utilisation des bases de données relationnelles dès que vos besoins de persistance impliquent des relations complexes entre plusieurs entités.
+**Concepts clés**
+
+* **Table (ou Relation) :** Structure bidimensionnelle représentant une entité du monde réel (ex. `Client`, `Commande`).
+* **Clé primaire (*Primary Key*) :** Attribut unique (ex. un identifiant ou un code) permettant de distinguer chaque ligne d'une table sans ambiguïté.
+* **Clé étrangère (*Foreign Key*) :** Attribut établissant un lien relationnel entre deux tables en référençant la clé primaire d'une autre table.
+* **Langage SQL (*Structured Query Language*) :** Langage standardisé utilisé pour interroger et manipuler les données (via les commandes `SELECT`, `INSERT`, `UPDATE`, `DELETE`).
+
 
 ---
 
