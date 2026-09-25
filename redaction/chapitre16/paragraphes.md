@@ -12,9 +12,9 @@ Dans ce chapitre :
 
 La manipulation de fichiers en Python repose principalement sur l'ouverture de flux via la fonction intégrée open(), qui prend en charge deux types fondamentaux de formats :
 
-Les fichiers texte : contenant des caractères encodés (généralement en UTF-8) lisibles par un humain. Chaque ligne s'y termine par un caractère de saut de ligne (\n).
+**Les fichiers texte** : contenant des caractères encodés (généralement en UTF-8) lisibles par un humain. Chaque ligne s'y termine par un caractère de saut de ligne (\n).
 
-Les fichiers binaires : stockant des données brutes sous forme d'octets (images, exécutables, fichiers audio). Leur ouverture nécessite d'ajouter le suffixe b aux modes de lecture ou d'écriture (par exemple 'rb' ou 'wb').
+**Les fichiers binaires** : stockant des données brutes sous forme d'octets (images, exécutables, fichiers audio). Leur ouverture nécessite d'ajouter le suffixe b aux modes de lecture ou d'écriture (par exemple 'rb' ou 'wb').
 
 **Accès séquentiel (fichier texte)**
 with open("notes.txt", "r", encoding="utf-8") as f:
