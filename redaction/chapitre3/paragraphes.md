@@ -41,16 +41,26 @@ Voici le tableau propre, une ligne par type pour éviter le bazar des balises HT
 | **Texte** | `str` (chaîne) | Immuable | `"Bonjour"`, `'Python'` |
 
 ```python
-temperature = 23.5    # Flottant (float) pour les décimaux
-est_valide = True     # Booléen (bool) valant True ou False
+>>># avec typage float # Flottant (float) pour les décimaux
+>>> température:float =11.11
+>>> type(température)
+<class 'float'>
+>>># typage implicite
+>>> température =22.22
+>>> type(température)
+<class 'float'>
+
+# avec type bool : # Booléen (bool) valant True ou False
+>>> est_valide:bool = True
+>>> type(est_valide)
+<class 'bool'>
 ```
 
 ```python 
 >>> a=10
 >>> type(a)
 <class 'int'>
->>> id(a)
-140721843747544
+>>># afficher l'adresse de la variable en mémoire (pas essentiel)
 >>> hex(id(a))
 '0x7ffc5b823ad8'
 ```
