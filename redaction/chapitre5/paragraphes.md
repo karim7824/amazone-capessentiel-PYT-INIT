@@ -12,6 +12,10 @@ Dans ce chapitre :
 
 Le casting consiste à transformer explicitement une valeur d'un type donné vers un autre type (par exemple d'une chaîne de caractères vers un entier). Cette opération est indispensable pour manipuler des données textuelles provenant d'interfaces ou de fichiers.
 
+* **Conversion explicite (*Casting*) :** Action volontaire du développeur via une fonction constructeur (ex: `int("10")`, `str(42)`).
+* **Conversion implicite (*Coercion*) :** Prise en charge automatique par l'interpréteur Python lors d'une opération (ex: `3 + 2.0` devient automatiquement un `float` `5.0`).
+
+
 ```python
 # Conversion explicite d'une chaîne en entier
 saisie_utilisateur = "25"
