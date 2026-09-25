@@ -21,7 +21,7 @@ print(f"Architecture : {architecture}")
 # Affiche directement : "64bit" ou "32bit"
 ```
 
-Différence entre `python`, `python3` et `py`
+**Différence entre `python`, `python3` et `py`**
 
 | Commande | Environnement | Description |
 | --- | --- | --- |
