@@ -1,0 +1,5 @@
+Tests unitaires
+- Nécessité du test et concepts fondamentaux
+- Prise en main du framework standard unittest
+- Cas pratique : tester la classe Calcul
+- Mesure de la couverture de code (Code Coverage)

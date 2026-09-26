@@ -1,6 +1,5 @@
-Accès aux bases de données
-- Concepts de base
-- Connexion et paramétrage - connexion, cursor
-- Gestion de la Structure de données - Table DDL
-- Gestion des transactions - commit
-- Manipulation des données - Select/Where DML
+Programmation asynchrone
+- Appels non bloquants et concurrents
+- Promise ou Future avec async, await
+- La boucle d'événements 
+- Gestion des tâches concurrentes 

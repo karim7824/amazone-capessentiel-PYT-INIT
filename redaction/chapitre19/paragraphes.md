@@ -1,295 +1,343 @@
-# L'essentiel de l'essentiel à retenir sur Python
+# Chapitre 19 : Accès aux bases de données
 
-## Installation & commandes
+L'accès aux bases de données permet de persister, d'interroger et de structurer des volumes importants d'informations de manière sécurisée en Python. Maîtriser ces concepts est indispensable pour connecter vos applications à des systèmes de stockage relationnels.
+Dans ce chapitre :
 
-```bash
-python --version                     # vérifier la version de Python
-python -m venv .venv                 # créer un environnement virtuel
-source .venv/bin/activate            # activer venv (Linux/macOS)
-.venv\Scripts\activate               # activer venv (Windows)
-deactivate                           # désactiver l'environnement virtuel
-pip install package                  # installer un paquet
-pip freeze > requirements.txt        # geler les dépendances
-pip install -r requirements.txt      # installer les dépendances
-python main.py                       # exécuter un script Python
-python -m pytest                     # exécuter les tests unitaires
-python -m pytest --cov               # couverture de code
+* Concepts de base des bases de données relationnelles
+* Connexion et paramétrage via la connexion et le curseur
+* Gestion de la Structure de données - requêtes DDL
+* Manipulation des données - requêtes DML
+* Gestion des transactions — commit et rollback
+* Bonne pratique : Gestion sécurisée des connexions
+
+---
+
+## Concepts de base
+
+Les bases de données relationnelles (SGBDR) permettent de stocker et d'organiser des données tabulaires structurées sous forme de **tables** composées de **lignes** (enregistrements ou n-uplets) et de **colonnes** (attributs ou champs).
+
+Grâce aux contraintes d'intégrité et au respect des propriétés ACID (Atomicité, Cohérence, Isolation, Durabilité), elles garantissent la **cohérence des données**, la **rapidité de recherche** via des indexations optimisées et la **gestion de la concurrence d'accès** simultanée par plusieurs utilisateurs.
+
+---
+
+**Concepts clés**
+
+* **Table (ou Relation) :** Structure bidimensionnelle représentant une entité du monde réel (ex. `Client`, `Commande`).
+* **Clé primaire (*Primary Key*) :** Attribut unique (ex. un identifiant ou un code) permettant de distinguer chaque ligne d'une table sans ambiguïté.
+* **Clé étrangère (*Foreign Key*) :** Attribut établissant un lien relationnel entre deux tables en référençant la clé primaire d'une autre table.
+* **Langage SQL (*Structured Query Language*) :** Langage standardisé utilisé pour interroger et manipuler les données (via les commandes `SELECT`, `INSERT`, `UPDATE`, `DELETE`).
+
+---
+
+## Connexion et paramétrage - connexion, cursor
+
+La connexion établit le pont entre l'application Python et le fichier ou serveur de base de données, tandis que le curseur sert d'intermédiaire pour exécuter les requêtes SQL.
+
+En Python, la norme **DB-API 2.0** définit une interface standardisée pour interagir avec les bases de données. Le module intégré **`sqlite3`** permet d'exploiter une base de données relationnelle légère et serveur-less sans nécessiter de configuration externe complexifiée.
+
+```python
+import sqlite3
+
+# Connexion à la base de données (fichier local ou en mémoire via ':memory:')
+connexion = sqlite3.connect("ma_banque.db")
+
+# Création d'un curseur pour exécuter les requêtes SQL
+curseur = connexion.cursor()
+
+# Création d'une table avec clés et contraintes
+curseur.execute("""
+CREATE TABLE IF NOT EXISTS clients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL
+)
+""")
 
 ```
 
-## Variables & types scalaires
+> 💡 Pensez toujours à fermer explicitement votre curseur et votre connexion à la fin des traitements pour libérer les ressources système verrouillées.
+
+---
+
+## Gestion de la Structure de données - requêtes DDL
+
+Le langage de définition de données (DDL) permet de créer, modifier ou supprimer la structure des tables au sein de la base de données (instructions `CREATE TABLE`, etc.).
+
+Les opérations qui portent sur la structure des tables sont : DDL (CREATE, ALTER, DROP, TRUNCATE) 
 
 ```python
-# Affectation dynamique
-x = 1
-PI = 3.14
-
-n = 10                               # int
-prix = 19.99                         # float
-ok = True                            # bool
-s = "texte"                          # str
-v = None                             # NoneType (absence de valeur)
-u = 5                                # union logique (dynamique)
+# Création d'une table relationnelle via une requête DDL
+curseur.execute("""
+    CREATE TABLE IF NOT EXISTS utilisateurs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nom TEXT NOT NULL,
+        age INTEGER
+    )
+""")
 
 ```
 
-## Types agrégés
+> 💡 Définissez rigoureusement les types de données et les contraintes (`NOT NULL`, `PRIMARY KEY`) dès la conception de vos tables pour garantir l'intégrité des informations.
+
+---
+
+## Manipulation des données - requêtes DML
+
+Le langage de manipulation des données (DML) permet d'insérer, de modifier, de supprimer et de rechercher des enregistrements à l'aide des instructions `SELECT` et de la clause `WHERE`.
+
+Les opérations qui portent sur les données des tables sont : DML (SELECT, INSERT, UPDATE, DELETE) 
+
+Voici plusieurs exemples concrets d'opérations **DML** (*Data Manipulation Language*) en Python avec `sqlite3`, illustrant les différentes façons d'insérer, lire, mettre à jour et supprimer des données.
+
+---
+
+**Insertion d'une seule ligne**
 
 ```python
-obj = {"nom": "A", "age": 30}         # dict
-arr = [1, 2, 3]                      # list (mutable)
-tup = ("a", 1)                       # tuple (immuable)
-ens = {1, 2, 3}                      # set (éléments uniques)
-from enum import Enum
-class Couleur(Enum): ROUGE = 1       # enum
-opt = None                           # optionnel / nullable
-ID = int | str                       # type alias (Python 3.10+)
+# Insertion simple avec passage de paramètres sous forme de tuple
+nouvel_utilisateur = ("Alice", 25, "alice@example.com")
+curseur.execute(
+    "INSERT INTO utilisateurs (nom, age, email) VALUES (?, ?, ?)",
+    nouvel_utilisateur
+)
+connexion.commit()
 
 ```
 
-## Casting
+**Insertion multiple en masse (`executemany`)**
 
 ```python
-v1 = str(125)                        # int -> str ("125")
-v2 = int("42")                       # str -> int (42)
-v3 = float("19.99")                  # str -> float (19.99)
-v4 = list({1, 2, 3})                 # set -> list
+# Liste de tuples pour insérer plusieurs lignes en une seule opération
+plusieurs_utilisateurs = [
+    ("Bob", 17, "bob@example.com"),
+    ("Charlie", 30, "charlie@example.com"),
+    ("Diana", 22, "diana@example.com")
+]
+curseur.executemany(
+    "INSERT INTO utilisateurs (nom, age, email) VALUES (?, ?, ?)",
+    plusieurs_utilisateurs
+)
+connexion.commit()
 
 ```
 
-## Opérateurs
+---
+
+**Récupérer un seul enregistrement (`fetchone`)**
 
 ```python
-+ - * / // % **                      # arithmétiques (// entière, ** puissance)
-== != < > <= >=                      # relationnels
-and or not                           # logiques
-= += -= *=                           # affectation
-x if condition else y                # ternaire
-a | b                                # union d'ensembles ou de types
+# Utile quand on recherche par identifiant unique ou clé primaire
+curseur.execute("SELECT * FROM utilisateurs WHERE email = ?", ("alice@example.com",))
+utilisateur = curseur.fetchone()
+
+if utilisateur:
+    print(f"Trouvé : {utilisateur}")  # Retourne un tuple : (1, 'Alice', 25, 'alice@example.com')
 
 ```
 
-## Contrôle de flux
+**Récupérer un nombre limité d'enregistrements (`fetchmany`)**
 
 ```python
-if x > 0: pass
-elif x == 0: pass
-else: pass
-
-match x:                             # Python 3.10+
-    case 1: pass
-    case _: pass
-
-for i in range(10): pass
-for item in arr: pass
-for k, v in obj.items(): pass
-while x < 10: pass
+# Récupère uniquement les 2 premiers résultats
+curseur.execute("SELECT nom, age FROM utilisateurs ORDER BY age DESC")
+top_2 = curseur.fetchmany(2)
+print("Les 2 plus âgés :", top_2)
 
 ```
 
-## Fonctions & arguments
-
-def add(a: int, b: int) -> int: return a + b
-def sum_all(*args: int) -> int: return sum(args)           # *args : arguments positionnels variables (tuple)
-def config(**kwargs): print(kwargs.get("theme"))          # **kwargs : arguments nommés variables (dict)
-def combo(x, *args, **kwargs): pass                        # combinaison classique
-
-mul = lambda a, b: a * b                                   # anonyme / lambda
-def identity(val: T) -> T: return val                       # générique
-
-## Générateurs 
-def compte_jusqua(n: int):
-    for i in range(n):
-        yield i                                           # produit une valeur et suspend l'exécution
-
-gen = compte_jusqua(5)
-next(gen)                                                 # 0 (récupère l'élément suivant)
-gen_exp = (x**2 for x in range(10))                        # expression génératrice (analogue aux list comprehension)
-
-## Fonctions d'ordre supérieur
-list(map(lambda x: x * 2, arr))
-list(filter(lambda x: x > 0, arr))
-from functools import reduce
-reduce(lambda acc, x: acc + x, arr, 0)
-
-## Exceptions
+**Filtrage complexe avec tris et limites**
 
 ```python
+# Recherche multi-critères
+sql = """
+SELECT nom, age 
+FROM utilisateurs 
+WHERE age >= ? AND nom LIKE ? 
+ORDER BY nom ASC 
+LIMIT ?
+"""
+curseur.execute(sql, (18, "A%", 10))  # Majeurs dont le nom commence par 'A', max 10
+resultats = curseur.fetchall()
+
+```
+
+---
+
+**Modification de données (`UPDATE`)**
+
+```python
+# Mise à jour du champ 'age' pour un utilisateur spécifique
+nouvel_age = 26
+email_cible = "alice@example.com"
+
+curseur.execute(
+    "UPDATE utilisateurs SET age = ? WHERE email = ?",
+    (nouvel_age, email_cible)
+)
+connexion.commit()
+
+# Afficher le nombre de lignes modifiées
+print(f"Lignes modifiées : {curseur.rowcount}")
+
+```
+
+---
+
+**Suppression de données (`DELETE`)**
+
+```python
+# Suppression des utilisateurs mineurs
+age_limite = 18
+
+curseur.execute("DELETE FROM utilisateurs WHERE age < ?", (age_limite,))
+connexion.commit()
+
+print(f"Utilisateurs supprimés : {curseur.rowcount}")
+
+```
+
+---
+
+**Synthèse des méthodes de récupération (`fetch`)**
+
+| Méthode | Comportement | Retour si aucun résultat |
+| --- | --- | --- |
+| **`curseur.fetchone()`** | Retourne la **première ligne** sous forme de tuple. | `None` |
+| **`curseur.fetchall()`** | Retourne **toutes les lignes** sous forme d'une liste de tuples. | `[]` *(liste vide)* |
+| **`curseur.fetchmany(size)`** | Retourne **au maximum `size` lignes** sous forme de liste. | `[]` *(liste vide)* |
+
+> 💡 Utilisez toujours des requêtes paramétrées (avec des points d'interrogation `?`) pour injecter des variables afin de vous prémunir totalement contre les failles d'injection SQL.
+
+---
+## Gestion des transactions — commit et rollback
+
+La gestion des transactions permet de valider définitivement un ensemble d'opérations en base de données grâce à l'instruction `commit`, garantissant la cohérence globale des données.
+
+```python
+import sqlite3
+
+connexion = sqlite3.connect("banque.db")
+curseur = connexion.cursor()
+
+# Exemple de transfert d'argent entre deux comptes (Opération atomique)
+compte_source = 1
+compte_dest = 2
+montant = 150.0
+
 try:
-    raise ValueError("oups")
-except ValueError as e:
-    print(e)
+    # 1. Débit du compte source
+    curseur.execute(
+        "UPDATE comptes SET solde = solde - ? WHERE id = ?",
+        (montant, compte_source)
+    )
+
+    # 2. Crédit du compte destinataire
+    curseur.execute(
+        "UPDATE comptes SET solde = solde + ? WHERE id = ?",
+        (montant, compte_dest)
+    )
+
+    # Validation définitive de l'ensemble des modifications
+    connexion.commit()
+    print("Transaction réussie et validée en base de données.")
+
+except sqlite3.Error as e:
+    # En cas d'erreur SQL, annulation de TOUTES les modifications de la transaction
+    connexion.rollback()
+    print(f"Erreur lors de la transaction. Modifications annulées : {e}")
+
 finally:
-    pass                             # toujours exécuté
+    connexion.close()
 
 ```
 
-## Modules & Packages
+> 💡 En cas d'erreur lors d'une transaction, utilisez l'instruction `rollback` pour annuler les modifications en cours et rétablir l'état stable précédent de la base.
+
+---
+--- 
+## Bonne pratique : Gestion sécurisée des connexions
+
+Pour éviter les fuites de mémoire et garantir la fermeture automatique des ressources même en cas d'erreur, utilisez un gestionnaire de contexte (`with`) :
 
 ```python
-# mon_module.py
-def f(): pass
-class C: pass
-o = {}
+import sqlite3
 
-# main.py
-from mon_module import f, C, o
-import os
-from pathlib import Path
+# Le gestionnaire de contexte gère le commit/rollback automatiquement
+with sqlite3.connect("ma_banque.db") as connexion:
+    curseur = connexion.cursor()
+    curseur.execute("SELECT COUNT(*) FROM clients")
+    total = curseur.fetchone()[0]
+    print(f"Nombre total de clients : {total}")
+# La connexion se ferme proprement en sortant du bloc with
 
 ```
+---
 
-## Fichiers & Répertoires
+**Alternative moderne : Le gestionnaire de contexte (`with`)**
+
+En Python, le gestionnaire de contexte gère les transactions automatiquement : il effectue un `commit()` si le bloc s'exécute sans erreur, ou un `rollback()` si une exception est levée.
 
 ```python
-# Modes open(): 'r' (lecture), 'w' (écriture/écrasement), 'a' (ajout), 'b' (binaire)
+import sqlite3
 
-# Lecture / Écriture de texte
-with open("fichier.txt", "r", encoding="utf-8") as f:
-    texte = f.read()                 # lit tout
-    for line in f: pass              # itération ligne par ligne
+connexion = sqlite3.connect("banque.db")
 
-with open("fichier.txt", "w", encoding="utf-8") as f:
-    f.write("Hello\n")
-
-# Accès aléatoire (binaire / texte)
-with open("data.bin", "rb") as f:
-    f.seek(10)                        # déplace le pointeur au 10ème octet
-    pos = f.tell()                   # position actuelle du pointeur
-
-# Répertoires & Chemins (pathlib)
-from pathlib import Path
-
-p = Path("dossier/sous_dossier/fichier.txt")
-p.parent.mkdir(parents=True, exist_ok=True)  # mkdirs (crée parents)
-p.exists()                           # vérifie si existe
-p.is_file()                          # est un fichier
-p.is_dir()                           # est un dossier
-content = p.read_text(encoding="utf-8")      # lecture directe
-p.write_text("ok", encoding="utf-8")         # écriture directe
+# Le bloc 'with connexion:' gère automatiquement la transaction (commit/rollback)
+try:
+    with connexion:
+        connexion.execute("UPDATE comptes SET solde = solde - 100 WHERE id = 1")
+        connexion.execute("UPDATE comptes SET solde = solde + 100 WHERE id = 2")
+    print("Transaction validée automatiquement.")
+except sqlite3.Error:
+    print("Erreur détectée : rollback automatique effectué.")
 
 ```
+---
+---
 
-## POO simple (Bases & Encapsulation)
+## Exemple de synthèse
 
 ```python
-class CompteBancaire:
-    def __init__(self, titulaire: str, solde: float = 0.0):
-        self.titulaire = titulaire   # attribut public
-        self._solde = solde          # attribut protégé (convention)
-        self.__secret = "1234"       # attribut privé (name mangling)
+import sqlite3
 
-    def deposer(self, montant: float):
-        if montant > 0: self._solde += montant
+def gerer_base_de_donnees():
+    """Programme complet combinant connexion, DDL, transactions et requêtes DML."""
+    # 1. Connexion et paramétrage
+    connexion = sqlite3.connect("entreprise.db")
+    curseur = connexion.cursor()
+    
+    # 2. Gestion de la structure de données (DDL)
+    curseur.execute("""
+        CREATE TABLE IF NOT EXISTS employes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nom TEXT,
+            salaire REAL
+        )
+    """)
+    
+    # 3. Insertion de données (DML) et gestion des transactions (commit)
+    curseur.execute("INSERT INTO employes (nom, salaire) VALUES (?, ?)", ("Alice", 2500.0))
+    curseur.execute("INSERT INTO employes (nom, salaire) VALUES (?, ?)", ("Bob", 3100.0))
+    connexion.commit()  # Validation de la transaction
+    
+    # 4. Manipulation des données avec SELECT et WHERE (DML)
+    curseur.execute("SELECT nom, salaire FROM employes WHERE salaire > ?", (2800.0,))
+    recrutements_hauts = curseur.fetchall()
+    
+    for employe in recrutements_hauts:
+        print(f"Employé qualifié : {employe[0]} avec un salaire de {employe[1]}€")
+        
+    # Fermeture propre des ressources
+    curseur.close()
+    connexion.close()
 
-    @property                        # getter
-    def solde(self) -> float:
-        return self._solde
-
-    @solde.setter                    # setter avec contrôle
-    def solde(self, valeur: float):
-        if valeur >= 0: self._solde = valeur
-
-    def __str__(self) -> str:        # méthode spéciale (dunder)
-        return f"Compte({self.titulaire}, {self._solde}€)"
-
-compte = CompteBancaire("Alice", 100)
-compte.deposer(50)
-print(compte.solde)                  # appel du getter (150)
-
-```
-
-## POO avancée (Héritage & Abstraction)
-
-```python
-from abc import ABC, abstractmethod
-
-class Animal(ABC):
-    espece = "inconnue"               # attribut de classe / static
-    def __init__(self, nom: str):
-        self._nom = nom
-
-    @abstractmethod
-    def crier(self): pass
-
-class Chien(Animal):
-    def __init__(self, nom: str, race: str):
-        super().__init__(nom)        # chaînage des constructeurs
-        self.race = race
-
-    def crier(self):                 # polymorphisme
-        print(f"{self._nom} aboie")
-
-class Generique[T]:
-    def __init__(self, v: T):
-        self.valeur = v
+# Exécution de la fonction de synthèse
+gerer_base_de_donnees()
 
 ```
 
-## Asynchrone
+## Exercices de fin de chapitre
 
-```python
-import asyncio
+**Exercice 1 :** Écrivez un script Python qui utilise le module `sqlite3` pour créer une base de données, instancier une table `produits` (contenant un ID, un nom et un prix), puis y insérer un enregistrement validé par un `commit`.
 
-async def attendre(ms: int):
-    await asyncio.sleep(ms / 1000)
-
-async def main():
-    await attendre(1000)
-    print("fait")
-
-# asyncio.run(main())
-
-```
-
-## Tests avec Unittest & Couverture de code (CLI & Code)
-
-```bash
-# Commandes Unittest en ligne de commande (CLI)
-python -m unittest                          # exécute tous les tests du projet (découverte automatique)
-python -m unittest test_script.py           # exécute un fichier de test spécifique
-python -m unittest test_script.TestCas.test_add # exécute un test précis (fichier.Classe.methode)
-python -m unittest discover -s tests -p "test_*.py" # exécute les tests dans le dossier 'tests'
-python -m unittest -v                       # mode verbeux (détaille chaque test)
-python -m unittest -f                       # s'arrête au premier échec rencontrée (-f / --failfast)
-
-# Couverture de code avec l'outil natif 'coverage'
-coverage run -m unittest                    # exécute les tests unittest et mesure la couverture
-coverage run --source=mon_module -m unittest # mesure uniquement pour 'mon_module'
-coverage report                             # affiche le rapport de couverture dans le terminal
-coverage report -m                          # affiche les numéros des lignes non couvertes (missing)
-coverage html                               # génère un rapport HTML interactif (dossier htmlcov/index.html)
-
-```
-
-```python
-# Code de test avec Unittest (test_main.py)
-import unittest
-from unittest.mock import Mock, patch
-
-class TestMonCode(unittest.TestCase):
-    def setUp(self):
-        # Exécuté AVANT chaque méthode de test
-        self.valeur = 10
-
-    def tearDown(self):
-        # Exécuté APRÈS chaque méthode de test
-        pass
-
-    def test_cas_simple(self):
-        self.assertEqual(1 + 1, 2)
-        self.assertTrue(self.valeur > 0)
-
-    def test_exception(self):
-        with self.assertRaises(ValueError):
-            int("invalide")
-
-    def test_avec_mock(self):
-        mock = Mock()
-        mock.calculer.return_value = 42
-        self.assertEqual(mock.calculer(), 42)
-
-if __name__ == "__main__":
-    unittest.main()
-
-```
+**Exercice 2 :** Rédigez une requête `SELECT` associée à une clause `WHERE` pour récupérer et afficher tous les produits dont le prix est inférieur à un certain seuil depuis la table créée à l'exercice précédent.

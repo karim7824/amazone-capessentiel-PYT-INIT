@@ -1,0 +1,11 @@
+
+---
+titre : Contenu du cours
+chapitres:
+    - nom : "Accès aux bases de données"
+      paragraphes :
+      - Concepts de base 
+      - Connexion et paramétrage - connexion, cursor 
+      - Gestion de la Structure de données - Table DDL 
+      - Gestion des transactions - commit 
+      - Manipulation des données - Select/Where DML 
