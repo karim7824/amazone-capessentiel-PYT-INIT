@@ -1092,8 +1092,6 @@ if __name__ == '__main__':
 
 ```
 
----
-
 **Chapitre 20 / Exercice 2**
 
 Code source (`outils.py`)
@@ -1136,9 +1134,6 @@ if __name__ == '__main__':
     unittest.main()
 
 ```
-
----
-
 Commandes pour la couverture (`coverage`)
 
 ```bash
