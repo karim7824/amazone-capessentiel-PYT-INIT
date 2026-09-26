@@ -300,3 +300,28 @@ if __name__ == "__main__":
     unittest.main()
 
 ```
+## Python — Logs & Stack Traces
+
+| Concept | Rôle en Python | Méthode clé |
+| :--- | :--- | :--- |
+| **Log** | Enregistrer un événement horodaté avec sa gravité. | `logging.info("...")` |
+| **Stack Trace** | Reconstituer la pile d'appels (`Traceback`) jusqu'à l'erreur. | `traceback.format_exc()` |
+
+---
+
+Capturer la Stack Trace dans les Logs
+
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
+
+try:
+    resultat = 10 / 0
+except ZeroDivisionError:
+    # Option 1 (Recommandée) : Inclus automatiquement la stack trace en niveau ERROR
+    logger.exception("Échec du calcul")
+
+    # Option 2 : Sur un autre niveau (ex: CRITICAL ou WARNING)
+    logger.critical("Erreur critique !", exc_info=True)
