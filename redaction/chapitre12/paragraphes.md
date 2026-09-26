@@ -76,6 +76,69 @@ traitement (eleve) # exception prooduite qu'il faut intercepter dans un bloc try
 ```
 
 > 💡 Créez vos propres classes d'exceptions personnalisées en héritant de la classe `Exception` de base pour affiner la gestion des erreurs spécifiques à votre domaine métier.
+---
+## Trace et log
+Si la gestion des exceptions permet à un programme de réagir aux erreurs au moment où elles se produisent, **les traces et les logs** sont indispensables pour comprendre ce qui s'est passé en coulisses, analyser le comportement de l'application au fil du temps et déboguer plus facilement.
+
+* **Les logs (journalisation) :** Un log est un enregistrement horodaté d'un événement précis survenu lors de l'exécution.Ils sont catégorisés par niveau de gravité (`INFO`, `WARNING`, `ERROR`, `CRITICAL`) pour filtrer les informations selon les besoins.Les logs permettent de garder un historique de la vie du système, notamment en environnement de production où l'affichage direct à l'écran n'est pas possible.
+* **Les traces (ou *stack traces*) :** Lorsqu'une exception est levée (via `throw`) et non interceptée immédiatement, le langage génère une **trace d'exécution**. Cette trace agit comme un fil d'Ariane : elle liste la suite d'appels de fonctions, les fichiers et les numéros de lignes traversés jusqu'au point exact de la défaillance.
+
+En pratique, la combinaison des deux est essentielle pour la robustesse : lors de la capture d'une exception dans un bloc `try/catch`, enregistrer la **trace** complète au sein d'un **log** de niveau `ERROR` permet aux développeurs de reconstituer précisément le contexte de la panne sans interrompre le service pour les autres utilisateurs.
+
+Le niveau logger.exception() enregistre le message en niveau ERROR et inclut automatiquement la stack trace complète.
+
+Python
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+try:
+    resultat = 10 / 0
+except ZeroDivisionError:
+    logger.exception("Une erreur de division par zéro est survenue")
+```
+Si tu souhaites utiliser un autre niveau de log (par exemple `CRITICAL` ou `WARNING`), ajoute le paramètre `exc_info=True`.
+
+```python
+try:
+    resultat = 10 / 0
+except ZeroDivisionError:
+    logger.warning("Attention, calcul impossible !", exc_info=True)
+
+```
+Si tu as besoin de manipuler ou de mettre en forme la stack trace avant de la logger (ou sans lever d'exception), utilise le module standard `traceback`.
+
+```python
+import logging
+import traceback
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+try:
+    resultat = 10 / 0
+except ZeroDivisionError:
+    # Convertit la stack trace en str
+    trace_str = traceback.format_exc()
+    logger.error(f"Détail de l'erreur :\n{trace_str}")
+
+```
+Si tu souhaites afficher la chaîne d'appels courante dans les logs pour du débogage, sans qu'il n'y ait d'erreur :
+
+```python
+import logging
+import traceback
+
+def ma_fonction():
+    # Capture la pile d'exécution actuelle
+    stack = "".join(traceback.format_stack())
+    logger.debug(f"Pile d'appel actuelle :\n{stack}")
+
+ma_fonction()
+
+```
 
 ---
 
