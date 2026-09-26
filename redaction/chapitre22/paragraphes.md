@@ -1056,4 +1056,99 @@ if __name__ == "__main__":
     rechercher_produits_par_prix_max(100.0)
 ```	
 
+**Chapitre 20 / Exercice 1**
 
+Code source (`statistiques.py`)
+
+```python
+import random
+
+def aleatoire(minimum=0, maximum=20):
+    return random.randint(minimum, maximum)
+
+```
+
+Test unitaire (`test_exercice1.py`)
+
+```python
+import unittest
+import random
+from statistiques import aleatoire
+
+class TestFonctionAleatoire(unittest.TestCase):
+
+    def test_parite_tirages(self):
+        # Utilisation d'une graine pour garantir la répétabilité du test aléatoire
+        random.seed(42)
+        tirages = [aleatoire(0, 20) for _ in range(100)]
+        
+        paires = sum(1 for val in tirages if val % 2 == 0)
+        impaires = sum(1 for val in tirages if val % 2 != 0)
+        
+        self.assertEqual(paires, impaires)
+
+if __name__ == '__main__':
+    unittest.main()
+
+```
+
+---
+
+**Chapitre 20 / Exercice 2**
+
+Code source (`outils.py`)
+
+```python
+import random
+
+class Aleatoire:
+    def __init__(self, minimum=0, maximum=20):
+        self.minimum = minimum
+        self.maximum = maximum
+
+    def generer(self):
+        return random.randint(self.minimum, self.maximum)
+
+```
+
+Test unitaire (`test_exercice2.py`)
+
+```python
+import unittest
+import random
+from outils import Aleatoire
+
+class TestClasseAleatoire(unittest.TestCase):
+
+    def setUp(self):
+        self.generateur = Aleatoire(0, 20)
+
+    def test_parite_tirages_classe(self):
+        random.seed(42)
+        tirages = [self.generateur.generer() for _ in range(100)]
+        
+        paires = sum(1 for val in tirages if val % 2 == 0)
+        impaires = sum(1 for val in tirages if val % 2 != 0)
+        
+        self.assertEqual(paires, impaires)
+
+if __name__ == '__main__':
+    unittest.main()
+
+```
+
+---
+
+Commandes pour la couverture (`coverage`)
+
+```bash
+# Exécution du test avec mesure
+coverage run -m unittest test_exercice2.py
+
+# Rapport console pour le fichier outils.py
+coverage report -m outils.py
+
+# Rapport HTML
+coverage html
+
+```
