@@ -2,8 +2,6 @@
 
 La gestion efficace des opérations d'entrée/sortie (E/S) — comme l'accès au réseau, aux bases de données ou au système de fichiers — est cruciale pour concevoir des applications Python performantes. Dans ce chapitre, vous découvrirez les principes de la programmation asynchrone non bloquante. Vous apprendrez à utiliser le module standard `asyncio` pour exécuter plusieurs tâches de manière concurrente sans avoir recours au multithreading complexe.
 
-**Notions abordées :**
-
 * Les différences fondamentales entre l'exécution synchrone bloquante et asynchrone non bloquante
 * Les coroutines, les objets `Future`/`Task` et la syntaxe `async` / `await`
 * Le rôle essentiel de la boucle d'événements (*event loop*)
