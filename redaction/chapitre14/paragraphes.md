@@ -2,8 +2,6 @@
 
 Ce chapitre couvre l'organisation du code en modules et packages ainsi que la gestion des fichiers et répertoires en Python. Vous apprendrez à structurer vos projets, importer des bibliothèques et automatiser le déploiement d'environnements. Ces compétences sont essentielles pour créer des applications modulaires et maintenables.
 
-Dans ce chapitre :
-
 * Librairie et script pip
 * Importation de package
 * Contenu d'un package
