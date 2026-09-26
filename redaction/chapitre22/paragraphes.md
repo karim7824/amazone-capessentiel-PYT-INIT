@@ -972,6 +972,8 @@ if __name__ == "__main__":
     print(f"Taille du fichier : {ebook.taille_mo} Mo")
 ```	
 **Chapitre 18 / Exercice 1** 
+**Chapitre 18 / Exercice 2** 
+**Chapitre 19 / Exercice 1** 
 ```python
 import sqlite3
 from pathlib import Path
@@ -1014,7 +1016,7 @@ if __name__ == "__main__":
     initialiser_base_de_donnees()
 ```	
 
-**Chapitre 18 / Exercice 2**
+**Chapitre 19 / Exercice 2**
 ```python
 import sqlite3
 from pathlib import Path
