@@ -87,7 +87,7 @@ while x < 10: pass
 
 ```
 
-## Fonctions & Générateurs
+## Fonctions & arguments
 
 def add(a: int, b: int) -> int: return a + b
 def sum_all(*args: int) -> int: return sum(args)           # *args : arguments positionnels variables (tuple)
@@ -97,7 +97,7 @@ def combo(x, *args, **kwargs): pass                        # combinaison classiq
 mul = lambda a, b: a * b                                   # anonyme / lambda
 def identity(val: T) -> T: return val                       # générique
 
-# Générateurs (évaluation paresseuse / memory friendly)
+## Générateurs 
 def compte_jusqua(n: int):
     for i in range(n):
         yield i                                           # produit une valeur et suspend l'exécution
@@ -106,7 +106,7 @@ gen = compte_jusqua(5)
 next(gen)                                                 # 0 (récupère l'élément suivant)
 gen_exp = (x**2 for x in range(10))                        # expression génératrice (analogue aux list comprehension)
 
-# Fonctions d'ordre supérieur
+## Fonctions d'ordre supérieur
 list(map(lambda x: x * 2, arr))
 list(filter(lambda x: x > 0, arr))
 from functools import reduce
