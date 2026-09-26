@@ -4,7 +4,20 @@
 <meta charset="UTF-8">
 <title>Initiation à la programmation avec Python - Cheat-sheet</title>
 <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    * { 
+        box-sizing: border-box; 
+        margin: 0; 
+        padding: 0; 
+    }
+
+    html {
+        background: #ffffff;
+    }
 
     body {
         font-family: 'Segoe UI', Arial, sans-serif;
@@ -13,7 +26,18 @@
         color: #101418;
         background: #ffffff;
         padding: 10mm 9mm;
+        
+        /* Dimensions strictes A4 portrait */
         width: 210mm;
+        height: 297mm;
+        max-width: 210mm;
+        max-height: 297mm;
+        
+        /* Layout flex pour bloquer le footer au bas de la page */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
     }
 
     /* Bandeau d'en-tête éditorial */
@@ -24,6 +48,7 @@
         border-bottom: 2.5px solid #0E4B4B;
         padding-bottom: 5px;
         margin-bottom: 8px;
+        flex-shrink: 0;
     }
 
     header .titres h1 {
@@ -55,9 +80,11 @@
 
     /* Corps en 2 colonnes façon cheat-sheet */
     .contenu {
+        flex: 1;
         column-count: 2;
         column-gap: 7mm;
         column-rule: 1px solid #ddd;
+        overflow: hidden;
     }
 
     h2 {
@@ -107,6 +134,7 @@
         font-size: 6.7pt;
         color: #999;
         text-align: center;
+        flex-shrink: 0;
     }
 </style>
 </head>
@@ -118,7 +146,7 @@
         <div class="sous-titre">Pratique de la syntaxe de base de Python</div>
     </div>
     <div class="meta">
-        <div class="collection">lesgaleriens</div>
+        <div class="collection">capessentiel</div>
         <div>amazone</div>
         <div>BELHADJ Karim</div>
     </div>
@@ -136,7 +164,7 @@ pip install package                  # installer un paquet
 pip freeze &gt; requirements.txt        # geler les dépendances
 pip install -r requirements.txt      # installer les dépendances
 python main.py                       # exécuter un script Python
-python -m pytest                     # exécuter les tests unitaire
+python -m pytest                     # exécuter les tests unitaires
 python -m pytest --cov               # couverture de code
 
 </code></pre>
@@ -195,17 +223,30 @@ for k, v in obj.items(): pass
 while x &lt; 10: pass
 
 </code></pre>
-<h2>Fonctions</h2>
+<h2>Fonctions &amp; arguments</h2>
 <pre><code class="language-python">def add(a: int, b: int) -&gt; int: return a + b
-def sum_all(*nums: int) -&gt; int: return sum(nums)
-mul = lambda a, b: a * b             # anonyme / lambda
-def identity(val: T) -&gt; T: return val # générique
+def sum_all(*args: int) -&gt; int: return sum(args)           # *args : arguments positionnels variables (tuple)
+def config(**kwargs): print(kwargs.get(&quot;theme&quot;))          # **kwargs : arguments nommés variables (dict)
+def combo(x, *args, **kwargs): pass                        # combinaison classique
 
-list(map(lambda x: x * 2, arr))
+mul = lambda a, b: a * b                                   # anonyme / lambda
+def identity(val: T) -&gt; T: return val                       # générique
+</code></pre>
+<h2>Générateurs</h2>
+<pre><code class="language-python">def compte_jusqua(n: int):
+    for i in range(n):
+        yield i                                           # produit une valeur et suspend l'exécution
+
+gen = compte_jusqua(5)
+next(gen)                                                 # 0 (récupère l'élément suivant)
+gen_exp = (x**2 for x in range(10))                        # expression génératrice (analogue aux list comprehension)
+
+</code></pre>
+<h2>Fonctions d'ordre supérieur</h2>
+<pre><code class="language-python">list(map(lambda x: x * 2, arr))
 list(filter(lambda x: x &gt; 0, arr))
 from functools import reduce
 reduce(lambda acc, x: acc + x, arr, 0)
-
 </code></pre>
 <h2>Exceptions</h2>
 <pre><code class="language-python">try:
@@ -228,18 +269,77 @@ import os
 from pathlib import Path
 
 </code></pre>
-<h2>Programmation orientée objet</h2>
+<h2>Fichiers &amp; Répertoires</h2>
+<pre><code class="language-python"># Modes open(): 'r' (lecture), 'w' (écriture/écrasement), 'a' (ajout), 'b' (binaire)
+
+# Lecture / Écriture de texte
+with open(&quot;fichier.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    texte = f.read()                 # lit tout
+    for line in f: pass              # itération ligne par ligne
+
+with open(&quot;fichier.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;Hello\n&quot;)
+
+# Accès aléatoire (binaire / texte)
+with open(&quot;data.bin&quot;, &quot;rb&quot;) as f:
+    f.seek(10)                        # déplace le pointeur au 10ème octet
+    pos = f.tell()                   # position actuelle du pointeur
+
+# Répertoires &amp; Chemins (pathlib)
+from pathlib import Path
+
+p = Path(&quot;dossier/sous_dossier/fichier.txt&quot;)
+p.parent.mkdir(parents=True, exist_ok=True)  # mkdirs (crée parents)
+p.exists()                           # vérifie si existe
+p.is_file()                          # est un fichier
+p.is_dir()                           # est un dossier
+content = p.read_text(encoding=&quot;utf-8&quot;)      # lecture directe
+p.write_text(&quot;ok&quot;, encoding=&quot;utf-8&quot;)         # écriture directe
+
+</code></pre>
+<h2>POO simple (Bases &amp; Encapsulation)</h2>
+<pre><code class="language-python">class CompteBancaire:
+    def __init__(self, titulaire: str, solde: float = 0.0):
+        self.titulaire = titulaire   # attribut public
+        self._solde = solde          # attribut protégé (convention)
+        self.__secret = &quot;1234&quot;       # attribut privé (name mangling)
+
+    def deposer(self, montant: float):
+        if montant &gt; 0: self._solde += montant
+
+    @property                        # getter
+    def solde(self) -&gt; float:
+        return self._solde
+
+    @solde.setter                    # setter avec contrôle
+    def solde(self, valeur: float):
+        if valeur &gt;= 0: self._solde = valeur
+
+    def __str__(self) -&gt; str:        # méthode spéciale (dunder)
+        return f&quot;Compte({self.titulaire}, {self._solde}€)&quot;
+
+compte = CompteBancaire(&quot;Alice&quot;, 100)
+compte.deposer(50)
+print(compte.solde)                  # appel du getter (150)
+
+</code></pre>
+<h2>POO avancée (Héritage &amp; Abstraction)</h2>
 <pre><code class="language-python">from abc import ABC, abstractmethod
 
 class Animal(ABC):
     espece = &quot;inconnue&quot;               # attribut de classe / static
     def __init__(self, nom: str):
-        self._nom = nom              # protégé
+        self._nom = nom
+
     @abstractmethod
     def crier(self): pass
 
 class Chien(Animal):
-    def crier(self):
+    def __init__(self, nom: str, race: str):
+        super().__init__(nom)        # chaînage des constructeurs
+        self.race = race
+
+    def crier(self):                 # polymorphisme
         print(f&quot;{self._nom} aboie&quot;)
 
 class Generique[T]:
@@ -260,18 +360,56 @@ async def main():
 # asyncio.run(main())
 
 </code></pre>
-<h2>Tests (Pytest / Unittest)</h2>
-<pre><code class="language-python"># test_main.py
-def test_cas():
-    assert 1 + 1 == 2
+<h2>Tests avec Unittest &amp; Couverture de code (CLI &amp; Code)</h2>
+<pre><code class="language-bash"># Commandes Unittest en ligne de commande (CLI)
+python -m unittest                          # exécute tous les tests du projet (découverte automatique)
+python -m unittest test_script.py           # exécute un fichier de test spécifique
+python -m unittest test_script.TestCas.test_add # exécute un test précis (fichier.Classe.methode)
+python -m unittest discover -s tests -p &quot;test_*.py&quot; # exécute les tests dans le dossier 'tests'
+python -m unittest -v                       # mode verbeux (détaille chaque test)
+python -m unittest -f                       # s'arrête au premier échec rencontrée (-f / --failfast)
 
-from unittest.mock import Mock
-mock = Mock()
+# Couverture de code avec l'outil natif 'coverage'
+coverage run -m unittest                    # exécute les tests unittest et mesure la couverture
+coverage run --source=mon_module -m unittest # mesure uniquement pour 'mon_module'
+coverage report                             # affiche le rapport de couverture dans le terminal
+coverage report -m                          # affiche les numéros des lignes non couvertes (missing)
+coverage html                               # génère un rapport HTML interactif (dossier htmlcov/index.html)
+
+</code></pre>
+<pre><code class="language-python"># Code de test avec Unittest (test_main.py)
+import unittest
+from unittest.mock import Mock, patch
+
+class TestMonCode(unittest.TestCase):
+    def setUp(self):
+        # Exécuté AVANT chaque méthode de test
+        self.valeur = 10
+
+    def tearDown(self):
+        # Exécuté APRÈS chaque méthode de test
+        pass
+
+    def test_cas_simple(self):
+        self.assertEqual(1 + 1, 2)
+        self.assertTrue(self.valeur &gt; 0)
+
+    def test_exception(self):
+        with self.assertRaises(ValueError):
+            int(&quot;invalide&quot;)
+
+    def test_avec_mock(self):
+        mock = Mock()
+        mock.calculer.return_value = 42
+        self.assertEqual(mock.calculer(), 42)
+
+if __name__ == &quot;__main__&quot;:
+    unittest.main()
 
 </code></pre>
 </div>
 
-<footer>amazone — Collection lesgaleriens — BELHADJ Karim</footer>
+<footer>amazone — Collection capessentiel — BELHADJ Karim</footer>
 
 </body>
 </html>

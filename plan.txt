@@ -105,12 +105,24 @@ Programmation orientée objets
 - Héritage de classes et redéfinition
 - Packages et imports et classes
 
+Programmation asynchrone
+- Appels non bloquants et concurrents
+- Promise ou Future avec async, await
+- La boucle d'événements 
+- Gestion des tâches concurrentes 
+
 Accès aux bases de données 
 - Concepts de base 
 - Connexion et paramétrage - connexion, cursor
 - Gestion de la Structure de données - Table DDL 
 - Gestion des transactions - commit
 - Manipulation des données - Select/Where DML 
+
+Tests unitaires
+- Nécessité du test et concepts fondamentaux
+- Prise en main du framework standard unittest
+- Cas pratique : tester la classe Calcul
+- Mesure de la couverture de code (Code Coverage)
 
 L'essentiel de l'essentiel à retenir sur Python
 - Installation, commandes
