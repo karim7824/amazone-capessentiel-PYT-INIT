@@ -307,10 +307,6 @@ if __name__ == "__main__":
 | **Log** | Enregistrer un événement horodaté avec sa gravité. | `logging.info("...")` |
 | **Stack Trace** | Reconstituer la pile d'appels (`Traceback`) jusqu'à l'erreur. | `traceback.format_exc()` |
 
----
-
-Capturer la Stack Trace dans les Logs
-
 ```python
 import logging
 
