@@ -87,7 +87,6 @@ En pratique, la combinaison des deux est essentielle pour la robustesse : lors d
 
 Le niveau logger.exception() enregistre le message en niveau ERROR et inclut automatiquement la stack trace complète.
 
-Python
 ```python
 import logging
 
