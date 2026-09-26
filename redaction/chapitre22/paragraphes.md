@@ -843,13 +843,13 @@ deactivate
 ```	
 **Chapitre 15 / Exercice 2**
 ```bash
-# 1. Activation de l'environnement
+# Activation de l'environnement
 source env_projet/bin/activate
 
-# 2. Vérification de l'exécutable Python actif
+# Vérification de l'exécutable Python actif
 which python
 
-# 3. Désactivation de l'environnement
+# Désactivation de l'environnement
 deactivate
 ```	
 **Chapitre 16 / Exercice 1** 
@@ -1035,8 +1035,6 @@ if __name__ == '__main__':
     asyncio.run(main())
 
 ```
-
-**Commande d'exécution :**
 
 ```bash
 python exo2_async.py
