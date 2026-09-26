@@ -166,11 +166,11 @@ asyncio.run(main())
 
 ---
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
 Dans ce chapitre, vous avez découvert les mécanismes de l'exécution asynchrone en Python grâce au module `asyncio`. Vous avez appris à définir des coroutines avec `async` et `await`, à planifier leur exécution au sein de la boucle d'événements, ainsi qu'à gérer plusieurs appels non bloquants en parallèle à l'aide de `asyncio.gather` et `TaskGroup`.
 
-**Exercice 1 : traitement concurents **
+**Exercice 1 : traitement concurents**
 Créez deux coroutines t1() et t2() qui simulent un traitement en attendant des durées différentes (ex: 1s et 3s avec asyncio.sleep).
 Chaque coroutine doit afficher un message d'exécution et retourner la chaîne "fin de traitement".
 Exécutez-les de manière concurrente avec asyncio.gather() puis affichez leurs valeurs de retour.
