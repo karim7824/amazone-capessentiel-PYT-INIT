@@ -2,8 +2,6 @@
 
 Garantir la fiabilité d'un code avant son déploiement est une étape indispensable du développement logiciel. Dans ce chapitre, vous découvrirez comment concevoir des tests unitaires automatisés pour vérifier le bon fonctionnement de vos fonctions et classes. L'objectif est d'acquérir les réflexes méthodologiques et d'utiliser les outils standards pour livrer des projets Python robustes et maintenables.
 
-**Notions abordées :**
-
 * L'intérêt des tests unitaires et les terminologies fondamentales (*assertion*, *fixture*, *suite*)
 * L'utilisation du module standard `unittest`
 * L'écriture d'une suite de tests complète sur un cas pratique (`Calcul`)
@@ -151,7 +149,7 @@ La **couverture de code** mesure le pourcentage de lignes de code métier exécu
 
 En Python, l'outil le plus répandu est la bibliothèque `coverage`.
 
-### Installation et utilisation
+## Installation et utilisation
 
 **Installation via pip :**
 
@@ -190,7 +188,7 @@ Cette commande crée un dossier `htmlcov/` contenant une interface web permettan
 
 ---
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
 Dans ce chapitre, vous avez appris à structurer vos tests unitaires grâce au module `unittest`, à automatiser la vérification de vos fonctions et à valider la levée d'exceptions. Vous avez également vu comment quantifier l'efficacité de votre suite de tests avec l'outil de métrique `coverage.py`.
 
