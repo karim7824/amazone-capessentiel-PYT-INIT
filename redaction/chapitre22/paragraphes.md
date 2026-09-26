@@ -972,7 +972,76 @@ if __name__ == "__main__":
     print(f"Taille du fichier : {ebook.taille_mo} Mo")
 ```	
 **Chapitre 18 / Exercice 1** 
+```python
+import asyncio
+
+async def t1():
+    print("Début du traitement t1 (1s)...")
+    await asyncio.sleep(1)
+    print("Fin de t1")
+    return "fin de traitement"
+
+async def t2():
+    print("Début du traitement t2 (3s)...")
+    await asyncio.sleep(3)
+    print("Fin de t2")
+    return "fin de traitement"
+
+async def main():
+    # Exécution simultanée des deux coroutines
+    resultats = await asyncio.gather(t1(), t2())
+    print("Valeurs de retour :", resultats)
+
+if __name__ == '__main__':
+    asyncio.run(main())
+
+```
+
+**Commande d'exécution :**
+
+```bash
+python exo1_async.py
+
+```
 **Chapitre 18 / Exercice 2** 
+```python
+import asyncio
+
+async def t1():
+    print("Début du traitement t1 (1s)...")
+    await asyncio.sleep(1)
+    print("Fin de t1")
+    return "fin de traitement"
+
+async def t2():
+    print("Début du traitement t2 (3s)...")
+    await asyncio.sleep(3)
+    print("Fin de t2")
+    return "fin de traitement"
+
+async def main():
+    # Lancement de t1 normalement
+    res_t1 = await t1()
+    print("Résultat t1 :", res_t1)
+
+    # Lancement de t2 (3s) sous la limite d'un timeout de 2.0s
+    try:
+        res_t2 = await asyncio.wait_for(t2(), timeout=2.0)
+        print("Résultat t2 :", res_t2)
+    except asyncio.TimeoutError:
+        print("Erreur : Le délai de traitement pour t2 a été dépassé (TimeoutError).")
+
+if __name__ == '__main__':
+    asyncio.run(main())
+
+```
+
+**Commande d'exécution :**
+
+```bash
+python exo2_async.py
+
+```
 **Chapitre 19 / Exercice 1** 
 ```python
 import sqlite3
