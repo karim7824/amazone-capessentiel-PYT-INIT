@@ -302,9 +302,6 @@ if __name__ == "__main__":
 ```
 ## Logs & Stack Traces
 
-Log             # Enregistrer un événement horodaté avec sa gravité `logging.info("...")` 
-Stack Trace     # Reconstituer la pile d'appels (`Traceback`) jusqu'à l'erreur `traceback.format_exc()` 
-
 ```python
 import logging
 
@@ -314,8 +311,8 @@ logger = logging.getLogger(__name__)
 try:
     resultat = 10 / 0
 except ZeroDivisionError:
-    # Option 1 (Recommandée) : Inclus automatiquement la stack trace en niveau ERROR
+    # (Recommandée) : Inclus automatiquement la stack trace en niveau ERROR
     logger.exception("Échec du calcul")
-    # Option 2 : Sur un autre niveau (ex: CRITICAL ou WARNING)
+    # Sur un autre niveau (ex: CRITICAL ou WARNING)
     logger.critical("Erreur critique !", exc_info=True)
 ```
