@@ -316,6 +316,6 @@ try:
 except ZeroDivisionError:
     # Option 1 (Recommandée) : Inclus automatiquement la stack trace en niveau ERROR
     logger.exception("Échec du calcul")
-
     # Option 2 : Sur un autre niveau (ex: CRITICAL ou WARNING)
     logger.critical("Erreur critique !", exc_info=True)
+```
