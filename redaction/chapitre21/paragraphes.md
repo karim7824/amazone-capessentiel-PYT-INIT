@@ -300,12 +300,10 @@ if __name__ == "__main__":
     unittest.main()
 
 ```
-## Python — Logs & Stack Traces
+## Logs & Stack Traces
 
-| Concept | Rôle en Python | Méthode clé |
-| :--- | :--- | :--- |
-| **Log** | Enregistrer un événement horodaté avec sa gravité. | `logging.info("...")` |
-| **Stack Trace** | Reconstituer la pile d'appels (`Traceback`) jusqu'à l'erreur. | `traceback.format_exc()` |
+Log             # Enregistrer un événement horodaté avec sa gravité `logging.info("...")` 
+Stack Trace     # Reconstituer la pile d'appels (`Traceback`) jusqu'à l'erreur `traceback.format_exc()` 
 
 ```python
 import logging
