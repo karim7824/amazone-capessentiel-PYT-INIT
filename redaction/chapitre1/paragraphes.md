@@ -56,7 +56,7 @@ print("Racine carrée calculée via CPython :", resultat)
 
 ```
 
-** Workflow : Cycle de conversion Python $\rightarrow$ `.so` / `.dll` via Cython **
+** Workflow : Cycle de conversion Python en `.so` / `.dll` via Cython **
 
 ```
  [1. Code Python (.py)] 
