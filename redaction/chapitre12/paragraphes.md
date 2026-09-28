@@ -9,7 +9,7 @@ Dans ce chapitre :
 
 ---
 
-## Gestion des exceptions : try catch finally et throw
+## Gestion des exceptions : try except finally et raise
 
 La gestion des exceptions repose sur le bloc `try` pour surveiller le code à risque et `except` pour intercepter les erreurs survenues. En Python, le mot-clé `raise` équivaut au `throw` des autres langages pour émettre une exception. On peut intercepter une exception précise ZeroDivisionError pour la traiter ou intercepter toutes les exceptions dans un même traitement
 
@@ -57,9 +57,9 @@ finally:
 
 ---
 
-## Emettre une exception avec throw
+## Emettre une exception avec raise
 
-Il est possible d'émettre volontairement une exception à l'aide de l'instruction `raise` (similaire à `throw`) pour signaler qu'une règle métier ou une condition critique n'est pas respectée.
+Il est possible d'émettre volontairement une exception à l'aide de l'instruction `raise` pour signaler qu'une règle métier ou une condition critique n'est pas respectée.
 
 ```python
 def traitement (eleve):
@@ -81,7 +81,7 @@ traitement (eleve) # exception prooduite qu'il faut intercepter dans un bloc try
 Si la gestion des exceptions permet à un programme de réagir aux erreurs au moment où elles se produisent, **les traces et les logs** sont indispensables pour comprendre ce qui s'est passé en coulisses, analyser le comportement de l'application au fil du temps et déboguer plus facilement.
 
 * **Les logs (journalisation) :** Un log est un enregistrement horodaté d'un événement précis survenu lors de l'exécution.Ils sont catégorisés par niveau de gravité (`INFO`, `WARNING`, `ERROR`, `CRITICAL`) pour filtrer les informations selon les besoins.Les logs permettent de garder un historique de la vie du système, notamment en environnement de production où l'affichage direct à l'écran n'est pas possible.
-* **Les traces (ou *stack traces*) :** Lorsqu'une exception est levée (via `throw`) et non interceptée immédiatement, le langage génère une **trace d'exécution**. Cette trace agit comme un fil d'Ariane : elle liste la suite d'appels de fonctions, les fichiers et les numéros de lignes traversés jusqu'au point exact de la défaillance.
+* **Les traces (ou *stack traces*) :** Lorsqu'une exception est levée (via `raise`) et non interceptée immédiatement, le langage génère une **trace d'exécution**. Cette trace agit comme un fil d'Ariane : elle liste la suite d'appels de fonctions, les fichiers et les numéros de lignes traversés jusqu'au point exact de la défaillance.
 
 En pratique, la combinaison des deux est essentielle pour la robustesse : lors de la capture d'une exception dans un bloc `try/catch`, enregistrer la **trace** complète au sein d'un **log** de niveau `ERROR` permet aux développeurs de reconstituer précisément le contexte de la panne sans interrompre le service pour les autres utilisateurs.
 
