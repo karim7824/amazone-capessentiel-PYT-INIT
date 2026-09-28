@@ -136,7 +136,8 @@ resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
 print(resultat)
 
 ```
-Les arguments en tant que tuple 
+
+## Les arguments en tant que tuple 
 
 ```python
 # La fonction accepte désormais un tuple en paramètre
