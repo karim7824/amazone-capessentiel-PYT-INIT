@@ -9,7 +9,7 @@ Dans ce chapitre :
 
 ---
 
-## Structure conditionnelles if/else/then,match
+## Structure conditionnelles if/elif/else,match
 
 Les structures conditionnelles permettent d'exécuter des blocs de code différents selon la validité d'une ou plusieurs conditions logiques. L'instruction `match`, introduite récemment, facilite les aiguillages complexes par motif.
 
