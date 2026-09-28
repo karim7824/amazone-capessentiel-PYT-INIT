@@ -13,8 +13,8 @@ Dans ce chapitre :
 
 La gestion des exceptions repose sur le bloc `try` pour surveiller le code à risque et `except` pour intercepter les erreurs survenues. En Python, le mot-clé `raise` équivaut au `throw` des autres langages pour émettre une exception. On peut intercepter une exception précise ZeroDivisionError pour la traiter ou intercepter toutes les exceptions dans un même traitement
 
+Interception d'une division par zéro
 ```python
-# Interception d'une division par zéro
 try:
     resultat = 10 / 0
     i+=1  # incrémenter une variable i qui n'existe pas 
@@ -23,7 +23,10 @@ except ZeroDivisionError:
 except Exception as e:
     print("Problème ", e)
 
-# Plus de division par zéro mais "Problème  name 'i' is not defined"
+```
+
+Plus de division par zéro mais "Problème  name 'i' is not defined"
+```python
 try:
     resultat = 10 / 0
     i+=1  # incrémenter une variable i qui n'existe pas 
@@ -98,6 +101,7 @@ try:
 except ZeroDivisionError:
     logger.exception("Une erreur de division par zéro est survenue")
 ```
+
 Si tu souhaites utiliser un autre niveau de log (par exemple `CRITICAL` ou `WARNING`), ajoute le paramètre `exc_info=True`.
 
 ```python
@@ -107,6 +111,7 @@ except ZeroDivisionError:
     logger.warning("Attention, calcul impossible !", exc_info=True)
 
 ```
+
 Si tu as besoin de manipuler ou de mettre en forme la stack trace avant de la logger (ou sans lever d'exception), utilise le module standard `traceback`.
 
 ```python
