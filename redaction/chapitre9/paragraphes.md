@@ -90,7 +90,7 @@ print(r)
 
 ---
 
-## Arguments *kargs
+## Arguments **kargs
 
 La syntaxe `**kwargs` (souvent appelée `kargs`) permet de récupérer un nombre variable d'arguments nommés sous la forme d'un dictionnaire au sein de la fonction.
 
