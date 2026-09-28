@@ -46,13 +46,13 @@ if __name__ == "__main__":
 ```
 Erreur de lancement 
 ```bash
-python sauvergarde.py
-Il manque un argument  ['sauvergarde.py']
+python sauvegarde.py
+Il manque un argument  ['sauvegarde.py']
 ```
 
 Lancement avec le repertoire "c:/"
 ```bash
-python sauvergarde.py "c:/"
+python sauvegarde.py "c:/"
 Je sauvegarde c:/
 ```
 
@@ -93,15 +93,15 @@ if __name__ == "__main__":
 Lancement avec un argument en trop BB, le contôle est fait
 
 ```bash
-python sauvergarde.py  AA BB
-usage: sauvergarde.py [-h] folder
-sauvergarde.py: error: unrecognized arguments: BB
+python sauvegarde.py  AA BB
+usage: sauvegarde.py [-h] folder
+sauvegarde.py: error: unrecognized arguments: BB
 ```
 
 Obtenir une aide 
 ```bash
-python sauvergarde.py  -h
-usage: sauvergarde.py [-h] folder
+python sauvegarde.py  -h
+usage: sauvegarde.py [-h] folder
 
 Script de sauvegarde de dossier.
 
