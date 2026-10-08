@@ -29,9 +29,9 @@ print((lambda x :  x* x) (10))
 100
 
 # Vérifier si un nombre est pair ou impair
->pair_ou_impair = lambda x: "Pair" if x % 2 == 0 else "Impair"
->print(pair_ou_impair(4))  # Pair
->print(pair_ou_impair(7))  # Impair
+pair_ou_impair = lambda x: "Pair" if x % 2 == 0 else "Impair"
+print(pair_ou_impair(4))  # Pair
+print(pair_ou_impair(7))  # Impair
 
 # Tri d'une liste de tuples (nom, âge) selon l'âge (2ᵉ élément)
 personnes = [("Alice", 30), ("Bob", 25), ("Charlie", 35)]
