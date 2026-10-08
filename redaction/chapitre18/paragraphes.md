@@ -1,4 +1,4 @@
-# Chapitre 18 : La programmation asynchrone avec `asyncio`
+# Chapitre 18 : Programmation asynchrone
 
 La gestion efficace des opérations d'entrée/sortie (E/S) — comme l'accès au réseau, aux bases de données ou au système de fichiers — est cruciale pour concevoir des applications Python performantes. Dans ce chapitre, vous découvrirez les principes de la programmation asynchrone non bloquante. Vous apprendrez à utiliser le module standard `asyncio` pour exécuter plusieurs tâches de manière concurrente sans avoir recours au multithreading complexe.
 
