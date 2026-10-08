@@ -105,7 +105,7 @@ hex(id(a))
 
 ---
 
-## Types de données aggrégés - list, tuple, dict, set
+## Types de données agrégés - list, tuple, dict, set
 
 Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, d'unicité des éléments, ainsi que de leur mutabilité — c'est-à-dire la possibilité de modifier ou non le contenu de la structure directement en mémoire après sa création.
 
