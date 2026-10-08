@@ -196,7 +196,7 @@ rupture_imminente = False
 # Opérateurs relationnels et logiques
 alerte_stock = (stock_initial <= seuil_critique) or rupture_imminente
 
-print(fstock restant : {stock_initial} | Alerte active : {alerte_stock})
+print(f"stock restant : {stock_initial} | Alerte active : {alerte_stock}")
 
 ```
 
