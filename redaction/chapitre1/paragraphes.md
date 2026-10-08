@@ -137,8 +137,7 @@ with open("systeme.log", "w", encoding="utf-8") as fichier:
 with open("systeme.log", "r", encoding="utf-8") as fichier:
     print("Contenu du journal :", fichier.read().strip())
 
-# Surveillance de l'activité système
-Python
+# Surveillance de l'activité système 
 import time
 import psutil
 
