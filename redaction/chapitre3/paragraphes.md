@@ -52,28 +52,53 @@ Les types scalaires représentent des valeurs uniques et atomiques, non décompo
 | **Texte** | `str` (chaîne) | Immuable | `"Bonjour"`, `'Python'` |
 
 ```python
->>># avec typage float # Flottant (float) pour les décimaux
->>> température:float =11.11
->>> type(température)
-<class 'float'>
->>># typage implicite
->>> température =22.22
+>>> # avec typage float # Flottant (float) pour les décimaux
+>>> température: float = 11.11
 >>> type(température)
 <class 'float'>
 
-# avec type bool : # Booléen (bool) valant True ou False
->>> est_valide:bool = True
+>>> # typage implicite
+>>> température = 22.22
+>>> type(température)
+<class 'float'>
+
+>>> # avec type bool : # Booléen (bool) valant True ou False
+>>> est_valide: bool = True
 >>> type(est_valide)
 <class 'bool'>
+
 ```
 
-```python 
->>> a=10
+Voici le code nettoyé et réformaté pour vos supports de cours ou cheatsheets :
+
+---
+
+```python
+# Exemple : Entier (int) et inspection mémoire
+
+# Typage implicite
+a = 10
+type(a)
+# Output: <class 'int'>
+
+# Affichage de l'adresse mémoire de la variable en hexadécimal
+hex(id(a))
+# Output: '0x7ffc5b823ad8'
+
+```
+
+---
+
+### Format Session Interactive (Console REPL)
+
+```python
+>>> a = 10
 >>> type(a)
 <class 'int'>
->>># afficher l'adresse de la variable en mémoire (pas essentiel)
+>>> # Afficher l'adresse de la variable en mémoire
 >>> hex(id(a))
 '0x7ffc5b823ad8'
+
 ```
 
 > 💡 Utilisez toujours des noms explicites pour vos variables scalaires afin d'améliorer la lisibilité immédiate du code par l'équipe projet.
