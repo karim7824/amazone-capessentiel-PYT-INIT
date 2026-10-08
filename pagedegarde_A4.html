@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Introduction à la programmation TypeScript - Pour les galériens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --w:        210mm;
+      --h:        297mm;
+      --bg:       #0B1E2D;  /* bleu nuit marine profond */
+      --bg2:      #142E42;
+      --brass:    #B8935A;  /* laiton/or vieilli, gravure */
+      --teal:     #4C8C86;  /* touche de mer, discrète */
+      --ivory:    #F0EAD8;  /* blanc parchemin */
+      --mid:      #7C93A0;
+      --f-title:  'Playfair Display', serif;
+      --f-body:   'EB Garamond', serif;
+      --f-label:  'DM Sans', sans-serif;
+    }
+
+    html, body {
+      margin: 0; padding: 0;
+      background: #060f16;
+      font-family: var(--f-body);
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .page-a4 {
+      position: relative;
+      width: var(--w);
+      height: var(--h);
+      background: var(--bg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30mm 25mm 25mm 25mm;
+    }
+
+    /* Trame façon gravure sur cuivre : hachures fines croisées, très discrètes */
+    .engrave {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(120deg, rgba(184,147,90,0.03) 0px, rgba(184,147,90,0.03) 1px, transparent 1px, transparent 22px),
+        repeating-linear-gradient(60deg, rgba(184,147,90,0.025) 0px, rgba(184,147,90,0.025) 1px, transparent 1px, transparent 26px);
+      z-index: 1;
+    }
+
+    .page-a4::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle 560px at 50% 12%, rgba(184,147,90,0.10), transparent),
+        radial-gradient(circle 420px at 85% 88%, rgba(76,140,134,0.12), transparent);
+      z-index: 1;
+    }
+
+    .content-top, .content-middle, .content-bottom { position: relative; z-index: 2; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(184,147,90,0.4);
+      background: rgba(184,147,90,0.07);
+      border-radius: 2px;
+      padding: 6px 14px;
+      font-family: var(--f-label);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--brass);
+    }
+
+    .header-main { margin-top: 10mm; display: flex; flex-direction: column; gap: 6px; }
+
+    .tag-galerien {
+      font-family: var(--f-body);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.5rem;
+      letter-spacing: .1em;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+    .tag-galerien::before, .tag-galerien::after { content: '— '; }
+    .tag-galerien::after { content: ' —'; }
+
+    .title {
+      font-family: var(--f-title);
+      font-weight: 700;
+      font-size: 3.9rem;
+      line-height: 1.08;
+      letter-spacing: .005em;
+      color: var(--ivory);
+    }
+
+    .subtitle {
+      font-family: var(--f-body);
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--brass);
+      line-height: 1.3;
+      margin-top: 8px;
+      max-width: 90%;
+    }
+
+    .sep {
+      width: 100%;
+      margin: 18px 0;
+      border-top: 2px solid var(--brass);
+      border-bottom: 1px solid rgba(184,147,90,0.4);
+      height: 4px;
+    }
+
+    .sketch-container {
+      display: flex; justify-content: center; align-items: center;
+      margin: 10px 0; padding: 8px;
+    }
+
+    .sketch-svg {
+      width: 190px; height: auto;
+      filter: drop-shadow(0 0 10px rgba(184,147,90,0.18));
+    }
+
+    .abstract-box {
+      border-top: 1px solid rgba(184,147,90,0.5);
+      border-bottom: 1px solid rgba(184,147,90,0.5);
+      padding: 16px 4px;
+      max-width: 95%;
+    }
+
+    .abstract-title {
+      font-family: var(--f-label);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--mid);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .abstract-text {
+      font-family: var(--f-body);
+      font-size: 1.15rem;
+      color: var(--ivory);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .meta-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(184,147,90,0.25);
+      padding-top: 18px;
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+    .meta-label {
+      font-family: var(--f-label);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+    }
+
+    .meta-value {
+      font-family: var(--f-label);
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--ivory);
+    }
+
+    /* Rose des vents en filigrane, à la place du chiffre romain géant côté Gladiateurs */
+    .watermark {
+      position: absolute;
+      bottom: -18mm;
+      right: -18mm;
+      width: 130mm; height: 130mm;
+      z-index: 1;
+      opacity: 0.05;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-a4">
+  <div class="engrave"></div>
+
+  <svg class="watermark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--brass)" stroke-width="1"/>
+    <circle cx="100" cy="100" r="70" fill="none" stroke="var(--brass)" stroke-width="0.6"/>
+    <path d="M100 10 L108 92 L100 100 L92 92 Z" fill="var(--brass)"/>
+    <path d="M100 190 L108 108 L100 100 L92 108 Z" fill="var(--brass)"/>
+    <path d="M10 100 L92 92 L100 100 L92 108 Z" fill="var(--brass)"/>
+    <path d="M190 100 L108 92 L100 100 L108 108 Z" fill="var(--brass)"/>
+  </svg>
+
+  <div class="content-top">
+    <div class="badge">⚓ Keyos-Éditions</div>
+  </div>
+
+  <div class="content-middle">
+    <div class="header-main">
+      <div class="tag-galerien">Pour les galériens</div>
+      <h1 class="title">Initiation à la programmation avec Python</h1>
+      <div class="subtitle">Pratique efficace en langage Python</div>
+      <div class="sep"></div>
+    </div>
+
+    <!-- Chaloupe gravée façon carte marine ancienne, cap sur l'étoile -->
+    <div class="sketch-container">
+      <svg class="sketch-svg" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
+        <!-- houle -->
+        <path d="M10 96 Q30 90 50 96 T90 96 T130 96 T170 96 T210 96" fill="none" stroke="var(--teal)" stroke-width="1" opacity="0.6"/>
+        <path d="M10 106 Q30 100 50 106 T90 106 T130 106 T170 106 T210 106" fill="none" stroke="var(--teal)" stroke-width="0.7" opacity="0.4"/>
+
+        <!-- coque -->
+        <path d="M65 88 Q110 104 155 88 L145 96 Q110 108 75 96 Z" fill="none" stroke="var(--ivory)" stroke-width="1.3"/>
+
+        <!-- rameur -->
+        <circle cx="110" cy="66" r="7" fill="none" stroke="var(--ivory)" stroke-width="1.3"/>
+        <path d="M110 73 L110 87" stroke="var(--ivory)" stroke-width="1.3"/>
+        <path d="M96 80 L110 82 L124 80" fill="none" stroke="var(--ivory)" stroke-width="1.3" stroke-linecap="round"/>
+
+        <!-- rames -->
+        <line x1="96" y1="80" x2="70" y2="70" stroke="var(--brass)" stroke-width="1.3"/>
+        <line x1="124" y1="80" x2="150" y2="70" stroke="var(--brass)" stroke-width="1.3"/>
+
+        <!-- route pointillée vers l'étoile -->
+        <path d="M110 60 Q110 40 110 24" stroke="var(--brass)" stroke-width="1" stroke-dasharray="2 3"/>
+
+        <!-- étoile polaire -->
+        <path d="M110 6 L112.5 12.5 L119 12.5 L113.5 16.5 L115.5 23 L110 19 L104.5 23 L106.5 16.5 L101 12.5 L107.5 12.5 Z"
+              fill="var(--brass)"/>
+      </svg>
+    </div>
+
+    <div class="abstract-box">
+      <div class="abstract-title">Résumé</div>
+      <div class="abstract-text">Comprendre la synxtaxe et la mise en oeuvre de Python</div>
+    </div>
+  </div>
+
+  <div class="content-bottom">
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">Auteur</span>
+        <span class="meta-value">BELHADJ Karim</span>
+      </div>
+      <div class="meta-item" style="text-align: right;">
+        <span class="meta-label">Date de publication</span>
+        <span class="meta-value">08/10/2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="watermark-year">2026</div>
+</div>
+
+</body>
+</html>

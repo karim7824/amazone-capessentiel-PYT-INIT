@@ -1,6 +1,8 @@
 # À propos de l'auteur
 
-Consultant-formateur IT polyvalent, j'accompagne depuis plus de 20 ans les grands centres de formation en France. Passionné par le bouillonnement technologique actuel — des langages fondamentaux à la data science, en passant par les systèmes, la sécurité et l'intelligence artificielle —, j'ai créé la plateforme d'édition numérique **Keyos-Éditions** ainsi que **Keyos-Formation** dédiée au e-learning.
+Ingénieur EEA de formation et consultant polyvalent en IT, j'anime des formations depuis plus de 25 ans auprès des grands centres de formation en Métropole.
+
+Passionné par l'évolution rapide des technologies — des langages fondamentaux à l'intelligence artificielle, en passant par la data, les systèmes et la sécurité —, je conçois des supports pédagogiques exigeants et accessibles.---
 
 ---
 
@@ -31,7 +33,7 @@ Cet ouvrage s'inscrit dans la collection **"Cap sur l'essentiel"**, conçue avec
 
 - **Échanges & Entraide :** Rejoignez le serveur **Discord** de Keyos-Éditions pour échanger avec d'autres lecteurs, poser vos questions sur les exercices du livre et suivre les prochaines publications.
 
-![QR code vers le serveur Discord](qrcode.png "Rejoignez la communauté Discord")
+![Compte discord de l'auteur](qr_bk7824.png "Rejoignez la communauté Discord")
 
 *Scannez le QR code pour échanger directement sur Discord.*
 
