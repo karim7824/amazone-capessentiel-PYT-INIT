@@ -1,4 +1,4 @@
-# Chapitre 2 : Installation de l'environnement de programmation Python
+# Chapitre 2 : Installation de l'environnement Python
 
 Ce chapitre vous guide dans la mise en place d'un environnement de développement Python complet, propre et opérationnel. Vous apprendrez à installer l'interpréteur officiel, à exécuter vos premiers scripts et à utiliser le mode interactif. Enfin, vous découvrirez comment isoler vos projets grâce aux environnements virtuels, une bonne pratique incontournable en entreprise.
 
