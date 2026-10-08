@@ -1,4 +1,4 @@
-# Chapitre 9 : Les fonctions et passage d'arguments
+# Chapitre 9 : Fonctions et arguments
 
 Les fonctions permettent de modulariser le code en regroupant des instructions réutilisables sous un même nom. Maîtriser le passage d'arguments et les structures de retour est indispensable pour concevoir des programmes propres et maintenables.
 Dans ce chapitre :
