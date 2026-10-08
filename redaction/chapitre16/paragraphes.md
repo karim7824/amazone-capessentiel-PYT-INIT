@@ -116,15 +116,6 @@ from pathlib import Path
 # Parcours récursif de tous les fichiers .py à partir du dossier courant
 for fichier in Path(".").rglob("*.py"):
     print(fichier)
-
-Recherche des fichiers *.py dans un répertoire 
-```python
-from pathlib import Path
-
-# Parcours récursif de tous les fichiers .py à partir du dossier courant
-for fichier in Path(".").rglob("*.py"):
-    print(fichier)
-
 ```
 Si vous utilisez `Path.walk()`, le filtrage doit se faire manuellement dans la boucle à l'aide de `.match()` ou `.endswith()` :
 ```python
