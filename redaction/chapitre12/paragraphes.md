@@ -74,7 +74,7 @@ def traitement (eleve):
 eleve = { 'nom' : 'karim', 'age' : 20}
 traitement (eleve) # OK
 eleve = { 'nom' : 'karim', 'age' : -20}
-traitement (eleve) # exception prooduite qu'il faut intercepter dans un bloc try/except
+traitement (eleve) # exception produite qu'il faut intercepter dans un bloc try/except
 
 ```
 
