@@ -1,5 +1,4 @@
-# Chapitre 13 : Script python en ligne de commande et passage d'arguments
-
+# Chapitre 13 : Scripts et ligne de commande
 La création de scripts en ligne de commande et le passage d'arguments permettent d'automatiser des tâches et d'interagir directement avec vos programmes Python depuis le terminal. Maîtriser ces outils est indispensable pour industrialiser vos développements.
 Dans ce chapitre :
 
