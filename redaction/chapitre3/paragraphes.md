@@ -44,10 +44,6 @@ age = 25  # L'objet 25 est stocké en mémoire, 'age' pointe dessus.
 
 Les types scalaires représentent des valeurs uniques et atomiques, non décomposables en sous-éléments. Ils constituent la base de toute manipulation numérique, textuelle ou logique.
 
-Voici le tableau corrigé, sans les balises `<br>` superflues ni les sauts de ligne intempestifs qui cassaient le rendu Markdown :
-
-Voici le tableau propre, une ligne par type pour éviter le bazar des balises HTML :
-
 | Catégorie | Type (`type()`) | Mutabilité | Exemples de syntaxe |
 | --- | --- | --- | --- |
 | **Numérique** | `int` (entier) | Immuable | `10`, `-5` |
