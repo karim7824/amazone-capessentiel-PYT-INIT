@@ -14,9 +14,6 @@ Dans ce chapitre :
 
 Les opérateurs d'affectation permettent d'attribuer une valeur à une variable en mémoire, parfois en combinant cette affectation avec une opération mathématique. Ils simplifient l'écriture des mises à jour de variables.
 
-Les **opérateurs d'affectation** en Python, combinant l'affectation simple et les affectations augmentées 
-
-| Opérateur | Nom | Exemple | Équivalent à | Description |
 | --- | --- | --- | --- | --- |
 | **`=`** | Affectation simple | `x = 5` | `x = 5` | Assigne la valeur à la variable. |
 | **`+=`** | Addition et affectation | `x += 3` | `x = x + 3` | Ajoute la valeur et réaffecte. |
