@@ -1,4 +1,4 @@
-# Chapitre 12 : Un code plus robuste en prenant en compte les erreurs
+# Chapitre 12 : Gestion des erreurs et exceptions
 
 La gestion des erreurs permet d'anticiper et de traiter les incidents d'exécution pour empêcher l'arrêt brutal d'un programme en Python. Maîtriser ces mécanismes est indispensable pour concevoir des applications fiables et résilientes.
 Dans ce chapitre :
