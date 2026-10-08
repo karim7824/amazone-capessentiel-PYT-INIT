@@ -1,4 +1,4 @@
-# Chapitre 7 : Manipulation des données structurées - list, dict et set
+# Chapitre 7 : Listes, dictionnaires et ensembles
 
 La manipulation des données structurées permet d'organiser, de stocker et de parcourir efficacement des collections d'éléments en Python. Maîtriser ces structures est indispensable pour traiter des volumes d'informations complexes.
 Dans ce chapitre :
