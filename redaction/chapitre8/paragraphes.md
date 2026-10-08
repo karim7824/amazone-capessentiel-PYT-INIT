@@ -206,4 +206,4 @@ for parametre, etat in config.items():
 
 **Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
 
-**Exercice 2 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.
+**Exercice 3 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.
