@@ -67,8 +67,8 @@ Il est possible d'émettre volontairement une exception à l'aide de l'instructi
 ```python
 def traitement (eleve):
     if eleve['age'] < 0:
-        #raise ValueError("L'âge ne peut pas être négatif") # ValueError: L'âge ne peut pas être négatif
-        raise Exception ("L'âge ne peut pas être négatif")  # Exception: L'âge ne peut pas être négatif
+        raise ValueError("L'âge ne peut pas être négatif") 
+        raise Exception ("L'âge ne peut pas être négatif") 
     print(f"{eleve['nom']} -- {eleve['age']} ")
 
 eleve = { 'nom' : 'karim', 'age' : 20}
