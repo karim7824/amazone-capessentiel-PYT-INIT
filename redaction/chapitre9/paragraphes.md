@@ -90,7 +90,7 @@ print(r)
 
 ---
 
-## Arguments *kargs
+## Arguments **kargs
 
 La syntaxe `**kwargs` (souvent appelée `kargs`) permet de récupérer un nombre variable d'arguments nommés sous la forme d'un dictionnaire au sein de la fonction.
 
@@ -136,7 +136,8 @@ resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
 print(resultat)
 
 ```
-Les arguments en tant que tuple 
+
+## Les arguments en tant que tuple 
 
 ```python
 # La fonction accepte désormais un tuple en paramètre

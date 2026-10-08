@@ -150,7 +150,7 @@ Le formatage permet d'insérer dynamiquement des variables ou des expressions au
 ```python
 # Utilisation des f-strings pour l'interpolation de variables
 langage = "Python"
-version = 3.10
+version = "3.10"
 message = f"Apprentissage de {langage} en version {version}"
 
 ```
