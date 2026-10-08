@@ -96,7 +96,7 @@ Le mode REPL (*Read-Eval-Print Loop*) est la console interactive de Python, acce
 
 > 💡 **Note :** Pour quitter le mode REPL dans votre terminal, tapez la fonction `exit()` ou utilisez le raccourci `Ctrl + Z` (Windows) ou `Ctrl + D` (Linux/macOS).
 
-## Mettre en place un environnement virtuel pour une version de Python - venv
+## Mettre en place un environnement virtuel
 
 Un environnement virtuel permet d'isoler les dépendances et bibliothèques de chaque projet dans un dossier dédié, évitant ainsi les conflits de versions entre vos différents projets. Le module officiel `venv` est inclus de base avec Python et permet de créer ces espaces isolés en une seule commande.
 
@@ -125,7 +125,7 @@ print("Exécution dans un environnement virtuel :", dans_venv)
 
 ---
 
-## Envrionnements de développement (IDE=Integrated Development Environment ou Environnement de Développement Intégré)
+## Environnements de développement 
 
 Logiciels uniques qui regroupe tous les outils nécessaires au développement de code : un éditeur de texte, un compilateur/interpréteur, des outils d'automatisation et un débogueur. Les fonctionnalités des IDEs sont extensibles (plugins)
 
