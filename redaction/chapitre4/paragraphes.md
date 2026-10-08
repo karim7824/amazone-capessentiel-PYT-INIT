@@ -79,7 +79,7 @@ division = 10 / 4   # Division flottante (vaut 2.5)
 
 Les opérateurs relationnels comparent deux valeurs ou expressions et retournent systématiquement un résultat booléen (`True` ou `False`). Ils sont indispensables pour orienter l'exécution du code selon les conditions.
 
-Les **opérateurs relationnels** (ou opérateurs de comparaison) en Python. Ils permettent de comparer deux valeurs et renvoient toujours un **booléen** (`True` ou `False`).
+Ils permettent de comparer deux valeurs et renvoient toujours un **booléen** (`True` ou `False`).
 
 | Opérateur | Signification | Exemple | Résultat (`x = 10`, `y = 5`) |
 | --- | --- | --- | --- |
