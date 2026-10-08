@@ -218,7 +218,7 @@ Une expression régulière utilise des caractères spéciaux pour définir des m
 
 * **Classes de caractères :**
 * `\d` : n'importe quel chiffre (équivalent à `[0-9]`).
-* `\w` : n'importe quel caractère alfanumérique ou souligné (équivalent à `[a-zA-Z0-9_]`).
+* `\w` : n'importe quel caractère alphanumérique ou souligné (équivalent à `[a-zA-Z0-9_]`).
 * `\s` : n'importe quel espace blanc (espace, tabulation, saut de ligne).
 * `.` : n'importe quel caractère sauf le saut de ligne.
 
@@ -326,4 +326,4 @@ print(rapport)
 
 **Exercice 1 :** Écrivez un script qui prend une chaîne de caractères contenant des espaces superflus et du texte en minuscules, puis utilisez les méthodes de gestion pour la nettoyer et la mettre entièrement en majuscules.
 
-**Exercice 2 :** Déclarez une chaîne contenant un numéro de téléphone sous la forme d'une phrase, puis utilisez le slicing pour extraire les deux premiers caractères et formotez un message personnalisé à l'aide d'une f-string.
+**Exercice 2 :** Déclarez une chaîne contenant un numéro de téléphone sous la forme d'une phrase, puis utilisez le slicing pour extraire les deux premiers caractères et formatez un message personnalisé à l'aide d'une f-string.
