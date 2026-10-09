@@ -136,7 +136,6 @@ Les **méthodes de manipulation de dictionnaires (`dict`)** en Python, classées
 | **Copie** | `d.copy()` | Renvoie une copie superficielle du dictionnaire | `c = d.copy()` | `c = {'a': 1, 'b': 2}` |
 
 * **Opérateur de fusion (Python 3.9+) :** En alternative à `.update()`, l'opérateur `|` permet de fusionner deux dictionnaires pour en créer un nouveau (`d3 = d1 | d2`).
-Fonctions et méthodes essentielles sur les **dictionnaires** (méthodes essentielles et parcours), prêts pour votre support :
 
 Fonctions et méthodes essentielles sur les dictionnaires
 
@@ -185,7 +184,7 @@ config_str = {k: str(v) for k, v in config.items() if k != "debug"}
 
 ```
 
-Voici deux exemples pratiques pour parcourir un dictionnaire en Python :
+Deux exemples pratiques pour parcourir un dictionnaire en Python :
 
 **Parcourir les clés et les valeurs simultanément (`items()`)**
 
@@ -223,8 +222,6 @@ print("Prix TTC :", prix_ttc)  # {'article_1': 12.0, 'article_2': 30.0, 'article
 ## Gestion des set
 
 Les ensembles (`set`) stockent des collections non ordonnées d'éléments uniques. Ils suppriment automatiquement les doublons et s'avèrent extrêmement utiles pour effectuer des opérations mathématiques ensemblistes (union, intersection).
-
-Voici les exemples sur les **ensembles (`set`)** (opérations d'ensemble et méthodes clés), prêts pour votre support :
 
 **Fonctions et méthodes essentielles sur les ensembles**
 
@@ -274,8 +271,7 @@ exclusifs = dev_backend ^ dev_frontend
 # {'Python', 'Java', 'SQL', 'JavaScript', 'TypeScript', 'HTML'}
 
 ```
-
-Voici deux exemples pratiques pour parcourir un **ensemble (`set`)** en Python :
+Deux exemples pratiques pour parcourir un **ensemble (`set`)** en Python :
 
 **Parcourir directement les éléments (`for ... in`)**
 
