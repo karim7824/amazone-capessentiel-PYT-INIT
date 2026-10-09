@@ -68,9 +68,6 @@ Les types scalaires représentent des valeurs uniques et atomiques, non décompo
 <class 'bool'>
 
 ```
-
-Voici le code nettoyé et réformaté pour vos supports de cours ou cheatsheets :
-
 ---
 
 ```python
