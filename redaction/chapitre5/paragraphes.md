@@ -63,9 +63,6 @@ Python réalise parfois des conversions implicites automatiques sans interventio
 
 * **Conversion explicite (*Casting*) :** Action volontaire du développeur via une fonction constructeur (ex: `int("10")`, `str(42)`).
 * **Conversion implicite (*Coercion*) :** Prise en charge automatique par l'interpréteur Python lors d'une opération (ex: `3 + 2.0` devient automatiquement un `float` `5.0`).
-
-Voici plusieurs exemples concrets pour illustrer la **conversion implicite** (*type promotion* ou *coercion*) et la **conversion explicite** (*casting*) en Python.
-
 ---
 
 **Conversions Implicites (Prises en charge automatiquement par Python)**
