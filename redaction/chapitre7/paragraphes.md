@@ -13,8 +13,6 @@ Dans ce chapitre :
 
 Les listes permettent de stocker une collection ordonnée d'éléments modifiables. Elles autorisent les doublons et offrent de nombreuses méthodes pour ajouter, supprimer ou trier des données en mémoire.
 
-Voici une sélection concise des opérations indispensables sur les listes (méthodes standards et slicing), prêtes à être intégrées dans votre support de cours :
-
 Les **méthodes de manipulation de listes (`list`)** en Python, classées par usage :
 
 | Catégorie | Méthode | Description | Exemple (`l = [1, 2]`) | Résultat / État de `l` |
