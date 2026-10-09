@@ -112,7 +112,7 @@ s.count("o")                   # 4
 
 ## Formatage
 
-Voici un exemple comparatif simple montrant comment insérer un texte (chaîne) et un nombre (entier ou flottant) avec l'ancien opérateur `%` et la méthode `.format()` :
+Un exemple comparatif simple montrant comment insérer un texte (chaîne) et un nombre (entier ou flottant) avec l'ancien opérateur `%` et la méthode `.format()` :
 
 ```python
 nom = "Alice"
