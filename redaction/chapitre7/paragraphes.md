@@ -29,7 +29,7 @@ Les **méthodes de manipulation de listes (`list`)** en Python, classées par us
 | **Recherche** | `l.count(x)` | Renvoie le nombre d'occurrences de la valeur `x` | `[1, 2, 1].count(1)` | `2` |
 | **Organisation** | `l.sort()` | Trie la liste **en place** (modifie l'originale, renvoie `None`) | `[3, 1].sort()` | `[1, 3]` |
 | **Organisation** | `l.reverse()` | Inverse l'ordre des éléments **en place** | `[1, 2].reverse()` | `[2, 1]` |
-| **Copie** | `l.copy()` | Renvoie une copie superficielle (*shallow copy*) de la liste | `c = l.copy()` | `c = [1, 2]` |
+| **Copie** | `l.copy()` | Renvoie une copie superficielle de la liste | `c = l.copy()` | `c = [1, 2]` |
 
 Fonctions et méthodes essentielles sur les listes
 
@@ -135,7 +135,7 @@ Les **méthodes de manipulation de dictionnaires (`dict`)** en Python, classées
 | **Vue** | `d.keys()` | Renvoie une vue des clés du dictionnaire | `d.keys()` | `dict_keys(['a', 'b'])` |
 | **Vue** | `d.values()` | Renvoie une vue des valeurs du dictionnaire | `d.values()` | `dict_values([1, 2])` |
 | **Vue** | `d.items()` | Renvoie une vue des couples `(clé, valeur)` sous forme de tuples | `d.items()` | `dict_items([('a', 1), ('b', 2)])` |
-| **Copie** | `d.copy()` | Renvoie une copie superficielle (*shallow copy*) du dictionnaire | `c = d.copy()` | `c = {'a': 1, 'b': 2}` |
+| **Copie** | `d.copy()` | Renvoie une copie superficielle du dictionnaire | `c = d.copy()` | `c = {'a': 1, 'b': 2}` |
 
 * **Opérateur de fusion (Python 3.9+) :** En alternative à `.update()`, l'opérateur `|` permet de fusionner deux dictionnaires pour en créer un nouveau (`d3 = d1 | d2`).
 Fonctions et méthodes essentielles sur les **dictionnaires** (méthodes essentielles et parcours), prêts pour votre support :
