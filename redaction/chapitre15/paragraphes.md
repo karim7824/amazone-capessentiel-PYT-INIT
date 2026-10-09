@@ -1,14 +1,15 @@
 # Chapitre 15 : Les environnements virtuels
 
 La création d'environnements virtuels permet d'isoler les dépendances de chaque application Python pour éviter les conflits entre les bibliothèques installées sur le système. Maîtriser ces outils est indispensable pour garantir la stabilité et la reproductibilité de vos projets.
-Dans ce chapitre :
 
-* Création d'un contexte Python isolé avec `venv`
-* Utilisation des scripts d'activation et de désactivation (`activate`/`deactivate`)
+Au programme de ce chapitre :
+
+* Création d'un contexte Python isolé avec venv
+* Script activate/deactivate
 
 ---
 
-## Création d'un context python isolé avec venv
+## Création d'un contexte Python isolé avec venv
 
 Le module `venv` permet de générer un répertoire de travail contenant une copie autonome de l'interpréteur Python et de sa bibliothèque standard. Cela isole complètement l'environnement des paquets globaux de la machine.
 

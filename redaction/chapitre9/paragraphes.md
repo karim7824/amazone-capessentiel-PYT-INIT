@@ -1,16 +1,20 @@
 # Chapitre 9 : Fonctions et arguments
 
 Les fonctions permettent de modulariser le code en regroupant des instructions réutilisables sous un même nom. Maîtriser le passage d'arguments et les structures de retour est indispensable pour concevoir des programmes propres et maintenables.
-Dans ce chapitre :
 
-* Définition des fonctions, arguments, passage et valeur de retour (`return`)
+Au programme de ce chapitre :
+
+* Fonctions, arguments et return
 * Arguments et valeurs par défaut
-* Arguments variables via les tuples, `*args` et `**kwargs`
-* Fonctions en tant qu'arguments (délégués)
+* Arguments en tant que tuple
+* Arguments avec *args
+* Arguments `**kwargs`
+* Fonction en tant qu'argument (delegate)
+* Passer un tuple comme argument unique
 
 ---
 
-## Les fonctions, arguments , passage par valeur, return
+## Fonctions, arguments et return
 
 Une fonction se déclare avec le mot-clé `def` suivi d'un nom et de parenthèses. Elle accepte des arguments en entrée et peut renvoyer un résultat grâce à l'instruction `return`.
 
@@ -21,7 +25,7 @@ def additionner(a, b):
     return resultat
 
 # Appel
-r = additionner (10,20)
+r = additionner (10, 20)
 print(r)
 
 ```
@@ -43,7 +47,7 @@ def saluer(nom, message="Bonjour"):
 r = saluer("Karim", "Hello")
 print(r) # Hello Karim
 r = saluer("Karim")
-print(r) Bonjour Karim
+print(r) Bonjour, Karim
 ```
 
 > 💡 Ne jamais utiliser d'objets mutables (comme des listes ou des dictionnaires) comme valeurs par défaut d'une fonction, car leur état serait conservé entre les appels successifs.
@@ -90,7 +94,7 @@ print(r)
 
 ---
 
-## Arguments **kargs
+## Arguments `**kwargs`
 
 La syntaxe `**kwargs` (souvent appelée `kargs`) permet de récupérer un nombre variable d'arguments nommés sous la forme d'un dictionnaire au sein de la fonction.
 
@@ -131,13 +135,13 @@ En Python, les fonctions sont des objets de première classe, ce qui signifie qu
 def appliquer_operation(operation, x, y):
     return operation(x, y)
 
-# lambda a, b: a * b  equivalent de def <anonyme> (a, b) : return a * b
+# lambda a, b: a * b  équivalent de def <anonyme> (a, b) : return a * b
 resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
 print(resultat)
 
 ```
 
-## Les arguments en tant que tuple 
+## Passer un tuple comme argument unique
 
 ```python
 # La fonction accepte désormais un tuple en paramètre

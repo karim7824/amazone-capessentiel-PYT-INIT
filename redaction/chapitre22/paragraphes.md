@@ -1,10 +1,10 @@
-# Solutions des exercices Python
+# Chapitre 22 : Solutions des exercices Python
 
 ---
 
 **Chapitre 1 / Exercice 1**
 
-Voici l'instruction en Python pour afficher la version exacte de l'interpréteur :
+L'instruction Python qui affiche la version exacte de l'interpréteur est :
 
 ```python
 import sys
@@ -146,9 +146,10 @@ if __name__ == "__main__":
     # Appel de la fonction et affichage du résultat
     moyenne_finale = calculer_moyenne(notes_etudiant)
     print(f"Notes de l'étudiant : {notes_etudiant}")
-    print(f"Moyenne calculée   : {moyenne_finale:.2f} / 20")```	
+    print(f"Moyenne calculée   : {moyenne_finale:.2f} / 20")
+```	
 
-**Chapitre 4 / Exercice 1 
+**Chapitre 4 / Exercice 1** 
 ```python
 def calculer_operations(a: int, b: int) -> None:
     """Calcule et affiche la somme, le produit et le reste de la division entière de deux nombres."""
@@ -258,10 +259,10 @@ def nettoyer_et_capitaliser(texte_brut: str) -> str:
 
     et convertit le texte intégralement en majuscules.
     """
-    # 1. Suppression des espaces superflus aux extrémités avec strip()
+    # Suppression des espaces superflus aux extrémités avec strip()
     texte_epure = texte_brut.strip()
     
-    # 2. Conversion en majuscules avec upper()
+    # Conversion en majuscules avec upper()
     texte_majuscule = texte_epure.upper()
     
     return texte_majuscule
@@ -409,7 +410,7 @@ def traiter_liste_imbriquee(nombre_elements: int = 5) -> list[list[object]]:
     """
     liste_principale: list[list[object]] = []
 
-    # 1. Génération de la liste de sous-listes via une boucle
+    # Génération de la liste de sous-listes via une boucle
     for i in range(1, nombre_elements + 1):
         nom = f"TOTO{i}"
         sous_liste = [nom, i]
@@ -418,7 +419,7 @@ def traiter_liste_imbriquee(nombre_elements: int = 5) -> list[list[object]]:
     print(f"Liste générée : {liste_principale}\n")
     print("Affichage des noms uniquement :")
 
-    # 2. Parcours de la liste imbriquée et extraction du premier élément
+    # Parcours de la liste imbriquée et extraction du premier élément
     for sous_liste in liste_principale:
         nom = sous_liste[0]  # Récupération de l'élément à l'index 0 ('TOTOx')
         print(nom)
@@ -438,7 +439,7 @@ def traiter_liste_dictionnaires(nombre_elements: int = 5) -> list[dict[str, obje
     """
     liste_personnes: list[dict[str, object]] = []
 
-    # 1. Génération de la liste de dictionnaires via une boucle
+    # Génération de la liste de dictionnaires via une boucle
     for i in range(1, nombre_elements + 1):
         personne = {
             "nom": f"TOTO{i}",
@@ -449,7 +450,7 @@ def traiter_liste_dictionnaires(nombre_elements: int = 5) -> list[dict[str, obje
     print(f"Liste générée : {liste_personnes}\n")
     print("Affichage des noms uniquement :")
 
-    # 2. Parcours de la liste et extraction de la valeur associée à la clé 'nom'
+    # Parcours de la liste et extraction de la valeur associée à la clé 'nom'
     for personne in liste_personnes:
         nom = personne["nom"]
         print(nom)
@@ -765,7 +766,7 @@ def exporter_notes() -> None:
     dossier_export = Path("export")
     fichier_notes = dossier_export / "notes.txt"
 
-    # 1. Création du dossier 'export' s'il n'existe pas
+    # Création du dossier 'export' s'il n'existe pas
     dossier_export.mkdir(parents=True, exist_ok=True)
 
     # Contenu de 3 lignes à écrire dans le fichier
@@ -775,13 +776,13 @@ def exporter_notes() -> None:
         "Troisième ligne : Export et calcul de métadonnées terminé.\n"
     ]
 
-    # 2. Écriture du fichier texte avec encodage UTF-8
+    # Écriture du fichier texte avec encodage UTF-8
     with open(fichier_notes, mode="w", encoding="utf-8") as fichier:
         fichier.writelines(lignes)
 
     print(f"Fichier créé avec succès : {fichier_notes.resolve()}")
 
-    # 3. Récupération et affichage de la taille du fichier
+    # Récupération et affichage de la taille du fichier
     taille_octets = fichier_notes.stat().st_size
     print(f"Taille du fichier : {taille_octets} octets")
 
@@ -1056,7 +1057,7 @@ def initialiser_base_de_donnees(nom_bdd: str = "inventaire.db") -> None:
     with sqlite3.connect(chemin_bdd) as connexion:
         cursor = connexion.cursor()
 
-        # 1. Création de la table produits
+        # Création de la table produits
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS produits (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -1065,14 +1066,14 @@ def initialiser_base_de_donnees(nom_bdd: str = "inventaire.db") -> None:
             )
         """)
 
-        # 2. Insertion d'un enregistrement à l'aide de requêtes préparées (?)
+        # Insertion d'un enregistrement à l'aide de requêtes préparées (?)
         produit_test = ("Clavier mécanique", 89.99)
         cursor.execute("""
             INSERT INTO produits (nom, prix)
             VALUES (?, ?)
         """, produit_test)
 
-        # 3. Validation explicite des modifications
+        # Validation explicite des modifications
         connexion.commit()
 
         print(f"Base de données '{chemin_bdd.name}' initialisée avec succès.")

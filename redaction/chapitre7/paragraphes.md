@@ -1,11 +1,12 @@
 # Chapitre 7 : Listes, dictionnaires et ensembles
 
 La manipulation des données structurées permet d'organiser, de stocker et de parcourir efficacement des collections d'éléments en Python. Maîtriser ces structures est indispensable pour traiter des volumes d'informations complexes.
-Dans ce chapitre :
+
+Au programme de ce chapitre :
 
 * Gestion des listes
-* Gestion des dictionnaires (dict)
-* Gestion des ensembles (set)
+* Gestion des dict
+* Gestion des set
 
 ---
 
@@ -155,7 +156,7 @@ user.update({"statut": "Actif", "age": 30})  # Ajoute/modifie plusieurs clés à
 email = user.pop("email", None)       # Supprime "email" et renvoie sa valeur
 del user["age"]                       # Supprime directement la clé "age"
 
-# 4. Vérification d'existence
+# Vérification d'existence
 existe = "nom" in user                # True (vérifie la présence d'une CLÉ)
 
 ```
@@ -201,7 +202,7 @@ for cle, valeur in serveur.items():
 
 ---
 
-### Parcourir et transformer avec une dictionnaire compréhension
+### Compréhension de dictionnaire
 
 Permet de filtrer ou modifier les entrées d'un dictionnaire de façon concise :
 
@@ -214,7 +215,7 @@ print("Prix TTC :", prix_ttc)  # {'article_1': 12.0, 'article_2': 30.0, 'article
 
 ```
 
-> 💡 **Bonne pratique :** Depuis Python 3.7, l'ordre d'insertion des clés dans un dictionnaire est garanti garanti lors des parcours.
+> 💡 **Bonne pratique :** Depuis Python 3.7, l'ordre d'insertion des clés dans un dictionnaire est garanti lors des parcours.
 > 💡 Privilégiez l'utilisation de la méthode `.get()` pour interroger un dictionnaire lorsque la clé recherchée est susceptible de ne pas y figurer.
 
 ---
@@ -302,7 +303,7 @@ print(pairs_grands)  # Résultat : {40, 8, 22} (l'ordre d'affichage peut varier)
 
 > 💡 **À retenir :** Un `set` ne conserve pas l'ordre d'insertion des éléments et n'a pas d'index. On ne peut donc pas utiliser `enumerate()` pour obtenir des index fixes comme sur une liste.
 
-> 💡 **Bonne pratique :** Tester la présence d'un élément dans un `set` avec `if "Python" in ensemble:` est extrêmement rapide (complexité $O(1)$) comparé à une liste (complexité $O(n)$).
+> 💡 **Bonne pratique :** Tester la présence d'un élément dans un `set` avec `if "Python" in ensemble:` est extrêmement rapide (complexité `O(1)`) comparé à une liste (complexité $O(n)$).
 
 > 💡 Utilisez les opérateurs ensemblistes comme `&` pour l'intersection ou `|` pour l'union afin de comparer rapidement des collections de données.
 
@@ -332,8 +333,8 @@ print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
 
 ## Exercices de fin de chapitre
 
-**Exercice 1 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et compter les nombres paires et les impaires
+**Exercice 1 :** Créer une liste de 10 valeurs aléatoires `random.randrange(100)`, parcourir le tableau et compter les nombres pairs et les impairs.
 
-**Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et ages [1,2 ...], les assembler dans une boucles pour former un dict() nom/age 
+**Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et âges [1,2 ...], les assembler dans une boucle pour former un dict() avec les clés nom et age.
 
-**Exercice 3 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et créer deux tableaux contenants les paires et les impaires séparemment
+**Exercice 3 :** Créer une liste de 10 valeurs aléatoires `random.randrange(100)`, parcourir le tableau et créer deux tableaux contenant respectivement les nombres pairs et les nombres impairs.

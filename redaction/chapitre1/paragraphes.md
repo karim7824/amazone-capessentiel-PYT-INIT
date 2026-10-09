@@ -1,19 +1,19 @@
 # Chapitre 1 : Présentation du langage Python
 
-Ce chapitre vous présente l'origine, les caractéristiques fondamentales et le fonctionnement du langage Python. Vous comprendrez son architecture, son écosystème d'implémentations ainsi que ses domaines d'application privilégiés. Cette vue d'ensemble vous permettra d'appréhender sereinement les choix techniques liés à l'adoption de Python dans vos projets.
+Ce chapitre vous présente l'origine, les caractéristiques fondamentales et le fonctionnement du langage Python. Vous comprendrez également son architecture et d'appréhender les choix techniques liés à l'adoption de Python dans vos projets.
 
-Dans ce chapitre :
+Au programme de ce chapitre :
 
 * Historique
-* Caractéristiques du langage - compilé ou interprété
+* Python : compilé ou interprété ?
 * Lien entre Python et le langage C
 * Rôles de Cython, IronPython et Jython
-* Popularité de Python par rapport aux autres langages
+* Popularité de Python
 * Types d'applications pour Python
 
 ## Historique
 
-Créé par Guido van Rossum et publié en 1991, Python a été conçu avec pour objectif prioritaire la lisibilité du code. Son nom provient de la troupe comique britannique *Monty Python*. Le langage a évolué à travers deux versions majeures incontournables : Python 2 (désormais obsolète) et Python 3, la norme standard actuelle.
+Créé par Guido van Rossum et publié en 1991, Python a été conçu avec pour objectif prioritaire la lisibilité du code. Son nom provient de la troupe comique britannique *Monty Python*. Le langage a évolué à travers deux versions majeures : Python 2 (désormais obsolète) et Python 3, la norme standard actuelle.
 
 ```python
 # Vérifier la version exacte de Python exécutée par le système
@@ -26,7 +26,7 @@ print(sys.version)
 
 > 💡 **Bonne pratique :** Utilisez exclusivement Python 3.x pour tout nouveau projet, car Python 2 n'est plus maintenu depuis le 1er janvier 2020.
 
-## Caractéristiques du langage - compilé ou interprété
+## Python : compilé ou interprété ?
 
 Python est un langage interprété et à typage dynamique. Le code source `.py` est d'abord transformé en bytecode `.pyc`, puis exécuté par la machine virtuelle Python (PVM). Cette architecture permet d'exécuter un même script sur tout système d'exploitation sans modification du code.
 
@@ -65,7 +65,7 @@ print("Racine carrée calculée via CPython :", resultat)
  [2. Optimisation (.pyx)] ── (Optionnel : ajout de types C)
          │
          ▼
- [3. Cythonisation] ───────► Génère le fichier C intermediary (.c)
+ [3. Cythonisation] ───────► Génère le fichier C intermediaire (.c)
          │
          ▼
  [4. Compilation C] ────────► Compilateur natif (GCC / Clang / MSVC)
@@ -75,11 +75,11 @@ print("Racine carrée calculée via CPython :", resultat)
 
 ```
 
-> 💡 **Piège classique :** La présence du verrou global du fermenteur (GIL) dans CPython limite le véritable multithreading parallèle sur les processeurs multi-cœurs.
+> 💡 **Piège classique :** La présence du verrou global de l'interpréteur (GIL) dans CPython limite le véritable multithreading parallèle sur les processeurs multi-cœurs.
 
 ## Rôles de Cython, IronPython et Jython
 
-Cython permet de compiler du code Python en extensions C pour obtenir des performances proches du langage C. IronPython permet d'exécuter du code Python sur l'écosystème Microsoft .NET, tandis que Jython compile le code Python en bytecode Java pour la JVM. Ces déclinaisons facilitent l'intégration de Python dans des environnements d'entreprise spécifiques.
+Cython permet de compiler du code Python en extensions C pour obtenir des performances proches du langage C. IronPython permet d'exécuter du code Python sur le framwork Microsoft .NET, tandis que Jython compile le code Python en bytecode Java pour la JVM. Ces déclinaisons facilitent l'intégration de Python dans des environnements d'entreprise spécifiques.
 
 ```python
 # Exemple de logique métier en Python standard, convertible via Cython pour optimisation
@@ -95,9 +95,9 @@ print("Résultat du calcul :", calculer_somme(100000))
 
 > 💡 **Note :** Privilégiez toujours CPython standard sauf si vous avez une contrainte stricte d'intégration avec .NET (IronPython) ou Java (Jython).
 
-## Popularité de Python par rapport aux autres langages
+## Popularité de Python
 
-Python se classe régulièrement parmi les langages les plus populaires aux index TIOBE et GitHub. Cette popularité s'explique par sa syntaxe claire et intuitive qui accélère la vitesse de développement. Sa vaste communauté garantit un écosystème de bibliothèques très riche pour résoudre presque tout problème informatique.
+Python se classe régulièrement parmi les langages les plus populaires aux index TIOBE et GitHub. Cette popularité s'explique par sa syntaxe claire et intuitive qui accélère la vitesse de développement. Sa vaste communauté garantit la disponibilité de bibliothèques très richse pour résoudre presque tout problème informatique.
 
 ```python
 # Exemple illustrant la concision de la syntaxe Python face à d'autres langages
@@ -119,14 +119,14 @@ Panorama résumant la popularité comparative de ces 5 langages (selon les indic
 | **Python** | **#1** (~21 %) | **#1** (~36 %) | **Dominant** (IA, Data, Web, Automatisation) |
 | **C++** | **#3** (~8 %) | **#2** (~13 %)* | **Très stable** (Jeux vidéo, Système, Embarqué) |
 | **Java** | **#4** (~8 %) | **#3** (~10 %) | **Solide** (Backend Entreprise, Android historique) |
-| **C#** | **#5** (~7 %) | **#7** (~3 %) | **En hausse** (Écosystème .NET, Jeux/Unity, Cloud) |
+| **C#** | **#5** (~7 %) | **#7** (~3 %) | **En hausse** (.NET, Jeux/Unity, Cloud) |
 | **PHP** | **#18** (~1,2 %) | **#9** (~3 %) | **En déclin léger** (Web CMS/Symfony, marché très axé sur la maintenance) |
 
 **Note : L'indice PYPL regroupe les recherches C et C++ dans la même catégorie.*
 
 ## Types d'applications pour Python
 
-Python s'impose comme le langage leader en intelligence artificielle, science des données et apprentissage automatique. Il est également très utilisé dans le développement web backend avec des frameworks comme Django et FastAPI. Enfin, il excelle dans l'automatisation de tâches système, le scripting d'infrastructure et l'ingénierie de données.
+Python est le langage leader en intelligence artificielle, science des données et apprentissage automatique. Il est également très utilisé dans le développement web backend avec des frameworks comme Django et FastAPI. Enfin, il excelle dans l'automatisation de tâches système, le scripting d'infrastructure et l'ingénierie de données.
 
 ```python
 # Exemple d'automatisation système : création et écriture rapide dans un fichier journal
@@ -176,19 +176,19 @@ Cet exemple regroupe la vérification de l'environnement, le typage dynamique et
 import sys
 import platform
 
-# 1. Collecte d'informations environnementales
+# Collecte d'informations environnementales
 infos_systeme = {
     "version_python": sys.version.split()[0],
     "os": platform.system(),
     "statut": "Opérationnel"
 }
 
-# 2. Traitement et affichage
+# Traitement et affichage
 print("--- Bilan de l'environnement Python ---")
 for cle, valeur in infos_systeme.items():
     print(f"{cle.capitalize()} : {valeur}")
 
-# 3. Écriture d'un rapport de synthèse
+# Écriture d'un rapport de synthèse
 with open("rapport_intro.txt", "w", encoding="utf-8") as f:
     f.write(f"Rapport généré sous {infos_systeme['os']} avec Python {infos_systeme['version_python']}\n")
 
@@ -200,10 +200,10 @@ print("Rapport écrit avec succès dans 'rapport_intro.txt'.")
 
 ### Exercices de fin de chapitre
 
-1.  **Exercice 1 : Inspection de l'environnement d'exécution**
+**Exercice 1 : Inspection de l'environnement d'exécution**
 Écrivez une instruction qui permet d'afficher la version de Python
 Écrivez une instruction qui permet d'afficher la variable d'environnement PATH
 Écrivez une instruction qui permet de lancer une commande shell 
 
-2. **Exercice 2 : une instruction de boucle**
-Écrivez une instruction de boucle qui compte de 1 à 10 et afficher 'O' 'OO' 'OOO' allant de 1 à 10 en utilisant range()
+**Exercice 2 : une instruction de boucle**
+Écrivez une instruction de boucle qui compte de 1 à 10 et affiche 'O' 'OO' 'OOO' allant de 1 à 10 en utilisant range()

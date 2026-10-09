@@ -1,13 +1,15 @@
-# Chapitre 2 : Installation de l'environnement Python
+# Chapitre 2 : Installation de Python
 
-Ce chapitre vous guide dans la mise en place d'un environnement de développement Python complet, propre et opérationnel. Vous apprendrez à installer l'interpréteur officiel, à exécuter vos premiers scripts et à utiliser le mode interactif. Enfin, vous découvrirez comment isoler vos projets grâce aux environnements virtuels, une bonne pratique incontournable en entreprise.
+Ce chapitre vous guide dans la mise en place d'un environnement de développement Python complet, propre et opérationnel. Vous apprendrez à installer l'interpréteur officiel, à exécuter vos premiers scripts et à utiliser le mode interactif. Enfin, vous découvrirez comment isoler vos projets grâce aux environnements virtuels, une bonne pratique en entreprise.
 
-Dans ce chapitre :
+Au programme de ce chapitre :
 
 * Installation de base de l'interpréteur x64
-* Création d'un projet Python main.py avec la condition `__name__ == '__main__'`
-* Lancement de scripts et utilisation de Python en mode REPL
-* Mise en place d'un environnement virtuel avec `venv`
+* Le point d'entrée `__main__`
+* Lancement de lab_main.py
+* Utilisation de Python en mode REPL
+* Mettre en place un environnement virtuel
+* Environnements de développement
 
 ## Installation de base de l'interpréteur x64
 
@@ -46,7 +48,7 @@ py mon_script.py
 
 > 💡 **Bonne pratique :** Vérifiez toujours après l'installation que la commande `python --version` (ou `python3 --version`) répond correctement dans votre invite de commande.
 
-## Créer module Python main.py avec la condition `__name__ == '__main__'`
+## Le point d'entrée `__main__`
 
 En Python, la condition `if __name__ == '__main__':` permet de définir le point d'entrée principal d'un script. Elle garantit que le bloc de code sous-jacent ne s'exécute que lorsque le fichier est lancé directement, et non lorsqu'il est importé comme module dans un autre fichier. C'est une structure standard pour organiser proprement vos projets.
 
@@ -81,7 +83,7 @@ print("Arguments passés au script :", sys.argv)
 
 ## Utilisation de Python en mode REPL
 
-Le mode REPL (*Read-Eval-Print Loop*) est la console interactive de Python, accessible en tapant simplement `python` dans votre terminal. Il permet de tester immédiatement des expressions, des syntaxes ou de courtes fonctions sans avoir à créer un fichier de code sur le disque. C'est un outil formidable pour l'expérimentation et le débogage rapide.
+Le mode REPL (*Read-Eval-Print Loop*) est la console interactive de Python, accessible en tapant simplement `python` dans votre terminal. Il permet de tester immédiatement des expressions, des syntaxes ou de courtes fonctions sans avoir à créer un fichier de code sur le disque. C'est un outil pour l'expérimentation et le débogage rapide.
 
 ```python
 # Simulation d'une session REPL interactive
@@ -133,7 +135,7 @@ Logiciels uniques qui regroupe tous les outils nécessaires au développement de
 
 | Outil | Éditeur / Type | Points forts | Cas d'usage idéal |
 | --- | --- | --- | --- |
-| **VS Code** | Éditeur extensible | Ultra-léger, écosystème d'extensions gigantesque, support multi-langages | Polyvalent (Web, Scripting, Data) |
+| **VS Code** | Éditeur extensible | Ultra-léger, librairie d'extensions gigantesque, support multi-langages | Polyvalent (Web, Scripting, Data) |
 | **PyCharm** | IDE complet (JetBrains) | Autocomplétion intelligente, refactoring puissant, gestion venv/Git intégrée | Projets Python complexes / Django |
 | **Jupyter Notebook / Lab** | Environnement interactif | Exécution cellule par cellule, visualisation de données en direct | Data Science, Machine Learning, R&D |
 | **Spyder** | IDE scientifique | Proche de MATLAB, explorateur de variables et de graphiques intégré | Calcul scientifique / Analyse de données |

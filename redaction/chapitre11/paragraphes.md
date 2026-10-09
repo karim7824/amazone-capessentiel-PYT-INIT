@@ -1,10 +1,11 @@
 # Chapitre 11 : Les générateurs
 
 Les générateurs permettent de produire des séquences de valeurs à la demande sans stocker l'intégralité des données en mémoire. Maîtriser ces concepts est indispensable pour optimiser l'efficacité de vos programmes lors du traitement de grands volumes d'informations.
-Dans ce chapitre :
 
-* Boucle et instruction `yield`
-* Générateurs prédéfinis
+Au programme de ce chapitre :
+
+* Boucle et instruction yield
+* Générateur prédéfinis
 
 ---
 

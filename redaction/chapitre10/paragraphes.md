@@ -1,18 +1,19 @@
 # Chapitre 10 : Traiter une masse de données
 
 Le traitement de masses de données permet d'appliquer des transformations et des filtres performants sur des collections en Python. Maîtriser ces outils fonctionnels est indispensable pour manipuler efficacement des flux d'informations importants.
-Dans ce chapitre :
 
-* Fonctions anonymes `lambda`
-* Filtrage de données avec `filter`
-* Transformation de données avec `map`
-* Agrégation de données avec `reduce`
+Au programme de ce chapitre :
+
+* Fonction anonyme Lambda
+* Traitement avec filter
+* Traitement avec map
+* Traitement avec reduce
 
 ---
 
 ## Fonction anonyme Lambda
 
-Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels. Au lieu de créer une fonction au moyen de def et la documenter, on préfère utiliser une lambda qui est une fonction sans nom et utilisée à la volée et peut être une fois.
+Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels. Plutôt que de déclarer une fonction nommée avec def, une fonction lambda (ou anonyme) permet de réaliser un traitement ponctuel en une seule ligne.
 
 ```python
 # Déclaration et appel d'une fonction lambda pour calculer le carré
@@ -124,13 +125,13 @@ from functools import reduce
 # Programme complet combinant lambda, filter, map et reduce sur une masse de données
 prix_articles = [12.5, 45.0, 8.0, 100.0, 32.5]
 
-# 1. Filtrer les articles dont le prix est supérieur à 15.0 via filter et lambda
+# Filtrer les articles dont le prix est supérieur à 15.0 via filter et lambda
 articles_cibles = list(filter(lambda p: p > 15.0, prix_articles))
 
-# 2. Appliquer une remise de 10% sur ces articles via map et lambda
+# Appliquer une remise de 10% sur ces articles via map et lambda
 prix_remises = list(map(lambda p: p * 0.9, articles_cibles))
 
-# 3. Calculer le montant total cumulé de ces articles via reduce et lambda
+# Calculer le montant total cumulé de ces articles via reduce et lambda
 montant_global = reduce(lambda total, p: total + p, prix_remises, 0.0)
 
 print(f"Articles remisés : {prix_remises}")

@@ -2,10 +2,12 @@
 
 La gestion efficace des opérations d'entrée/sortie (E/S) — comme l'accès au réseau, aux bases de données ou au système de fichiers — est cruciale pour concevoir des applications Python performantes. Dans ce chapitre, vous découvrirez les principes de la programmation asynchrone non bloquante. Vous apprendrez à utiliser le module standard `asyncio` pour exécuter plusieurs tâches de manière concurrente sans avoir recours au multithreading complexe.
 
-* Les différences fondamentales entre l'exécution synchrone bloquante et asynchrone non bloquante
-* Les coroutines, les objets `Future`/`Task` et la syntaxe `async` / `await`
-* Le rôle essentiel de la boucle d'événements (*event loop*)
-* La planification et le regroupement de tâches concurrentes avec `asyncio.gather()` et `asyncio.TaskGroup`
+Au programme de ce chapitre :
+
+* Appels non bloquants et concurrents
+* Promise ou Future avec async, await
+* La boucle d'événements (`event loop`)
+* Gestion des tâches concurrentes
 
 ---
 
@@ -170,12 +172,12 @@ asyncio.run(main())
 
 Dans ce chapitre, vous avez découvert les mécanismes de l'exécution asynchrone en Python grâce au module `asyncio`. Vous avez appris à définir des coroutines avec `async` et `await`, à planifier leur exécution au sein de la boucle d'événements, ainsi qu'à gérer plusieurs appels non bloquants en parallèle à l'aide de `asyncio.gather` et `TaskGroup`.
 
-**Exercice 1 : traitement concurents**
+**Exercice 1 : traitement concurrent**
 Créez deux coroutines t1() et t2() qui simulent un traitement en attendant des durées différentes (ex: 1s et 3s avec asyncio.sleep).
 Chaque coroutine doit afficher un message d'exécution et retourner la chaîne "fin de traitement".
 Exécutez-les de manière concurrente avec asyncio.gather() puis affichez leurs valeurs de retour.
 
-**Exercice 2 : traitement concurents avec une exception de délai dépassé, exception asyncio.TimeoutError**
+**Exercice 2 : traitement concurrent avec une exception de délai dépassé, exception asyncio.TimeoutError**
 Reprenez les coroutines t1() et t2() de l'exercice précédent.
 Exécutez la tâche la plus longue en la limitant avec asyncio.wait_for(..., timeout=2.0).
 Interceptez l'exception asyncio.TimeoutError à l'aide d'un bloc try/except pour afficher un message d'erreur lorsque le délai maximal est dépassé.

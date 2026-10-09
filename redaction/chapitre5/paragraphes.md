@@ -1,10 +1,11 @@
-# Chapitre 5 : Convertir les données - casting ou transtypage
+# Chapitre 5 : Conversion de types (casting)
 
 La conversion de données, ou casting, permet de transformer un type de données en un autre pour assurer la compatibilité entre variables. Maîtriser ces conversions est indispensable pour traiter des entrées utilisateur ou fusionner des informations de natures différentes.
-Dans ce chapitre :
 
-* Casting et conversion de types
-* Conversions implicites versus explicites
+Au programme de ce chapitre :
+
+* Casting et conversion
+* Conversions implicites vs explicites
 
 ---
 
@@ -37,7 +38,7 @@ print("-10".isdigit())   # False (le caractère '-' n'est pas un chiffre)
 print("3.14".isdigit())  # False (le point '.' n'est pas un chiffre)
 
 ```
-On peut se creéer une fonction qui essaie de convertir avec prudence un contenu 
+On peut se créer une fonction qui essaie de convertir avec prudence un contenu 
 
 ```python
 def try_cast_int(valeur, defaut=None):

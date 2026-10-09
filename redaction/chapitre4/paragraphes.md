@@ -1,9 +1,10 @@
 # Chapitre 4 : Les opérateurs
 
-Comprendre et utiliser les opérateurs permet d'effectuer des calculs, de comparer des valeurs et de combiner des conditions logiques en Python. Ces mécanismes fondamentaux constituent les briques de base de toute logique algorithmique.
-Dans ce chapitre :
+Comprendre et utiliser les opérateurs permet d'effectuer des calculs, de comparer des valeurs et de combiner des conditions logiques en Python. Ces mécanismes fondamentaux constituent la base de toute logique algorithmique.
 
-* Opérateurs d'affectation
+Au programme de ce chapitre :
+
+* Les opérateurs d'affectation
 * Opérateurs arithmétiques
 * Opérateurs relationnels
 * Opérateurs logiques
@@ -45,7 +46,7 @@ score += 5     # Équivalent à score = score + 5
 
 Les opérateurs arithmétiques réalisent les calculs mathématiques usuels sur des types numériques (entiers et flottants). Ils permettent de manipuler des données quantitatives au sein des programmes.
 
-Les **opérateurs d'affectation** en Python, combinant l'affectation simple et les affectations augmentées 
+Combinaison de l'affectation simple et les affectations augmentées 
 
 | Opérateur | Nom | Exemple | Équivalent à | Description |
 | --- | --- | --- | --- | --- |
@@ -79,7 +80,7 @@ division = 10 / 4   # Division flottante (vaut 2.5)
 
 Les opérateurs relationnels comparent deux valeurs ou expressions et retournent systématiquement un résultat booléen (`True` ou `False`). Ils sont indispensables pour orienter l'exécution du code selon les conditions.
 
-Ils permettent de comparer deux valeurs et renvoient toujours un **booléen** (`True` ou `False`).
+Ils permettent de comparer deux valeurs et renvoient toujours `True` ou `False`.
 
 | Opérateur | Signification | Exemple | Résultat (`x = 10`, `y = 5`) |
 | --- | --- | --- | --- |
@@ -115,6 +116,7 @@ age = 25
 # Équivalent à : (18 <= age) and (age <= 65)
 if 18 <= age <= 65:
     print("Âge valide")
+```
 
 ```python
 # Comparaisons de valeurs
@@ -131,9 +133,9 @@ majeur = age >= 18    # Retourne True car 18 est supérieur ou égal à 18
 
 Les opérateurs logiques permettent de combiner plusieurs expressions booléennes pour former des conditions complexes. Ils évaluent les relations à l'aide des opérateurs fondamentaux `and`, `or` et `not`.
 
-Les **opérateurs de comparaison**, **logiques** (`and`, `or`, `not`) et **binationaux / bitwise** (`&`, `|`, `^`, `~`, `<<`, `>>`).
+Les **opérateurs de comparaison**, **logiques** (`and`, `or`, `not`) et **binaires (bit à bit / bitwise)** (`&`, `|`, `^`, `~`, `<<`, `>>`).
 
-### Tableau complet des opérateurs logiques, relationnels et binaire (Bitwise)
+### Tableau des opérateurs
 
 *(Pour les exemples : `x = 10` [binaire: `1010`] et `y = 5` [binaire: `0101`])*
 

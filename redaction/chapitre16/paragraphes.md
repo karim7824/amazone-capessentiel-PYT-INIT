@@ -1,10 +1,14 @@
-# Chapitre 16 : Gestion des fichiers et des répertoires
+# Chapitre 16 : Fichiers et répertoires
 
 La gestion des fichiers et des répertoires permet d'interagir directement avec le système de stockage pour enregistrer et restituer des informations. Maîtriser ces concepts est indispensable pour persister l'état de vos applications.
-Dans ce chapitre :
 
-* Concepts généraux sur les streams et fichiers
-* Créer un fichier texte en unicode : ouverture, écriture et lecture
+Au programme de ce chapitre :
+
+* Concepts généraux sur fichiers
+* Lecture d'un fichier text en unicode
+* Gestion des répertoires
+* Recherche dans un répertoire
+* Fichiers : open, read, write, seek
 
 ---
 
@@ -43,7 +47,7 @@ Les méthodes de lecture
 **`read()` et `read(1)` — Lecture par caractères**
 
 * **`f.read()`** lit tout le contenu d'un coup.
-* **`f.read(n)`** lit $n$ **caractères** Unicode. Si l'on écrit `read(1)`, Python extrait 1 caractère complet, peu importe le nombre d'octets codants en UTF-8.
+* **`f.read(n)`** lit `n` **caractères** Unicode. Si l'on écrit `read(1)`, Python extrait 1 caractère complet, peu importe le nombre d'octets codants en UTF-8.
 
 ```python
 with open("texte_unicode.txt", "r", encoding="utf-8") as f:
@@ -76,7 +80,7 @@ with open("texte_unicode.txt", "r", encoding="utf-8") as f:
 
 ```
 
-## Gestion des répertoires - mkdir, listdir, move, rmdir
+## Gestion des répertoires
 
 Le module `os` et l'utilitaire `shutil` permettent de manipuler l'arborescence des dossiers. Vous pouvez créer, lister, parcourir récursivement ou supprimer des répertoires. Ces fonctions sont essentielles pour l'automatisation des tâches d'administration système.
 
@@ -134,7 +138,7 @@ for root, dirs, files in Path(".").walk():
 
 ---
 
-## Gestion des fichiers - open, read, write, seek, tell, zip
+## Fichiers : open, read, write, seek
 
 L'instruction `open()` permet de manipuler les fichiers en lecture ou écriture avec gestion du curseur via `seek()` et `tell()`. Le gestionnaire de contexte `with` garantit la fermeture automatique du fichier. Le module `zipfile` permet de créer et d'extraire des archives compressées.
 

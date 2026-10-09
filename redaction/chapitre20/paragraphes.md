@@ -1,11 +1,14 @@
-# Chapitre 20 : Les tests unitaires avec `unittest`
+# Chapitre 20 : Tests unitaires avec `unittest`
 
 Garantir la fiabilité d'un code avant son déploiement est une étape indispensable du développement logiciel. Dans ce chapitre, vous découvrirez comment concevoir des tests unitaires automatisés pour vérifier le bon fonctionnement de vos fonctions et classes. L'objectif est d'acquérir les réflexes méthodologiques et d'utiliser les outils standards pour livrer des projets Python robustes et maintenables.
 
-* L'intérêt des tests unitaires et les terminologies fondamentales (*assertion*, *fixture*, *suite*)
-* L'utilisation du module standard `unittest`
-* L'écriture d'une suite de tests complète sur un cas pratique (`Calcul`)
-* La mesure de la couverture de code avec l'outil `coverage.py`
+Au programme de ce chapitre :
+
+* Nécessité du test et concepts fondamentaux
+* Le framework `unittest`
+* Tester la classe Calcul
+* Mesure de la couverture de code
+* Installation et utilisation
 
 ---
 
@@ -33,7 +36,7 @@ assert additionner(2, 3) == 5, "L'addition de 2 et 3 doit valoir 5"
 
 ---
 
-## Prise en main du framework standard `unittest`
+## Le framework `unittest`
 
 Python intègre nativement le module `unittest`, inspiré du framework *JUnit*. Il fournit une structure orientée objet basée sur la classe `unittest.TestCase`.
 
@@ -50,14 +53,14 @@ Module de teste : parite.test.py
 ```python
 import unittest
 
-# TestEstPair prend ses fonctionnalités oar héritage de unittest.TestCase
+# TestEstPair prend ses fonctionnalités par héritage de unittest.TestCase
 class TestEstPair(unittest.TestCase):
 
-	# obligation de prefixer avec test_<nom methode>
+	# obligation de préfixer avec test_<nom méthode>
     def test_nombre_pair(self):
         self.assertTrue(est_pair(4))
 
-	# obligation de prefixer avec test_<nom methode>
+	# obligation de préfixer avec test_<nom méthode>
     def test_nombre_impair(self):
         self.assertFalse(est_pair(7))
 
@@ -66,7 +69,7 @@ if __name__ == '__main__':
 
 ```
 
-Il y a une grande librairies d'assertion mais voici les plus fréquentes fournies par `unittest.TestCase`:
+La classe `unittest.TestCase` fournit de nombreuses méthodes d'assertion ; les plus fréquentes sont :
 
 * `assertEqual(a, b)` : vérifie que `a == b`
 * `assertNotEqual(a, b)` : vérifie que `a != b`
@@ -75,7 +78,7 @@ Il y a une grande librairies d'assertion mais voici les plus fréquentes fournie
 
 ---
 
-## tester la classe Calcul
+## Tester la classe Calcul
 
 Appliquons la démarche sur une classe métier `Calcul` gérant des opérations arithmétiques et des cas limites (division par zéro).
 
@@ -143,7 +146,7 @@ python -m unittest test_calcul.py
 
 ---
 
-## Mesure de la couverture de code (*Code Coverage*)
+## Mesure de la couverture de code
 
 La **couverture de code** mesure le pourcentage de lignes de code métier exécutées lors du lancement des tests unitaires. Elle permet de repérer les zones de code oubliées ou non testées (comme des branches conditionnelles `if/else` spécifiques).
 
@@ -193,8 +196,8 @@ Cette commande crée un dossier `htmlcov/` contenant une interface web permettan
 Dans ce chapitre, vous avez appris à structurer vos tests unitaires grâce au module `unittest`, à automatiser la vérification de vos fonctions et à valider la levée d'exceptions. Vous avez également vu comment quantifier l'efficacité de votre suite de tests avec l'outil de métrique `coverage.py`.
 
 **Exercice 1 : teste une fonction `def aleatoire`**
-Pour une fonction aleatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'interval [0,20], il y a autant de valeur paires que de valeur impairs
+Pour une fonction aléatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'intervalle [0,20], il y a autant de valeurs paires que de valeurs impaires
 
 **Exercice 2 : teste une dans une `class Aleatoire`**
-Pour une classe contenant la fonction aleatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'interval [0,20], il y a autant de valeur paires que de valeur impairs
+Pour une classe contenant la fonction aléatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'intervalle [0,20], il y a autant de valeurs paires que de valeurs impaires
 Générez le rapport `coverage` pour vérifier que 100 % de la classe `Aleatoire` est couverte.

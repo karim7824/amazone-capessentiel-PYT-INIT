@@ -1,19 +1,19 @@
 # Chapitre 1 : Présentation du langage Python
 
-Ce chapitre vous présente l'origine, les caractéristiques fondamentales et le fonctionnement du langage Python. Vous comprendrez son architecture, son écosystème d'implémentations ainsi que ses domaines d'application privilégiés. Cette vue d'ensemble vous permettra d'appréhender sereinement les choix techniques liés à l'adoption de Python dans vos projets.
+Ce chapitre vous présente l'origine, les caractéristiques fondamentales et le fonctionnement du langage Python. Vous comprendrez également son architecture et d'appréhender les choix techniques liés à l'adoption de Python dans vos projets.
 
-Dans ce chapitre :
+Au programme de ce chapitre :
 
 * Historique
-* Caractéristiques du langage - compilé ou interprété
+* Python : compilé ou interprété ?
 * Lien entre Python et le langage C
 * Rôles de Cython, IronPython et Jython
-* Popularité de Python par rapport aux autres langages
+* Popularité de Python
 * Types d'applications pour Python
 
 ## Historique
 
-Créé par Guido van Rossum et publié en 1991, Python a été conçu avec pour objectif prioritaire la lisibilité du code. Son nom provient de la troupe comique britannique *Monty Python*. Le langage a évolué à travers deux versions majeures incontournables : Python 2 (désormais obsolète) et Python 3, la norme standard actuelle.
+Créé par Guido van Rossum et publié en 1991, Python a été conçu avec pour objectif prioritaire la lisibilité du code. Son nom provient de la troupe comique britannique *Monty Python*. Le langage a évolué à travers deux versions majeures : Python 2 (désormais obsolète) et Python 3, la norme standard actuelle.
 
 ```python
 # Vérifier la version exacte de Python exécutée par le système
@@ -26,7 +26,7 @@ print(sys.version)
 
 > 💡 **Bonne pratique :** Utilisez exclusivement Python 3.x pour tout nouveau projet, car Python 2 n'est plus maintenu depuis le 1er janvier 2020.
 
-## Caractéristiques du langage - compilé ou interprété
+## Python : compilé ou interprété ?
 
 Python est un langage interprété et à typage dynamique. Le code source `.py` est d'abord transformé en bytecode `.pyc`, puis exécuté par la machine virtuelle Python (PVM). Cette architecture permet d'exécuter un même script sur tout système d'exploitation sans modification du code.
 
@@ -65,7 +65,7 @@ print("Racine carrée calculée via CPython :", resultat)
  [2. Optimisation (.pyx)] ── (Optionnel : ajout de types C)
          │
          ▼
- [3. Cythonisation] ───────► Génère le fichier C intermediary (.c)
+ [3. Cythonisation] ───────► Génère le fichier C intermediaire (.c)
          │
          ▼
  [4. Compilation C] ────────► Compilateur natif (GCC / Clang / MSVC)
@@ -75,11 +75,11 @@ print("Racine carrée calculée via CPython :", resultat)
 
 ```
 
-> 💡 **Piège classique :** La présence du verrou global du fermenteur (GIL) dans CPython limite le véritable multithreading parallèle sur les processeurs multi-cœurs.
+> 💡 **Piège classique :** La présence du verrou global de l'interpréteur (GIL) dans CPython limite le véritable multithreading parallèle sur les processeurs multi-cœurs.
 
 ## Rôles de Cython, IronPython et Jython
 
-Cython permet de compiler du code Python en extensions C pour obtenir des performances proches du langage C. IronPython permet d'exécuter du code Python sur l'écosystème Microsoft .NET, tandis que Jython compile le code Python en bytecode Java pour la JVM. Ces déclinaisons facilitent l'intégration de Python dans des environnements d'entreprise spécifiques.
+Cython permet de compiler du code Python en extensions C pour obtenir des performances proches du langage C. IronPython permet d'exécuter du code Python sur le framwork Microsoft .NET, tandis que Jython compile le code Python en bytecode Java pour la JVM. Ces déclinaisons facilitent l'intégration de Python dans des environnements d'entreprise spécifiques.
 
 ```python
 # Exemple de logique métier en Python standard, convertible via Cython pour optimisation
@@ -95,9 +95,9 @@ print("Résultat du calcul :", calculer_somme(100000))
 
 > 💡 **Note :** Privilégiez toujours CPython standard sauf si vous avez une contrainte stricte d'intégration avec .NET (IronPython) ou Java (Jython).
 
-## Popularité de Python par rapport aux autres langages
+## Popularité de Python
 
-Python se classe régulièrement parmi les langages les plus populaires aux index TIOBE et GitHub. Cette popularité s'explique par sa syntaxe claire et intuitive qui accélère la vitesse de développement. Sa vaste communauté garantit un écosystème de bibliothèques très riche pour résoudre presque tout problème informatique.
+Python se classe régulièrement parmi les langages les plus populaires aux index TIOBE et GitHub. Cette popularité s'explique par sa syntaxe claire et intuitive qui accélère la vitesse de développement. Sa vaste communauté garantit la disponibilité de bibliothèques très richse pour résoudre presque tout problème informatique.
 
 ```python
 # Exemple illustrant la concision de la syntaxe Python face à d'autres langages
@@ -119,14 +119,14 @@ Panorama résumant la popularité comparative de ces 5 langages (selon les indic
 | **Python** | **#1** (~21 %) | **#1** (~36 %) | **Dominant** (IA, Data, Web, Automatisation) |
 | **C++** | **#3** (~8 %) | **#2** (~13 %)* | **Très stable** (Jeux vidéo, Système, Embarqué) |
 | **Java** | **#4** (~8 %) | **#3** (~10 %) | **Solide** (Backend Entreprise, Android historique) |
-| **C#** | **#5** (~7 %) | **#7** (~3 %) | **En hausse** (Écosystème .NET, Jeux/Unity, Cloud) |
+| **C#** | **#5** (~7 %) | **#7** (~3 %) | **En hausse** (.NET, Jeux/Unity, Cloud) |
 | **PHP** | **#18** (~1,2 %) | **#9** (~3 %) | **En déclin léger** (Web CMS/Symfony, marché très axé sur la maintenance) |
 
 **Note : L'indice PYPL regroupe les recherches C et C++ dans la même catégorie.*
 
 ## Types d'applications pour Python
 
-Python s'impose comme le langage leader en intelligence artificielle, science des données et apprentissage automatique. Il est également très utilisé dans le développement web backend avec des frameworks comme Django et FastAPI. Enfin, il excelle dans l'automatisation de tâches système, le scripting d'infrastructure et l'ingénierie de données.
+Python est le langage leader en intelligence artificielle, science des données et apprentissage automatique. Il est également très utilisé dans le développement web backend avec des frameworks comme Django et FastAPI. Enfin, il excelle dans l'automatisation de tâches système, le scripting d'infrastructure et l'ingénierie de données.
 
 ```python
 # Exemple d'automatisation système : création et écriture rapide dans un fichier journal
@@ -176,19 +176,19 @@ Cet exemple regroupe la vérification de l'environnement, le typage dynamique et
 import sys
 import platform
 
-# 1. Collecte d'informations environnementales
+# Collecte d'informations environnementales
 infos_systeme = {
     "version_python": sys.version.split()[0],
     "os": platform.system(),
     "statut": "Opérationnel"
 }
 
-# 2. Traitement et affichage
+# Traitement et affichage
 print("--- Bilan de l'environnement Python ---")
 for cle, valeur in infos_systeme.items():
     print(f"{cle.capitalize()} : {valeur}")
 
-# 3. Écriture d'un rapport de synthèse
+# Écriture d'un rapport de synthèse
 with open("rapport_intro.txt", "w", encoding="utf-8") as f:
     f.write(f"Rapport généré sous {infos_systeme['os']} avec Python {infos_systeme['version_python']}\n")
 
@@ -200,25 +200,27 @@ print("Rapport écrit avec succès dans 'rapport_intro.txt'.")
 
 ### Exercices de fin de chapitre
 
-1.  **Exercice 1 : Inspection de l'environnement d'exécution**
+**Exercice 1 : Inspection de l'environnement d'exécution**
 Écrivez une instruction qui permet d'afficher la version de Python
 Écrivez une instruction qui permet d'afficher la variable d'environnement PATH
 Écrivez une instruction qui permet de lancer une commande shell 
 
-2. **Exercice 2 : une instruction de boucle**
-Écrivez une instruction de boucle qui compte de 1 à 10 et afficher 'O' 'OO' 'OOO' allant de 1 à 10 en utilisant range()
+**Exercice 2 : une instruction de boucle**
+Écrivez une instruction de boucle qui compte de 1 à 10 et affiche 'O' 'OO' 'OOO' allant de 1 à 10 en utilisant range()
 
 
-# Chapitre 2 : Installation de l'environnement Python
+# Chapitre 2 : Installation de Python
 
-Ce chapitre vous guide dans la mise en place d'un environnement de développement Python complet, propre et opérationnel. Vous apprendrez à installer l'interpréteur officiel, à exécuter vos premiers scripts et à utiliser le mode interactif. Enfin, vous découvrirez comment isoler vos projets grâce aux environnements virtuels, une bonne pratique incontournable en entreprise.
+Ce chapitre vous guide dans la mise en place d'un environnement de développement Python complet, propre et opérationnel. Vous apprendrez à installer l'interpréteur officiel, à exécuter vos premiers scripts et à utiliser le mode interactif. Enfin, vous découvrirez comment isoler vos projets grâce aux environnements virtuels, une bonne pratique en entreprise.
 
-Dans ce chapitre :
+Au programme de ce chapitre :
 
 * Installation de base de l'interpréteur x64
-* Création d'un projet Python main.py avec la condition `__name__ == '__main__'`
-* Lancement de scripts et utilisation de Python en mode REPL
-* Mise en place d'un environnement virtuel avec `venv`
+* Le point d'entrée `__main__`
+* Lancement de lab_main.py
+* Utilisation de Python en mode REPL
+* Mettre en place un environnement virtuel
+* Environnements de développement
 
 ## Installation de base de l'interpréteur x64
 
@@ -257,7 +259,7 @@ py mon_script.py
 
 > 💡 **Bonne pratique :** Vérifiez toujours après l'installation que la commande `python --version` (ou `python3 --version`) répond correctement dans votre invite de commande.
 
-## Créer module Python main.py avec la condition `__name__ == '__main__'`
+## Le point d'entrée `__main__`
 
 En Python, la condition `if __name__ == '__main__':` permet de définir le point d'entrée principal d'un script. Elle garantit que le bloc de code sous-jacent ne s'exécute que lorsque le fichier est lancé directement, et non lorsqu'il est importé comme module dans un autre fichier. C'est une structure standard pour organiser proprement vos projets.
 
@@ -292,7 +294,7 @@ print("Arguments passés au script :", sys.argv)
 
 ## Utilisation de Python en mode REPL
 
-Le mode REPL (*Read-Eval-Print Loop*) est la console interactive de Python, accessible en tapant simplement `python` dans votre terminal. Il permet de tester immédiatement des expressions, des syntaxes ou de courtes fonctions sans avoir à créer un fichier de code sur le disque. C'est un outil formidable pour l'expérimentation et le débogage rapide.
+Le mode REPL (*Read-Eval-Print Loop*) est la console interactive de Python, accessible en tapant simplement `python` dans votre terminal. Il permet de tester immédiatement des expressions, des syntaxes ou de courtes fonctions sans avoir à créer un fichier de code sur le disque. C'est un outil pour l'expérimentation et le débogage rapide.
 
 ```python
 # Simulation d'une session REPL interactive
@@ -344,7 +346,7 @@ Logiciels uniques qui regroupe tous les outils nécessaires au développement de
 
 | Outil | Éditeur / Type | Points forts | Cas d'usage idéal |
 | --- | --- | --- | --- |
-| **VS Code** | Éditeur extensible | Ultra-léger, écosystème d'extensions gigantesque, support multi-langages | Polyvalent (Web, Scripting, Data) |
+| **VS Code** | Éditeur extensible | Ultra-léger, librairie d'extensions gigantesque, support multi-langages | Polyvalent (Web, Scripting, Data) |
 | **PyCharm** | IDE complet (JetBrains) | Autocomplétion intelligente, refactoring puissant, gestion venv/Git intégrée | Projets Python complexes / Django |
 | **Jupyter Notebook / Lab** | Environnement interactif | Exécution cellule par cellule, visualisation de données en direct | Data Science, Machine Learning, R&D |
 | **Spyder** | IDE scientifique | Proche de MATLAB, explorateur de variables et de graphiques intégré | Calcul scientifique / Analyse de données |
@@ -403,18 +405,20 @@ Créez un fichier nommé `main.py` qui définit une fonction `saluer(nom)`. Dans
 # Chapitre 3 : Types de données et mémoire
 
 Maîtriser les types de données et leur manipulation en mémoire est essentiel pour stocker et traiter efficacement l'information. Ces concepts fondamentaux garantissent la rigueur et la logique de vos programmes en Python.
-Dans ce chapitre :
 
-* Déclaration et affectation de variables
-* Types scalaires (int, float, bool, str)
-* Types agrégés (list, tuple, dict, set)
-* Valeurs littérales et portée des variables (locale, globale)
+Au programme de ce chapitre :
+
+* Déclaration de variables
+* Types scalaires : int, float, bool, str
+* Types agrégés : list, tuple, dict, set
+* Valeurs littérales
+* Portée de variables - globale, locale
 
 ---
 
 ## Déclaration de variables
 
-Une variable en Python : une étiquette mémoire. Une **variable** est un nom qui pointe vers un emplacement mémoire contenant une donnée.
+En Python, une variable est une étiquette mémoire pointant vers un objet.. Une **variable** est un nom qui pointe vers un emplacement mémoire contenant une donnée.
 
 En Python, la création se fait par simple **affectation** avec le signe `=` :
 
@@ -442,7 +446,7 @@ age = 25  # L'objet 25 est stocké en mémoire, 'age' pointe dessus.
 
 ---
 
-## Types de données scalaires - int, float, bool, str
+## Types scalaires : int, float, bool, str
 
 Les types scalaires représentent des valeurs uniques et atomiques, non décomposables en sous-éléments. Ils constituent la base de toute manipulation numérique, textuelle ou logique.
 
@@ -504,7 +508,7 @@ hex(id(a))
 
 ---
 
-## Types de données agrégés - list, tuple, dict, set
+## Types agrégés : list, tuple, dict, set
 
 Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, d'unicité des éléments, ainsi que de leur mutabilité — c'est-à-dire la possibilité de modifier ou non le contenu de la structure directement en mémoire après sa création.
 
@@ -600,7 +604,7 @@ for cle, valeur in personne.items():
 
 ```
 
-> 💡 Privilégiez les tuples pour des données fixes qui ne doivent pas être altérées au cours de l'exécution du programme, garantissant ainsi l'intégrité des structures.
+> 💡 Privilégiez les tuples pour des données fixes qui ne doivent pas être altérées au cours de l'exécution du programme, garantissant ainsi l'intégrité des données.
 
 ---
 
@@ -736,16 +740,18 @@ print(traiter_commande("Karim", [45.0, 15.5, 30.0]))
 
 ## Exercices de fin de chapitre
 
-1. **Exercice 1 : variables scalaires** Écrivez un script qui déclare quatre variables de types scalaires différents (`int`, `float`, `bool`, `str`), puis affichez le type de chacune d'elles à l'aide de la fonction `type()`.
-2. **Exercice 2 : liste** Créez une liste contenant les notes d'un étudiant, écrivez une fonction qui calcule la moyenne de ces notes, et stockez le résultat dans une variable locale avant de le retourner.
+**Exercice 1 : variables scalaires** Écrivez un script qui déclare quatre variables de types scalaires différents (`int`, `float`, `bool`, `str`), puis affichez le type de chacune d'elles à l'aide de la fonction `type()`.
+
+**Exercice 2 : liste** Créez une liste contenant les notes d'un étudiant, écrivez une fonction qui calcule la moyenne de ces notes, et stockez le résultat dans une variable locale avant de le retourner.
 
 
 # Chapitre 4 : Les opérateurs
 
-Comprendre et utiliser les opérateurs permet d'effectuer des calculs, de comparer des valeurs et de combiner des conditions logiques en Python. Ces mécanismes fondamentaux constituent les briques de base de toute logique algorithmique.
-Dans ce chapitre :
+Comprendre et utiliser les opérateurs permet d'effectuer des calculs, de comparer des valeurs et de combiner des conditions logiques en Python. Ces mécanismes fondamentaux constituent la base de toute logique algorithmique.
 
-* Opérateurs d'affectation
+Au programme de ce chapitre :
+
+* Les opérateurs d'affectation
 * Opérateurs arithmétiques
 * Opérateurs relationnels
 * Opérateurs logiques
@@ -787,7 +793,7 @@ score += 5     # Équivalent à score = score + 5
 
 Les opérateurs arithmétiques réalisent les calculs mathématiques usuels sur des types numériques (entiers et flottants). Ils permettent de manipuler des données quantitatives au sein des programmes.
 
-Les **opérateurs d'affectation** en Python, combinant l'affectation simple et les affectations augmentées 
+Combinaison de l'affectation simple et les affectations augmentées 
 
 | Opérateur | Nom | Exemple | Équivalent à | Description |
 | --- | --- | --- | --- | --- |
@@ -821,7 +827,7 @@ division = 10 / 4   # Division flottante (vaut 2.5)
 
 Les opérateurs relationnels comparent deux valeurs ou expressions et retournent systématiquement un résultat booléen (`True` ou `False`). Ils sont indispensables pour orienter l'exécution du code selon les conditions.
 
-Ils permettent de comparer deux valeurs et renvoient toujours un **booléen** (`True` ou `False`).
+Ils permettent de comparer deux valeurs et renvoient toujours `True` ou `False`.
 
 | Opérateur | Signification | Exemple | Résultat (`x = 10`, `y = 5`) |
 | --- | --- | --- | --- |
@@ -857,6 +863,7 @@ age = 25
 # Équivalent à : (18 <= age) and (age <= 65)
 if 18 <= age <= 65:
     print("Âge valide")
+```
 
 ```python
 # Comparaisons de valeurs
@@ -873,9 +880,9 @@ majeur = age >= 18    # Retourne True car 18 est supérieur ou égal à 18
 
 Les opérateurs logiques permettent de combiner plusieurs expressions booléennes pour former des conditions complexes. Ils évaluent les relations à l'aide des opérateurs fondamentaux `and`, `or` et `not`.
 
-Les **opérateurs de comparaison**, **logiques** (`and`, `or`, `not`) et **binationaux / bitwise** (`&`, `|`, `^`, `~`, `<<`, `>>`).
+Les **opérateurs de comparaison**, **logiques** (`and`, `or`, `not`) et **binaires (bit à bit / bitwise)** (`&`, `|`, `^`, `~`, `<<`, `>>`).
 
-### Tableau complet des opérateurs logiques, relationnels et binaire (Bitwise)
+### Tableau des opérateurs
 
 *(Pour les exemples : `x = 10` [binaire: `1010`] et `y = 5` [binaire: `0101`])*
 
@@ -949,13 +956,14 @@ print(f"stock restant : {stock_initial} | Alerte active : {alerte_stock}")
 **Exercice 2 :** Déclarez une variable représentant l'âge d'un utilisateur et une autre indiquant s'il possède une autorisation. Utilisez des opérateurs relationnels et logiques pour vérifier s'il remplit les conditions d'accès (âge supérieur ou égal à 18 et autorisation vraie).
 
 
-# Chapitre 5 : Convertir les données - casting ou transtypage
+# Chapitre 5 : Conversion de types (casting)
 
 La conversion de données, ou casting, permet de transformer un type de données en un autre pour assurer la compatibilité entre variables. Maîtriser ces conversions est indispensable pour traiter des entrées utilisateur ou fusionner des informations de natures différentes.
-Dans ce chapitre :
 
-* Casting et conversion de types
-* Conversions implicites versus explicites
+Au programme de ce chapitre :
+
+* Casting et conversion
+* Conversions implicites vs explicites
 
 ---
 
@@ -988,7 +996,7 @@ print("-10".isdigit())   # False (le caractère '-' n'est pas un chiffre)
 print("3.14".isdigit())  # False (le point '.' n'est pas un chiffre)
 
 ```
-On peut se creéer une fonction qui essaie de convertir avec prudence un contenu 
+On peut se créer une fonction qui essaie de convertir avec prudence un contenu 
 
 ```python
 def try_cast_int(valeur, defaut=None):
@@ -1103,19 +1111,20 @@ print(message)
 **Exercice 2 :** Déclarez une variable entière et une variable flottante, effectuez une addition entre les deux, puis vérifiez et affichez le type de la variable résultante pour observer la conversion implicite de Python.
 
 
-# Chapitre 6 : Manipulation des chaines de caractères
+# Chapitre 6 : Les chaînes de caractères
 
-La manipulation des chaînes de caractères permet de traiter, formetter et analyser des données textuelles en Python. Maîtriser ces outils est indispensable pour interagir avec les utilisateurs et structurer des messages lisibles.
-Dans ce chapitre :
+La manipulation des chaînes de caractères permet de traiter, formater et analyser des données textuelles en Python. Maîtriser ces outils est indispensable pour interagir avec les utilisateurs et structurer des messages lisibles.
 
-* Gestion des chaines
+Au programme de ce chapitre :
+
+* Gestion des chaînes
 * Formatage
 * Slicing
 * Expressions régulières
 
 ---
 
-## Gestion des chaines
+## Gestion des chaînes
 
 La gestion des chaînes de caractères repose sur l'utilisation de guillemets simples ou doubles pour déclarer du texte en mémoire. Python fournit de nombreuses méthodes intégrées pour transformer, nettoyer ou rechercher des motifs textuels.
 
@@ -1167,10 +1176,10 @@ s.strip()               # "Python"
 **Séparation et jonction**
 
 ```python
-# 5. split() : Découpe une chaîne en liste selon un séparateur (espace par défaut)
+# split() : Découpe une chaîne en liste selon un séparateur (espace par défaut)
 "a,b,c".split(",")      # ['a', 'b', 'c']
 
-# 6. join() : Assemble les éléments d'une liste en une seule chaîne
+# join() : Assemble les éléments d'une liste en une seule chaîne
 "-".join(['a', 'b'])    # "a-b"
 
 ```
@@ -1182,13 +1191,13 @@ s.strip()               # "Python"
 ```python
 s = "Bonjour tout le monde"
 
-# 7. replace() : Remplace une sous-chaîne par une autre
+# replace() : Remplace une sous-chaîne par une autre
 s.replace("monde", "monde !")  # "Bonjour tout le monde !"
 
-# 8. find() : Renvoie l'index de la première occurrence (-1 si non trouvé)
+# find() : Renvoie l'index de la première occurrence (-1 si non trouvé)
 s.find("tout")                 # 8
 
-# 9. count() : Compte le nombre d'occurrences d'une sous-chaîne
+# count() : Compte le nombre d'occurrences d'une sous-chaîne
 s.count("o")                   # 4
 
 ```
@@ -1198,13 +1207,13 @@ s.count("o")                   # 4
 **Vérification de contenu (retournent un booléen)**
 
 ```python
-# 10. startswith() : Vérifie si la chaîne commence par un motif
+# startswith() : Vérifie si la chaîne commence par un motif
 "main.py".startswith("main")   # True
 
-# 11. endswith() : Vérifie si la chaîne se termine par un motif
+# endswith() : Vérifie si la chaîne se termine par un motif
 "image.png".endswith(".png")   # True
 
-# 12. isdigit() : Vérifie si la chaîne contient uniquement des chiffres
+# isdigit() : Vérifie si la chaîne contient uniquement des chiffres
 "12345".isdigit()              # True
 
 ```
@@ -1274,7 +1283,7 @@ Le **slicing** (ou découpage) en Python est une technique qui permet d'extraire
 
 La syntaxe utilise des crochets séparés par deux-points (`:`), et non des virgules :
 
-$$\mathbf{[début : fin : pas]}$$
+**`[début:fin:pas]`**
 
 ---
 
@@ -1297,7 +1306,7 @@ print(texte[0:4])       # "Pyth"
 # Utilisation du pas : un caractère sur deux
 print(texte[0:6:2])     # "Pto"
 
-# Omision des bornes (équivalent à tout prendre) avec un pas de 2
+# Omission des bornes (équivalent à tout prendre) avec un pas de 2
 print(texte[::2])       # "Pto"
 
 # Inverser une chaîne (pas négatif)
@@ -1305,7 +1314,7 @@ print(texte[::-1])      # "nohtyP"
 
 ```
 
-> 💡 **À retenir :** En Python, l'élément situé à l'index de **`fin`** n'est jamais inclus dans le résultat. La longueur du résultat extrait correspond généralement à $\text{fin} - \text{début}$ (si le pas vaut $1$).
+> 💡 **À retenir :** En Python, l'élément situé à l'index de **`fin`** n'est jamais inclus dans le résultat. La longueur du résultat extrait correspond généralement à `fin - début` (si le pas vaut `1`).
 
 > 💡 En Python, les indices de découpage commencent à zéro et l'indice de fin spécifié est toujours exclus du résultat extrait.
 
@@ -1332,7 +1341,7 @@ Une expression régulière utilise des caractères spéciaux pour définir des m
 * `+` : 1 ou plusieurs fois.
 * `*` : 0 ou plusieurs fois.
 * `?` : 0 ou 1 fois (optionnel).
-* `{n,m}` : entre $n$ et $m$ fois.
+* `{n,m}` : entre `n` et `m` fois.
 
 
 * **Ancres et groupes :**
@@ -1437,11 +1446,12 @@ print(rapport)
 # Chapitre 7 : Listes, dictionnaires et ensembles
 
 La manipulation des données structurées permet d'organiser, de stocker et de parcourir efficacement des collections d'éléments en Python. Maîtriser ces structures est indispensable pour traiter des volumes d'informations complexes.
-Dans ce chapitre :
+
+Au programme de ce chapitre :
 
 * Gestion des listes
-* Gestion des dictionnaires (dict)
-* Gestion des ensembles (set)
+* Gestion des dict
+* Gestion des set
 
 ---
 
@@ -1591,7 +1601,7 @@ user.update({"statut": "Actif", "age": 30})  # Ajoute/modifie plusieurs clés à
 email = user.pop("email", None)       # Supprime "email" et renvoie sa valeur
 del user["age"]                       # Supprime directement la clé "age"
 
-# 4. Vérification d'existence
+# Vérification d'existence
 existe = "nom" in user                # True (vérifie la présence d'une CLÉ)
 
 ```
@@ -1637,7 +1647,7 @@ for cle, valeur in serveur.items():
 
 ---
 
-### Parcourir et transformer avec une dictionnaire compréhension
+### Compréhension de dictionnaire
 
 Permet de filtrer ou modifier les entrées d'un dictionnaire de façon concise :
 
@@ -1650,7 +1660,7 @@ print("Prix TTC :", prix_ttc)  # {'article_1': 12.0, 'article_2': 30.0, 'article
 
 ```
 
-> 💡 **Bonne pratique :** Depuis Python 3.7, l'ordre d'insertion des clés dans un dictionnaire est garanti garanti lors des parcours.
+> 💡 **Bonne pratique :** Depuis Python 3.7, l'ordre d'insertion des clés dans un dictionnaire est garanti lors des parcours.
 > 💡 Privilégiez l'utilisation de la méthode `.get()` pour interroger un dictionnaire lorsque la clé recherchée est susceptible de ne pas y figurer.
 
 ---
@@ -1738,7 +1748,7 @@ print(pairs_grands)  # Résultat : {40, 8, 22} (l'ordre d'affichage peut varier)
 
 > 💡 **À retenir :** Un `set` ne conserve pas l'ordre d'insertion des éléments et n'a pas d'index. On ne peut donc pas utiliser `enumerate()` pour obtenir des index fixes comme sur une liste.
 
-> 💡 **Bonne pratique :** Tester la présence d'un élément dans un `set` avec `if "Python" in ensemble:` est extrêmement rapide (complexité $O(1)$) comparé à une liste (complexité $O(n)$).
+> 💡 **Bonne pratique :** Tester la présence d'un élément dans un `set` avec `if "Python" in ensemble:` est extrêmement rapide (complexité `O(1)`) comparé à une liste (complexité $O(n)$).
 
 > 💡 Utilisez les opérateurs ensemblistes comme `&` pour l'intersection ou `|` pour l'union afin de comparer rapidement des collections de données.
 
@@ -1768,29 +1778,34 @@ print(f"Statut de user_1 : {statuts_utilisateurs.get('user_1')}")
 
 ## Exercices de fin de chapitre
 
-**Exercice 1 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et compter les nombres paires et les impaires
+**Exercice 1 :** Créer une liste de 10 valeurs aléatoires `random.randrange(100)`, parcourir le tableau et compter les nombres pairs et les impairs.
 
-**Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et ages [1,2 ...], les assembler dans une boucles pour former un dict() nom/age 
+**Exercice 2 :** Créer deux listes noms = ["toto1", "toto2"...] et âges [1,2 ...], les assembler dans une boucle pour former un dict() avec les clés nom et age.
 
-**Exercice 3 :** Créer une liste de 10 valeurs aleatoires `random.randrange(100)`, parcourrir le tableau et créer deux tableaux contenants les paires et les impaires séparemment
+**Exercice 3 :** Créer une liste de 10 valeurs aléatoires `random.randrange(100)`, parcourir le tableau et créer deux tableaux contenant respectivement les nombres pairs et les nombres impairs.
 
 
-# Chapitre 8 : Les instructions contrôles
+# Chapitre 8 : Les instructions de contrôle
 
 Les instructions de contrôle permettent d'orienter le flux d'exécution d'un programme en fonction de conditions et de répéter des blocs de instructions. Maîtriser ces structures est indispensable pour automatiser des tâches complexes.
-Dans ce chapitre :
 
-* Structures conditionnelles `if`/`else` et `match`
-* Boucles itératives (`for`/`else`, `while`)
-* Itérations avancées (`range`, `zip`, `items()`)
+Au programme de ce chapitre :
+
+* Structures conditionnelles if / elif / else
+* Structure match
+* Boucles - for/else
+* Boucles - while
+* Boucles - avec range
+* Boucles - avec zip
+* Boucles - avec items() pour les dictionnaires
 
 ---
 
-## Structure conditionnelles if/elif/else,match
+## Structures conditionnelles if / elif / else
 
 Les structures conditionnelles permettent d'exécuter des blocs de code différents selon la validité d'une ou plusieurs conditions logiques. L'instruction `match`, introduite récemment, facilite les aiguillages complexes par motif.
 
-Voici la forme générale des structures conditionnelles `if / elif / else` en Python :
+La forme générale des structures conditionnelles `if / elif / else` en Python est la suivante :
 
 **Forme générale**
 
@@ -1959,7 +1974,7 @@ for i in range(len(utilisateurs)):
 
 # Boucle avec zip pour associer utilisateurs et scores
 for user, score in zip(utilisateurs, points):
-    # 3. Structure conditionnelle classique
+    # Structure conditionnelle classique
     if score >= 50:
         niveau = "Expert"
     else:
@@ -1979,9 +1994,9 @@ for parametre, etat in config.items():
 
 ## Exercices de fin de chapitre
 
-**Exercice 1 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 listes  = [['TOTO1',1],['TOTO2',2],...['TOTO5',5]]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
+**Exercice 1 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 listes  = [['TOTO1',1],['TOTO2',2],...['TOTO5',5]]. Ensuite parcourir cette liste et afficher uniquement les noms TOTO1, TOTO2...
 
-**Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
+**Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite parcourir cette liste et afficher uniquement les noms TOTO1, TOTO2...
 
 **Exercice 3 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.
 
@@ -1989,16 +2004,20 @@ for parametre, etat in config.items():
 # Chapitre 9 : Fonctions et arguments
 
 Les fonctions permettent de modulariser le code en regroupant des instructions réutilisables sous un même nom. Maîtriser le passage d'arguments et les structures de retour est indispensable pour concevoir des programmes propres et maintenables.
-Dans ce chapitre :
 
-* Définition des fonctions, arguments, passage et valeur de retour (`return`)
+Au programme de ce chapitre :
+
+* Fonctions, arguments et return
 * Arguments et valeurs par défaut
-* Arguments variables via les tuples, `*args` et `**kwargs`
-* Fonctions en tant qu'arguments (délégués)
+* Arguments en tant que tuple
+* Arguments avec *args
+* Arguments `**kwargs`
+* Fonction en tant qu'argument (delegate)
+* Passer un tuple comme argument unique
 
 ---
 
-## Les fonctions, arguments , passage par valeur, return
+## Fonctions, arguments et return
 
 Une fonction se déclare avec le mot-clé `def` suivi d'un nom et de parenthèses. Elle accepte des arguments en entrée et peut renvoyer un résultat grâce à l'instruction `return`.
 
@@ -2009,7 +2028,7 @@ def additionner(a, b):
     return resultat
 
 # Appel
-r = additionner (10,20)
+r = additionner (10, 20)
 print(r)
 
 ```
@@ -2031,7 +2050,7 @@ def saluer(nom, message="Bonjour"):
 r = saluer("Karim", "Hello")
 print(r) # Hello Karim
 r = saluer("Karim")
-print(r) Bonjour Karim
+print(r) Bonjour, Karim
 ```
 
 > 💡 Ne jamais utiliser d'objets mutables (comme des listes ou des dictionnaires) comme valeurs par défaut d'une fonction, car leur état serait conservé entre les appels successifs.
@@ -2078,7 +2097,7 @@ print(r)
 
 ---
 
-## Arguments **kargs
+## Arguments `**kwargs`
 
 La syntaxe `**kwargs` (souvent appelée `kargs`) permet de récupérer un nombre variable d'arguments nommés sous la forme d'un dictionnaire au sein de la fonction.
 
@@ -2119,13 +2138,13 @@ En Python, les fonctions sont des objets de première classe, ce qui signifie qu
 def appliquer_operation(operation, x, y):
     return operation(x, y)
 
-# lambda a, b: a * b  equivalent de def <anonyme> (a, b) : return a * b
+# lambda a, b: a * b  équivalent de def <anonyme> (a, b) : return a * b
 resultat = appliquer_operation(lambda a, b: a * b, 4, 5)
 print(resultat)
 
 ```
 
-## Les arguments en tant que tuple 
+## Passer un tuple comme argument unique
 
 ```python
 # La fonction accepte désormais un tuple en paramètre
@@ -2178,18 +2197,19 @@ print("Format final :", formater_monnaie(montant_final))
 # Chapitre 10 : Traiter une masse de données
 
 Le traitement de masses de données permet d'appliquer des transformations et des filtres performants sur des collections en Python. Maîtriser ces outils fonctionnels est indispensable pour manipuler efficacement des flux d'informations importants.
-Dans ce chapitre :
 
-* Fonctions anonymes `lambda`
-* Filtrage de données avec `filter`
-* Transformation de données avec `map`
-* Agrégation de données avec `reduce`
+Au programme de ce chapitre :
+
+* Fonction anonyme Lambda
+* Traitement avec filter
+* Traitement avec map
+* Traitement avec reduce
 
 ---
 
 ## Fonction anonyme Lambda
 
-Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels. Au lieu de créer une fonction au moyen de def et la documenter, on préfère utiliser une lambda qui est une fonction sans nom et utilisée à la volée et peut être une fois.
+Une fonction anonyme, introduite par le mot-clé `lambda`, permet de définir rapidement une fonction compacte sans nom sur une seule ligne de code. Elle est idéale pour des traitements courts et ponctuels. Plutôt que de déclarer une fonction nommée avec def, une fonction lambda (ou anonyme) permet de réaliser un traitement ponctuel en une seule ligne.
 
 ```python
 # Déclaration et appel d'une fonction lambda pour calculer le carré
@@ -2301,13 +2321,13 @@ from functools import reduce
 # Programme complet combinant lambda, filter, map et reduce sur une masse de données
 prix_articles = [12.5, 45.0, 8.0, 100.0, 32.5]
 
-# 1. Filtrer les articles dont le prix est supérieur à 15.0 via filter et lambda
+# Filtrer les articles dont le prix est supérieur à 15.0 via filter et lambda
 articles_cibles = list(filter(lambda p: p > 15.0, prix_articles))
 
-# 2. Appliquer une remise de 10% sur ces articles via map et lambda
+# Appliquer une remise de 10% sur ces articles via map et lambda
 prix_remises = list(map(lambda p: p * 0.9, articles_cibles))
 
-# 3. Calculer le montant total cumulé de ces articles via reduce et lambda
+# Calculer le montant total cumulé de ces articles via reduce et lambda
 montant_global = reduce(lambda total, p: total + p, prix_remises, 0.0)
 
 print(f"Articles remisés : {prix_remises}")
@@ -2325,10 +2345,11 @@ print(f"Montant global de la commande : {montant_global:.2f} €")
 # Chapitre 11 : Les générateurs
 
 Les générateurs permettent de produire des séquences de valeurs à la demande sans stocker l'intégralité des données en mémoire. Maîtriser ces concepts est indispensable pour optimiser l'efficacité de vos programmes lors du traitement de grands volumes d'informations.
-Dans ce chapitre :
 
-* Boucle et instruction `yield`
-* Générateurs prédéfinis
+Au programme de ce chapitre :
+
+* Boucle et instruction yield
+* Générateur prédéfinis
 
 ---
 
@@ -2413,15 +2434,17 @@ for index, texte_traite in enumerate(gen_personnalise, start=1):
 # Chapitre 12 : Gestion des erreurs et exceptions
 
 La gestion des erreurs permet d'anticiper et de traiter les incidents d'exécution pour empêcher l'arrêt brutal d'un programme en Python. Maîtriser ces mécanismes est indispensable pour concevoir des applications fiables et résilientes.
-Dans ce chapitre :
 
-* Gestion des exceptions (`try`, `except`, `finally`) et levée d'exceptions (`raise`)
-* Utilisation de l'instruction `finally`
-* Émission personnalisée d'une exception
+Au programme de ce chapitre :
+
+* Exceptions : try, except, raise
+* Instruction finally
+* Émettre une exception avec raise
+* Trace et log
 
 ---
 
-## Gestion des exceptions : try except finally et raise
+## Exceptions : try, except, raise
 
 La gestion des exceptions repose sur le bloc `try` pour surveiller le code à risque et `except` pour intercepter les erreurs survenues. En Python, le mot-clé `raise` équivaut au `throw` des autres langages pour émettre une exception. On peut intercepter une exception précise ZeroDivisionError pour la traiter ou intercepter toutes les exceptions dans un même traitement
 
@@ -2472,15 +2495,17 @@ finally:
 
 ---
 
-## Emettre une exception avec raise
+## Émettre une exception avec raise
 
 Il est possible d'émettre volontairement une exception à l'aide de l'instruction `raise` pour signaler qu'une règle métier ou une condition critique n'est pas respectée.
 
+
+La classe ValueError est une exception spécifique et la classe Exception est générale  
 ```python
 def traitement (eleve):
     if eleve['age'] < 0:
         raise ValueError("L'âge ne peut pas être négatif") 
-        raise Exception ("L'âge ne peut pas être négatif") 
+        #raise Exception ("L'âge ne peut pas être négatif") 
     print(f"{eleve['nom']} -- {eleve['age']} ")
 
 eleve = { 'nom' : 'karim', 'age' : 20}
@@ -2496,9 +2521,9 @@ traitement (eleve) # exception produite qu'il faut intercepter dans un bloc try/
 Si la gestion des exceptions permet à un programme de réagir aux erreurs au moment où elles se produisent, **les traces et les logs** sont indispensables pour comprendre ce qui s'est passé en coulisses, analyser le comportement de l'application au fil du temps et déboguer plus facilement.
 
 * **Les logs (journalisation) :** Un log est un enregistrement horodaté d'un événement précis survenu lors de l'exécution.Ils sont catégorisés par niveau de gravité (`INFO`, `WARNING`, `ERROR`, `CRITICAL`) pour filtrer les informations selon les besoins.Les logs permettent de garder un historique de la vie du système, notamment en environnement de production où l'affichage direct à l'écran n'est pas possible.
-* **Les traces (ou *stack traces*) :** Lorsqu'une exception est levée (via `raise`) et non interceptée immédiatement, le langage génère une **trace d'exécution**. Cette trace agit comme un fil d'Ariane : elle liste la suite d'appels de fonctions, les fichiers et les numéros de lignes traversés jusqu'au point exact de la défaillance.
+* **Les traces (ou *stack traces*) :** Lorsqu'une exception est levée (via `raise`) et non interceptée immédiatement, le langage génère une **trace d'exécution**. Cette trace donne plus de détails : elle liste la suite d'appels de fonctions, les fichiers et les numéros de lignes traversés jusqu'au point exact de la défaillance.
 
-En pratique, la combinaison des deux est essentielle pour la robustesse : lors de la capture d'une exception dans un bloc `try/catch`, enregistrer la **trace** complète au sein d'un **log** de niveau `ERROR` permet aux développeurs de reconstituer précisément le contexte de la panne sans interrompre le service pour les autres utilisateurs.
+En pratique, la combinaison des deux est essentielle pour la robustesse : lors de la capture d'une exception dans un bloc `try/except`, enregistrer la **trace** complète au sein d'un **log** de niveau `ERROR` permet aux développeurs de reconstituer précisément le contexte de la panne sans interrompre le service pour les autres utilisateurs.
 
 Le niveau logger.exception() enregistre le message en niveau ERROR et inclut automatiquement la stack trace complète.
 
@@ -2598,14 +2623,16 @@ print(convertir_et_diviser("50", "0"))
 
 # Chapitre 13 : Scripts et ligne de commande
 La création de scripts en ligne de commande et le passage d'arguments permettent d'automatiser des tâches et d'interagir directement avec vos programmes Python depuis le terminal. Maîtriser ces outils est indispensable pour industrialiser vos développements.
-Dans ce chapitre :
+
+Au programme de ce chapitre :
 
 * Scripts et `__main__`
 * Scripts et passage d'arguments
-* Gestion de package avec `pip`
+* Utilisation de argparse
+
 ---
 
-## Scripts et **main**
+## Scripts et `__main__`
 
 La structure `if __name__ == "__main__":` permet d'identifier si un fichier Python est exécuté directement comme un script principal ou importé comme un module dans un autre programme.
 
@@ -2625,7 +2652,7 @@ if __name__ == "__main__":
 
 ## Scripts et passage d'arguments
 
-Un script est un traitement spécifique en exploitation. Peut être qu'il faut lui passer des arguments de l'extérieur pour se réaliser (ex. sauvegarde.py <folder>). Dans ce cas il faut passer les nom du folder en argument au moment d'exécuter le script. Python permet de passer des arguments au moyen de sys.argv. On a deux modules possible sys et argparse.
+Lors de l'exécution d'un script d'administration, il est souvent nécessaire de lui transmettre des arguments en ligne de commande (par exemple le dossier cible à sauvegarder).
 
 script :  sauvegarde.py 
 ```python
@@ -2647,7 +2674,7 @@ python sauvegarde.py
 Il manque un argument  ['sauvegarde.py']
 ```
 
-Lancement avec le repertoire "c:/"
+Lancement avec le répertoire "c:/"
 ```bash
 python sauvegarde.py "c:/"
 Je sauvegarde c:/
@@ -2687,7 +2714,7 @@ if __name__ == "__main__":
 
 ```
 
-Lancement avec un argument en trop BB, le contôle est fait
+Lancement avec un argument en trop BB, le contrôle est fait
 
 ```bash
 python sauvegarde.py  AA BB
@@ -2742,31 +2769,31 @@ if __name__ == "__main__":
 **Exercice 2 :** Utilisez le module `sys` pour récupérer un nom passé en argument dans le terminal et affichez une salutation personnalisée intégrant ce paramètre.
 
 
-# Chapitre 14 : Gestion des packages - import et création
+# Chapitre 14 : Packages et imports
 
 Ce chapitre couvre l'organisation du code en modules et packages ainsi que la gestion des fichiers et répertoires en Python. Vous apprendrez à structurer vos projets, importer des bibliothèques et automatiser le déploiement d'environnements. Ces compétences sont essentielles pour créer des applications modulaires et maintenables.
+
+Au programme de ce chapitre :
 
 * Librairie et script pip
 * Importation de package
 * Contenu d'un package
 * Chemin d'accès
 * Packages standards os, os.path, pathlib et zlib
-* Gestion des répertoires - mkdir, listdir, walk, move, rmdir
-* Gestion des fichiers - open, read, write, seek, tell, zip
-* Automatiser une installation avec gel et requirements.txt
+* Fichier requirements.txt
 
 ---
 
 ## Librairie et script pip
 
-L'outil `pip` permet d'installer, mettre à jour et supprimer des bibliothèques tierces issues du dépôt PyPI. Il s'exécute depuis le terminal ou via l'interpréteur Python pour gérer les dépendances du projet. Son utilisation garantit l'accès à un écosystème enrichi au-delà de la bibliothèque standard.
+L'outil `pip` permet d'installer, mettre à jour et supprimer des bibliothèques tierces issues du dépôt PyPI. Il s'exécute depuis le terminal ou via l'interpréteur Python pour gérer les dépendances du projet tenant compte des versions. Son utilisation garantit l'accès aux autres projets bien au-delà de la bibliothèque standard.
 
 ```bash
 # Installation d'un package depuis le terminal au moyen de pip
-pip install requests  # si pip est un executable
+pip install requests  # si pip est un exécutable
 python -m pip install requests # en passant par pip en tant que module
 
-# Verification de la liste des packages installés et les versions
+# Vérification de la liste des packages installés et les versions
 python -m pip list
 
 # Détail sur un package
@@ -2792,7 +2819,7 @@ Required-by:
 | **`pip list`** | Liste tous les paquets installés dans l'environnement | `pip list` |
 | **`pip show <pkg>`** | Affiche les détails d'un paquet (version, emplacement, dépendances) | `pip show requests` |
 | **`pip freeze`** | Affiche les paquets installés au format `nom==version` (idéal pour les fichiers d'exigences) | `pip freeze > requirements.txt` |
-| **`pip search <term>`** | *Désactivé sur PyPI*. Préférer la recherche directe sur [pypi.org](https://pypi.org?utm_source=gemini) | N/A |
+| **`pip search <term>`** | *Désactivé sur PyPI*. Préférer la recherche directe sur [pypi.org](https://pypi.org) | N/A |
 | **`pip check`** | Vérifie si les dépendances installées sont compatibles entre elles | `pip check` |
 | **`pip cache purge`** | Vide le cache local des roues (*wheels*) et archives téléchargées | `pip cache purge` |
 
@@ -2883,7 +2910,7 @@ os.system("mspaint")
 > 💡 **Bonne pratique :** Privilégiez l'utilisation de `pathlib.Path` plutôt que `os.path` pour une gestion interplateforme plus claire et élégante des chemins.
 
 ---
-## Automatiser une installation avec gel et requirements.txt
+## Fichier requirements.txt
 
 Le mécanisme de "freeze" extrait la liste exacte des dépendances installées avec leurs versions. L'enregistrement dans un fichier `requirements.txt` permet de reproduire l'environnement à l'identique. Cela assure la portabilité de votre projet sur un autre serveur ou poste développeur.
 
@@ -2941,14 +2968,15 @@ archiver_projet(".", "sauvegarde.zip")
 # Chapitre 15 : Les environnements virtuels
 
 La création d'environnements virtuels permet d'isoler les dépendances de chaque application Python pour éviter les conflits entre les bibliothèques installées sur le système. Maîtriser ces outils est indispensable pour garantir la stabilité et la reproductibilité de vos projets.
-Dans ce chapitre :
 
-* Création d'un contexte Python isolé avec `venv`
-* Utilisation des scripts d'activation et de désactivation (`activate`/`deactivate`)
+Au programme de ce chapitre :
+
+* Création d'un contexte Python isolé avec venv
+* Script activate/deactivate
 
 ---
 
-## Création d'un context python isolé avec venv
+## Création d'un contexte Python isolé avec venv
 
 Le module `venv` permet de générer un répertoire de travail contenant une copie autonome de l'interpréteur Python et de sa bibliothèque standard. Cela isole complètement l'environnement des paquets globaux de la machine.
 
@@ -3009,13 +3037,17 @@ deactivate
 **Exercice 2 :** Activez l'environnement virtuel créé, vérifiez son bon fonctionnement, puis désactivez-le à l'aide de la commande appropriée.
 
 
-# Chapitre 16 : Gestion des fichiers et des répertoires
+# Chapitre 16 : Fichiers et répertoires
 
 La gestion des fichiers et des répertoires permet d'interagir directement avec le système de stockage pour enregistrer et restituer des informations. Maîtriser ces concepts est indispensable pour persister l'état de vos applications.
-Dans ce chapitre :
 
-* Concepts généraux sur les streams et fichiers
-* Créer un fichier texte en unicode : ouverture, écriture et lecture
+Au programme de ce chapitre :
+
+* Concepts généraux sur fichiers
+* Lecture d'un fichier text en unicode
+* Gestion des répertoires
+* Recherche dans un répertoire
+* Fichiers : open, read, write, seek
 
 ---
 
@@ -3054,7 +3086,7 @@ Les méthodes de lecture
 **`read()` et `read(1)` — Lecture par caractères**
 
 * **`f.read()`** lit tout le contenu d'un coup.
-* **`f.read(n)`** lit $n$ **caractères** Unicode. Si l'on écrit `read(1)`, Python extrait 1 caractère complet, peu importe le nombre d'octets codants en UTF-8.
+* **`f.read(n)`** lit `n` **caractères** Unicode. Si l'on écrit `read(1)`, Python extrait 1 caractère complet, peu importe le nombre d'octets codants en UTF-8.
 
 ```python
 with open("texte_unicode.txt", "r", encoding="utf-8") as f:
@@ -3087,7 +3119,7 @@ with open("texte_unicode.txt", "r", encoding="utf-8") as f:
 
 ```
 
-## Gestion des répertoires - mkdir, listdir, move, rmdir
+## Gestion des répertoires
 
 Le module `os` et l'utilitaire `shutil` permettent de manipuler l'arborescence des dossiers. Vous pouvez créer, lister, parcourir récursivement ou supprimer des répertoires. Ces fonctions sont essentielles pour l'automatisation des tâches d'administration système.
 
@@ -3145,7 +3177,7 @@ for root, dirs, files in Path(".").walk():
 
 ---
 
-## Gestion des fichiers - open, read, write, seek, tell, zip
+## Fichiers : open, read, write, seek
 
 L'instruction `open()` permet de manipuler les fichiers en lecture ou écriture avec gestion du curseur via `seek()` et `tell()`. Le gestionnaire de contexte `with` garantit la fermeture automatique du fichier. Le module `zipfile` permet de créer et d'extraire des archives compressées.
 
@@ -3195,15 +3227,16 @@ with open(nom_fichier, "r", encoding="utf-8") as fichier_entree:
 # Chapitre 17 : Programmation orientée objets
 
 La programmation orientée objets permet de structurer un programme autour de concepts et de données modélisés sous forme de classes et d'objets. Maîtriser ces principes est indispensable pour concevoir des architectures logicielles modulaires et maintenables.
-Dans ce chapitre :
+
+Au programme de ce chapitre :
 
 * Approche de l'orienté objets
-* Objets et instances de classe (`self`, `super`)
-* Composition d'une classe (constructeur, méthodes et données)
+* Objet et instance de class - self, super
+* Composition d'une classe
 * Composition d'une classe - setter, getter
-* Héritage de classes et chaînage des constructeurs
+* Héritage et constructeurs
 * Héritage de classes et redéfinition
-* Packages, imports et classes
+* Packages et imports et classes
 
 ---
 ## Approche de l'orienté objets
@@ -3269,9 +3302,9 @@ class Chien:
 
 ---
 
-## Composition d'une classe - constructeur, méthodes et données
+## Composition d'une classe
 
-Une classe se compose d'un constructeur (la méthode spéciale `__init__`), de données attributaires et de méthodes pour définir les actions que l'objet peut réaliser.
+Une classe se compose d'un constructeur (la méthode spéciale `__init__`), d'attributs (données) et de méthodes pour définir les actions que l'objet peut réaliser.
 
 ```python
 # Définition d'une classe avec constructeur, attributs et méthodes
@@ -3373,7 +3406,7 @@ except ValueError as e:
 * **Accès transparent :** Grâce à `@property`, l'utilisateur de la classe lit et modifie l'attribut avec une syntaxe naturelle (`compte.solde = 500`) sans savoir qu'une méthode de contrôle est exécutée.
 * **Convention d'encapsulation :** L'attribut réel est préfixé d'un tiret bas (`_solde`) pour signaler qu'il s'agit d'une donnée interne ne devant pas être manipulée directement.
 * 
-## Héritage de classes et chaînage des constructeurs
+## Héritage et constructeurs
 
 L'**héritage** permet à une classe fille (ou dérivée) d'accéder aux attributs et méthodes d'une classe mère (ou parente). Le **chaînage des constructeurs** consiste à appeler le constructeur de la classe mère depuis le constructeur de la classe fille à l'aide de la fonction intégrée `super()`. Cela garantit que la partie "parente" de l'objet est correctement initialisée avant d'y ajouter les spécificités de la classe fille.
 
@@ -3505,10 +3538,12 @@ print(admin.obtenir_profil())
 
 La gestion efficace des opérations d'entrée/sortie (E/S) — comme l'accès au réseau, aux bases de données ou au système de fichiers — est cruciale pour concevoir des applications Python performantes. Dans ce chapitre, vous découvrirez les principes de la programmation asynchrone non bloquante. Vous apprendrez à utiliser le module standard `asyncio` pour exécuter plusieurs tâches de manière concurrente sans avoir recours au multithreading complexe.
 
-* Les différences fondamentales entre l'exécution synchrone bloquante et asynchrone non bloquante
-* Les coroutines, les objets `Future`/`Task` et la syntaxe `async` / `await`
-* Le rôle essentiel de la boucle d'événements (*event loop*)
-* La planification et le regroupement de tâches concurrentes avec `asyncio.gather()` et `asyncio.TaskGroup`
+Au programme de ce chapitre :
+
+* Appels non bloquants et concurrents
+* Promise ou Future avec async, await
+* La boucle d'événements (`event loop`)
+* Gestion des tâches concurrentes
 
 ---
 
@@ -3673,12 +3708,12 @@ asyncio.run(main())
 
 Dans ce chapitre, vous avez découvert les mécanismes de l'exécution asynchrone en Python grâce au module `asyncio`. Vous avez appris à définir des coroutines avec `async` et `await`, à planifier leur exécution au sein de la boucle d'événements, ainsi qu'à gérer plusieurs appels non bloquants en parallèle à l'aide de `asyncio.gather` et `TaskGroup`.
 
-**Exercice 1 : traitement concurents**
+**Exercice 1 : traitement concurrent**
 Créez deux coroutines t1() et t2() qui simulent un traitement en attendant des durées différentes (ex: 1s et 3s avec asyncio.sleep).
 Chaque coroutine doit afficher un message d'exécution et retourner la chaîne "fin de traitement".
 Exécutez-les de manière concurrente avec asyncio.gather() puis affichez leurs valeurs de retour.
 
-**Exercice 2 : traitement concurents avec une exception de délai dépassé, exception asyncio.TimeoutError**
+**Exercice 2 : traitement concurrent avec une exception de délai dépassé, exception asyncio.TimeoutError**
 Reprenez les coroutines t1() et t2() de l'exercice précédent.
 Exécutez la tâche la plus longue en la limitant avec asyncio.wait_for(..., timeout=2.0).
 Interceptez l'exception asyncio.TimeoutError à l'aide d'un bloc try/except pour afficher un message d'erreur lorsque le délai maximal est dépassé.
@@ -3687,14 +3722,15 @@ Interceptez l'exception asyncio.TimeoutError à l'aide d'un bloc try/except pour
 # Chapitre 19 : Accès aux bases de données
 
 L'accès aux bases de données permet de persister, d'interroger et de structurer des volumes importants d'informations de manière sécurisée en Python. Maîtriser ces concepts est indispensable pour connecter vos applications à des systèmes de stockage relationnels.
-Dans ce chapitre :
 
-* Concepts de base des bases de données relationnelles
-* Connexion et paramétrage via la connexion et le curseur
-* Gestion de la Structure de données - requêtes DDL
+Au programme de ce chapitre :
+
+* Concepts de base
+* Connexion et curseur
+* Requêtes DDL (structure)
 * Manipulation des données - requêtes DML
-* Gestion des transactions — commit et rollback
-* Bonne pratique : Gestion sécurisée des connexions
+* Transactions : commit et rollback
+* Bonne pratique : connexions sécurisées
 
 ---
 
@@ -3715,7 +3751,7 @@ Grâce aux contraintes d'intégrité et au respect des propriétés ACID (Atomic
 
 ---
 
-## Connexion et paramétrage - connexion, cursor
+## Connexion et curseur
 
 La connexion établit le pont entre l'application Python et le fichier ou serveur de base de données, tandis que le curseur sert d'intermédiaire pour exécuter les requêtes SQL.
 
@@ -3745,7 +3781,7 @@ CREATE TABLE IF NOT EXISTS clients (
 
 ---
 
-## Gestion de la Structure de données - requêtes DDL
+## Requêtes DDL (structure)
 
 Le langage de définition de données (DDL) permet de créer, modifier ou supprimer la structure des tables au sein de la base de données (instructions `CREATE TABLE`, etc.).
 
@@ -3895,7 +3931,7 @@ print(f"Utilisateurs supprimés : {curseur.rowcount}")
 > 💡 Utilisez toujours des requêtes paramétrées (avec des points d'interrogation `?`) pour injecter des variables afin de vous prémunir totalement contre les failles d'injection SQL.
 
 ---
-## Gestion des transactions — commit et rollback
+## Transactions : commit et rollback
 
 La gestion des transactions permet de valider définitivement un ensemble d'opérations en base de données grâce à l'instruction `commit`, garantissant la cohérence globale des données.
 
@@ -3911,13 +3947,13 @@ compte_dest = 2
 montant = 150.0
 
 try:
-    # 1. Débit du compte source
+    # Débit du compte source
     curseur.execute(
         "UPDATE comptes SET solde = solde - ? WHERE id = ?",
         (montant, compte_source)
     )
 
-    # 2. Crédit du compte destinataire
+    # Crédit du compte destinataire
     curseur.execute(
         "UPDATE comptes SET solde = solde + ? WHERE id = ?",
         (montant, compte_dest)
@@ -3941,7 +3977,7 @@ finally:
 
 ---
 --- 
-## Bonne pratique : Gestion sécurisée des connexions
+## Bonne pratique : connexions sécurisées
 
 Pour éviter les fuites de mémoire et garantir la fermeture automatique des ressources même en cas d'erreur, utilisez un gestionnaire de contexte (`with`) :
 
@@ -3988,11 +4024,11 @@ import sqlite3
 
 def gerer_base_de_donnees():
     """Programme complet combinant connexion, DDL, transactions et requêtes DML."""
-    # 1. Connexion et paramétrage
+    # Connexion et paramétrage
     connexion = sqlite3.connect("entreprise.db")
     curseur = connexion.cursor()
     
-    # 2. Gestion de la structure de données (DDL)
+    # Gestion de la structure de données (DDL)
     curseur.execute("""
         CREATE TABLE IF NOT EXISTS employes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -4001,12 +4037,12 @@ def gerer_base_de_donnees():
         )
     """)
     
-    # 3. Insertion de données (DML) et gestion des transactions (commit)
+    # Insertion de données (DML) et gestion des transactions (commit)
     curseur.execute("INSERT INTO employes (nom, salaire) VALUES (?, ?)", ("Alice", 2500.0))
     curseur.execute("INSERT INTO employes (nom, salaire) VALUES (?, ?)", ("Bob", 3100.0))
     connexion.commit()  # Validation de la transaction
     
-    # 4. Manipulation des données avec SELECT et WHERE (DML)
+    # Manipulation des données avec SELECT et WHERE (DML)
     curseur.execute("SELECT nom, salaire FROM employes WHERE salaire > ?", (2800.0,))
     recrutements_hauts = curseur.fetchall()
     
@@ -4029,14 +4065,17 @@ gerer_base_de_donnees()
 **Exercice 2 :** Rédigez une requête `SELECT` associée à une clause `WHERE` pour récupérer et afficher tous les produits dont le prix est inférieur à un certain seuil depuis la table créée à l'exercice précédent.
 
 
-# Chapitre 20 : Les tests unitaires avec `unittest`
+# Chapitre 20 : Tests unitaires avec `unittest`
 
 Garantir la fiabilité d'un code avant son déploiement est une étape indispensable du développement logiciel. Dans ce chapitre, vous découvrirez comment concevoir des tests unitaires automatisés pour vérifier le bon fonctionnement de vos fonctions et classes. L'objectif est d'acquérir les réflexes méthodologiques et d'utiliser les outils standards pour livrer des projets Python robustes et maintenables.
 
-* L'intérêt des tests unitaires et les terminologies fondamentales (*assertion*, *fixture*, *suite*)
-* L'utilisation du module standard `unittest`
-* L'écriture d'une suite de tests complète sur un cas pratique (`Calcul`)
-* La mesure de la couverture de code avec l'outil `coverage.py`
+Au programme de ce chapitre :
+
+* Nécessité du test et concepts fondamentaux
+* Le framework `unittest`
+* Tester la classe Calcul
+* Mesure de la couverture de code
+* Installation et utilisation
 
 ---
 
@@ -4064,7 +4103,7 @@ assert additionner(2, 3) == 5, "L'addition de 2 et 3 doit valoir 5"
 
 ---
 
-## Prise en main du framework standard `unittest`
+## Le framework `unittest`
 
 Python intègre nativement le module `unittest`, inspiré du framework *JUnit*. Il fournit une structure orientée objet basée sur la classe `unittest.TestCase`.
 
@@ -4081,14 +4120,14 @@ Module de teste : parite.test.py
 ```python
 import unittest
 
-# TestEstPair prend ses fonctionnalités oar héritage de unittest.TestCase
+# TestEstPair prend ses fonctionnalités par héritage de unittest.TestCase
 class TestEstPair(unittest.TestCase):
 
-	# obligation de prefixer avec test_<nom methode>
+	# obligation de préfixer avec test_<nom méthode>
     def test_nombre_pair(self):
         self.assertTrue(est_pair(4))
 
-	# obligation de prefixer avec test_<nom methode>
+	# obligation de préfixer avec test_<nom méthode>
     def test_nombre_impair(self):
         self.assertFalse(est_pair(7))
 
@@ -4097,7 +4136,7 @@ if __name__ == '__main__':
 
 ```
 
-Il y a une grande librairies d'assertion mais voici les plus fréquentes fournies par `unittest.TestCase`:
+La classe `unittest.TestCase` fournit de nombreuses méthodes d'assertion ; les plus fréquentes sont :
 
 * `assertEqual(a, b)` : vérifie que `a == b`
 * `assertNotEqual(a, b)` : vérifie que `a != b`
@@ -4106,7 +4145,7 @@ Il y a une grande librairies d'assertion mais voici les plus fréquentes fournie
 
 ---
 
-## tester la classe Calcul
+## Tester la classe Calcul
 
 Appliquons la démarche sur une classe métier `Calcul` gérant des opérations arithmétiques et des cas limites (division par zéro).
 
@@ -4174,7 +4213,7 @@ python -m unittest test_calcul.py
 
 ---
 
-## Mesure de la couverture de code (*Code Coverage*)
+## Mesure de la couverture de code
 
 La **couverture de code** mesure le pourcentage de lignes de code métier exécutées lors du lancement des tests unitaires. Elle permet de repérer les zones de code oubliées ou non testées (comme des branches conditionnelles `if/else` spécifiques).
 
@@ -4224,14 +4263,14 @@ Cette commande crée un dossier `htmlcov/` contenant une interface web permettan
 Dans ce chapitre, vous avez appris à structurer vos tests unitaires grâce au module `unittest`, à automatiser la vérification de vos fonctions et à valider la levée d'exceptions. Vous avez également vu comment quantifier l'efficacité de votre suite de tests avec l'outil de métrique `coverage.py`.
 
 **Exercice 1 : teste une fonction `def aleatoire`**
-Pour une fonction aleatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'interval [0,20], il y a autant de valeur paires que de valeur impairs
+Pour une fonction aléatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'intervalle [0,20], il y a autant de valeurs paires que de valeurs impaires
 
 **Exercice 2 : teste une dans une `class Aleatoire`**
-Pour une classe contenant la fonction aleatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'interval [0,20], il y a autant de valeur paires que de valeur impairs
+Pour une classe contenant la fonction aléatoire basée sur random.randint(), valider le fait que sur 100 tirages de valeurs comprises dans l'intervalle [0,20], il y a autant de valeurs paires que de valeurs impaires
 Générez le rapport `coverage` pour vérifier que 100 % de la classe `Aleatoire` est couverte.
 
 
-# L'essentiel de l'essentiel à retenir sur Python
+# Chapitre 21 :  Aide-mémoire Python
 
 ## Installation & commandes
 
@@ -4482,7 +4521,7 @@ async def main():
 
 ```
 
-## Tests avec Unittest & Couverture de code (CLI & Code)
+## Tests unitaires et couverture (CLI)
 
 ```bash
 # Commandes Unittest en ligne de commande (CLI)
@@ -4551,13 +4590,13 @@ except ZeroDivisionError:
 ```
 
 
-# Solutions des exercices Python
+# Chapitre 22 : Solutions des exercices Python
 
 ---
 
 **Chapitre 1 / Exercice 1**
 
-Voici l'instruction en Python pour afficher la version exacte de l'interpréteur :
+L'instruction Python qui affiche la version exacte de l'interpréteur est :
 
 ```python
 import sys
@@ -4699,9 +4738,10 @@ if __name__ == "__main__":
     # Appel de la fonction et affichage du résultat
     moyenne_finale = calculer_moyenne(notes_etudiant)
     print(f"Notes de l'étudiant : {notes_etudiant}")
-    print(f"Moyenne calculée   : {moyenne_finale:.2f} / 20")```	
+    print(f"Moyenne calculée   : {moyenne_finale:.2f} / 20")
+```	
 
-**Chapitre 4 / Exercice 1 
+**Chapitre 4 / Exercice 1** 
 ```python
 def calculer_operations(a: int, b: int) -> None:
     """Calcule et affiche la somme, le produit et le reste de la division entière de deux nombres."""
@@ -4811,10 +4851,10 @@ def nettoyer_et_capitaliser(texte_brut: str) -> str:
 
     et convertit le texte intégralement en majuscules.
     """
-    # 1. Suppression des espaces superflus aux extrémités avec strip()
+    # Suppression des espaces superflus aux extrémités avec strip()
     texte_epure = texte_brut.strip()
     
-    # 2. Conversion en majuscules avec upper()
+    # Conversion en majuscules avec upper()
     texte_majuscule = texte_epure.upper()
     
     return texte_majuscule
@@ -4962,7 +5002,7 @@ def traiter_liste_imbriquee(nombre_elements: int = 5) -> list[list[object]]:
     """
     liste_principale: list[list[object]] = []
 
-    # 1. Génération de la liste de sous-listes via une boucle
+    # Génération de la liste de sous-listes via une boucle
     for i in range(1, nombre_elements + 1):
         nom = f"TOTO{i}"
         sous_liste = [nom, i]
@@ -4971,7 +5011,7 @@ def traiter_liste_imbriquee(nombre_elements: int = 5) -> list[list[object]]:
     print(f"Liste générée : {liste_principale}\n")
     print("Affichage des noms uniquement :")
 
-    # 2. Parcours de la liste imbriquée et extraction du premier élément
+    # Parcours de la liste imbriquée et extraction du premier élément
     for sous_liste in liste_principale:
         nom = sous_liste[0]  # Récupération de l'élément à l'index 0 ('TOTOx')
         print(nom)
@@ -4991,7 +5031,7 @@ def traiter_liste_dictionnaires(nombre_elements: int = 5) -> list[dict[str, obje
     """
     liste_personnes: list[dict[str, object]] = []
 
-    # 1. Génération de la liste de dictionnaires via une boucle
+    # Génération de la liste de dictionnaires via une boucle
     for i in range(1, nombre_elements + 1):
         personne = {
             "nom": f"TOTO{i}",
@@ -5002,7 +5042,7 @@ def traiter_liste_dictionnaires(nombre_elements: int = 5) -> list[dict[str, obje
     print(f"Liste générée : {liste_personnes}\n")
     print("Affichage des noms uniquement :")
 
-    # 2. Parcours de la liste et extraction de la valeur associée à la clé 'nom'
+    # Parcours de la liste et extraction de la valeur associée à la clé 'nom'
     for personne in liste_personnes:
         nom = personne["nom"]
         print(nom)
@@ -5318,7 +5358,7 @@ def exporter_notes() -> None:
     dossier_export = Path("export")
     fichier_notes = dossier_export / "notes.txt"
 
-    # 1. Création du dossier 'export' s'il n'existe pas
+    # Création du dossier 'export' s'il n'existe pas
     dossier_export.mkdir(parents=True, exist_ok=True)
 
     # Contenu de 3 lignes à écrire dans le fichier
@@ -5328,13 +5368,13 @@ def exporter_notes() -> None:
         "Troisième ligne : Export et calcul de métadonnées terminé.\n"
     ]
 
-    # 2. Écriture du fichier texte avec encodage UTF-8
+    # Écriture du fichier texte avec encodage UTF-8
     with open(fichier_notes, mode="w", encoding="utf-8") as fichier:
         fichier.writelines(lignes)
 
     print(f"Fichier créé avec succès : {fichier_notes.resolve()}")
 
-    # 3. Récupération et affichage de la taille du fichier
+    # Récupération et affichage de la taille du fichier
     taille_octets = fichier_notes.stat().st_size
     print(f"Taille du fichier : {taille_octets} octets")
 
@@ -5609,7 +5649,7 @@ def initialiser_base_de_donnees(nom_bdd: str = "inventaire.db") -> None:
     with sqlite3.connect(chemin_bdd) as connexion:
         cursor = connexion.cursor()
 
-        # 1. Création de la table produits
+        # Création de la table produits
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS produits (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -5618,14 +5658,14 @@ def initialiser_base_de_donnees(nom_bdd: str = "inventaire.db") -> None:
             )
         """)
 
-        # 2. Insertion d'un enregistrement à l'aide de requêtes préparées (?)
+        # Insertion d'un enregistrement à l'aide de requêtes préparées (?)
         produit_test = ("Clavier mécanique", 89.99)
         cursor.execute("""
             INSERT INTO produits (nom, prix)
             VALUES (?, ?)
         """, produit_test)
 
-        # 3. Validation explicite des modifications
+        # Validation explicite des modifications
         connexion.commit()
 
         print(f"Base de données '{chemin_bdd.name}' initialisée avec succès.")

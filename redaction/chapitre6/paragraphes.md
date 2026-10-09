@@ -1,16 +1,17 @@
-# Chapitre 6 : Manipulation des chaines de caractères
+# Chapitre 6 : Les chaînes de caractères
 
-La manipulation des chaînes de caractères permet de traiter, formetter et analyser des données textuelles en Python. Maîtriser ces outils est indispensable pour interagir avec les utilisateurs et structurer des messages lisibles.
-Dans ce chapitre :
+La manipulation des chaînes de caractères permet de traiter, formater et analyser des données textuelles en Python. Maîtriser ces outils est indispensable pour interagir avec les utilisateurs et structurer des messages lisibles.
 
-* Gestion des chaines
+Au programme de ce chapitre :
+
+* Gestion des chaînes
 * Formatage
 * Slicing
 * Expressions régulières
 
 ---
 
-## Gestion des chaines
+## Gestion des chaînes
 
 La gestion des chaînes de caractères repose sur l'utilisation de guillemets simples ou doubles pour déclarer du texte en mémoire. Python fournit de nombreuses méthodes intégrées pour transformer, nettoyer ou rechercher des motifs textuels.
 
@@ -62,10 +63,10 @@ s.strip()               # "Python"
 **Séparation et jonction**
 
 ```python
-# 5. split() : Découpe une chaîne en liste selon un séparateur (espace par défaut)
+# split() : Découpe une chaîne en liste selon un séparateur (espace par défaut)
 "a,b,c".split(",")      # ['a', 'b', 'c']
 
-# 6. join() : Assemble les éléments d'une liste en une seule chaîne
+# join() : Assemble les éléments d'une liste en une seule chaîne
 "-".join(['a', 'b'])    # "a-b"
 
 ```
@@ -77,13 +78,13 @@ s.strip()               # "Python"
 ```python
 s = "Bonjour tout le monde"
 
-# 7. replace() : Remplace une sous-chaîne par une autre
+# replace() : Remplace une sous-chaîne par une autre
 s.replace("monde", "monde !")  # "Bonjour tout le monde !"
 
-# 8. find() : Renvoie l'index de la première occurrence (-1 si non trouvé)
+# find() : Renvoie l'index de la première occurrence (-1 si non trouvé)
 s.find("tout")                 # 8
 
-# 9. count() : Compte le nombre d'occurrences d'une sous-chaîne
+# count() : Compte le nombre d'occurrences d'une sous-chaîne
 s.count("o")                   # 4
 
 ```
@@ -93,13 +94,13 @@ s.count("o")                   # 4
 **Vérification de contenu (retournent un booléen)**
 
 ```python
-# 10. startswith() : Vérifie si la chaîne commence par un motif
+# startswith() : Vérifie si la chaîne commence par un motif
 "main.py".startswith("main")   # True
 
-# 11. endswith() : Vérifie si la chaîne se termine par un motif
+# endswith() : Vérifie si la chaîne se termine par un motif
 "image.png".endswith(".png")   # True
 
-# 12. isdigit() : Vérifie si la chaîne contient uniquement des chiffres
+# isdigit() : Vérifie si la chaîne contient uniquement des chiffres
 "12345".isdigit()              # True
 
 ```
@@ -169,7 +170,7 @@ Le **slicing** (ou découpage) en Python est une technique qui permet d'extraire
 
 La syntaxe utilise des crochets séparés par deux-points (`:`), et non des virgules :
 
-$$\mathbf{[début : fin : pas]}$$
+**`[début:fin:pas]`**
 
 ---
 
@@ -192,7 +193,7 @@ print(texte[0:4])       # "Pyth"
 # Utilisation du pas : un caractère sur deux
 print(texte[0:6:2])     # "Pto"
 
-# Omision des bornes (équivalent à tout prendre) avec un pas de 2
+# Omission des bornes (équivalent à tout prendre) avec un pas de 2
 print(texte[::2])       # "Pto"
 
 # Inverser une chaîne (pas négatif)
@@ -200,7 +201,7 @@ print(texte[::-1])      # "nohtyP"
 
 ```
 
-> 💡 **À retenir :** En Python, l'élément situé à l'index de **`fin`** n'est jamais inclus dans le résultat. La longueur du résultat extrait correspond généralement à $\text{fin} - \text{début}$ (si le pas vaut $1$).
+> 💡 **À retenir :** En Python, l'élément situé à l'index de **`fin`** n'est jamais inclus dans le résultat. La longueur du résultat extrait correspond généralement à `fin - début` (si le pas vaut `1`).
 
 > 💡 En Python, les indices de découpage commencent à zéro et l'indice de fin spécifié est toujours exclus du résultat extrait.
 
@@ -227,7 +228,7 @@ Une expression régulière utilise des caractères spéciaux pour définir des m
 * `+` : 1 ou plusieurs fois.
 * `*` : 0 ou plusieurs fois.
 * `?` : 0 ou 1 fois (optionnel).
-* `{n,m}` : entre $n$ et $m$ fois.
+* `{n,m}` : entre `n` et `m` fois.
 
 
 * **Ancres et groupes :**

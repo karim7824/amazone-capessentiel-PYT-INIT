@@ -1,28 +1,28 @@
-# Chapitre 14 : Gestion des packages - import et création
+# Chapitre 14 : Packages et imports
 
 Ce chapitre couvre l'organisation du code en modules et packages ainsi que la gestion des fichiers et répertoires en Python. Vous apprendrez à structurer vos projets, importer des bibliothèques et automatiser le déploiement d'environnements. Ces compétences sont essentielles pour créer des applications modulaires et maintenables.
+
+Au programme de ce chapitre :
 
 * Librairie et script pip
 * Importation de package
 * Contenu d'un package
 * Chemin d'accès
 * Packages standards os, os.path, pathlib et zlib
-* Gestion des répertoires - mkdir, listdir, walk, move, rmdir
-* Gestion des fichiers - open, read, write, seek, tell, zip
-* Automatiser une installation avec gel et requirements.txt
+* Fichier requirements.txt
 
 ---
 
 ## Librairie et script pip
 
-L'outil `pip` permet d'installer, mettre à jour et supprimer des bibliothèques tierces issues du dépôt PyPI. Il s'exécute depuis le terminal ou via l'interpréteur Python pour gérer les dépendances du projet. Son utilisation garantit l'accès à un écosystème enrichi au-delà de la bibliothèque standard.
+L'outil `pip` permet d'installer, mettre à jour et supprimer des bibliothèques tierces issues du dépôt PyPI. Il s'exécute depuis le terminal ou via l'interpréteur Python pour gérer les dépendances du projet tenant compte des versions. Son utilisation garantit l'accès aux autres projets bien au-delà de la bibliothèque standard.
 
 ```bash
 # Installation d'un package depuis le terminal au moyen de pip
-pip install requests  # si pip est un executable
+pip install requests  # si pip est un exécutable
 python -m pip install requests # en passant par pip en tant que module
 
-# Verification de la liste des packages installés et les versions
+# Vérification de la liste des packages installés et les versions
 python -m pip list
 
 # Détail sur un package
@@ -48,7 +48,7 @@ Required-by:
 | **`pip list`** | Liste tous les paquets installés dans l'environnement | `pip list` |
 | **`pip show <pkg>`** | Affiche les détails d'un paquet (version, emplacement, dépendances) | `pip show requests` |
 | **`pip freeze`** | Affiche les paquets installés au format `nom==version` (idéal pour les fichiers d'exigences) | `pip freeze > requirements.txt` |
-| **`pip search <term>`** | *Désactivé sur PyPI*. Préférer la recherche directe sur [pypi.org](https://pypi.org?utm_source=gemini) | N/A |
+| **`pip search <term>`** | *Désactivé sur PyPI*. Préférer la recherche directe sur [pypi.org](https://pypi.org) | N/A |
 | **`pip check`** | Vérifie si les dépendances installées sont compatibles entre elles | `pip check` |
 | **`pip cache purge`** | Vide le cache local des roues (*wheels*) et archives téléchargées | `pip cache purge` |
 
@@ -139,7 +139,7 @@ os.system("mspaint")
 > 💡 **Bonne pratique :** Privilégiez l'utilisation de `pathlib.Path` plutôt que `os.path` pour une gestion interplateforme plus claire et élégante des chemins.
 
 ---
-## Automatiser une installation avec gel et requirements.txt
+## Fichier requirements.txt
 
 Le mécanisme de "freeze" extrait la liste exacte des dépendances installées avec leurs versions. L'enregistrement dans un fichier `requirements.txt` permet de reproduire l'environnement à l'identique. Cela assure la portabilité de votre projet sur un autre serveur ou poste développeur.
 

@@ -1,14 +1,15 @@
 # Chapitre 19 : Accès aux bases de données
 
 L'accès aux bases de données permet de persister, d'interroger et de structurer des volumes importants d'informations de manière sécurisée en Python. Maîtriser ces concepts est indispensable pour connecter vos applications à des systèmes de stockage relationnels.
-Dans ce chapitre :
 
-* Concepts de base des bases de données relationnelles
-* Connexion et paramétrage via la connexion et le curseur
-* Gestion de la Structure de données - requêtes DDL
+Au programme de ce chapitre :
+
+* Concepts de base
+* Connexion et curseur
+* Requêtes DDL (structure)
 * Manipulation des données - requêtes DML
-* Gestion des transactions — commit et rollback
-* Bonne pratique : Gestion sécurisée des connexions
+* Transactions : commit et rollback
+* Bonne pratique : connexions sécurisées
 
 ---
 
@@ -29,7 +30,7 @@ Grâce aux contraintes d'intégrité et au respect des propriétés ACID (Atomic
 
 ---
 
-## Connexion et paramétrage - connexion, cursor
+## Connexion et curseur
 
 La connexion établit le pont entre l'application Python et le fichier ou serveur de base de données, tandis que le curseur sert d'intermédiaire pour exécuter les requêtes SQL.
 
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS clients (
 
 ---
 
-## Gestion de la Structure de données - requêtes DDL
+## Requêtes DDL (structure)
 
 Le langage de définition de données (DDL) permet de créer, modifier ou supprimer la structure des tables au sein de la base de données (instructions `CREATE TABLE`, etc.).
 
@@ -209,7 +210,7 @@ print(f"Utilisateurs supprimés : {curseur.rowcount}")
 > 💡 Utilisez toujours des requêtes paramétrées (avec des points d'interrogation `?`) pour injecter des variables afin de vous prémunir totalement contre les failles d'injection SQL.
 
 ---
-## Gestion des transactions — commit et rollback
+## Transactions : commit et rollback
 
 La gestion des transactions permet de valider définitivement un ensemble d'opérations en base de données grâce à l'instruction `commit`, garantissant la cohérence globale des données.
 
@@ -225,13 +226,13 @@ compte_dest = 2
 montant = 150.0
 
 try:
-    # 1. Débit du compte source
+    # Débit du compte source
     curseur.execute(
         "UPDATE comptes SET solde = solde - ? WHERE id = ?",
         (montant, compte_source)
     )
 
-    # 2. Crédit du compte destinataire
+    # Crédit du compte destinataire
     curseur.execute(
         "UPDATE comptes SET solde = solde + ? WHERE id = ?",
         (montant, compte_dest)
@@ -255,7 +256,7 @@ finally:
 
 ---
 --- 
-## Bonne pratique : Gestion sécurisée des connexions
+## Bonne pratique : connexions sécurisées
 
 Pour éviter les fuites de mémoire et garantir la fermeture automatique des ressources même en cas d'erreur, utilisez un gestionnaire de contexte (`with`) :
 
@@ -302,11 +303,11 @@ import sqlite3
 
 def gerer_base_de_donnees():
     """Programme complet combinant connexion, DDL, transactions et requêtes DML."""
-    # 1. Connexion et paramétrage
+    # Connexion et paramétrage
     connexion = sqlite3.connect("entreprise.db")
     curseur = connexion.cursor()
     
-    # 2. Gestion de la structure de données (DDL)
+    # Gestion de la structure de données (DDL)
     curseur.execute("""
         CREATE TABLE IF NOT EXISTS employes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -315,12 +316,12 @@ def gerer_base_de_donnees():
         )
     """)
     
-    # 3. Insertion de données (DML) et gestion des transactions (commit)
+    # Insertion de données (DML) et gestion des transactions (commit)
     curseur.execute("INSERT INTO employes (nom, salaire) VALUES (?, ?)", ("Alice", 2500.0))
     curseur.execute("INSERT INTO employes (nom, salaire) VALUES (?, ?)", ("Bob", 3100.0))
     connexion.commit()  # Validation de la transaction
     
-    # 4. Manipulation des données avec SELECT et WHERE (DML)
+    # Manipulation des données avec SELECT et WHERE (DML)
     curseur.execute("SELECT nom, salaire FROM employes WHERE salaire > ?", (2800.0,))
     recrutements_hauts = curseur.fetchall()
     

@@ -1,19 +1,24 @@
-# Chapitre 8 : Les instructions contrôles
+# Chapitre 8 : Les instructions de contrôle
 
 Les instructions de contrôle permettent d'orienter le flux d'exécution d'un programme en fonction de conditions et de répéter des blocs de instructions. Maîtriser ces structures est indispensable pour automatiser des tâches complexes.
-Dans ce chapitre :
 
-* Structures conditionnelles `if`/`else` et `match`
-* Boucles itératives (`for`/`else`, `while`)
-* Itérations avancées (`range`, `zip`, `items()`)
+Au programme de ce chapitre :
+
+* Structures conditionnelles if / elif / else
+* Structure match
+* Boucles - for/else
+* Boucles - while
+* Boucles - avec range
+* Boucles - avec zip
+* Boucles - avec items() pour les dictionnaires
 
 ---
 
-## Structure conditionnelles if/elif/else,match
+## Structures conditionnelles if / elif / else
 
 Les structures conditionnelles permettent d'exécuter des blocs de code différents selon la validité d'une ou plusieurs conditions logiques. L'instruction `match`, introduite récemment, facilite les aiguillages complexes par motif.
 
-Voici la forme générale des structures conditionnelles `if / elif / else` en Python :
+La forme générale des structures conditionnelles `if / elif / else` en Python est la suivante :
 
 **Forme générale**
 
@@ -182,7 +187,7 @@ for i in range(len(utilisateurs)):
 
 # Boucle avec zip pour associer utilisateurs et scores
 for user, score in zip(utilisateurs, points):
-    # 3. Structure conditionnelle classique
+    # Structure conditionnelle classique
     if score >= 50:
         niveau = "Expert"
     else:
@@ -202,8 +207,8 @@ for parametre, etat in config.items():
 
 ## Exercices de fin de chapitre
 
-**Exercice 1 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 listes  = [['TOTO1',1],['TOTO2',2],...['TOTO5',5]]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
+**Exercice 1 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 listes  = [['TOTO1',1],['TOTO2',2],...['TOTO5',5]]. Ensuite parcourir cette liste et afficher uniquement les noms TOTO1, TOTO2...
 
-**Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite pourcourir cette liste et afficher que le noms TOTO1, TOTO2...
+**Exercice 2 :** Écrivez un script qui produit, au moyen d'une boucle, une liste de 5 dict  = [{'nom':'TOTO1','age' : 1},...{'nom':'TOTO5','age' : 5}]. Ensuite parcourir cette liste et afficher uniquement les noms TOTO1, TOTO2...
 
 **Exercice 3 :** Créez un dictionnaire associant des noms de fruits à leur prix, puis utilisez la méthode `.items()` dans une boucle pour afficher chaque fruit et son prix avec une structure conditionnelle vérifiant s'il est supérieur à un certain seuil.

@@ -1,4 +1,4 @@
-# L'essentiel de l'essentiel à retenir sur Python
+# Chapitre 21 :  Aide-mémoire Python
 
 ## Installation & commandes
 
@@ -249,7 +249,7 @@ async def main():
 
 ```
 
-## Tests avec Unittest & Couverture de code (CLI & Code)
+## Tests unitaires et couverture (CLI)
 
 ```bash
 # Commandes Unittest en ligne de commande (CLI)

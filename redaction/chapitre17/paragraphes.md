@@ -1,15 +1,16 @@
 # Chapitre 17 : Programmation orientée objets
 
 La programmation orientée objets permet de structurer un programme autour de concepts et de données modélisés sous forme de classes et d'objets. Maîtriser ces principes est indispensable pour concevoir des architectures logicielles modulaires et maintenables.
-Dans ce chapitre :
+
+Au programme de ce chapitre :
 
 * Approche de l'orienté objets
-* Objets et instances de classe (`self`, `super`)
-* Composition d'une classe (constructeur, méthodes et données)
+* Objet et instance de class - self, super
+* Composition d'une classe
 * Composition d'une classe - setter, getter
-* Héritage de classes et chaînage des constructeurs
+* Héritage et constructeurs
 * Héritage de classes et redéfinition
-* Packages, imports et classes
+* Packages et imports et classes
 
 ---
 ## Approche de l'orienté objets
@@ -75,9 +76,9 @@ class Chien:
 
 ---
 
-## Composition d'une classe - constructeur, méthodes et données
+## Composition d'une classe
 
-Une classe se compose d'un constructeur (la méthode spéciale `__init__`), de données attributaires et de méthodes pour définir les actions que l'objet peut réaliser.
+Une classe se compose d'un constructeur (la méthode spéciale `__init__`), d'attributs (données) et de méthodes pour définir les actions que l'objet peut réaliser.
 
 ```python
 # Définition d'une classe avec constructeur, attributs et méthodes
@@ -179,7 +180,7 @@ except ValueError as e:
 * **Accès transparent :** Grâce à `@property`, l'utilisateur de la classe lit et modifie l'attribut avec une syntaxe naturelle (`compte.solde = 500`) sans savoir qu'une méthode de contrôle est exécutée.
 * **Convention d'encapsulation :** L'attribut réel est préfixé d'un tiret bas (`_solde`) pour signaler qu'il s'agit d'une donnée interne ne devant pas être manipulée directement.
 * 
-## Héritage de classes et chaînage des constructeurs
+## Héritage et constructeurs
 
 L'**héritage** permet à une classe fille (ou dérivée) d'accéder aux attributs et méthodes d'une classe mère (ou parente). Le **chaînage des constructeurs** consiste à appeler le constructeur de la classe mère depuis le constructeur de la classe fille à l'aide de la fonction intégrée `super()`. Cela garantit que la partie "parente" de l'objet est correctement initialisée avant d'y ajouter les spécificités de la classe fille.
 

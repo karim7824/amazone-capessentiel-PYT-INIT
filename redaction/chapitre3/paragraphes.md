@@ -1,18 +1,20 @@
 # Chapitre 3 : Types de données et mémoire
 
 Maîtriser les types de données et leur manipulation en mémoire est essentiel pour stocker et traiter efficacement l'information. Ces concepts fondamentaux garantissent la rigueur et la logique de vos programmes en Python.
-Dans ce chapitre :
 
-* Déclaration et affectation de variables
-* Types scalaires (int, float, bool, str)
-* Types agrégés (list, tuple, dict, set)
-* Valeurs littérales et portée des variables (locale, globale)
+Au programme de ce chapitre :
+
+* Déclaration de variables
+* Types scalaires : int, float, bool, str
+* Types agrégés : list, tuple, dict, set
+* Valeurs littérales
+* Portée de variables - globale, locale
 
 ---
 
 ## Déclaration de variables
 
-Une variable en Python : une étiquette mémoire. Une **variable** est un nom qui pointe vers un emplacement mémoire contenant une donnée.
+En Python, une variable est une étiquette mémoire pointant vers un objet.. Une **variable** est un nom qui pointe vers un emplacement mémoire contenant une donnée.
 
 En Python, la création se fait par simple **affectation** avec le signe `=` :
 
@@ -40,7 +42,7 @@ age = 25  # L'objet 25 est stocké en mémoire, 'age' pointe dessus.
 
 ---
 
-## Types de données scalaires - int, float, bool, str
+## Types scalaires : int, float, bool, str
 
 Les types scalaires représentent des valeurs uniques et atomiques, non décomposables en sous-éléments. Ils constituent la base de toute manipulation numérique, textuelle ou logique.
 
@@ -102,7 +104,7 @@ hex(id(a))
 
 ---
 
-## Types de données agrégés - list, tuple, dict, set
+## Types agrégés : list, tuple, dict, set
 
 Les types agrégés permettent de regrouper plusieurs valeurs au sein d'une seule structure de données en mémoire. Leur choix dépend de la nécessité d'ordre, d'unicité des éléments, ainsi que de leur mutabilité — c'est-à-dire la possibilité de modifier ou non le contenu de la structure directement en mémoire après sa création.
 
@@ -198,7 +200,7 @@ for cle, valeur in personne.items():
 
 ```
 
-> 💡 Privilégiez les tuples pour des données fixes qui ne doivent pas être altérées au cours de l'exécution du programme, garantissant ainsi l'intégrité des structures.
+> 💡 Privilégiez les tuples pour des données fixes qui ne doivent pas être altérées au cours de l'exécution du programme, garantissant ainsi l'intégrité des données.
 
 ---
 
@@ -334,5 +336,6 @@ print(traiter_commande("Karim", [45.0, 15.5, 30.0]))
 
 ## Exercices de fin de chapitre
 
-1. **Exercice 1 : variables scalaires** Écrivez un script qui déclare quatre variables de types scalaires différents (`int`, `float`, `bool`, `str`), puis affichez le type de chacune d'elles à l'aide de la fonction `type()`.
-2. **Exercice 2 : liste** Créez une liste contenant les notes d'un étudiant, écrivez une fonction qui calcule la moyenne de ces notes, et stockez le résultat dans une variable locale avant de le retourner.
+**Exercice 1 : variables scalaires** Écrivez un script qui déclare quatre variables de types scalaires différents (`int`, `float`, `bool`, `str`), puis affichez le type de chacune d'elles à l'aide de la fonction `type()`.
+
+**Exercice 2 : liste** Créez une liste contenant les notes d'un étudiant, écrivez une fonction qui calcule la moyenne de ces notes, et stockez le résultat dans une variable locale avant de le retourner.
