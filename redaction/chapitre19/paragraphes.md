@@ -87,7 +87,7 @@ Le langage de manipulation des données (DML) permet d'insérer, de modifier, de
 
 Les opérations qui portent sur les données des tables sont : DML (SELECT, INSERT, UPDATE, DELETE) 
 
-Voici plusieurs exemples concrets d'opérations **DML** (*Data Manipulation Language*) en Python avec `sqlite3`, illustrant les différentes façons d'insérer, lire, mettre à jour et supprimer des données.
+Exemples concrets d'opérations **DML** (*Data Manipulation Language*) en Python avec `sqlite3`, illustrant les différentes façons d'insérer, lire, mettre à jour et supprimer des données.
 
 ---
 
