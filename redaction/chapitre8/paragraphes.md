@@ -91,6 +91,37 @@ match commande:
 
 > 💡 Utilisez le motif universel `_` comme dernier cas dans un `match` pour capturer toutes les valeurs non gérées explicitement.
 
+Vous pouvez extraire directement des valeurs d'une structure de données selon sa forme ou sa taille.
+
+```python
+donnees = ("connect", "192.168.1.10", 8080)
+
+match donnees:
+    case ("connect", ip, port):
+        print(f"Connexion au serveur {ip} sur le port {port}")
+    case ("disconnect",):
+        print("Déconnexion demandée.")
+    case _:
+        print("Format de données invalide.")
+
+```
+
+Il est possible de vérifier les clés d'un dictionnaire, d'en extraire les valeurs et d'ajouter une condition supplémentaire (appelée *garde*) avec le mot-clé `if`.
+
+```python
+utilisateur = {"role": "admin", "niveau": 5, "actif": True}
+
+match utilisateur:
+    case {"role": "admin", "niveau": n} if n >= 10:
+        print("Super-administrateur avec privilèges maximaux.")
+    case {"role": "admin", "actif": True}:
+        print("Administrateur standard actif.")
+    case {"role": role, "actif": False}:
+        print(f"Compte {role} désactivé.")
+    case _:
+        print("Profil inconnu ou non autorisé.")
+
+```
 ---
 
 ## Boucles - for/else
@@ -105,6 +136,19 @@ for n in nombres:
 
 ```
 
+Pour tester si un nombre est premier, on vérifie s'il est divisible par un nombre entre 2 et sa racine. Si on trouve un diviseur, le nombre n'est pas premier (`break`). Si la boucle va jusqu'au bout sans rien trouver, le `else` confirme qu'il est bien premier.
+
+```python
+nombre = 17
+
+for i in range(2, int(nombre ** 0.5) + 1):
+    if nombre % i == 0:
+        print(f"{nombre} n'est pas premier (divisible par {i}).")
+        break
+else:
+    print(f"{nombre} est un nombre premier !")
+
+```
 > 💡 Utilisez le bloc `else` d'une boucle `for` pour exécuter du code de validation si aucun élément recherché n'a déclenché de rupture anticipée.
 
 ---
