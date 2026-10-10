@@ -303,7 +303,7 @@ print(pairs_grands)  # Résultat : {40, 8, 22} (l'ordre d'affichage peut varier)
 
 > 💡 **À retenir :** Un `set` ne conserve pas l'ordre d'insertion des éléments et n'a pas d'index. On ne peut donc pas utiliser `enumerate()` pour obtenir des index fixes comme sur une liste.
 
-> 💡 **Bonne pratique :** Tester la présence d'un élément dans un `set` avec `if "Python" in ensemble:` est extrêmement rapide (complexité `O(1)`) comparé à une liste (complexité $O(n)$).
+> 💡 **Bonne pratique :** Tester la présence d'un élément dans un `set` avec `if "Python" in langages:` est extrêmement rapide (complexité `O(1)`) comparé à une liste (complexité $O(n)$).
 
 > 💡 Utilisez les opérateurs ensemblistes comme `&` pour l'intersection ou `|` pour l'union afin de comparer rapidement des collections de données.
 
