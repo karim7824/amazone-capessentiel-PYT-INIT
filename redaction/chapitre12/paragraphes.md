@@ -84,6 +84,35 @@ traitement (eleve) # exception produite qu'il faut intercepter dans un bloc try/
 
 > 💡 Créez vos propres classes d'exceptions personnalisées en héritant de la classe `Exception` de base pour affiner la gestion des erreurs spécifiques à votre domaine métier.
 ---
+## Exceptions : TypeError, ValueError
+
+`TypeError` (Erreur de type). Elle se produit lorsqu'une opération ou une fonction est appliquée à un objet d'un **type inapproprié**.
+ValueError` (Erreur de valeur).Elle se produit lorsqu'un objet a le **bon type**, mais que sa **valeur est incorrecte** ou inexploitable dans le contexte.
+
+* **Exemple natif :** Tenter d'additionner une chaîne de caractères et un entier (`"5" + 3`).
+* **Déclenchement manuel (`raise`) :**
+
+```python
+def repeter_texte(texte, fois):
+    if not isinstance(texte, str):
+        TypeError("Le paramètre 'texte' doit être une chaîne de caractères.")
+    if not isinstance(fois, int):
+        raise TypeError("Le paramètre 'fois' doit être un entier.")
+    return texte * fois
+
+```
+
+* **Exemple natif :** Tenter de convertir une chaîne non numérique en entier (`int("abc")`).
+* **Déclenchement manuel (`raise`) :**
+
+```python
+def calculer_pourcentage(valeur):
+    if not (0 <= valeur <= 100):
+        raise ValueError("La valeur doit être comprise entre 0 et 100.")
+    return valeur / 100
+
+```
+
 ## Trace et log
 Si la gestion des exceptions permet à un programme de réagir aux erreurs au moment où elles se produisent, **les traces et les logs** sont indispensables pour comprendre ce qui s'est passé en coulisses, analyser le comportement de l'application au fil du temps et déboguer plus facilement.
 
@@ -116,7 +145,7 @@ except ZeroDivisionError:
 
 ```
 
-Si tu as besoin de manipuler ou de mettre en forme la stack trace avant de la logger (ou sans lever d'exception), utilise le module standard `traceback`.
+Manipuler ou de mettre en forme la stack trace avant de la logger (ou sans lever d'exception), utilise le module standard `traceback`.
 
 ```python
 import logging
@@ -133,7 +162,7 @@ except ZeroDivisionError:
     logger.error(f"Détail de l'erreur :\n{trace_str}")
 
 ```
-Si tu souhaites afficher la chaîne d'appels courante dans les logs pour du débogage, sans qu'il n'y ait d'erreur :
+Afficher la chaîne d'appels courante dans les logs pour du débogage, sans qu'il n'y ait d'erreur :
 
 ```python
 import logging
