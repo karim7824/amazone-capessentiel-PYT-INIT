@@ -30,6 +30,16 @@ print(r)
 
 ```
 
+Définition sur une ligne pour un petit code .
+```python
+def additionner(a, b): return a + b
+
+# Appel
+r = additionner (10, 20)
+print(r)
+
+```
+
 > 💡 En Python, les objets sont passés par affectation : modifier un objet mutable à l'intérieur d'une fonction se répercute en dehors, contrairement aux objets immuables.
 
 ---
