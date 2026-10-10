@@ -15,6 +15,8 @@ Au programme de ce chapitre :
 
 Créé par Guido van Rossum et publié en 1991, Python a été conçu avec pour objectif prioritaire la lisibilité du code. Son nom provient de la troupe comique britannique *Monty Python*. Le langage a évolué à travers deux versions majeures : Python 2 (désormais obsolète) et Python 3, la norme standard actuelle.
 
+Une bibliothèque C ou C++ est un binaire de nature exécutable avec une extension .dll (pour Windows), .so (pour famille Unix)
+
 ```python
 # Vérifier la version exacte de Python exécutée par le système
 import sys
@@ -79,7 +81,7 @@ print("Racine carrée calculée via CPython :", resultat)
 
 ## Rôles de Cython, IronPython et Jython
 
-Cython permet de compiler du code Python en extensions C pour obtenir des performances proches du langage C. IronPython permet d'exécuter du code Python sur le framwork Microsoft .NET, tandis que Jython compile le code Python en bytecode Java pour la JVM. Ces déclinaisons facilitent l'intégration de Python dans des environnements d'entreprise spécifiques.
+Cython permet de compiler du code Python en extensions C pour obtenir des performances proches du langage C. IronPython permet d'exécuter du code Python sur le framework Microsoft .NET, tandis que Jython compile le code Python en bytecode Java pour la JVM. Ces déclinaisons facilitent l'intégration de Python dans des environnements d'entreprise spécifiques.
 
 ```python
 # Exemple de logique métier en Python standard, convertible via Cython pour optimisation
@@ -97,7 +99,7 @@ print("Résultat du calcul :", calculer_somme(100000))
 
 ## Popularité de Python
 
-Python se classe régulièrement parmi les langages les plus populaires aux index TIOBE et GitHub. Cette popularité s'explique par sa syntaxe claire et intuitive qui accélère la vitesse de développement. Sa vaste communauté garantit la disponibilité de bibliothèques très richse pour résoudre presque tout problème informatique.
+Python se classe régulièrement parmi les langages les plus populaires aux index TIOBE et GitHub. Cette popularité s'explique par sa syntaxe claire et intuitive qui accélère la vitesse de développement. Sa vaste communauté garantit la disponibilité de bibliothèques très riches pour résoudre presque tout problème informatique.
 
 ```python
 # Exemple illustrant la concision de la syntaxe Python face à d'autres langages
@@ -150,7 +152,7 @@ def surveiller_systeme():
 if __name__ == "__main__":
     while True:
         surveiller_systeme()
-        time.sleep(2)
+        time.sleep(2) # 2 secondes d'attente
 
 ```
 
@@ -168,7 +170,7 @@ if __name__ == "__main__":
 
 ---
 
-### Exemple de synthèse
+## Exemple de synthèse
 
 Cet exemple regroupe la vérification de l'environnement, le typage dynamique et le traitement de données simple dans un script unique :
 
@@ -198,7 +200,7 @@ print("Rapport écrit avec succès dans 'rapport_intro.txt'.")
 
 ---
 
-### Exercices de fin de chapitre
+## Exercices de fin de chapitre
 
 **Exercice 1 : Inspection de l'environnement d'exécution**
 Écrivez une instruction qui permet d'afficher la version de Python
