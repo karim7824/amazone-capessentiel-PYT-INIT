@@ -19,8 +19,9 @@ En Python, une variable est une étiquette mémoire pointant vers un objet.. Une
 En Python, la création se fait par simple **affectation** avec le signe `=` :
 
 ```python
-age = 25  # L'objet 25 est stocké en mémoire, 'age' pointe dessus.
-
+>>>age = 25  # L'objet 25 est stocké en mémoire, 'age' pointe dessus.
+>>>hex(id(age))
+'0x7ffad6593cb8' # emplacement mémoire de age en hexadécimal
 ```
 
 * **Typage dynamique :** Inutile de déclarer le type à l'avance (`int`, `str`, etc.). L'interpréteur le déduit automatiquement lors de l'exécution.
