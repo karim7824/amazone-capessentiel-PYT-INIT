@@ -55,6 +55,7 @@ En Python, la condition `if __name__ == '__main__':` permet de définir le point
 ```python
 # Fichier : main.py
 
+#fonction acceptant une chaîne en argument et retourne None c'est à dire rien
 def afficher_message(nom: str) -> None:
     print(f"Bonjour à tous, bienvenue dans le projet {nom} !")
 
@@ -79,6 +80,12 @@ print("Arguments passés au script :", sys.argv)
 
 ```
 
+```bash
+python exemples.py AA BB CC
+Lancement du laboratoire Python...
+Arguments passés au script : ['exemples.py', 'AA', 'BB', 'CC']
+```
+
 > 💡 **Bonne pratique :** Lancez vos scripts depuis le dossier racine de votre projet pour éviter les erreurs de chemins relatifs lors de l'ouverture de fichiers.
 
 ## Utilisation de Python en mode REPL
@@ -87,13 +94,12 @@ Le mode REPL (*Read-Eval-Print Loop*) est la console interactive de Python, acce
 
 ```python
 # Simulation d'une session REPL interactive
-# >>> a = 10
-# >>> b = 20
-# >>> a + b
+>>> a = 10
+>>> b = 20
+>>> a + b
 30
-# >>> type(a + b)
+>>> type(a + b)
 <class 'int'>
-
 ```
 
 > 💡 **Note :** Pour quitter le mode REPL dans votre terminal, tapez la fonction `exit()` ou utilisez le raccourci `Ctrl + Z` (Windows) ou `Ctrl + D` (Linux/macOS).
@@ -107,10 +113,10 @@ Un environnement virtuel permet d'isoler les dépendances et bibliothèques de c
 python -m venv .venv
 
 # Sous Windows (PowerShell) :
-# .venv\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1
 
 # Sous Linux/macOS :
-# source .venv/bin/activate
+source .venv/bin/activate
 
 ```
 
@@ -141,8 +147,6 @@ Logiciels uniques qui regroupe tous les outils nécessaires au développement de
 | **Spyder** | IDE scientifique | Proche de MATLAB, explorateur de variables et de graphiques intégré | Calcul scientifique / Analyse de données |
 | **IDLE** | IDE minimaliste | Fourni par défaut avec l'installation officielle de Python | Apprentissage / Débutants |
 
-
-
 ## Exemple de synthèse
 
 Cet exemple combine la vérification du point d'entrée principal, la détection de l'environnement virtuel et la création automatique d'un script de laboratoire prêts à l'emploi :
@@ -151,6 +155,7 @@ Cet exemple combine la vérification du point d'entrée principal, la détection
 import sys
 import os
 
+# retourne un dictionnaire qui est un ensemble de clé/valeur
 def verifier_environnement() -> dict:
     return {
         "executable": sys.executable,
