@@ -44,6 +44,7 @@ On peut se créer une fonction qui essaie de convertir avec prudence un contenu
 def try_cast_int(valeur, defaut=None):
     try:
         return int(valeur)
+    # capturer les erreurs de type et les erreurs de valeur
     except (ValueError, TypeError):
         return defaut
 
